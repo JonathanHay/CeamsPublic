@@ -1,3 +1,6 @@
+# Ignore mongo db folder
+data/db/
+
 # Logs
 logs
 *.log
