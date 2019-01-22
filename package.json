@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
-    "db-up": "mongod --dbpath data --fork --logpath ./logs/mongodb.log"
+    "db-up": "mongod --dbpath data/db --fork --logpath ./logs/mongodb.log",
+    "db-down": "mongod --dbpath data/db --shutdown"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
