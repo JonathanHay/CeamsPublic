@@ -2,7 +2,7 @@ Team 3
 ======
 
 
-<img src="https://github.com/UWO-ECE-Software-Engineering/A6ILE-Tech/blob/master/A6ILETech.png" width="400">
+<img src="https://github.com/UWO-ECE-Software-Engineering/Team-3/blob/master/Team3.png" width="200">
 
 CEAMS – Canadian Engineering Accreditation Management System
 ------------------------------------------------------------
