@@ -9,8 +9,8 @@ var testsSchema = mongoose.Schema({
   Instructor : String,
   testDate : Date,
   type: {type: mongoose.Schema.ObjectId, ref: 'DeliverableTypes'},
-  question: [{type: mongoose.Schema.ObjectId, ref: 'Questions'}]
+  questions: [{type: mongoose.Schema.ObjectId, ref: 'Questions'}]
 });
 
-var tests = mongoose.model('Tests', testsSchema);
-exports.Model =  tests;
+var Tests = mongoose.model('test', testsSchema);
+exports.Model = Tests;

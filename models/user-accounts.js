@@ -7,8 +7,12 @@ var userAccountsSchema = mongoose.Schema({
   userAccountExpiryDate: Date,
   salt: String,
   encryptedPassword: String,
-  userProfile: {type: mongoose.Schema.ObjectId, ref: 'UserProfiles'}
+
+  // UserProfile relationships
+  instructor: {type: mongoose.Schema.ObjectId, ref: 'Instructors'},
+  staff: {type: mongoose.Schema.ObjectId, ref: 'Staff'},
+  teachingAssistant: {type: mongoose.Schema.ObjectId, ref: 'TeachingAssistants'},
 });
 
-var userAccounts = mongoose.model('UserAccounts', userAccountsSchema);
-exports.Model =  userAccounts;
+var UserAccounts = mongoose.model('user-account', userAccountsSchema);
+exports.Model = UserAccounts;

@@ -1,9 +1,15 @@
 var mongoose = require('mongoose');
 
-// TODO: Figure out inheritence from user-profile
-var teachingAssistantsSchema = mongoose.Schema({
-  contactInfo: String
+var teachingAssistantsSchema = mongoose.Schema({  
+  contactInfo: String,
+
+  // UserProfile attributes
+  firstName: String,
+  lastName: String,
+  email: String,
+  building: String,
+  officeNumber: String
 });
 
-var teachingAssistants = mongoose.model('TeachingAssistants', teachingAssistantsSchema);
-exports.Model =  teachingAssistants;
+var TeachingAssistants = mongoose.model('teaching-assistant', teachingAssistantsSchema);
+exports.Model = TeachingAssistants;

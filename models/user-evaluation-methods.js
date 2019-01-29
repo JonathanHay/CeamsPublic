@@ -8,5 +8,5 @@ var userEvaluationMethodsSchema = mongoose.Schema({
   staff: [{type: mongoose.Schema.ObjectId, ref: 'Staff'}]
 });
 
-var userEvaluationMethods = mongoose.model('UserEvaluationMethods', userEvaluationMethodsSchema);
-exports.Model =  userEvaluationMethods;
+var UserEvaluationMethods = mongoose.model('user-evaluation-method', userEvaluationMethodsSchema);
+exports.Model = UserEvaluationMethods;

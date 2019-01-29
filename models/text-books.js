@@ -9,5 +9,5 @@ var textBooksSchema = mongoose.Schema({
   course: {type: mongoose.Schema.ObjectId, ref: 'Courses'}
 });
 
-var textBooks = mongoose.model('TextBooks', textBooksSchema);
-exports.Model =  textBooks;
+var TextBooks = mongoose.model('text-book', textBooksSchema);
+exports.Model = TextBooks;

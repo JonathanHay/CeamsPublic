@@ -9,5 +9,5 @@ var topicsSchema = mongoose.Schema({
   studentsGain: {type: mongoose.Schema.ObjectId, ref: 'Competencies'}
 });
 
-var topics = mongoose.model('Topics', topicsSchema);
-exports.Model =  topics;
+var Topics = mongoose.model('topic', topicsSchema);
+exports.Model = Topics;
