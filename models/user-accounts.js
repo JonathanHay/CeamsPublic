@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var userAccountSchema = mongoose.Schema({
+var userAccountsSchema = mongoose.Schema({
   username: String,
   passwordReset: Boolean,
   passwordMustChanged: Boolean,
@@ -10,5 +10,5 @@ var userAccountSchema = mongoose.Schema({
   userProfile: {type: mongoose.Schema.ObjectId, ref: 'UserProfiles'}
 });
 
-var userAccount = mongoose.model('UserAccounts', userAccountSchema);
-exports.Model =  userAccount;
+var userAccounts = mongoose.model('UserAccounts', userAccountsSchema);
+exports.Model =  userAccounts;

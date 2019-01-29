@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var topicSchema = mongoose.Schema({
+var topicsSchema = mongoose.Schema({
   number: String,
   title: String,
   weekTaught: Number,
@@ -9,5 +9,5 @@ var topicSchema = mongoose.Schema({
   studentsGain: {type: mongoose.Schema.ObjectId, ref: 'Competencies'}
 });
 
-var topic = mongoose.model('Topics', topicSchema);
-exports.Model =  topic;
+var topics = mongoose.model('Topics', topicsSchema);
+exports.Model =  topics;

@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var testSchema = mongoose.Schema({
+var testsSchema = mongoose.Schema({
   academicYear: String,
   term : String,
   course : String,
@@ -12,5 +12,5 @@ var testSchema = mongoose.Schema({
   question: [{type: mongoose.Schema.ObjectId, ref: 'Questions'}]
 });
 
-var test = mongoose.model('Test', testSchema);
-exports.Model =  test;
+var tests = mongoose.model('Tests', testsSchema);
+exports.Model =  tests;

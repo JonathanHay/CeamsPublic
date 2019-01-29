@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var textBookSchema = mongoose.Schema({
+var textBooksSchema = mongoose.Schema({
   title: String,
   author: String,
   publishert: String,
@@ -9,5 +9,5 @@ var textBookSchema = mongoose.Schema({
   course: {type: mongoose.Schema.ObjectId, ref: 'Courses'}
 });
 
-var textBook = mongoose.model('TextBooks', textBookSchema);
-exports.Model =  textBook;
+var textBooks = mongoose.model('TextBooks', textBooksSchema);
+exports.Model =  textBooks;

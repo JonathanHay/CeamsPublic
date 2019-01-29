@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var userEvaluationMethodSchema = mongoose.Schema({
+var userEvaluationMethodsSchema = mongoose.Schema({
   formulaExpression: String,
   formulaDescription: String,
   timeToApply: Date,
@@ -8,5 +8,5 @@ var userEvaluationMethodSchema = mongoose.Schema({
   staff: [{type: mongoose.Schema.ObjectId, ref: 'Staff'}]
 });
 
-var userEvaluationMethod = mongoose.model('UserEvaluationMethods', userEvaluationMethodSchema);
-exports.Model =  userEvaluationMethod;
+var userEvaluationMethods = mongoose.model('UserEvaluationMethods', userEvaluationMethodsSchema);
+exports.Model =  userEvaluationMethods;

@@ -1,10 +1,10 @@
 var mongoose = require('mongoose');
 
-var utilizationSchema = mongoose.Schema({
+var utilizationsSchema = mongoose.Schema({
   code: String,
   name: String,
   indicators: [{type: mongoose.Schema.ObjectId, ref: 'Indicators'}]
 });
 
-var utilization = mongoose.model('Utilizations', utilizationSchema);
-exports.Model =  utilization;
+var utilizations = mongoose.model('Utilizations', utilizationsSchema);
+exports.Model =  utilizations;
