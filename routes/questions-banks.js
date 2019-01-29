@@ -1,4 +1,4 @@
-//questions-bank.js
+//questions-banks.js
 var mongoose            = require('mongoose');
 var questionsBanksSchema = mongoose.Schema(
     {
@@ -10,10 +10,10 @@ var questionsBanksSchema = mongoose.Schema(
         courseTitle: String,
         authorNumber: String,
         authorName: String,
-        questionType: {type: mongoose.Schema.ObjectId, ref: ('QuestionTypes')},
-        questionOptions: [{type: mongoose.Schema.ObjectId, ref: ('QuestionOptions')}],
-        questionGraphics: [{type: mongoose.Schema.ObjectId, ref: ('QuestionGraphics')}],
-        topicsAssessed: [{type: mongoose.Schema.ObjectId, ref: ('TopicsAssessed')}]
+        type: {type: mongoose.Schema.ObjectId, ref: ('QuestionTypes')},
+        options: [{type: mongoose.Schema.ObjectId, ref: ('QuestionOptions')}],
+        graphics: [{type: mongoose.Schema.ObjectId, ref: ('QuestionGraphics')}],
+        topics: [{type: mongoose.Schema.ObjectId, ref: ('TopicsAssessed')}]
     }
 )
 var QuestionsBanks = mongoose.model('questionsBank', questionsBanksSchema);

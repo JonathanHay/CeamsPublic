@@ -1,5 +1,5 @@
 //staff.js
-var mongoose            = require('mongoose');
+var mongoose    = require('mongoose');
 var StaffSchema = mongoose.Schema(
     {
         firstName: String,
@@ -9,7 +9,7 @@ var StaffSchema = mongoose.Schema(
         officeNumber: String,
         roleName: String,
         keyPerformanceIndicator: String,
-        userAccount: {type: mongoose.Schema.ObjectId, ref: ('UserAccount')},
+        userShadow: {type: mongoose.Schema.ObjectId, ref: ('UserAccounts')},
         evaluationMethod: {type: mongoose.Schema.ObjectId, ref: ('Questions')}
     }
 )
