@@ -7,5 +7,5 @@ var questionTypesSchema = mongoose.Schema(
         questionsBanks:[{type: mongoose.Schema.ObjectId, ref: ('QuestionsBanks')}]
     }
 )
-var QuestionTypes = mongoose.model('questionType', questionTypesSchema);
+var QuestionTypes = mongoose.model('question-type', questionTypesSchema);
 exports.model = QuestionTypes;

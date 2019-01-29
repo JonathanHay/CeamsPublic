@@ -5,7 +5,7 @@ var questionGradesSchema = mongoose.Schema(
         studentNumber: String,
         grade: String,
         CEABScoreMappingFormula: String,
-        CEABScore: String,
+        CEABScore: Number,
         question: {type: mongoose.Schema.ObjectId, ref: ('Questions')}
     }
 )

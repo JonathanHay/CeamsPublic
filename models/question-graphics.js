@@ -6,5 +6,5 @@ var questionGraphicsSchema = mongoose.Schema(
         questionsBank: {type: mongoose.Schema.ObjectId, ref: ('QuestionsBanks')}
     }
 )
-var QuestionGraphics = mongoose.model('questionGraphic', questionGraphicsSchema);
+var QuestionGraphics = mongoose.model('question-graphic', questionGraphicsSchema);
 exports.model = QuestionGraphics;

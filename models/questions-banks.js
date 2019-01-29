@@ -16,5 +16,5 @@ var questionsBanksSchema = mongoose.Schema(
         topics: [{type: mongoose.Schema.ObjectId, ref: ('TopicsAssessed')}]
     }
 )
-var QuestionsBanks = mongoose.model('questionsBank', questionsBanksSchema);
+var QuestionsBanks = mongoose.model('questions-bank', questionsBanksSchema);
 exports.model = QuestionsBanks;
