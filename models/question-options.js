@@ -1,4 +1,4 @@
-//question-option.js
+//question-options.js
 var mongoose            = require('mongoose');
 var questionOptionsSchema = mongoose.Schema(
     {
@@ -6,5 +6,5 @@ var questionOptionsSchema = mongoose.Schema(
         questionsBank: {type: mongoose.Schema.ObjectId, ref: ('QuestionsBanks')}
     }
 )
-var QuestionOptions = mongoose.model('questionOption', questionOptionsSchema);
+var QuestionOptions = mongoose.model('question-option', questionOptionsSchema);
 exports.model = QuestionOptions;

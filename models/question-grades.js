@@ -9,5 +9,5 @@ var questionGradesSchema = mongoose.Schema(
         question: {type: mongoose.Schema.ObjectId, ref: ('Questions')}
     }
 )
-var QuestionGrades = mongoose.model('questionGrade', questionGradesSchema);
+var QuestionGrades = mongoose.model('question-grade', questionGradesSchema);
 exports.model = QuestionGrades;
