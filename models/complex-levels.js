@@ -1,4 +1,4 @@
-//complex-level.js
+//complex-levels.js
 var mongoose = require('mongoose');
 var complexLevelSchema = mongoose.Schema({
     level: [
@@ -8,5 +8,5 @@ var complexLevelSchema = mongoose.Schema({
     ],
     topicsAssessed: [{type: mongoose.Schema.ObjectId, ref: ('TopicsAssessed')}]
 });
-var ComplexLevel= mongoose.model('ComplexLevel', complexLevelSchema);
-exports.Model = ComplexLevel;
+var ComplexLevels= mongoose.model('complex-level', complexLevelSchema);
+exports.Model = ComplexLevels;
