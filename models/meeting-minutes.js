@@ -9,7 +9,7 @@ var meetingMinutesSchema = mongoose.Schema(
         recommendation: String,
         decision: String,
         meetingTopic: [{ type: mongoose.Schema.ObjectId, ref: ('MeetingTopic') }],
-        meeting: { type: mongoose.Schema.ObjectId, ref: ('Meeting') },
+        meeting: [{ type: mongoose.Schema.ObjectId, ref: ('Meeting') }],
         memberAttended: [{ type: mongoose.Schema.ObjectId, ref: ('MemberAttended') }]
     }
 );
