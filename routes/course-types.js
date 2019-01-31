@@ -1,19 +1,19 @@
 var express = require('express');
 var router = express.Router();
 
-var CourseType = require('../models/course-types');
+var CourseTypes = require('../models/course-types');
 
 /* GET all */
 router.get('/', function(req, res) {
-  CourseType.Model.find((err, utils) => {
+  CourseTypes.Model.find((err, courseTypes) => {
     if (err) res.status(500).json(err);
-    res.json(utils);
+    res.json({courseType: courseTypes});
   });
 });
 
 /* GET some */
 router.get('/:id', function(req, res) {
-  CourseType.Model.findById(req.params.id, function (err, courseType) {
+  CourseTypes.Model.findById(req.params.id, function (err, courseType) {
     if (err) res.status(500).json(err);
     else res.json({courseType: courseType});
   });
@@ -21,7 +21,7 @@ router.get('/:id', function(req, res) {
 
 /* POST */
 router.post('/', function(req, res) {
-  var courseType = new CourseType.Model(req.body.courseType);
+  var courseType = new CourseTypes.Model(req.body.courseType);
   courseType.save(function (err) {
       if (err) res.status(500).json(err);
       res.json({courseType: courseType});
@@ -30,7 +30,7 @@ router.post('/', function(req, res) {
 
 /* PUT */
 router.put('/:id', function(req, res) {
-  CourseType.Model.findById(req.params.id, function (err, courseType) {
+  CourseTypes.Model.findById(req.params.id, function (err, courseType) {
     if (err) res.status(500).json(err);
     else {
         courseType.code = req.body.courseType.code;
@@ -47,7 +47,7 @@ router.put('/:id', function(req, res) {
 
 /* DELETE */
 router.delete('/:id', function(req, res) {
-  CourseType.Model.findOneAndDelete({_id: req.params.id},
+  CourseTypes.Model.findOneAndDelete({_id: req.params.id},
     function (err, deleted) {
       if (err) res.status(500).json(err);
       else {
