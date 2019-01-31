@@ -1,11 +1,12 @@
 //deliverable-types.js
 var mongoose = require('mongoose');
-var deliverableTypeSchema = mongoose.Schema(
+var deliverableTypesSchema = mongoose.Schema(
  {
  code: String,
  name: String,
 tests: [{type: mongoose.Schema.ObjectId, ref: ('Tests')}]
  }
 );
-var DeliverableTypes = mongoose.model("deliverable-type", deliverableTypeSchema);
+var DeliverableTypes = mongoose.model("deliverable-type", deliverableTypesSchema);
 exports.Model = DeliverableTypes
+
