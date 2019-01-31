@@ -1,8 +1,8 @@
 //competences.js
 var mongoose = require('mongoose');
-var competenceSchema = mongoose.Schema({
+var competencesSchema = mongoose.Schema({
     description: String,
     topic: {type: mongoose.Schema.ObjectId, ref: ('Topics')}
 });
-var Competences= mongoose.model('competence', competenceSchema);
+var Competences= mongoose.model('competence', competencesSchema);
 exports.Model = Competences;

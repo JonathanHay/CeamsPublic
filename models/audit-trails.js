@@ -1,6 +1,6 @@
 //audit-trails.js
 var mongoose = require('mongoose');
-var auditTrailSchema = mongoose.Schema({
+var auditTrailsSchema = mongoose.Schema({
     timeStamp: Date,
     authorUserName: String,
     actionDesc: String,
@@ -9,5 +9,5 @@ var auditTrailSchema = mongoose.Schema({
     affectedTable: String,
     notes: String
 });
-var AuditTrails= mongoose.model('audit-trail', auditTrailSchema);
+var AuditTrails= mongoose.model('audit-trail', auditTrailsSchema);
 exports.Model = AuditTrails;

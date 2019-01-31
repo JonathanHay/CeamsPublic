@@ -1,10 +1,10 @@
 //announcements-windows.js
 var mongoose = require('mongoose');
-var announcementsWindowSchema = mongoose.Schema({
+var announcementsWindowsSchema = mongoose.Schema({
     code: String,
     message: String,
     startTime: Date,
     endTime: Date
 });
-var AnnouncementsWindows= mongoose.model('announcements-window', announcementsWindowSchema);
+var AnnouncementsWindows= mongoose.model('announcements-window', announcementsWindowsSchema);
 exports.Model = AnnouncementsWindows;

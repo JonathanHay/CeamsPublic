@@ -1,9 +1,9 @@
 //capabilities.js
 var mongoose = require('mongoose');
-var capabilitySchema = mongoose.Schema({
+var capabilitysSchema = mongoose.Schema({
     code: String,
     systemFeature: String,
-    permission: [{type: mongoose.Schema.ObjectId, ref: ('Permissions')}]
+    permissions: [{type: mongoose.Schema.ObjectId, ref: ('Permissions')}]
 });
-var Capabilities= mongoose.model('capability', capabilitySchema);
+var Capabilities= mongoose.model('capability', capabilitysSchema);
 exports.Model = Capabilities;

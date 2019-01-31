@@ -1,9 +1,9 @@
 //academic-ranks.js
 var mongoose = require('mongoose');
-var academicRankSchema = mongoose.Schema({
+var academicRanksSchema = mongoose.Schema({
     code: String,
     name: String,
-    instructor: [{type: mongoose.Schema.ObjectId, ref: ('Instructors')}]
+    instructors: [{type: mongoose.Schema.ObjectId, ref: ('Instructors')}]
 });
-var AcademicRanks= mongoose.model('academic-rank', academicRankSchema);
+var AcademicRanks= mongoose.model('academic-rank', academicRanksSchema);
 exports.Model = AcademicRanks;
