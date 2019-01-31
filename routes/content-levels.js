@@ -51,7 +51,7 @@ router.delete('/:id', function(req, res) {
     function (err, deleted) {
       if (err) res.status(500).json(err);
       else {
-        response.json({contentLevel: deleted});
+        res.json({contentLevel: deleted});
       }
     }
 );

@@ -1,19 +1,19 @@
 var express = require('express');
 var router = express.Router();
 
-var NaturalScienceType = require('../models/natural-science-types');
+var NaturalScienceTypes = require('../models/natural-science-types');
 
 /* GET all */
 router.get('/', function(req, res) {
-  NaturalScienceType.Model.find((err, utils) => {
+  NaturalScienceTypes.Model.find((err, naturalScienceTypes) => {
     if (err) res.status(500).json(err);
-    res.json(utils);
+    res.json({naturalScienceType: naturalScienceTypes});
   });
 });
 
 /* GET some */
 router.get('/:id', function(req, res) {
-  NaturalScienceType.Model.findById(req.params.id, function (err, naturalScienceType) {
+  NaturalScienceTypes.Model.findById(req.params.id, function (err, naturalScienceType) {
     if (err) res.status(500).json(err);
     else res.json({naturalScienceType: naturalScienceType});
   });
@@ -21,7 +21,7 @@ router.get('/:id', function(req, res) {
  
 /* POST */
 router.post('/', function(req, res) {
-  var naturalScienceType = new NaturalScienceType.Model(req.body.naturalScienceType);
+  var naturalScienceType = new NaturalScienceTypes.Model(req.body.naturalScienceType);
   naturalScienceType.save(function (err) {
       if (err) res.status(500).json(err);
       res.json({naturalScienceType: naturalScienceType});
@@ -30,7 +30,7 @@ router.post('/', function(req, res) {
 
 /* PUT */
 router.put('/:id', function(req, res) {
-  NaturalScienceType.Model.findById(req.params.id, function (err, naturalScienceType) {
+  NaturalScienceTypes.Model.findById(req.params.id, function (err, naturalScienceType) {
     if (err) res.status(500).json(err);
     else {
         naturalScienceType.code = req.body.naturalScienceType.code;
@@ -47,7 +47,7 @@ router.put('/:id', function(req, res) {
 
 /* DELETE */
 router.delete('/:id', function(req, res) {
-  NaturalScienceType.Model.findOneAndDelete({_id: req.params.id},
+  NaturalScienceTypes.Model.findOneAndDelete({_id: req.params.id},
     function (err, deleted) {
       if (err) res.status(500).json(err);
       else {

@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
-var Utilization = require('../models/utilizations');
+var Utilizations = require('../models/utilizations');
 
 /* GET all */
 router.get('/', function(req, res) {
-  Utilization.Model.find((err, utilizations) => {
+  Utilizations.Model.find((err, utilizations) => {
     if (err) res.status(500).json(err);
     res.json({utilization: utilizations});
   });
@@ -13,7 +13,7 @@ router.get('/', function(req, res) {
 
 /* GET some */
 router.get('/:id', function(req, res) {
-  Utilization.Model.findById(req.params.id, function (err, utilization) {
+  Utilizations.Model.findById(req.params.id, function (err, utilization) {
     if (err) res.status(500).json(err);
     else res.json({utilization: utilization});
   });
@@ -21,7 +21,7 @@ router.get('/:id', function(req, res) {
 
 /* POST */
 router.post('/', function(req, res) {
-  var utilization = new Utilization.Model(req.body.utilization);
+  var utilization = new Utilizations.Model(req.body.utilization);
   utilization.save(function (err) {
       if (err) res.status(500).json(err);
       res.json({utilization: utilization});
@@ -30,7 +30,7 @@ router.post('/', function(req, res) {
 
 /* PUT */
 router.put('/:id', function(req, res) {
-  Utilization.Model.findById(req.params.id, function (err, utilization) {
+  Utilizations.Model.findById(req.params.id, function (err, utilization) {
     if (err) res.status(500).json(err);
     else {
         utilization.code = req.body.utilization.code;
@@ -47,11 +47,11 @@ router.put('/:id', function(req, res) {
 
 /* DELETE */
 router.delete('/:id', function(req, res) {
-  Utilization.Model.findOneAndDelete({_id: req.params.id},
+  Utilizations.Model.findOneAndDelete({_id: req.params.id},
     function (err, deleted) {
       if (err) res.status(500).json(err);
       else {
-        response.json({utilization: deleted});
+        res.json({utilization: deleted});
       }
     }
 );

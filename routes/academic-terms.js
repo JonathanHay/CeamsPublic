@@ -5,7 +5,7 @@ var AcademicTerms = require('../models/academic-terms');
 
 /* GET all */
 router.get('/', function(req, res) {
-    AcademicTerms.Model.find((err, utils) => {
+    AcademicTerms.Model.find((err, academicTerms) => {
       if (err) res.status(500).json(err);
       res.json({academicTerm: academicTerms});
     });
@@ -51,7 +51,7 @@ router.get('/', function(req, res) {
       function (err, deleted) {
         if (err) res.status(500).json(err);
         else {
-          response.json({academicTerm: deleted});
+          res.json({academicTerm: deleted});
         }
       }
   );

@@ -1,19 +1,19 @@
 var express = require('express');
 var router = express.Router();
 
-var ComplimentaryStudiesType = require('../models/complimentary-studies-types');
+var ComplimentaryStudiesTypes = require('../models/complimentary-studies-types');
 
 /* GET all */
 router.get('/', function(req, res) {
-  ComplimentaryStudiesType.Model.find((err, utils) => {
+  ComplimentaryStudiesTypes.Model.find((err, complimentaryStudiesTypes) => {
     if (err) res.status(500).json(err);
-    res.json(utils);
+    res.json({complimentaryStudiesType: complimentaryStudiesTypes});
   });
 });
 
 /* GET some */
 router.get('/:id', function(req, res) {
-  ComplimentaryStudiesType.Model.findById(req.params.id, function (err, complimentaryStudiesType) {
+  ComplimentaryStudiesTypes.Model.findById(req.params.id, function (err, complimentaryStudiesType) {
     if (err) res.status(500).json(err);
     else res.json({complimentaryStudiesType: complimentaryStudiesType});
   });
@@ -21,7 +21,7 @@ router.get('/:id', function(req, res) {
  
 /* POST */
 router.post('/', function(req, res) {
-  var complimentaryStudiesType = new ComplimentaryStudiesType.Model(req.body.complimentaryStudiesType);
+  var complimentaryStudiesType = new ComplimentaryStudiesTypes.Model(req.body.complimentaryStudiesType);
   complimentaryStudiesType.save(function (err) {
       if (err) res.status(500).json(err);
       res.json({complimentaryStudiesType: complimentaryStudiesType});
@@ -30,7 +30,7 @@ router.post('/', function(req, res) {
 
 /* PUT */
 router.put('/:id', function(req, res) {
-  ComplimentaryStudiesType.Model.findById(req.params.id, function (err, complimentaryStudiesType) {
+  ComplimentaryStudiesTypes.Model.findById(req.params.id, function (err, complimentaryStudiesType) {
     if (err) res.status(500).json(err);
     else {
         complimentaryStudiesType.code = req.body.complimentaryStudiesType.code;
@@ -47,11 +47,11 @@ router.put('/:id', function(req, res) {
 
 /* DELETE */
 router.delete('/:id', function(req, res) {
-  ComplimentaryStudiesType.Model.findOneAndDelete({_id: req.params.id},
+  ComplimentaryStudiesTypes.Model.findOneAndDelete({_id: req.params.id},
     function (err, deleted) {
       if (err) res.status(500).json(err);
       else {
-        response.json({complimentaryStudiesType: deleted});
+        res.json({complimentaryStudiesType: deleted});
       }
     }
 );
