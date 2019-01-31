@@ -5,9 +5,9 @@ var Utilization = require('../models/utilizations');
 
 /* GET all */
 router.get('/', function(req, res) {
-  Utilization.Model.find((err, utils) => {
+  Utilization.Model.find((err, utilizations) => {
     if (err) res.status(500).json(err);
-    res.json(utils);
+    res.json({utilization: utilizations});
   });
 });
 
