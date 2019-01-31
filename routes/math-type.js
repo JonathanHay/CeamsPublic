@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var MathType = require('../models/mathTypes');
+var MathType = require('../models/math-types');
 
 /* GET all */
 router.get('/', function(req, res) {
