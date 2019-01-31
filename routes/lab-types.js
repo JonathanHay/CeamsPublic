@@ -50,7 +50,7 @@ router.get('/', function(req, res) {
       function (err, deleted) {
         if (err) res.status(500).json(err);
         else {
-          response.json({labType: deleted});
+          res.json({labType: deleted});
         }
       }
   );

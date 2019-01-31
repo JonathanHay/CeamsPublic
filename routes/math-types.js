@@ -1,19 +1,19 @@
 var express = require('express');
 var router = express.Router();
 
-var MathType = require('../models/math-types');
+var MathTypes = require('../models/math-types');
 
 /* GET all */
 router.get('/', function(req, res) {
-  MathType.Model.find((err, utils) => {
+  MathTypes.Model.find((err, mathTypes) => {
     if (err) res.status(500).json(err);
-    res.json(utils);
+    res.json({mathType: mathTypes});
   });
 });
 
 /* GET some */
 router.get('/:id', function(req, res) {
-  MathType.Model.findById(req.params.id, function (err, mathType) {
+  MathTypes.Model.findById(req.params.id, function (err, mathType) {
     if (err) res.status(500).json(err);
     else res.json({mathType: mathType});
   });
@@ -21,7 +21,7 @@ router.get('/:id', function(req, res) {
  
 /* POST */
 router.post('/', function(req, res) {
-  var mathType = new MathType.Model(req.body.mathType);
+  var mathType = new MathTypes.Model(req.body.mathType);
   mathType.save(function (err) {
       if (err) res.status(500).json(err);
       res.json({mathType: mathType});
@@ -30,7 +30,7 @@ router.post('/', function(req, res) {
 
 /* PUT */
 router.put('/:id', function(req, res) {
-  MathType.Model.findById(req.params.id, function (err, mathType) {
+  MathTypes.Model.findById(req.params.id, function (err, mathType) {
     if (err) res.status(500).json(err);
     else {
         mathType.code = req.body.mathType.code;
@@ -47,11 +47,11 @@ router.put('/:id', function(req, res) {
 
 /* DELETE */
 router.delete('/:id', function(req, res) {
-  MathType.Model.findOneAndDelete({_id: req.params.id},
+  MathTypes.Model.findOneAndDelete({_id: req.params.id},
     function (err, deleted) {
       if (err) res.status(500).json(err);
       else {
-        response.json({mathType: deleted});
+        res.json({mathType: deleted});
       }
     }
 );
