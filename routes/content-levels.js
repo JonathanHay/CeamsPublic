@@ -5,40 +5,40 @@ var ContentLevels = require('../models/content-levels');
 
 /* GET all */
 router.get('/', function(req, res) {
-  ContentLevels.Model.find((err, utils) => {
+  ContentLevels.Model.find((err, contentLevels) => {
     if (err) res.status(500).json(err);
-    res.json(utils);
+    res.json({contentLevel: contentLevels});
   });
 });
 
 /* GET some */
 router.get('/:id', function(req, res) {
-  ContentLevels.Model.findById(req.params.id, function (err, contentLevels) {
+  ContentLevels.Model.findById(req.params.id, function (err, contentLevel) {
     if (err) res.status(500).json(err);
-    else res.json({contentLevels: contentLevels});
+    else res.json({contentLevel: contentLevel});
   });
 });
 
 /* POST */
 router.post('/', function(req, res) {
-  var contentLevels = new ContentLevels.Model(req.body.contentLevels);
-  contentLevels.save(function (err) {
+  var contentLevel = new ContentLevels.Model(req.body.contentLevel);
+  contentLevel.save(function (err) {
       if (err) res.status(500).json(err);
-      res.json({contentLevels: contentLevels});
+      res.json({contentLevel: contentLevel});
   });
 });
 
 /* PUT */
 router.put('/:id', function(req, res) {
-  ContentLevels.Model.findById(req.params.id, function (err, contentLevels) {
+  ContentLevels.Model.findById(req.params.id, function (err, contentLevel) {
     if (err) res.status(500).json(err);
     else {
-        contentLevels.code = req.body.contentLevels.code;
-        contentLevels.name = req.body.contentLevels.name;
-        contentLevels.save(function (err) {
+        contentLevel.code = req.body.contentLevel.code;
+        contentLevel.name = req.body.contentLevel.name;
+        contentLevel.save(function (err) {
             if (err) res.status(500).json(err);
             else {
-                res.json({contentLevels: contentLevels});
+                res.json({contentLevel: contentLevel});
             }
         });
     }
@@ -51,7 +51,7 @@ router.delete('/:id', function(req, res) {
     function (err, deleted) {
       if (err) res.status(500).json(err);
       else {
-        response.json({contentLevels: deleted});
+        response.json({contentLevel: deleted});
       }
     }
 );
