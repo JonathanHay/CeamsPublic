@@ -1,43 +1,43 @@
 var express = require('express');
 var router = express.Router();
-var LabType = require('../models/lab-type');
+var LabTypes = require('../models/lab-types');
 
 /* GET all */
 router.get('/', function(req, res) {
-    LabType.Model.find((err, utils) => {
+    LabTypes.Model.find((err, labTypes) => {
       if (err) res.status(500).json(err);
-      res.json(utils);
+      res.json({labType: labTypes});
     });
   });
   
   /* GET some */
   router.get('/:id', function(req, res) {
-    LabType.Model.findById(req.params.id, function (err, labTypes) {
+    LabTypes.Model.findById(req.params.id, function (err, labType) {
       if (err) res.status(500).json(err);
-      else res.json({labTypes: labTypes});
+      else res.json({labType: labType});
     });
   });
   
   /* POST */
   router.post('/', function(req, res) {
-    var labTypes = new LabType.Model(req.body.labTypes);
-    labTypes.save(function (err) {
+    var labType = new LabTypes.Model(req.body.labType);
+    labType.save(function (err) {
         if (err) res.status(500).json(err);
-        res.json({labTypes: labTypes});
+        res.json({labType: labType});
     });
   });
   
   /* PUT */
   router.put('/:id', function(req, res) {
-    LabType.Model.findById(req.params.id, function (err, labTypes) {
+    LabTypes.Model.findById(req.params.id, function (err, labType) {
       if (err) res.status(500).json(err);
       else {
-          labTypes.code = req.body.labTypes.code;
-          labTypes.name = req.body.labTypes.name;
-          labTypes.save(function (err) {
+          labType.code = req.body.labType.code;
+          labType.name = req.body.labType.name;
+          labType.save(function (err) {
               if (err) res.status(500).json(err);
               else {
-                  res.json({labTypes: labTypes});
+                  res.json({labType: labType});
               }
           });
       }
@@ -46,11 +46,11 @@ router.get('/', function(req, res) {
   
   /* DELETE */
   router.delete('/:id', function(req, res) {
-    LabType.Model.findOneAndDelete({_id: req.params.id},
+    LabTypes.Model.findOneAndDelete({_id: req.params.id},
       function (err, deleted) {
         if (err) res.status(500).json(err);
         else {
-          response.json({labTypes: deleted});
+          response.json({labType: deleted});
         }
       }
   );

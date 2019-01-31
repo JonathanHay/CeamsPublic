@@ -1,44 +1,44 @@
 var express = require('express');
 var router = express.Router();
-var AcademicTerm = require('../models/academic-terms');
+var AcademicTerms = require('../models/academic-terms');
 
 
 /* GET all */
 router.get('/', function(req, res) {
-    AcademicTerm.Model.find((err, utils) => {
+    AcademicTerms.Model.find((err, utils) => {
       if (err) res.status(500).json(err);
-      res.json(utils);
+      res.json({academicTerm: academicTerms});
     });
   });
   
   /* GET some */
   router.get('/:id', function(req, res) {
-    AcademicTerm.Model.findById(req.params.id, function (err, academicTerms) {
+    AcademicTerms.Model.findById(req.params.id, function (err, academicTerm) {
       if (err) res.status(500).json(err);
-      else res.json({academicTerms: academicTerms});
+      else res.json({academicTerm: academicTerm});
     });
   });
   
   /* POST */
   router.post('/', function(req, res) {
-    var academicTerms = new AcademicTerm.Model(req.body.academicTerms);
-    academicTerms.save(function (err) {
+    var academicTerm = new AcademicTerms.Model(req.body.academicTerm);
+    academicTerm.save(function (err) {
         if (err) res.status(500).json(err);
-        res.json({academicTerms: academicTerms});
+        res.json({academicTerm: academicTerm});
     });
   });
   
   /* PUT */
   router.put('/:id', function(req, res) {
-    AcademicTerm.Model.findById(req.params.id, function (err, academicTerms) {
+    AcademicTerms.Model.findById(req.params.id, function (err, academicTerm) {
       if (err) res.status(500).json(err);
       else {
-        academicTerms.code = req.body.academicTerms.code;
-        academicTerms.name = req.body.academicTerms.name;
-        academicTerms.save(function (err) {
+        academicTerm.code = req.body.academicTerm.code;
+        academicTerm.name = req.body.academicTerm.name;
+        academicTerm.save(function (err) {
               if (err) res.status(500).json(err);
               else {
-                  res.json({academicTerms: academicTerms});
+                  res.json({academicTerm: academicTerm});
               }
           });
       }
@@ -47,11 +47,11 @@ router.get('/', function(req, res) {
   
   /* DELETE */
   router.delete('/:id', function(req, res) {
-    AcademicTerm.Model.findOneAndDelete({_id: req.params.id},
+    AcademicTerms.Model.findOneAndDelete({_id: req.params.id},
       function (err, deleted) {
         if (err) res.status(500).json(err);
         else {
-          response.json({academicTerms: deleted});
+          response.json({academicTerm: deleted});
         }
       }
   );
