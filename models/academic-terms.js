@@ -1,11 +1,9 @@
 //academic-terms.js
 var mongoose = require('mongoose');
-var academicTermSchema = mongoose.Schema(
- {
- code: String,
- name: String,
-measurements: [{type: mongoose.Schema.ObjectId, ref: ('Measurements')}]
- }
-);
-var AcademicTerms = mongoose.model("academic-term", academicTermSchema);
-exports.Model = AcademicTerms
+var academicTermsSchema = mongoose.Schema({
+    code: String,
+    name: String,
+    semesters: [{type: mongoose.Schema.ObjectId, ref: ('Semesters')}]
+});
+var AcademicTerms= mongoose.model('academic-term', academicTermsSchema);
+exports.Model = AcademicTerms;
