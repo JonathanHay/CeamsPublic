@@ -6,5 +6,5 @@ var naturalScienceTypesSchema = mongoose.Schema(
         Course: [{ type: mongoose.Schema.ObjectId, ref: ('Course') }]
     }
 );
-var NaturalScienceType = mongoose.model('natural-science-type', naturalScienceTypesSchema);
-exports.Model = NaturalScienceType;
+var NaturalScienceTypes = mongoose.model('natural-science-type', naturalScienceTypesSchema);
+exports.Model = NaturalScienceTypes;
