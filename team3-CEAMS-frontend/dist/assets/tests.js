@@ -1,0 +1,242 @@
+'use strict';
+
+define("aouda-ceams-frontend/tests/integration/components/home-page-test", ["qunit", "ember-qunit", "@ember/test-helpers"], function (_qunit, _emberQunit, _testHelpers) {
+  "use strict";
+
+  (0, _qunit.module)('Integration | Component | home-page', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.test)('it renders', async function (assert) {
+      // Set any properties with this.set('myProperty', 'value');
+      // Handle any actions with this.set('myAction', function(val) { ... });
+      await (0, _testHelpers.render)(Ember.HTMLBars.template({
+        "id": "y4s1tz8O",
+        "block": "{\"symbols\":[],\"statements\":[[1,[21,\"home-page\"],false]],\"hasEval\":false}",
+        "meta": {}
+      }));
+      assert.equal(this.element.textContent.trim(), ''); // Template block usage:
+
+      await (0, _testHelpers.render)(Ember.HTMLBars.template({
+        "id": "tQOrpJj5",
+        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"home-page\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+        "meta": {}
+      }));
+      assert.equal(this.element.textContent.trim(), 'template block text');
+    });
+  });
+});
+define("aouda-ceams-frontend/tests/integration/components/log-in-test", ["qunit", "ember-qunit", "@ember/test-helpers"], function (_qunit, _emberQunit, _testHelpers) {
+  "use strict";
+
+  (0, _qunit.module)('Integration | Component | log-in', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.test)('it renders', async function (assert) {
+      // Set any properties with this.set('myProperty', 'value');
+      // Handle any actions with this.set('myAction', function(val) { ... });
+      await (0, _testHelpers.render)(Ember.HTMLBars.template({
+        "id": "Kr+0nXUg",
+        "block": "{\"symbols\":[],\"statements\":[[1,[21,\"log-in\"],false]],\"hasEval\":false}",
+        "meta": {}
+      }));
+      assert.equal(this.element.textContent.trim(), ''); // Template block usage:
+
+      await (0, _testHelpers.render)(Ember.HTMLBars.template({
+        "id": "bGvnlUmA",
+        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"log-in\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+        "meta": {}
+      }));
+      assert.equal(this.element.textContent.trim(), 'template block text');
+    });
+  });
+});
+define("aouda-ceams-frontend/tests/integration/components/main-menu-test", ["qunit", "ember-qunit", "@ember/test-helpers"], function (_qunit, _emberQunit, _testHelpers) {
+  "use strict";
+
+  (0, _qunit.module)('Integration | Component | main-menu', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.test)('it renders', async function (assert) {
+      // Set any properties with this.set('myProperty', 'value');
+      // Handle any actions with this.set('myAction', function(val) { ... });
+      await (0, _testHelpers.render)(Ember.HTMLBars.template({
+        "id": "BnzDkI/b",
+        "block": "{\"symbols\":[],\"statements\":[[1,[21,\"main-menu\"],false]],\"hasEval\":false}",
+        "meta": {}
+      }));
+      assert.equal(this.element.textContent.trim(), ''); // Template block usage:
+
+      await (0, _testHelpers.render)(Ember.HTMLBars.template({
+        "id": "bTG14APA",
+        "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[4,\"main-menu\",null,null,{\"statements\":[[0,\"        template block text\\n\"]],\"parameters\":[]},null],[0,\"    \"]],\"hasEval\":false}",
+        "meta": {}
+      }));
+      assert.equal(this.element.textContent.trim(), 'template block text');
+    });
+  });
+});
+define("aouda-ceams-frontend/tests/lint/app.lint-test", [], function () {
+  "use strict";
+
+  QUnit.module('ESLint | app');
+  QUnit.test('app.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'app.js should pass ESLint\n\n');
+  });
+  QUnit.test('components/home-page.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'components/home-page.js should pass ESLint\n\n');
+  });
+  QUnit.test('components/log-in.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'components/log-in.js should pass ESLint\n\n');
+  });
+  QUnit.test('components/main-menu.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'components/main-menu.js should pass ESLint\n\n');
+  });
+  QUnit.test('resolver.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'resolver.js should pass ESLint\n\n');
+  });
+  QUnit.test('router.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'router.js should pass ESLint\n\n');
+  });
+  QUnit.test('routes/home-page.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'routes/home-page.js should pass ESLint\n\n');
+  });
+  QUnit.test('routes/login.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'routes/login.js should pass ESLint\n\n');
+  });
+  QUnit.test('routes/main-menu.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'routes/main-menu.js should pass ESLint\n\n');
+  });
+});
+define("aouda-ceams-frontend/tests/lint/templates.template.lint-test", [], function () {
+  "use strict";
+
+  QUnit.module('TemplateLint');
+  QUnit.test('aouda-ceams-frontend/templates/application.hbs', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'aouda-ceams-frontend/templates/application.hbs should pass TemplateLint.\n\n');
+  });
+  QUnit.test('aouda-ceams-frontend/templates/components/home-page.hbs', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'aouda-ceams-frontend/templates/components/home-page.hbs should pass TemplateLint.\n\n');
+  });
+  QUnit.test('aouda-ceams-frontend/templates/components/log-in.hbs', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'aouda-ceams-frontend/templates/components/log-in.hbs should pass TemplateLint.\n\n');
+  });
+  QUnit.test('aouda-ceams-frontend/templates/components/main-menu.hbs', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'aouda-ceams-frontend/templates/components/main-menu.hbs should pass TemplateLint.\n\n');
+  });
+  QUnit.test('aouda-ceams-frontend/templates/home-page.hbs', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'aouda-ceams-frontend/templates/home-page.hbs should pass TemplateLint.\n\n');
+  });
+  QUnit.test('aouda-ceams-frontend/templates/login.hbs', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'aouda-ceams-frontend/templates/login.hbs should pass TemplateLint.\n\n');
+  });
+  QUnit.test('aouda-ceams-frontend/templates/main-menu.hbs', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'aouda-ceams-frontend/templates/main-menu.hbs should pass TemplateLint.\n\n');
+  });
+});
+define("aouda-ceams-frontend/tests/lint/tests.lint-test", [], function () {
+  "use strict";
+
+  QUnit.module('ESLint | tests');
+  QUnit.test('integration/components/home-page-test.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'integration/components/home-page-test.js should pass ESLint\n\n');
+  });
+  QUnit.test('integration/components/log-in-test.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'integration/components/log-in-test.js should pass ESLint\n\n');
+  });
+  QUnit.test('integration/components/main-menu-test.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'integration/components/main-menu-test.js should pass ESLint\n\n');
+  });
+  QUnit.test('test-helper.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'test-helper.js should pass ESLint\n\n');
+  });
+  QUnit.test('unit/routes/home-page-test.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/routes/home-page-test.js should pass ESLint\n\n');
+  });
+  QUnit.test('unit/routes/login-test.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/routes/login-test.js should pass ESLint\n\n');
+  });
+  QUnit.test('unit/routes/main-menu-test.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/routes/main-menu-test.js should pass ESLint\n\n');
+  });
+});
+define("aouda-ceams-frontend/tests/test-helper", ["aouda-ceams-frontend/app", "aouda-ceams-frontend/config/environment", "@ember/test-helpers", "ember-qunit"], function (_app, _environment, _testHelpers, _emberQunit) {
+  "use strict";
+
+  (0, _testHelpers.setApplication)(_app.default.create(_environment.default.APP));
+  (0, _emberQunit.start)();
+});
+define("aouda-ceams-frontend/tests/unit/routes/home-page-test", ["qunit", "ember-qunit"], function (_qunit, _emberQunit) {
+  "use strict";
+
+  (0, _qunit.module)('Unit | Route | home-page', function (hooks) {
+    (0, _emberQunit.setupTest)(hooks);
+    (0, _qunit.test)('it exists', function (assert) {
+      let route = this.owner.lookup('route:home-page');
+      assert.ok(route);
+    });
+  });
+});
+define("aouda-ceams-frontend/tests/unit/routes/login-test", ["qunit", "ember-qunit"], function (_qunit, _emberQunit) {
+  "use strict";
+
+  (0, _qunit.module)('Unit | Route | login', function (hooks) {
+    (0, _emberQunit.setupTest)(hooks);
+    (0, _qunit.test)('it exists', function (assert) {
+      let route = this.owner.lookup('route:login');
+      assert.ok(route);
+    });
+  });
+});
+define("aouda-ceams-frontend/tests/unit/routes/main-menu-test", ["qunit", "ember-qunit"], function (_qunit, _emberQunit) {
+  "use strict";
+
+  (0, _qunit.module)('Unit | Route | MainMenu', function (hooks) {
+    (0, _emberQunit.setupTest)(hooks);
+    (0, _qunit.test)('it exists', function (assert) {
+      let route = this.owner.lookup('route:main-menu');
+      assert.ok(route);
+    });
+  });
+});
+define('aouda-ceams-frontend/config/environment', [], function() {
+  var prefix = 'aouda-ceams-frontend';
+try {
+  var metaName = prefix + '/config/environment';
+  var rawConfig = document.querySelector('meta[name="' + metaName + '"]').getAttribute('content');
+  var config = JSON.parse(unescape(rawConfig));
+
+  var exports = { 'default': config };
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+  return exports;
+}
+catch(err) {
+  throw new Error('Could not read config from meta tag with name "' + metaName + '".');
+}
+
+});
+
+require('aouda-ceams-frontend/tests/test-helper');
+EmberENV.TESTS_FILE_LOADED = true;
+//# sourceMappingURL=tests.map
