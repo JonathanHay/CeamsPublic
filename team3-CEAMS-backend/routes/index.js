@@ -8,6 +8,8 @@ router.use('/complimentary-studies-types', require('./complimentary-studies-type
 router.use('/content-levels', require('./content-levels'));
 router.use('/course-types', require('./course-types'));
 router.use('/deliverable-types', require('./deliverable-types'));
+router.use('/meetings', require('./meetings'));
+router.use('/meeting-minutes', require('./meeting-minutes'));
 router.use('/lab-types', require('./lab-types'));
 router.use('/math-types', require('./math-types'));
 router.use('/natural-science-types', require('./natural-science-types'));
