@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('main-menu');
   this.route('home-page', {path: '/'});
   this.route('login');
+  this.route('team-detail');
 });
 
 export default Router;
