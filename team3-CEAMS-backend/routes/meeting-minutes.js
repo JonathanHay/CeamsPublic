@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var MeetingMinutes = require('../models/meetingMinutes');
+var MeetingMinutes = require('../models/meeting-minutes');
 
 /* GET all */
 router.get('/', function(req, res) {
