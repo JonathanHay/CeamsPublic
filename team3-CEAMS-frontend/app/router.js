@@ -11,7 +11,7 @@ Router.map(function() {
   this.route('home-page', {path: '/'});
   this.route('login');
   this.route('team-detail');
-  this.route('meeting');
+  this.route('meetings');
 });
 
 export default Router;
