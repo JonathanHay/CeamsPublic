@@ -1,0 +1,17 @@
+<div class="ui divided very relaxed animated list">
+{{#each member-attending-meeting in model}}
+      <div class="item">
+        <div class="ui top aligned avatar image">
+          <img src="https://www.eng.uwo.ca/people/aouda/images/IMG_0311.png">
+        </div>
+        <div class="content">
+          <div class="header">
+            Committee Name: {{member-attending-meeting.committeeName}}
+            <div class="ui teal button">
+              Edit
+            </div>
+          </div>
+        </div>
+      </div>
+{{/each}}
+</div>

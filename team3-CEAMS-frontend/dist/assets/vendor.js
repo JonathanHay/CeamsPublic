@@ -107495,11 +107495,23 @@ define("ember-resolver/features", [], function () {
     })
   });
 });
-;define("ember-welcome-page/templates/components/welcome-page", ["exports"], function (exports) {
+;define("ember-welcome-page/templates/components/welcome-page", ["exports"], function (_exports) {
   "use strict";
 
-  exports.__esModule = true;
-  exports.default = Ember.HTMLBars.template({ "id": "VZRs1gM8", "block": "{\"symbols\":[],\"statements\":[[7,\"div\"],[11,\"id\",\"ember-welcome-page-id-selector\"],[12,\"data-ember-version\",[28,[[21,\"emberVersion\"]]]],[9],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"columns\"],[9],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"tomster\"],[9],[0,\"\\n      \"],[7,\"img\"],[11,\"src\",\"ember-welcome-page/images/construction.png\"],[11,\"alt\",\"Under construction\"],[9],[10],[0,\"\\n    \"],[10],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"welcome\"],[9],[0,\"\\n      \"],[7,\"h2\"],[11,\"id\",\"title\"],[9],[0,\"Congratulations, you made it!\"],[10],[0,\"\\n\\n      \"],[7,\"p\"],[9],[0,\"You’ve officially spun up your very first Ember app :-)\"],[10],[0,\"\\n      \"],[7,\"p\"],[9],[0,\"You’ve got one more decision to make: what do you want to do next? We’d suggest one of the following to help you get going:\"],[10],[0,\"\\n      \"],[7,\"ol\"],[9],[0,\"\\n        \"],[7,\"li\"],[9],[7,\"a\"],[12,\"href\",[28,[\"https://guides.emberjs.com/v\",[21,\"emberVersion\"],\"/getting-started/quick-start/\"]]],[9],[0,\"Quick Start\"],[10],[0,\" - a quick introduction to how Ember works. Learn about defining your first route, writing a UI component and deploying your application.\"],[10],[0,\"\\n        \"],[7,\"li\"],[9],[7,\"a\"],[12,\"href\",[28,[\"https://guides.emberjs.com/v\",[21,\"emberVersion\"],\"/tutorial/ember-cli/\"]]],[9],[0,\"Ember Guides\"],[10],[0,\" - this is our more thorough, hands-on intro to Ember. Your crash course in Ember philosophy, background and some in-depth discussion of how things work (and why they work the way they do).\"],[10],[0,\"\\n      \"],[10],[0,\"\\n      \"],[7,\"p\"],[9],[0,\"If you run into problems, you can check \"],[7,\"a\"],[11,\"href\",\"http://stackoverflow.com/questions/tagged/ember.js\"],[9],[0,\"Stack Overflow\"],[10],[0,\" or \"],[7,\"a\"],[11,\"href\",\"http://discuss.emberjs.com/\"],[9],[0,\"our forums\"],[10],[0,\"  for ideas and answers—someone’s probably been through the same thing and already posted an answer.  If not, you can post your \"],[7,\"strong\"],[9],[0,\"own\"],[10],[0,\" question. People love to help new Ember developers get started, and our \"],[7,\"a\"],[11,\"href\",\"https://emberjs.com/community/\"],[9],[0,\"Ember Community\"],[10],[0,\" is incredibly supportive.\"],[10],[0,\"\\n    \"],[10],[0,\"\\n  \"],[10],[0,\"\\n    \"],[7,\"p\"],[11,\"class\",\"postscript\"],[9],[0,\"To remove this welcome message, remove the \"],[7,\"code\"],[9],[0,\"{{welcome-page}}\"],[10],[0,\" component from your \"],[7,\"code\"],[9],[0,\"application.hbs\"],[10],[0,\" file.\"],[7,\"br\"],[9],[10],[0,\"You'll see this page update soon after!\"],[10],[0,\"\\n\"],[10],[0,\"\\n\"]],\"hasEval\":false}", "meta": { "moduleName": "ember-welcome-page/templates/components/welcome-page.hbs" } });
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.HTMLBars.template({
+    "id": "VZRs1gM8",
+    "block": "{\"symbols\":[],\"statements\":[[7,\"div\"],[11,\"id\",\"ember-welcome-page-id-selector\"],[12,\"data-ember-version\",[28,[[21,\"emberVersion\"]]]],[9],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"columns\"],[9],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"tomster\"],[9],[0,\"\\n      \"],[7,\"img\"],[11,\"src\",\"ember-welcome-page/images/construction.png\"],[11,\"alt\",\"Under construction\"],[9],[10],[0,\"\\n    \"],[10],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"welcome\"],[9],[0,\"\\n      \"],[7,\"h2\"],[11,\"id\",\"title\"],[9],[0,\"Congratulations, you made it!\"],[10],[0,\"\\n\\n      \"],[7,\"p\"],[9],[0,\"You’ve officially spun up your very first Ember app :-)\"],[10],[0,\"\\n      \"],[7,\"p\"],[9],[0,\"You’ve got one more decision to make: what do you want to do next? We’d suggest one of the following to help you get going:\"],[10],[0,\"\\n      \"],[7,\"ol\"],[9],[0,\"\\n        \"],[7,\"li\"],[9],[7,\"a\"],[12,\"href\",[28,[\"https://guides.emberjs.com/v\",[21,\"emberVersion\"],\"/getting-started/quick-start/\"]]],[9],[0,\"Quick Start\"],[10],[0,\" - a quick introduction to how Ember works. Learn about defining your first route, writing a UI component and deploying your application.\"],[10],[0,\"\\n        \"],[7,\"li\"],[9],[7,\"a\"],[12,\"href\",[28,[\"https://guides.emberjs.com/v\",[21,\"emberVersion\"],\"/tutorial/ember-cli/\"]]],[9],[0,\"Ember Guides\"],[10],[0,\" - this is our more thorough, hands-on intro to Ember. Your crash course in Ember philosophy, background and some in-depth discussion of how things work (and why they work the way they do).\"],[10],[0,\"\\n      \"],[10],[0,\"\\n      \"],[7,\"p\"],[9],[0,\"If you run into problems, you can check \"],[7,\"a\"],[11,\"href\",\"http://stackoverflow.com/questions/tagged/ember.js\"],[9],[0,\"Stack Overflow\"],[10],[0,\" or \"],[7,\"a\"],[11,\"href\",\"http://discuss.emberjs.com/\"],[9],[0,\"our forums\"],[10],[0,\"  for ideas and answers—someone’s probably been through the same thing and already posted an answer.  If not, you can post your \"],[7,\"strong\"],[9],[0,\"own\"],[10],[0,\" question. People love to help new Ember developers get started, and our \"],[7,\"a\"],[11,\"href\",\"https://emberjs.com/community/\"],[9],[0,\"Ember Community\"],[10],[0,\" is incredibly supportive.\"],[10],[0,\"\\n    \"],[10],[0,\"\\n  \"],[10],[0,\"\\n    \"],[7,\"p\"],[11,\"class\",\"postscript\"],[9],[0,\"To remove this welcome message, remove the \"],[7,\"code\"],[9],[0,\"{{welcome-page}}\"],[10],[0,\" component from your \"],[7,\"code\"],[9],[0,\"application.hbs\"],[10],[0,\" file.\"],[7,\"br\"],[9],[10],[0,\"You'll see this page update soon after!\"],[10],[0,\"\\n\"],[10],[0,\"\\n\"]],\"hasEval\":false}",
+    "meta": {
+      "moduleName": "ember-welcome-page/templates/components/welcome-page.hbs"
+    }
+  });
+
+  _exports.default = _default;
 });
 ;define('semantic-ui-ember/components/ui-accordion', ['exports', 'semantic-ui-ember/mixins/base', 'semantic-ui-ember/templates/components/ui-accordion'], function (exports, _base, _uiAccordion) {
   'use strict';
@@ -108487,95 +108499,275 @@ define("ember-resolver/features", [], function () {
 
   exports.default = Semantic;
 });
-;define("semantic-ui-ember/templates/components/ui-accordion", ["exports"], function (exports) {
+;define("semantic-ui-ember/templates/components/ui-accordion", ["exports"], function (_exports) {
   "use strict";
 
-  exports.__esModule = true;
-  exports.default = Ember.HTMLBars.template({ "id": "IMzmnslU", "block": "{\"symbols\":[\"&default\"],\"statements\":[[14,1,[[27,\"action\",[[22,0,[]],\"execute\"],null]]]],\"hasEval\":false}", "meta": { "moduleName": "semantic-ui-ember/templates/components/ui-accordion.hbs" } });
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.HTMLBars.template({
+    "id": "IMzmnslU",
+    "block": "{\"symbols\":[\"&default\"],\"statements\":[[14,1,[[27,\"action\",[[22,0,[]],\"execute\"],null]]]],\"hasEval\":false}",
+    "meta": {
+      "moduleName": "semantic-ui-ember/templates/components/ui-accordion.hbs"
+    }
+  });
+
+  _exports.default = _default;
 });
-;define("semantic-ui-ember/templates/components/ui-checkbox", ["exports"], function (exports) {
+;define("semantic-ui-ember/templates/components/ui-checkbox", ["exports"], function (_exports) {
   "use strict";
 
-  exports.__esModule = true;
-  exports.default = Ember.HTMLBars.template({ "id": "VO/9L+m/", "block": "{\"symbols\":[\"&default\"],\"statements\":[[7,\"input\"],[12,\"name\",[21,\"name\"]],[12,\"tabindex\",[21,\"tabindex\"]],[12,\"checked\",[27,\"unbound\",[[23,[\"checked\"]]],null]],[12,\"disabled\",[27,\"unbound\",[[23,[\"disabled\"]]],null]],[12,\"type\",[21,\"type\"]],[9],[10],[0,\"\\n\"],[7,\"label\"],[9],[1,[21,\"label\"],false],[10],[0,\"\\n\"],[14,1,[[27,\"action\",[[22,0,[]],\"execute\"],null]]]],\"hasEval\":false}", "meta": { "moduleName": "semantic-ui-ember/templates/components/ui-checkbox.hbs" } });
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.HTMLBars.template({
+    "id": "VO/9L+m/",
+    "block": "{\"symbols\":[\"&default\"],\"statements\":[[7,\"input\"],[12,\"name\",[21,\"name\"]],[12,\"tabindex\",[21,\"tabindex\"]],[12,\"checked\",[27,\"unbound\",[[23,[\"checked\"]]],null]],[12,\"disabled\",[27,\"unbound\",[[23,[\"disabled\"]]],null]],[12,\"type\",[21,\"type\"]],[9],[10],[0,\"\\n\"],[7,\"label\"],[9],[1,[21,\"label\"],false],[10],[0,\"\\n\"],[14,1,[[27,\"action\",[[22,0,[]],\"execute\"],null]]]],\"hasEval\":false}",
+    "meta": {
+      "moduleName": "semantic-ui-ember/templates/components/ui-checkbox.hbs"
+    }
+  });
+
+  _exports.default = _default;
 });
-;define("semantic-ui-ember/templates/components/ui-dimmer", ["exports"], function (exports) {
+;define("semantic-ui-ember/templates/components/ui-dimmer", ["exports"], function (_exports) {
   "use strict";
 
-  exports.__esModule = true;
-  exports.default = Ember.HTMLBars.template({ "id": "vs2VMNFd", "block": "{\"symbols\":[\"&default\"],\"statements\":[[14,1,[[27,\"action\",[[22,0,[]],\"execute\"],null]]],[0,\"\\n\"]],\"hasEval\":false}", "meta": { "moduleName": "semantic-ui-ember/templates/components/ui-dimmer.hbs" } });
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.HTMLBars.template({
+    "id": "vs2VMNFd",
+    "block": "{\"symbols\":[\"&default\"],\"statements\":[[14,1,[[27,\"action\",[[22,0,[]],\"execute\"],null]]],[0,\"\\n\"]],\"hasEval\":false}",
+    "meta": {
+      "moduleName": "semantic-ui-ember/templates/components/ui-dimmer.hbs"
+    }
+  });
+
+  _exports.default = _default;
 });
-;define("semantic-ui-ember/templates/components/ui-dropdown", ["exports"], function (exports) {
+;define("semantic-ui-ember/templates/components/ui-dropdown", ["exports"], function (_exports) {
   "use strict";
 
-  exports.__esModule = true;
-  exports.default = Ember.HTMLBars.template({ "id": "Yi18ygLH", "block": "{\"symbols\":[\"&default\"],\"statements\":[[14,1,[[27,\"action\",[[22,0,[]],\"execute\"],null],[27,\"action\",[[22,0,[]],\"mapping\"],null]]]],\"hasEval\":false}", "meta": { "moduleName": "semantic-ui-ember/templates/components/ui-dropdown.hbs" } });
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.HTMLBars.template({
+    "id": "Yi18ygLH",
+    "block": "{\"symbols\":[\"&default\"],\"statements\":[[14,1,[[27,\"action\",[[22,0,[]],\"execute\"],null],[27,\"action\",[[22,0,[]],\"mapping\"],null]]]],\"hasEval\":false}",
+    "meta": {
+      "moduleName": "semantic-ui-ember/templates/components/ui-dropdown.hbs"
+    }
+  });
+
+  _exports.default = _default;
 });
-;define("semantic-ui-ember/templates/components/ui-embed", ["exports"], function (exports) {
+;define("semantic-ui-ember/templates/components/ui-embed", ["exports"], function (_exports) {
   "use strict";
 
-  exports.__esModule = true;
-  exports.default = Ember.HTMLBars.template({ "id": "z7OYrGNi", "block": "{\"symbols\":[\"&default\"],\"statements\":[[14,1,[[27,\"action\",[[22,0,[]],\"execute\"],null]]]],\"hasEval\":false}", "meta": { "moduleName": "semantic-ui-ember/templates/components/ui-embed.hbs" } });
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.HTMLBars.template({
+    "id": "z7OYrGNi",
+    "block": "{\"symbols\":[\"&default\"],\"statements\":[[14,1,[[27,\"action\",[[22,0,[]],\"execute\"],null]]]],\"hasEval\":false}",
+    "meta": {
+      "moduleName": "semantic-ui-ember/templates/components/ui-embed.hbs"
+    }
+  });
+
+  _exports.default = _default;
 });
-;define("semantic-ui-ember/templates/components/ui-modal", ["exports"], function (exports) {
+;define("semantic-ui-ember/templates/components/ui-modal", ["exports"], function (_exports) {
   "use strict";
 
-  exports.__esModule = true;
-  exports.default = Ember.HTMLBars.template({ "id": "UAXTZ96I", "block": "{\"symbols\":[\"&default\"],\"statements\":[[14,1,[[27,\"action\",[[22,0,[]],\"execute\"],null]]]],\"hasEval\":false}", "meta": { "moduleName": "semantic-ui-ember/templates/components/ui-modal.hbs" } });
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.HTMLBars.template({
+    "id": "UAXTZ96I",
+    "block": "{\"symbols\":[\"&default\"],\"statements\":[[14,1,[[27,\"action\",[[22,0,[]],\"execute\"],null]]]],\"hasEval\":false}",
+    "meta": {
+      "moduleName": "semantic-ui-ember/templates/components/ui-modal.hbs"
+    }
+  });
+
+  _exports.default = _default;
 });
-;define("semantic-ui-ember/templates/components/ui-nag", ["exports"], function (exports) {
+;define("semantic-ui-ember/templates/components/ui-nag", ["exports"], function (_exports) {
   "use strict";
 
-  exports.__esModule = true;
-  exports.default = Ember.HTMLBars.template({ "id": "l6QHAfoy", "block": "{\"symbols\":[\"&default\"],\"statements\":[[14,1,[[27,\"action\",[[22,0,[]],\"execute\"],null]]]],\"hasEval\":false}", "meta": { "moduleName": "semantic-ui-ember/templates/components/ui-nag.hbs" } });
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.HTMLBars.template({
+    "id": "l6QHAfoy",
+    "block": "{\"symbols\":[\"&default\"],\"statements\":[[14,1,[[27,\"action\",[[22,0,[]],\"execute\"],null]]]],\"hasEval\":false}",
+    "meta": {
+      "moduleName": "semantic-ui-ember/templates/components/ui-nag.hbs"
+    }
+  });
+
+  _exports.default = _default;
 });
-;define("semantic-ui-ember/templates/components/ui-popup", ["exports"], function (exports) {
+;define("semantic-ui-ember/templates/components/ui-popup", ["exports"], function (_exports) {
   "use strict";
 
-  exports.__esModule = true;
-  exports.default = Ember.HTMLBars.template({ "id": "GOx1L1WZ", "block": "{\"symbols\":[\"&default\"],\"statements\":[[14,1,[[27,\"action\",[[22,0,[]],\"execute\"],null]]]],\"hasEval\":false}", "meta": { "moduleName": "semantic-ui-ember/templates/components/ui-popup.hbs" } });
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.HTMLBars.template({
+    "id": "GOx1L1WZ",
+    "block": "{\"symbols\":[\"&default\"],\"statements\":[[14,1,[[27,\"action\",[[22,0,[]],\"execute\"],null]]]],\"hasEval\":false}",
+    "meta": {
+      "moduleName": "semantic-ui-ember/templates/components/ui-popup.hbs"
+    }
+  });
+
+  _exports.default = _default;
 });
-;define("semantic-ui-ember/templates/components/ui-progress", ["exports"], function (exports) {
+;define("semantic-ui-ember/templates/components/ui-progress", ["exports"], function (_exports) {
   "use strict";
 
-  exports.__esModule = true;
-  exports.default = Ember.HTMLBars.template({ "id": "Bh4/LRUy", "block": "{\"symbols\":[\"&default\"],\"statements\":[[14,1,[[27,\"action\",[[22,0,[]],\"execute\"],null]]]],\"hasEval\":false}", "meta": { "moduleName": "semantic-ui-ember/templates/components/ui-progress.hbs" } });
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.HTMLBars.template({
+    "id": "Bh4/LRUy",
+    "block": "{\"symbols\":[\"&default\"],\"statements\":[[14,1,[[27,\"action\",[[22,0,[]],\"execute\"],null]]]],\"hasEval\":false}",
+    "meta": {
+      "moduleName": "semantic-ui-ember/templates/components/ui-progress.hbs"
+    }
+  });
+
+  _exports.default = _default;
 });
-;define("semantic-ui-ember/templates/components/ui-radio", ["exports"], function (exports) {
+;define("semantic-ui-ember/templates/components/ui-radio", ["exports"], function (_exports) {
   "use strict";
 
-  exports.__esModule = true;
-  exports.default = Ember.HTMLBars.template({ "id": "wB2CYu5U", "block": "{\"symbols\":[\"&default\"],\"statements\":[[7,\"input\"],[12,\"name\",[21,\"name\"]],[12,\"tabindex\",[21,\"tabindex\"]],[12,\"checked\",[27,\"unbound\",[[23,[\"checked\"]]],null]],[12,\"disabled\",[27,\"unbound\",[[23,[\"disabled\"]]],null]],[12,\"type\",[21,\"type\"]],[9],[10],[0,\"\\n\"],[7,\"label\"],[9],[1,[21,\"label\"],false],[10],[0,\"\\n\"],[14,1,[[27,\"action\",[[22,0,[]],\"execute\"],null]]]],\"hasEval\":false}", "meta": { "moduleName": "semantic-ui-ember/templates/components/ui-radio.hbs" } });
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.HTMLBars.template({
+    "id": "wB2CYu5U",
+    "block": "{\"symbols\":[\"&default\"],\"statements\":[[7,\"input\"],[12,\"name\",[21,\"name\"]],[12,\"tabindex\",[21,\"tabindex\"]],[12,\"checked\",[27,\"unbound\",[[23,[\"checked\"]]],null]],[12,\"disabled\",[27,\"unbound\",[[23,[\"disabled\"]]],null]],[12,\"type\",[21,\"type\"]],[9],[10],[0,\"\\n\"],[7,\"label\"],[9],[1,[21,\"label\"],false],[10],[0,\"\\n\"],[14,1,[[27,\"action\",[[22,0,[]],\"execute\"],null]]]],\"hasEval\":false}",
+    "meta": {
+      "moduleName": "semantic-ui-ember/templates/components/ui-radio.hbs"
+    }
+  });
+
+  _exports.default = _default;
 });
-;define("semantic-ui-ember/templates/components/ui-rating", ["exports"], function (exports) {
+;define("semantic-ui-ember/templates/components/ui-rating", ["exports"], function (_exports) {
   "use strict";
 
-  exports.__esModule = true;
-  exports.default = Ember.HTMLBars.template({ "id": "EVB1ra+0", "block": "{\"symbols\":[\"&default\"],\"statements\":[[14,1,[[27,\"action\",[[22,0,[]],\"execute\"],null]]]],\"hasEval\":false}", "meta": { "moduleName": "semantic-ui-ember/templates/components/ui-rating.hbs" } });
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.HTMLBars.template({
+    "id": "EVB1ra+0",
+    "block": "{\"symbols\":[\"&default\"],\"statements\":[[14,1,[[27,\"action\",[[22,0,[]],\"execute\"],null]]]],\"hasEval\":false}",
+    "meta": {
+      "moduleName": "semantic-ui-ember/templates/components/ui-rating.hbs"
+    }
+  });
+
+  _exports.default = _default;
 });
-;define("semantic-ui-ember/templates/components/ui-search", ["exports"], function (exports) {
+;define("semantic-ui-ember/templates/components/ui-search", ["exports"], function (_exports) {
   "use strict";
 
-  exports.__esModule = true;
-  exports.default = Ember.HTMLBars.template({ "id": "Kxq5p0Xd", "block": "{\"symbols\":[\"&default\"],\"statements\":[[14,1,[[27,\"action\",[[22,0,[]],\"execute\"],null]]]],\"hasEval\":false}", "meta": { "moduleName": "semantic-ui-ember/templates/components/ui-search.hbs" } });
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.HTMLBars.template({
+    "id": "Kxq5p0Xd",
+    "block": "{\"symbols\":[\"&default\"],\"statements\":[[14,1,[[27,\"action\",[[22,0,[]],\"execute\"],null]]]],\"hasEval\":false}",
+    "meta": {
+      "moduleName": "semantic-ui-ember/templates/components/ui-search.hbs"
+    }
+  });
+
+  _exports.default = _default;
 });
-;define("semantic-ui-ember/templates/components/ui-shape", ["exports"], function (exports) {
+;define("semantic-ui-ember/templates/components/ui-shape", ["exports"], function (_exports) {
   "use strict";
 
-  exports.__esModule = true;
-  exports.default = Ember.HTMLBars.template({ "id": "RbC4uRsi", "block": "{\"symbols\":[\"&default\"],\"statements\":[[14,1,[[27,\"action\",[[22,0,[]],\"execute\"],null]]]],\"hasEval\":false}", "meta": { "moduleName": "semantic-ui-ember/templates/components/ui-shape.hbs" } });
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.HTMLBars.template({
+    "id": "RbC4uRsi",
+    "block": "{\"symbols\":[\"&default\"],\"statements\":[[14,1,[[27,\"action\",[[22,0,[]],\"execute\"],null]]]],\"hasEval\":false}",
+    "meta": {
+      "moduleName": "semantic-ui-ember/templates/components/ui-shape.hbs"
+    }
+  });
+
+  _exports.default = _default;
 });
-;define("semantic-ui-ember/templates/components/ui-sidebar", ["exports"], function (exports) {
+;define("semantic-ui-ember/templates/components/ui-sidebar", ["exports"], function (_exports) {
   "use strict";
 
-  exports.__esModule = true;
-  exports.default = Ember.HTMLBars.template({ "id": "uPRMuW/I", "block": "{\"symbols\":[\"&default\"],\"statements\":[[14,1,[[27,\"action\",[[22,0,[]],\"execute\"],null]]]],\"hasEval\":false}", "meta": { "moduleName": "semantic-ui-ember/templates/components/ui-sidebar.hbs" } });
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.HTMLBars.template({
+    "id": "uPRMuW/I",
+    "block": "{\"symbols\":[\"&default\"],\"statements\":[[14,1,[[27,\"action\",[[22,0,[]],\"execute\"],null]]]],\"hasEval\":false}",
+    "meta": {
+      "moduleName": "semantic-ui-ember/templates/components/ui-sidebar.hbs"
+    }
+  });
+
+  _exports.default = _default;
 });
-;define("semantic-ui-ember/templates/components/ui-sticky", ["exports"], function (exports) {
+;define("semantic-ui-ember/templates/components/ui-sticky", ["exports"], function (_exports) {
   "use strict";
 
-  exports.__esModule = true;
-  exports.default = Ember.HTMLBars.template({ "id": "cLE5UPHT", "block": "{\"symbols\":[\"&default\"],\"statements\":[[14,1,[[27,\"action\",[[22,0,[]],\"execute\"],null]]]],\"hasEval\":false}", "meta": { "moduleName": "semantic-ui-ember/templates/components/ui-sticky.hbs" } });
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.HTMLBars.template({
+    "id": "cLE5UPHT",
+    "block": "{\"symbols\":[\"&default\"],\"statements\":[[14,1,[[27,\"action\",[[22,0,[]],\"execute\"],null]]]],\"hasEval\":false}",
+    "meta": {
+      "moduleName": "semantic-ui-ember/templates/components/ui-sticky.hbs"
+    }
+  });
+
+  _exports.default = _default;
 });
 ;
 //# sourceMappingURL=vendor.map

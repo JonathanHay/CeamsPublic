@@ -10,7 +10,8 @@ Router.map(function() {
   this.route('main-menu');
   this.route('home-page', {path: '/'});
   this.route('login');
-  this.route('TaskForceManagement');
+  this.route('task-force-management');
+  this.route('committee');
 });
 
 export default Router;

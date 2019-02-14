@@ -2,6 +2,18 @@
 
 
 
+;define("aouda-ceams-frontend/adapters/application", ["exports", "ember-data"], function (_exports, _emberData) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = _emberData.default.JSONAPIAdapter.extend({});
+
+  _exports.default = _default;
+});
 ;define("aouda-ceams-frontend/app", ["exports", "aouda-ceams-frontend/resolver", "ember-load-initializers", "aouda-ceams-frontend/config/environment"], function (_exports, _resolver, _emberLoadInitializers, _environment) {
   "use strict";
 
@@ -16,6 +28,18 @@
   });
   (0, _emberLoadInitializers.default)(App, _environment.default.modulePrefix);
   var _default = App;
+  _exports.default = _default;
+});
+;define("aouda-ceams-frontend/components/committee", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.Component.extend({});
+
   _exports.default = _default;
 });
 ;define("aouda-ceams-frontend/components/home-page", ["exports"], function (_exports) {
@@ -86,6 +110,18 @@
     }
 
   });
+
+  _exports.default = _default;
+});
+;define("aouda-ceams-frontend/components/task-force-management", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.Component.extend({});
 
   _exports.default = _default;
 });
@@ -787,6 +823,105 @@
     }
   });
 });
+;define("aouda-ceams-frontend/models/instructor", ["exports", "ember-data"], function (_exports, _emberData) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = _emberData.default.Model.extend({
+    firstName: _emberData.default.attr(),
+    lastName: _emberData.default.attr(),
+    email: _emberData.default.attr(),
+    building: _emberData.default.attr(),
+    officeNumber: _emberData.default.attr(),
+    number: _emberData.default.attr(),
+    CCMemberStatus: _emberData.default.attr(),
+    hireDate: _emberData.default.attr(),
+    estimatedRetirementDate: _emberData.default.attr(),
+    keyPerformanceIndicator: _emberData.default.attr(),
+    userGivenRoles: _emberData.default.hasmany('user-given-role'),
+    membersAttendingMeeting: _emberData.default.hasmany('member-attending-meeting'),
+    userEvaluationMethod: _emberData.default.belongsto('user-evaluation-method'),
+    licenceStatuses: _emberData.default.hasmany('licence-status'),
+    academicRank: _emberData.default.belongstp('academic-rank'),
+    academicDegrees: _emberData.default.hasmany('academic-degree'),
+    semester: _emberData.default.hasmany('semester'),
+    program: _emberData.default.hasmany('program'),
+    userAccount: _emberData.default.belongsto('user-account')
+  });
+
+  _exports.default = _default;
+});
+;define("aouda-ceams-frontend/models/member-attending-meeting", ["exports", "ember-data"], function (_exports, _emberData) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = _emberData.default.Model.extend({
+    participationStartDate: _emberData.default.attr(),
+    participationEndDate: _emberData.default.attr(),
+    memberRole: _emberData.default.attr(),
+    committeeName: _emberData.default.attr(),
+    committeeLevel: _emberData.default.attr(),
+    instructor: _emberData.default.belongsto('instructor'),
+    staff: _emberData.default.belongsto('staff'),
+    teachingAssistant: _emberData.default.belongsto('teaching-assistant')
+  });
+
+  _exports.default = _default;
+});
+;define("aouda-ceams-frontend/models/staff", ["exports", "ember-data"], function (_exports, _emberData) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = _emberData.default.Model.extend({
+    firstName: _emberData.default.attr(),
+    lastName: _emberData.default.attr(),
+    email: _emberData.default.attr(),
+    building: _emberData.default.attr(),
+    officeNumber: _emberData.default.attr(),
+    roleName: _emberData.default.attr(),
+    keyPerformanceIndicator: _emberData.default.attr(),
+    userEvaluationMethod: _emberData.default.belongsto('user-evaluation-method'),
+    userGivenRoles: _emberData.default.hasmany('user-given-role'),
+    userAccount: _emberData.default.belongsto('user-account'),
+    membersAttendingMeeting: _emberData.default.hasmany('member-attending-meeting')
+  });
+
+  _exports.default = _default;
+});
+;define("aouda-ceams-frontend/models/teaching-assistant", ["exports", "ember-data"], function (_exports, _emberData) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = _emberData.default.Model.extend({
+    firstName: _emberData.default.attr(),
+    lastName: _emberData.default.attr(),
+    email: _emberData.default.attr(),
+    building: _emberData.default.attr(),
+    officeNumber: _emberData.default.attr(),
+    contactInfo: _emberData.default.attr(),
+    userGivenRoles: _emberData.default.hasmany('user-given-role'),
+    userAccount: _emberData.default.belongsto('user-account'),
+    membersAttendingMeeting: _emberData.default.hasmany('member-attending-meeting')
+  });
+
+  _exports.default = _default;
+});
 ;define("aouda-ceams-frontend/resolver", ["exports", "ember-resolver"], function (_exports, _emberResolver) {
   "use strict";
 
@@ -814,8 +949,30 @@
       path: '/'
     });
     this.route('login');
+    this.route('task-force-management');
+    this.route('committee');
   });
   var _default = Router;
+  _exports.default = _default;
+});
+;define("aouda-ceams-frontend/routes/committee", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.Route.extend({
+    model: function () {
+      return this.store.query('member-attending-meeting', {
+        filter: {
+          memberRole: 'UNIQUE-ADMIN'
+        }
+      });
+    }
+  });
+
   _exports.default = _default;
 });
 ;define("aouda-ceams-frontend/routes/home-page", ["exports"], function (_exports) {
@@ -854,6 +1011,32 @@
 
   _exports.default = _default;
 });
+;define("aouda-ceams-frontend/routes/task-force-management", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.Route.extend({});
+
+  _exports.default = _default;
+});
+;define("aouda-ceams-frontend/serializers/application", ["exports", "ember-data"], function (_exports, _emberData) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = _emberData.default.JSONAPISerializer.extend({
+    primaryKey: '_id'
+  });
+
+  _exports.default = _default;
+});
 ;define("aouda-ceams-frontend/services/ajax", ["exports", "ember-ajax/services/ajax"], function (_exports, _ajax) {
   "use strict";
 
@@ -876,10 +1059,46 @@
   _exports.default = void 0;
 
   var _default = Ember.HTMLBars.template({
-    "id": "HXV88VeY",
-    "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[1,[21,\"outlet\"],false]],\"hasEval\":false}",
+    "id": "K5cHoxqV",
+    "block": "{\"symbols\":[],\"statements\":[[1,[21,\"outlet\"],false]],\"hasEval\":false}",
     "meta": {
       "moduleName": "aouda-ceams-frontend/templates/application.hbs"
+    }
+  });
+
+  _exports.default = _default;
+});
+;define("aouda-ceams-frontend/templates/committee", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.HTMLBars.template({
+    "id": "5lbTtfGa",
+    "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[1,[21,\"outlet\"],false]],\"hasEval\":false}",
+    "meta": {
+      "moduleName": "aouda-ceams-frontend/templates/committee.hbs"
+    }
+  });
+
+  _exports.default = _default;
+});
+;define("aouda-ceams-frontend/templates/components/committee", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.HTMLBars.template({
+    "id": "ceykamHF",
+    "block": "{\"symbols\":[],\"statements\":[[7,\"div\"],[11,\"class\",\"ui divided very relaxed animated list\"],[9],[0,\"\\n\"],[4,\"each\",[[23,[\"member-attending-meeting\"]],[23,[\"in\"]],[23,[\"model\"]]],null,{\"statements\":[[0,\"      \"],[7,\"div\"],[11,\"class\",\"item\"],[9],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"ui top aligned avatar image\"],[9],[0,\"\\n          \"],[7,\"img\"],[11,\"src\",\"https://www.eng.uwo.ca/people/aouda/images/IMG_0311.png\"],[9],[10],[0,\"\\n        \"],[10],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"content\"],[9],[0,\"\\n          \"],[7,\"div\"],[11,\"class\",\"header\"],[9],[0,\"\\n            Committee Name: \"],[1,[23,[\"member-attending-meeting\",\"committeeName\"]],false],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"ui teal button\"],[9],[0,\"\\n              Edit\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n\"]],\"parameters\":[]},null],[10]],\"hasEval\":false}",
+    "meta": {
+      "moduleName": "aouda-ceams-frontend/templates/components/committee.hbs"
     }
   });
 
@@ -930,10 +1149,28 @@
   _exports.default = void 0;
 
   var _default = Ember.HTMLBars.template({
-    "id": "xX6Bdc/8",
-    "block": "{\"symbols\":[],\"statements\":[[7,\"div\"],[11,\"class\",\"ui top fixed borderless huge inverted menu\"],[9],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"ui container grid\"],[9],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"computer only row\"],[9],[0,\"\\n      \"],[7,\"a\"],[11,\"class\",\"header item\"],[9],[0,\"CEAMS\"],[10],[0,\"\\n      \"],[4,\"link-to\",[\"home-page\"],[[\"class\"],[\"item\"]],{\"statements\":[[7,\"a\"],[9],[0,\"Home\"],[10]],\"parameters\":[]},null],[0,\"\\n      \"],[7,\"a\"],[11,\"class\",\"item\"],[11,\"target\",\"_blank\"],[11,\"href\",\"http://semantic-ui-forest.com/themes/semantic-ui/semantic-ui/\"],[11,\"rel\",\"noopener\"],[9],[0,\"Semantic-UI\"],[10],[0,\"\\n      \"],[7,\"a\"],[11,\"class\",\"item\"],[11,\"target\",\"_blank\"],[11,\"href\",\"http://semantic-org.github.io/Semantic-UI-Ember/#/modules\"],[11,\"rel\",\"noopener\"],[9],[0,\"Semantic-UI-Ember\"],[10],[0,\"\\n      \"],[7,\"a\"],[11,\"class\",\"item\"],[11,\"target\",\"_blank\"],[11,\"href\",\"https://datatables.net/examples/styling/semanticui\"],[11,\"rel\",\"noopener\"],[9],[0,\"Data Tables\"],[10],[0,\"\\n      \"],[7,\"a\"],[11,\"class\",\"item\"],[11,\"target\",\"_blank\"],[11,\"href\",\"https://www.emberaddons.com/\"],[11,\"rel\",\"noopener\"],[9],[0,\"Ember Addons\"],[10],[0,\"\\n      \"],[7,\"a\"],[11,\"class\",\"item\"],[11,\"target\",\"_blank\"],[11,\"href\",\"https://guides.emberjs.com/release/\"],[11,\"rel\",\"noopener\"],[9],[0,\"Ember Guide\"],[10],[0,\"\\n    \"],[10],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"tablet mobile only row\"],[9],[0,\"\\n      \"],[7,\"a\"],[11,\"class\",\"header item\"],[9],[0,\" CEAMS\"],[10],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"right menu\"],[9],[0,\"\\n        \"],[7,\"a\"],[11,\"class\",\"menu item\"],[9],[0,\"\\n          \"],[7,\"div\"],[11,\"class\",\"ui icon toggle basic inverted button\"],[9],[0,\"\\n            \"],[7,\"i\"],[11,\"class\",\"content large icon\"],[9],[10],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"ui vertical borderless fluid inverted menu\"],[9],[0,\"\\n        \"],[4,\"link-to\",[\"home-page\"],null,{\"statements\":[[0,\" \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Home\"],[10]],\"parameters\":[]},null],[0,\"\\n        \"],[7,\"a\"],[11,\"class\",\"item\"],[11,\"target\",\"_blank\"],[11,\"href\",\"http://semantic-ui-forest.com/themes/semantic-ui/semantic-ui/\"],[11,\"rel\",\"noopener\"],[9],[0,\"Semantic-UI\"],[10],[0,\"\\n        \"],[7,\"a\"],[11,\"class\",\"item\"],[11,\"target\",\"_blank\"],[11,\"href\",\"http://semantic-org.github.io/Semantic-UI-Ember/#/modules\"],[11,\"rel\",\"noopener\"],[9],[0,\"Semantic-UI-Ember\"],[10],[0,\"\\n        \"],[7,\"a\"],[11,\"class\",\"item\"],[11,\"target\",\"_blank\"],[11,\"href\",\"https://datatables.net/examples/styling/semanticui\"],[11,\"rel\",\"noopener\"],[9],[0,\"Data Tables\"],[10],[0,\"\\n        \"],[7,\"a\"],[11,\"class\",\"item\"],[11,\"target\",\"_blank\"],[11,\"href\",\"https://www.emberaddons.com/\"],[11,\"rel\",\"noopener\"],[9],[0,\"Ember Addons\"],[10],[0,\"\\n        \"],[7,\"a\"],[11,\"class\",\"item\"],[11,\"target\",\"_blank\"],[11,\"href\",\"https://guides.emberjs.com/release/\"],[11,\"rel\",\"noopener\"],[9],[0,\"Ember Guide\"],[10],[0,\"\\n      \"],[10],[0,\"\\n    \"],[10],[0,\"\\n  \"],[10],[0,\"\\n\"],[10],[0,\"\\n\\n\"],[7,\"div\"],[11,\"class\",\"ui stackable grid container\"],[9],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"computer only row\"],[9],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"thirteen wide column\"],[9],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"ui message\"],[9],[0,\"\\n        \"],[7,\"h1\"],[11,\"class\",\"ui huge header\"],[9],[0,\"\\n          Hello, SE3350b Teams!\\n        \"],[10],[0,\"\\n        \"],[7,\"p\"],[11,\"class\",\"lead\"],[9],[0,\"\\n          This is a simple example to show the Semantic-UI pattern we will use through out CEAMS project,\\n          click the green button to see the left sidebar coming in and out of the page, and try to change\\n          the browser size to see right sidebar toggle button. You could check out more wonderful effects here:\\n          \"],[7,\"a\"],[11,\"target\",\"_blank\"],[11,\"href\",\"http://semantic-ui.com/modules/sidebar.html#/examples\"],[11,\"rel\",\"noopener\"],[9],[0,\"Semantic-UI/sidebar examples\"],[10],[0,\"\\n        \"],[10],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"ui hidden divider\"],[9],[10],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"ui green button\"],[9],[0,\"\\n          \"],[7,\"i\"],[11,\"class\",\"left arrow icon\"],[9],[10],[0,\" Toggle left sidebar\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"ui hidden section divider\"],[9],[10],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"ui stackable grid\"],[9],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"three column row\"],[9],[0,\"\\n          \"],[7,\"div\"],[11,\"class\",\"column\"],[9],[0,\"\\n            \"],[7,\"h1\"],[11,\"class\",\"ui header\"],[9],[0,\"\\n              Heading\\n            \"],[10],[0,\"\\n            \"],[7,\"p\"],[9],[0,\"\\n              Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris\\n              condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis\\n              euismod. Donec sed odio dui.\\n            \"],[10],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"ui small basic button\"],[9],[0,\"\\n              View detailes »\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"div\"],[11,\"class\",\"column\"],[9],[0,\"\\n            \"],[7,\"h1\"],[11,\"class\",\"ui header\"],[9],[0,\"\\n              Heading\\n            \"],[10],[0,\"\\n            \"],[7,\"p\"],[9],[0,\"\\n              Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris\\n              condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis\\n              euismod. Donec sed odio dui.\\n            \"],[10],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"ui small basic button\"],[9],[0,\"\\n              View detailes »\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"div\"],[11,\"class\",\"column\"],[9],[0,\"\\n            \"],[7,\"h1\"],[11,\"class\",\"ui header\"],[9],[0,\"\\n              Heading\\n            \"],[10],[0,\"\\n            \"],[7,\"p\"],[9],[0,\"\\n              Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris\\n              condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis\\n              euismod. Donec sed odio dui.\\n            \"],[10],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"ui small basic button\"],[9],[0,\"\\n              View detailes »\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"three column row\"],[9],[0,\"\\n          \"],[7,\"div\"],[11,\"class\",\"column\"],[9],[0,\"\\n            \"],[7,\"h1\"],[11,\"class\",\"ui header\"],[9],[0,\"\\n              Heading\\n            \"],[10],[0,\"\\n            \"],[7,\"p\"],[9],[0,\"\\n              Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris\\n              condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis\\n              euismod. Donec sed odio dui.\\n            \"],[10],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"ui small basic button\"],[9],[0,\"\\n              View detailes »\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"div\"],[11,\"class\",\"column\"],[9],[0,\"\\n            \"],[7,\"h1\"],[11,\"class\",\"ui header\"],[9],[0,\"\\n              Heading\\n            \"],[10],[0,\"\\n            \"],[7,\"p\"],[9],[0,\"\\n              Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris\\n              condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis\\n              euismod. Donec sed odio dui.\\n            \"],[10],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"ui small basic button\"],[9],[0,\"\\n              View detailes »\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"div\"],[11,\"class\",\"column\"],[9],[0,\"\\n            \"],[7,\"h1\"],[11,\"class\",\"ui header\"],[9],[0,\"\\n              Heading\\n            \"],[10],[0,\"\\n            \"],[7,\"p\"],[9],[0,\"\\n              Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris\\n              condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis\\n              euismod. Donec sed odio dui.\\n            \"],[10],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"ui small basic button\"],[9],[0,\"\\n              View detailes »\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"ui hidden divider\"],[9],[10],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"ui divider\"],[9],[10],[0,\"\\n      \"],[7,\"footer\"],[9],[0,\"\\n        © 2019 SE3350b Class\\n      \"],[10],[0,\"\\n    \"],[10],[0,\"\\n\\n    \"],[7,\"div\"],[11,\"class\",\"three wide column\"],[9],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"ui vertical menu\"],[9],[0,\"\\n        \"],[7,\"a\"],[11,\"class\",\"active item\"],[9],[0,\"Link\"],[10],[0,\"\\n        \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n        \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n        \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n        \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n        \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n        \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n        \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n        \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n        \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n        \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n        \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n        \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n      \"],[10],[0,\"\\n    \"],[10],[0,\"\\n  \"],[10],[0,\"\\n\\n\\n  \"],[7,\"div\"],[11,\"class\",\"tablet mobile only row pushable\"],[9],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"ui basic segment pusher\"],[9],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"ui container\"],[9],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"ui message\"],[9],[0,\"\\n          \"],[7,\"div\"],[11,\"class\",\"ui blue right floated icon button\"],[9],[0,\"\\n            Toggle right sidebar\"],[7,\"i\"],[11,\"class\",\"right arrow icon\"],[9],[10],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"h1\"],[11,\"class\",\"ui huge header\"],[9],[0,\"\\n            Hello, world!\\n          \"],[10],[0,\"\\n          \"],[7,\"p\"],[11,\"class\",\"lead\"],[9],[0,\"\\n            This is a simple example to show the Semantic-UI pattern we will use through out CEAMS project,\\n            click the green button to see the left sidebar coming in and out of the page, and try to change\\n            the browser size to see right sidebar toggle button. You could check out more wonderful effects here:\\n            \"],[7,\"a\"],[11,\"target\",\"_blank\"],[11,\"href\",\"http://semantic-ui.com/modules/sidebar.html#/examples\"],[11,\"rel\",\"noopener\"],[9],[0,\"Semantic-UI/sidebar examples\"],[10],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"div\"],[11,\"class\",\"ui hidden divider\"],[9],[10],[0,\"\\n          \"],[7,\"div\"],[11,\"class\",\"ui green button\"],[9],[0,\"\\n            \"],[7,\"i\"],[11,\"class\",\"left arrow icon\"],[9],[10],[0,\" Toggle left sidebar\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"ui hidden section divider\"],[9],[10],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"ui stackable grid\"],[9],[0,\"\\n          \"],[7,\"div\"],[11,\"class\",\"three column row\"],[9],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"column\"],[9],[0,\"\\n              \"],[7,\"h1\"],[11,\"class\",\"ui header\"],[9],[0,\"\\n                Heading\\n              \"],[10],[0,\"\\n              \"],[7,\"p\"],[9],[0,\"\\n                Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor\\n                mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna\\n                mollis euismod. Donec sed odio dui.\\n              \"],[10],[0,\"\\n              \"],[7,\"div\"],[11,\"class\",\"ui small basic button\"],[9],[0,\"\\n                View detailes »\\n              \"],[10],[0,\"\\n            \"],[10],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"column\"],[9],[0,\"\\n              \"],[7,\"h1\"],[11,\"class\",\"ui header\"],[9],[0,\"\\n                Heading\\n              \"],[10],[0,\"\\n              \"],[7,\"p\"],[9],[0,\"\\n                Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor\\n                mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna\\n                mollis euismod. Donec sed odio dui.\\n              \"],[10],[0,\"\\n              \"],[7,\"div\"],[11,\"class\",\"ui small basic button\"],[9],[0,\"\\n                View detailes »\\n              \"],[10],[0,\"\\n            \"],[10],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"column\"],[9],[0,\"\\n              \"],[7,\"h1\"],[11,\"class\",\"ui header\"],[9],[0,\"\\n                Heading\\n              \"],[10],[0,\"\\n              \"],[7,\"p\"],[9],[0,\"\\n                Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor\\n                mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna\\n                mollis euismod. Donec sed odio dui.\\n              \"],[10],[0,\"\\n              \"],[7,\"div\"],[11,\"class\",\"ui small basic button\"],[9],[0,\"\\n                View detailes »\\n              \"],[10],[0,\"\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"div\"],[11,\"class\",\"three column row\"],[9],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"column\"],[9],[0,\"\\n              \"],[7,\"h1\"],[11,\"class\",\"ui header\"],[9],[0,\"\\n                Heading\\n              \"],[10],[0,\"\\n              \"],[7,\"p\"],[9],[0,\"\\n                Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor\\n                mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna\\n                mollis euismod. Donec sed odio dui.\\n              \"],[10],[0,\"\\n              \"],[7,\"div\"],[11,\"class\",\"ui small basic button\"],[9],[0,\"\\n                View detailes »\\n              \"],[10],[0,\"\\n            \"],[10],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"column\"],[9],[0,\"\\n              \"],[7,\"h1\"],[11,\"class\",\"ui header\"],[9],[0,\"\\n                Heading\\n              \"],[10],[0,\"\\n              \"],[7,\"p\"],[9],[0,\"\\n                Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor\\n                mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna\\n                mollis euismod. Donec sed odio dui.\\n              \"],[10],[0,\"\\n              \"],[7,\"div\"],[11,\"class\",\"ui small basic button\"],[9],[0,\"\\n                View detailes »\\n              \"],[10],[0,\"\\n            \"],[10],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"column\"],[9],[0,\"\\n              \"],[7,\"h1\"],[11,\"class\",\"ui header\"],[9],[0,\"\\n                Heading\\n              \"],[10],[0,\"\\n              \"],[7,\"p\"],[9],[0,\"\\n                Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor\\n                mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna\\n                mollis euismod. Donec sed odio dui.\\n              \"],[10],[0,\"\\n              \"],[7,\"div\"],[11,\"class\",\"ui small basic button\"],[9],[0,\"\\n                View detailes »\\n              \"],[10],[0,\"\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"ui hidden divider\"],[9],[10],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"ui divider\"],[9],[10],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"ui basic footer segment\"],[9],[0,\"\\n        \"],[7,\"p\"],[9],[0,\"\\n          © 2019 SE3350b Class\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n\\n    \"],[10],[0,\"\\n\\n\\n    \"],[7,\"div\"],[11,\"class\",\"ui right sidebar vertical menu\"],[9],[0,\"\\n      \"],[7,\"a\"],[11,\"class\",\"active item\"],[9],[0,\"Link\"],[10],[0,\"\\n      \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n      \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n      \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n      \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n      \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n      \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n      \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n      \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n      \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n      \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n      \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n      \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n    \"],[10],[0,\"\\n\\n\\n  \"],[10],[0,\"\\n\"],[10],[0,\"\\n\\n\\n\"],[7,\"div\"],[11,\"class\",\"ui left inverted labeled icon inline vertical menu sidebar\"],[9],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"ui section hidden divider\"],[9],[0,\"\\n\\n  \"],[10],[0,\"\\n\\n\"],[4,\"link-to\",[\"home-page\"],null,{\"statements\":[[0,\"    \"],[7,\"div\"],[11,\"class\",\"item\"],[9],[0,\"\\n      \"],[7,\"i\"],[11,\"class\",\"home icon\"],[9],[10],[0,\"\\n      Home\\n    \"],[10],[0,\"\\n\"]],\"parameters\":[]},null],[0,\"\\n  \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"\\n    \"],[7,\"i\"],[11,\"class\",\"block layout icon\"],[9],[10],[0,\"Topics\\n  \"],[10],[0,\"\\n  \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"\\n    \"],[7,\"i\"],[11,\"class\",\"smile icon\"],[9],[10],[0,\"Friends\\n  \"],[10],[0,\"\\n\\n\"],[10],[0,\"\\n\\n\"]],\"hasEval\":false}",
+    "id": "p8J8+7U3",
+    "block": "{\"symbols\":[],\"statements\":[[7,\"div\"],[11,\"class\",\"ui top fixed borderless huge inverted menu\"],[9],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"ui container grid\"],[9],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"computer only row\"],[9],[0,\"\\n      \"],[7,\"a\"],[11,\"class\",\"header item\"],[9],[0,\"CEAMS\"],[10],[0,\"\\n      \"],[4,\"link-to\",[\"home-page\"],[[\"class\"],[\"item\"]],{\"statements\":[[7,\"a\"],[9],[0,\"Home\"],[10]],\"parameters\":[]},null],[0,\"\\n      \"],[7,\"a\"],[11,\"class\",\"item\"],[11,\"target\",\"_blank\"],[11,\"href\",\"http://semantic-ui-forest.com/themes/semantic-ui/semantic-ui/\"],[11,\"rel\",\"noopener\"],[9],[0,\"Semantic-UI\"],[10],[0,\"\\n      \"],[7,\"a\"],[11,\"class\",\"item\"],[11,\"target\",\"_blank\"],[11,\"href\",\"http://semantic-org.github.io/Semantic-UI-Ember/#/modules\"],[11,\"rel\",\"noopener\"],[9],[0,\"Semantic-UI-Ember\"],[10],[0,\"\\n      \"],[7,\"a\"],[11,\"class\",\"item\"],[11,\"target\",\"_blank\"],[11,\"href\",\"https://datatables.net/examples/styling/semanticui\"],[11,\"rel\",\"noopener\"],[9],[0,\"Data Tables\"],[10],[0,\"\\n      \"],[7,\"a\"],[11,\"class\",\"item\"],[11,\"target\",\"_blank\"],[11,\"href\",\"https://www.emberaddons.com/\"],[11,\"rel\",\"noopener\"],[9],[0,\"Ember Addons\"],[10],[0,\"\\n      \"],[7,\"a\"],[11,\"class\",\"item\"],[11,\"target\",\"_blank\"],[11,\"href\",\"https://guides.emberjs.com/release/\"],[11,\"rel\",\"noopener\"],[9],[0,\"Ember Guide\"],[10],[0,\"\\n    \"],[10],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"tablet mobile only row\"],[9],[0,\"\\n      \"],[7,\"a\"],[11,\"class\",\"header item\"],[9],[0,\" CEAMS\"],[10],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"right menu\"],[9],[0,\"\\n        \"],[7,\"a\"],[11,\"class\",\"menu item\"],[9],[0,\"\\n          \"],[7,\"div\"],[11,\"class\",\"ui icon toggle basic inverted button\"],[9],[0,\"\\n            \"],[7,\"i\"],[11,\"class\",\"content large icon\"],[9],[10],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"ui vertical borderless fluid inverted menu\"],[9],[0,\"\\n        \"],[4,\"link-to\",[\"home-page\"],null,{\"statements\":[[0,\" \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Home\"],[10]],\"parameters\":[]},null],[0,\"\\n        \"],[7,\"a\"],[11,\"class\",\"item\"],[11,\"target\",\"_blank\"],[11,\"href\",\"http://semantic-ui-forest.com/themes/semantic-ui/semantic-ui/\"],[11,\"rel\",\"noopener\"],[9],[0,\"Semantic-UI\"],[10],[0,\"\\n        \"],[7,\"a\"],[11,\"class\",\"item\"],[11,\"target\",\"_blank\"],[11,\"href\",\"http://semantic-org.github.io/Semantic-UI-Ember/#/modules\"],[11,\"rel\",\"noopener\"],[9],[0,\"Semantic-UI-Ember\"],[10],[0,\"\\n        \"],[7,\"a\"],[11,\"class\",\"item\"],[11,\"target\",\"_blank\"],[11,\"href\",\"https://datatables.net/examples/styling/semanticui\"],[11,\"rel\",\"noopener\"],[9],[0,\"Data Tables\"],[10],[0,\"\\n        \"],[7,\"a\"],[11,\"class\",\"item\"],[11,\"target\",\"_blank\"],[11,\"href\",\"https://www.emberaddons.com/\"],[11,\"rel\",\"noopener\"],[9],[0,\"Ember Addons\"],[10],[0,\"\\n        \"],[7,\"a\"],[11,\"class\",\"item\"],[11,\"target\",\"_blank\"],[11,\"href\",\"https://guides.emberjs.com/release/\"],[11,\"rel\",\"noopener\"],[9],[0,\"Ember Guide\"],[10],[0,\"\\n      \"],[10],[0,\"\\n    \"],[10],[0,\"\\n  \"],[10],[0,\"\\n\"],[10],[0,\"\\n\\n\"],[7,\"div\"],[11,\"class\",\"ui stackable grid container\"],[9],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"computer only row\"],[9],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"thirteen wide column\"],[9],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"ui message\"],[9],[0,\"\\n        \"],[7,\"h1\"],[11,\"class\",\"ui huge header\"],[9],[0,\"\\n          Hello, SE3350b Teams!\\n        \"],[10],[0,\"\\n        \"],[7,\"p\"],[11,\"class\",\"lead\"],[9],[0,\"\\n          This is a simple example to show the Semantic-UI pattern we will use through out CEAMS project,\\n          click the green button to see the left sidebar coming in and out of the page, and try to change\\n          the browser size to see right sidebar toggle button. You could check out more wonderful effects here:\\n          \"],[7,\"a\"],[11,\"target\",\"_blank\"],[11,\"href\",\"http://semantic-ui.com/modules/sidebar.html#/examples\"],[11,\"rel\",\"noopener\"],[9],[0,\"Semantic-UI/sidebar examples\"],[10],[0,\"\\n        \"],[10],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"ui hidden divider\"],[9],[10],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"ui green button\"],[9],[0,\"\\n          \"],[7,\"i\"],[11,\"class\",\"left arrow icon\"],[9],[10],[0,\" Toggle left sidebar\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"ui hidden section divider\"],[9],[10],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"ui stackable grid\"],[9],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"three column row\"],[9],[0,\"\\n          \"],[7,\"div\"],[11,\"class\",\"column\"],[9],[0,\"\\n            \"],[7,\"h1\"],[11,\"class\",\"ui header\"],[9],[0,\"\\n              Heading\\n            \"],[10],[0,\"\\n            \"],[7,\"p\"],[9],[0,\"\\n              Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris\\n              condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis\\n              euismod. Donec sed odio dui.\\n            \"],[10],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"ui small basic button\"],[9],[0,\"\\n              View detailes »\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"div\"],[11,\"class\",\"column\"],[9],[0,\"\\n            \"],[7,\"h1\"],[11,\"class\",\"ui header\"],[9],[0,\"\\n              Heading\\n            \"],[10],[0,\"\\n            \"],[7,\"p\"],[9],[0,\"\\n              Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris\\n              condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis\\n              euismod. Donec sed odio dui.\\n            \"],[10],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"ui small basic button\"],[9],[0,\"\\n              View detailes »\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"div\"],[11,\"class\",\"column\"],[9],[0,\"\\n            \"],[7,\"h1\"],[11,\"class\",\"ui header\"],[9],[0,\"\\n              Heading\\n            \"],[10],[0,\"\\n            \"],[7,\"p\"],[9],[0,\"\\n              Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris\\n              condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis\\n              euismod. Donec sed odio dui.\\n            \"],[10],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"ui small basic button\"],[9],[0,\"\\n              View detailes »\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"three column row\"],[9],[0,\"\\n          \"],[7,\"div\"],[11,\"class\",\"column\"],[9],[0,\"\\n            \"],[7,\"h1\"],[11,\"class\",\"ui header\"],[9],[0,\"\\n              Heading\\n            \"],[10],[0,\"\\n            \"],[7,\"p\"],[9],[0,\"\\n              Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris\\n              condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis\\n              euismod. Donec sed odio dui.\\n            \"],[10],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"ui small basic button\"],[9],[0,\"\\n              View detailes »\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"div\"],[11,\"class\",\"column\"],[9],[0,\"\\n            \"],[7,\"h1\"],[11,\"class\",\"ui header\"],[9],[0,\"\\n              Heading\\n            \"],[10],[0,\"\\n            \"],[7,\"p\"],[9],[0,\"\\n              Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris\\n              condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis\\n              euismod. Donec sed odio dui.\\n            \"],[10],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"ui small basic button\"],[9],[0,\"\\n              View detailes »\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"div\"],[11,\"class\",\"column\"],[9],[0,\"\\n            \"],[7,\"h1\"],[11,\"class\",\"ui header\"],[9],[0,\"\\n              Heading\\n            \"],[10],[0,\"\\n            \"],[7,\"p\"],[9],[0,\"\\n              Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris\\n              condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis\\n              euismod. Donec sed odio dui.\\n            \"],[10],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"ui small basic button\"],[9],[0,\"\\n              View detailes »\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"ui hidden divider\"],[9],[10],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"ui divider\"],[9],[10],[0,\"\\n      \"],[7,\"footer\"],[9],[0,\"\\n        © 2019 SE3350b Class\\n      \"],[10],[0,\"\\n    \"],[10],[0,\"\\n\\n    \"],[7,\"div\"],[11,\"class\",\"three wide column\"],[9],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"ui vertical menu\"],[9],[0,\"\\n        \"],[7,\"a\"],[11,\"class\",\"active item\"],[9],[0,\"Link\"],[10],[0,\"\\n        \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n        \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n        \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n        \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n        \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n        \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n        \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n        \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n        \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n        \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n        \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n        \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n      \"],[10],[0,\"\\n    \"],[10],[0,\"\\n  \"],[10],[0,\"\\n\\n\\n  \"],[7,\"div\"],[11,\"class\",\"tablet mobile only row pushable\"],[9],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"ui basic segment pusher\"],[9],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"ui container\"],[9],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"ui message\"],[9],[0,\"\\n          \"],[7,\"div\"],[11,\"class\",\"ui blue right floated icon button\"],[9],[0,\"\\n            Toggle right sidebar\"],[7,\"i\"],[11,\"class\",\"right arrow icon\"],[9],[10],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"h1\"],[11,\"class\",\"ui huge header\"],[9],[0,\"\\n            Hello, world!\\n          \"],[10],[0,\"\\n          \"],[7,\"p\"],[11,\"class\",\"lead\"],[9],[0,\"\\n            This is a simple example to show the Semantic-UI pattern we will use through out CEAMS project,\\n            click the green button to see the left sidebar coming in and out of the page, and try to change\\n            the browser size to see right sidebar toggle button. You could check out more wonderful effects here:\\n            \"],[7,\"a\"],[11,\"target\",\"_blank\"],[11,\"href\",\"http://semantic-ui.com/modules/sidebar.html#/examples\"],[11,\"rel\",\"noopener\"],[9],[0,\"Semantic-UI/sidebar examples\"],[10],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"div\"],[11,\"class\",\"ui hidden divider\"],[9],[10],[0,\"\\n          \"],[7,\"div\"],[11,\"class\",\"ui green button\"],[9],[0,\"\\n            \"],[7,\"i\"],[11,\"class\",\"left arrow icon\"],[9],[10],[0,\" Toggle left sidebar\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"ui hidden section divider\"],[9],[10],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"ui stackable grid\"],[9],[0,\"\\n          \"],[7,\"div\"],[11,\"class\",\"three column row\"],[9],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"column\"],[9],[0,\"\\n              \"],[7,\"h1\"],[11,\"class\",\"ui header\"],[9],[0,\"\\n                Heading\\n              \"],[10],[0,\"\\n              \"],[7,\"p\"],[9],[0,\"\\n                Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor\\n                mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna\\n                mollis euismod. Donec sed odio dui.\\n              \"],[10],[0,\"\\n              \"],[7,\"div\"],[11,\"class\",\"ui small basic button\"],[9],[0,\"\\n                View detailes »\\n              \"],[10],[0,\"\\n            \"],[10],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"column\"],[9],[0,\"\\n              \"],[7,\"h1\"],[11,\"class\",\"ui header\"],[9],[0,\"\\n                Heading\\n              \"],[10],[0,\"\\n              \"],[7,\"p\"],[9],[0,\"\\n                Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor\\n                mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna\\n                mollis euismod. Donec sed odio dui.\\n              \"],[10],[0,\"\\n              \"],[7,\"div\"],[11,\"class\",\"ui small basic button\"],[9],[0,\"\\n                View detailes »\\n              \"],[10],[0,\"\\n            \"],[10],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"column\"],[9],[0,\"\\n              \"],[7,\"h1\"],[11,\"class\",\"ui header\"],[9],[0,\"\\n                Heading\\n              \"],[10],[0,\"\\n              \"],[7,\"p\"],[9],[0,\"\\n                Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor\\n                mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna\\n                mollis euismod. Donec sed odio dui.\\n              \"],[10],[0,\"\\n              \"],[7,\"div\"],[11,\"class\",\"ui small basic button\"],[9],[0,\"\\n                View detailes »\\n              \"],[10],[0,\"\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"div\"],[11,\"class\",\"three column row\"],[9],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"column\"],[9],[0,\"\\n              \"],[7,\"h1\"],[11,\"class\",\"ui header\"],[9],[0,\"\\n                Heading\\n              \"],[10],[0,\"\\n              \"],[7,\"p\"],[9],[0,\"\\n                Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor\\n                mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna\\n                mollis euismod. Donec sed odio dui.\\n              \"],[10],[0,\"\\n              \"],[7,\"div\"],[11,\"class\",\"ui small basic button\"],[9],[0,\"\\n                View detailes »\\n              \"],[10],[0,\"\\n            \"],[10],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"column\"],[9],[0,\"\\n              \"],[7,\"h1\"],[11,\"class\",\"ui header\"],[9],[0,\"\\n                Heading\\n              \"],[10],[0,\"\\n              \"],[7,\"p\"],[9],[0,\"\\n                Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor\\n                mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna\\n                mollis euismod. Donec sed odio dui.\\n              \"],[10],[0,\"\\n              \"],[7,\"div\"],[11,\"class\",\"ui small basic button\"],[9],[0,\"\\n                View detailes »\\n              \"],[10],[0,\"\\n            \"],[10],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"column\"],[9],[0,\"\\n              \"],[7,\"h1\"],[11,\"class\",\"ui header\"],[9],[0,\"\\n                Heading\\n              \"],[10],[0,\"\\n              \"],[7,\"p\"],[9],[0,\"\\n                Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor\\n                mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna\\n                mollis euismod. Donec sed odio dui.\\n              \"],[10],[0,\"\\n              \"],[7,\"div\"],[11,\"class\",\"ui small basic button\"],[9],[0,\"\\n                View detailes »\\n              \"],[10],[0,\"\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"ui hidden divider\"],[9],[10],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"ui divider\"],[9],[10],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"ui basic footer segment\"],[9],[0,\"\\n        \"],[7,\"p\"],[9],[0,\"\\n          © 2019 SE3350b Class\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n\\n    \"],[10],[0,\"\\n\\n\\n    \"],[7,\"div\"],[11,\"class\",\"ui right sidebar vertical menu\"],[9],[0,\"\\n      \"],[7,\"a\"],[11,\"class\",\"active item\"],[9],[0,\"Link\"],[10],[0,\"\\n      \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n      \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n      \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n      \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n      \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n      \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n      \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n      \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n      \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n      \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n      \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n      \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"Link\"],[10],[0,\"\\n    \"],[10],[0,\"\\n\\n\\n  \"],[10],[0,\"\\n\"],[10],[0,\"\\n\\n\\n\"],[7,\"div\"],[11,\"class\",\"ui left inverted labeled icon inline vertical menu sidebar\"],[9],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"ui section hidden divider\"],[9],[0,\"\\n\\n  \"],[10],[0,\"\\n\\n\"],[4,\"link-to\",[\"home-page\"],null,{\"statements\":[[0,\"    \"],[7,\"div\"],[11,\"class\",\"item\"],[9],[0,\"\\n      \"],[7,\"i\"],[11,\"class\",\"home icon\"],[9],[10],[0,\"\\n      Home\\n    \"],[10],[0,\"\\n\"]],\"parameters\":[]},null],[4,\"link-to\",[\"task-force-management\"],null,{\"statements\":[[0,\"    \"],[7,\"div\"],[11,\"class\",\"item\"],[9],[0,\"\\n      Task Force Management\\n    \"],[10],[0,\"\\n\"]],\"parameters\":[]},null],[0,\"\\n  \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"\\n    \"],[7,\"i\"],[11,\"class\",\"block layout icon\"],[9],[10],[0,\"Topics\\n  \"],[10],[0,\"\\n  \"],[7,\"a\"],[11,\"class\",\"item\"],[9],[0,\"\\n    \"],[7,\"i\"],[11,\"class\",\"smile icon\"],[9],[10],[0,\"Friends\\n  \"],[10],[0,\"\\n\\n\"],[10],[0,\"\\n\\n\"]],\"hasEval\":false}",
     "meta": {
       "moduleName": "aouda-ceams-frontend/templates/components/main-menu.hbs"
+    }
+  });
+
+  _exports.default = _default;
+});
+;define("aouda-ceams-frontend/templates/components/task-force-management", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.HTMLBars.template({
+    "id": "268y7Qf+",
+    "block": "{\"symbols\":[],\"statements\":[[7,\"h1\"],[11,\"class\",\"centered\"],[9],[0,\"GA TEAMS AND TASK FORCE MANAGEMENT\"],[10],[0,\"\\n\\n\"],[4,\"link-to\",[\"new-committee-page\"],null,{\"statements\":[[0,\"  \"],[7,\"div\"],[11,\"class\",\"ui red button\"],[9],[0,\"\\n    New\\n  \"],[10],[0,\"\\n\"]],\"parameters\":[]},null]],\"hasEval\":false}",
+    "meta": {
+      "moduleName": "aouda-ceams-frontend/templates/components/task-force-management.hbs"
     }
   });
 
@@ -993,6 +1230,24 @@
 
   _exports.default = _default;
 });
+;define("aouda-ceams-frontend/templates/task-force-management", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.HTMLBars.template({
+    "id": "lMw/qeUV",
+    "block": "{\"symbols\":[],\"statements\":[[1,[21,\"nav-bar\"],false],[0,\"\\n\"],[1,[21,\"task-force-management\"],false]],\"hasEval\":false}",
+    "meta": {
+      "moduleName": "aouda-ceams-frontend/templates/task-force-management.hbs"
+    }
+  });
+
+  _exports.default = _default;
+});
 ;
 
 ;define('aouda-ceams-frontend/config/environment', [], function() {
@@ -1016,7 +1271,7 @@ catch(err) {
 
 ;
           if (!runningTests) {
-            require("aouda-ceams-frontend/app")["default"].create({"name":"aouda-ceams-frontend","version":"0.0.0"});
+            require("aouda-ceams-frontend/app")["default"].create({"name":"aouda-ceams-frontend","version":"0.0.0+2d57db8e"});
           }
         
 //# sourceMappingURL=aouda-ceams-frontend.map
