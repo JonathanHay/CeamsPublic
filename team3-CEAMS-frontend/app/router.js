@@ -15,6 +15,5 @@ Router.map(function() {
     this.route('view-meeting');
     this.route('new-meeting');
   });
-});
 
 export default Router;

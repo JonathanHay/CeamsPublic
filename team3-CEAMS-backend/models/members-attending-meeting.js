@@ -8,7 +8,7 @@ var memberAttendingMeetingsSchema = mongoose.Schema(
         committeeLevel: String,
         userProfile: { type: mongoose.Schema.ObjectId, ref: ('UserProfile') },
         meeting: [{ type: mongoose.Schema.ObjectId, ref: ('Meeting') }],
-        memberAttended: { type: mongoose.Schema.ObjectId, ref: ('MemberAttended') }
+        memberAttended: [{ type: mongoose.Schema.ObjectId, ref: ('MemberAttended')}]
     }
 );
 var MemberAttendingMeeting = mongoose.model('member-attending-meeting', memberAttendingMeetingsSchema);
