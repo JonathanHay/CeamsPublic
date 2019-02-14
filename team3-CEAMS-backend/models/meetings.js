@@ -3,7 +3,7 @@ var meetingsSchema = mongoose.Schema(
     {   
         startDateTime: Date,
         endDateTime: Date,
-        memberAttendingMeeting: { type: mongoose.Schema.ObjectId, ref: ('MemberAttendingMeeting') },
+        memberAttendingMeeting: { type: mongoose.Schema.ObjectId, ref: ('MemberAttendingMeetings') },
         meetingMinutes: { type: mongoose.Schema.ObjectId, ref: ('MeetingMinutes') }
     }
 );

@@ -8,10 +8,10 @@ var meetingMinutesSchema = mongoose.Schema(
         otherDetail: String,
         recommendation: String,
         decision: String,
-        meetingTopic: [{ type: mongoose.Schema.ObjectId, ref: ('MeetingTopic') }],
-        meeting: [{ type: mongoose.Schema.ObjectId, ref: ('Meeting') }],
-        memberAttended: [{ type: mongoose.Schema.ObjectId, ref: ('MemberAttended') }]
+        meetingTopics: [{ type: mongoose.Schema.ObjectId, ref: ('MeetingTopics') }],
+        meetings: [{ type: mongoose.Schema.ObjectId, ref: ('Meetings') }],
+        memberAttendeds: [{ type: mongoose.Schema.ObjectId, ref: ('MemberAttendeds') }]
     }
 );
-var MeetingMinutes = mongoose.model('meeting-minutes', meetingMinutesSchema);
+var MeetingMinutes = mongoose.model('meeting-minute', meetingMinutesSchema);
 exports.Model = MeetingMinutes;
