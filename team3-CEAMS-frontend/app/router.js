@@ -12,6 +12,7 @@ Router.map(function() {
   this.route('login');
   this.route('task-force-management');
   this.route('committee');
+  this.route('new-task-force');
 });
 
 export default Router;

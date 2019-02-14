@@ -30,18 +30,6 @@
   var _default = App;
   _exports.default = _default;
 });
-;define("aouda-ceams-frontend/components/committee", ["exports"], function (_exports) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  _exports.default = void 0;
-
-  var _default = Ember.Component.extend({});
-
-  _exports.default = _default;
-});
 ;define("aouda-ceams-frontend/components/home-page", ["exports"], function (_exports) {
   "use strict";
 
@@ -110,6 +98,18 @@
     }
 
   });
+
+  _exports.default = _default;
+});
+;define("aouda-ceams-frontend/components/new-task-force", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.Component.extend({});
 
   _exports.default = _default;
 });
@@ -951,28 +951,9 @@
     this.route('login');
     this.route('task-force-management');
     this.route('committee');
+    this.route('new-task-force');
   });
   var _default = Router;
-  _exports.default = _default;
-});
-;define("aouda-ceams-frontend/routes/committee", ["exports"], function (_exports) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  _exports.default = void 0;
-
-  var _default = Ember.Route.extend({
-    model: function () {
-      return this.store.query('member-attending-meeting', {
-        filter: {
-          memberRole: 'UNIQUE-ADMIN'
-        }
-      });
-    }
-  });
-
   _exports.default = _default;
 });
 ;define("aouda-ceams-frontend/routes/home-page", ["exports"], function (_exports) {
@@ -1000,6 +981,18 @@
   _exports.default = _default;
 });
 ;define("aouda-ceams-frontend/routes/main-menu", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.Route.extend({});
+
+  _exports.default = _default;
+});
+;define("aouda-ceams-frontend/routes/new-task-force", ["exports"], function (_exports) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -1068,42 +1061,6 @@
 
   _exports.default = _default;
 });
-;define("aouda-ceams-frontend/templates/committee", ["exports"], function (_exports) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  _exports.default = void 0;
-
-  var _default = Ember.HTMLBars.template({
-    "id": "5lbTtfGa",
-    "block": "{\"symbols\":[],\"statements\":[[0,\"\\n\"],[1,[21,\"outlet\"],false]],\"hasEval\":false}",
-    "meta": {
-      "moduleName": "aouda-ceams-frontend/templates/committee.hbs"
-    }
-  });
-
-  _exports.default = _default;
-});
-;define("aouda-ceams-frontend/templates/components/committee", ["exports"], function (_exports) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  _exports.default = void 0;
-
-  var _default = Ember.HTMLBars.template({
-    "id": "ceykamHF",
-    "block": "{\"symbols\":[],\"statements\":[[7,\"div\"],[11,\"class\",\"ui divided very relaxed animated list\"],[9],[0,\"\\n\"],[4,\"each\",[[23,[\"member-attending-meeting\"]],[23,[\"in\"]],[23,[\"model\"]]],null,{\"statements\":[[0,\"      \"],[7,\"div\"],[11,\"class\",\"item\"],[9],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"ui top aligned avatar image\"],[9],[0,\"\\n          \"],[7,\"img\"],[11,\"src\",\"https://www.eng.uwo.ca/people/aouda/images/IMG_0311.png\"],[9],[10],[0,\"\\n        \"],[10],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"content\"],[9],[0,\"\\n          \"],[7,\"div\"],[11,\"class\",\"header\"],[9],[0,\"\\n            Committee Name: \"],[1,[23,[\"member-attending-meeting\",\"committeeName\"]],false],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"ui teal button\"],[9],[0,\"\\n              Edit\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n\"]],\"parameters\":[]},null],[10]],\"hasEval\":false}",
-    "meta": {
-      "moduleName": "aouda-ceams-frontend/templates/components/committee.hbs"
-    }
-  });
-
-  _exports.default = _default;
-});
 ;define("aouda-ceams-frontend/templates/components/home-page", ["exports"], function (_exports) {
   "use strict";
 
@@ -1158,6 +1115,24 @@
 
   _exports.default = _default;
 });
+;define("aouda-ceams-frontend/templates/components/new-task-force", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.HTMLBars.template({
+    "id": "6X/gWriB",
+    "block": "{\"symbols\":[],\"statements\":[[7,\"div\"],[11,\"class\",\"header\"],[9],[0,\"\\n  Adding new task force\\n\"],[10],[0,\"\\n\"],[7,\"div\"],[11,\"class\",\"content\"],[9],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"ui form\"],[9],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"field\"],[9],[0,\"\\n      \"],[7,\"label\"],[9],[0,\"Task Force Name\"],[10],[0,\"\\n      \"],[1,[27,\"input\",null,[[\"type\",\"cols\",\"rows\",\"value\",\"placeholder\"],[\"text\",\"50\",\"1\",[23,[\"title\"]],\"add title\"]]],false],[0,\"\\n    \"],[10],[0,\"\\n  \"],[10],[0,\"\\n\"],[10],[0,\"\\n\"],[7,\"br\"],[9],[10],[0,\"\\n\"],[7,\"div\"],[11,\"class\",\"actions\"],[9],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"ui black deny button\"],[9],[0,\"\\n    Cancel\\n  \"],[10],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"ui positive right labeled icon button\"],[9],[0,\"\\n    Save\\n    \"],[7,\"i\"],[11,\"class\",\"checkmark icon\"],[9],[10],[0,\"\\n  \"],[10],[0,\"\\n\"],[10]],\"hasEval\":false}",
+    "meta": {
+      "moduleName": "aouda-ceams-frontend/templates/components/new-task-force.hbs"
+    }
+  });
+
+  _exports.default = _default;
+});
 ;define("aouda-ceams-frontend/templates/components/task-force-management", ["exports"], function (_exports) {
   "use strict";
 
@@ -1167,8 +1142,8 @@
   _exports.default = void 0;
 
   var _default = Ember.HTMLBars.template({
-    "id": "268y7Qf+",
-    "block": "{\"symbols\":[],\"statements\":[[7,\"h1\"],[11,\"class\",\"centered\"],[9],[0,\"GA TEAMS AND TASK FORCE MANAGEMENT\"],[10],[0,\"\\n\\n\"],[4,\"link-to\",[\"new-committee-page\"],null,{\"statements\":[[0,\"  \"],[7,\"div\"],[11,\"class\",\"ui red button\"],[9],[0,\"\\n    New\\n  \"],[10],[0,\"\\n\"]],\"parameters\":[]},null]],\"hasEval\":false}",
+    "id": "VD/W8NRO",
+    "block": "{\"symbols\":[],\"statements\":[[7,\"h1\"],[11,\"class\",\"centered\"],[9],[0,\"GA TEAMS AND TASK FORCE MANAGEMENT\"],[10],[0,\"\\n\"],[7,\"div\"],[11,\"class\",\"ui divided very relaxed animated list\"],[9],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"item\"],[9],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"ui top aligned avatar image\"],[9],[0,\"\\n      \"],[7,\"img\"],[11,\"src\",\"https://www.eng.uwo.ca/people/aouda/images/IMG_0311.png\"],[11,\"alt\",\"\"],[9],[10],[0,\"\\n    \"],[10],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"content\"],[9],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"header\"],[9],[0,\"\\n        Committee Name: TASK FORCE DELTA\\n        \"],[7,\"div\"],[11,\"class\",\"ui teal button\"],[9],[0,\"\\n          Edit\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n    \"],[10],[0,\"\\n  \"],[10],[0,\"\\n\"],[10],[0,\"\\n\"],[4,\"link-to\",[\"new-task-force\"],null,{\"statements\":[[0,\"  \"],[7,\"div\"],[11,\"class\",\"ui red button\"],[9],[0,\"\\n    New\\n  \"],[10],[0,\"\\n\"]],\"parameters\":[]},null]],\"hasEval\":false}",
     "meta": {
       "moduleName": "aouda-ceams-frontend/templates/components/task-force-management.hbs"
     }
@@ -1230,6 +1205,24 @@
 
   _exports.default = _default;
 });
+;define("aouda-ceams-frontend/templates/new-task-force", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.HTMLBars.template({
+    "id": "uxTnlATP",
+    "block": "{\"symbols\":[],\"statements\":[[1,[21,\"outlet\"],false]],\"hasEval\":false}",
+    "meta": {
+      "moduleName": "aouda-ceams-frontend/templates/new-task-force.hbs"
+    }
+  });
+
+  _exports.default = _default;
+});
 ;define("aouda-ceams-frontend/templates/task-force-management", ["exports"], function (_exports) {
   "use strict";
 
@@ -1271,7 +1264,7 @@ catch(err) {
 
 ;
           if (!runningTests) {
-            require("aouda-ceams-frontend/app")["default"].create({"name":"aouda-ceams-frontend","version":"0.0.0+2d57db8e"});
+            require("aouda-ceams-frontend/app")["default"].create({"name":"aouda-ceams-frontend","version":"0.0.0+1be2cd7b"});
           }
         
 //# sourceMappingURL=aouda-ceams-frontend.map
