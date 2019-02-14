@@ -37,13 +37,4 @@ export default Component.extend({
             });
         }
     }
-
-    // didRender() {
-    //     $(document).ready(function() {
-    //         // remove readonly status
-    //         $('#editBtn').click(function() {
-    //             $('.meetingInput').prop("readonly", false);
-    //         });
-    //     });
-    // }
 });
