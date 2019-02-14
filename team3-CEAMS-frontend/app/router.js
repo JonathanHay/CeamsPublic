@@ -10,7 +10,7 @@ Router.map(function() {
   this.route('main-menu');
   this.route('home-page', {path: '/'});
   this.route('login');
-  this.route('team-detail', function() {
+  this.route('committees', function() {
     this.route('manage-users');
   });
 });
