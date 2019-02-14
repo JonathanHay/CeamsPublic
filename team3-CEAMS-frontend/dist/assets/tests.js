@@ -247,11 +247,11 @@ define("aouda-ceams-frontend/tests/lint/templates.template.lint-test", [], funct
   });
   QUnit.test('aouda-ceams-frontend/templates/components/new-task-force.hbs', function (assert) {
     assert.expect(1);
-    assert.ok(true, 'aouda-ceams-frontend/templates/components/new-task-force.hbs should pass TemplateLint.\n\n');
+    assert.ok(false, 'aouda-ceams-frontend/templates/components/new-task-force.hbs should pass TemplateLint.\n\naouda-ceams-frontend/templates/components/new-task-force.hbs\n  2:0  error  Incorrect indentation for `<div>` beginning at L2:C0. Expected `<div>` to be at an indentation of 2 but was found at 0.  block-indentation\n');
   });
   QUnit.test('aouda-ceams-frontend/templates/components/task-force-management.hbs', function (assert) {
     assert.expect(1);
-    assert.ok(true, 'aouda-ceams-frontend/templates/components/task-force-management.hbs should pass TemplateLint.\n\n');
+    assert.ok(false, 'aouda-ceams-frontend/templates/components/task-force-management.hbs should pass TemplateLint.\n\naouda-ceams-frontend/templates/components/task-force-management.hbs\n  4:6  error  Incorrect indentation for `<div>` beginning at L4:C6. Expected `<div>` to be at an indentation of 4 but was found at 6.  block-indentation\n  7:6  error  Incorrect indentation for `<div>` beginning at L7:C6. Expected `<div>` to be at an indentation of 4 but was found at 6.  block-indentation\n');
   });
   QUnit.test('aouda-ceams-frontend/templates/home-page.hbs', function (assert) {
     assert.expect(1);

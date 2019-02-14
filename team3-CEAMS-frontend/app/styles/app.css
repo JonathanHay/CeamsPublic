@@ -181,3 +181,14 @@ footer {
   text-shadow: none;
   background-image: none;
 }
+#title{
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+#ForceList{
+  padding: 10px;
+  margin-bottom: 50px;
+}
+#createElement{
+  margin-top: 100px;
+}

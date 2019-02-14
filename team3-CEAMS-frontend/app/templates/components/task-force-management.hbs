@@ -1,21 +1,49 @@
-<h1 class="centered">GA TEAMS AND TASK FORCE MANAGEMENT</h1>
-<div class="ui divided very relaxed animated list">
-  <div class="item">
-    <div class="ui top aligned avatar image">
-      <img src="https://www.eng.uwo.ca/people/aouda/images/IMG_0311.png" alt="">
-    </div>
-    <div class="content">
-      <div class="header">
-        Committee Name: TASK FORCE DELTA
-        <div class="ui teal button">
-          Edit
+<div class="ui middle aligned center aligned grid">
+  <br><br>
+  <div class="six wide column">
+      <div class="row">
+        <h1 class="centered" id="title">GA TEAMS AND TASK FORCE MANAGEMENT</h1>
+      </div>
+      <div class="row" id="ForceList">
+        <div class="ui raised segment divided very relaxed animated list">
+          <div class="item">
+            <div class="content">
+              <div class="header">
+                TASK FORCE DELTA
+                <div class="ui teal button">
+                  Edit
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <div class="header">
+                Party Planning Committee
+                <div class="ui right-align teal button">
+                  Edit
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="content">
+              <div class="header">
+                Project Management Ideas
+                <div class="ui right-align teal button">
+                  Edit
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+    <div class="row">
+      {{#link-to "new-task-force"}}
+        <div class="ui red button">
+          New
+        </div>
+      {{/link-to}}
     </div>
   </div>
 </div>
-{{#link-to "new-task-force"}}
-  <div class="ui red button">
-    New
-  </div>
-{{/link-to}}

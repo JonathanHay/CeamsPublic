@@ -10,7 +10,8 @@
   });
   _exports.default = void 0;
 
-  var _default = _emberData.default.JSONAPIAdapter.extend({});
+  var _default = _emberData.default.RESTAdapter.extend({//host: 'http://127.0.0.1:3000'
+  });
 
   _exports.default = _default;
 });
@@ -1124,8 +1125,8 @@
   _exports.default = void 0;
 
   var _default = Ember.HTMLBars.template({
-    "id": "6X/gWriB",
-    "block": "{\"symbols\":[],\"statements\":[[7,\"div\"],[11,\"class\",\"header\"],[9],[0,\"\\n  Adding new task force\\n\"],[10],[0,\"\\n\"],[7,\"div\"],[11,\"class\",\"content\"],[9],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"ui form\"],[9],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"field\"],[9],[0,\"\\n      \"],[7,\"label\"],[9],[0,\"Task Force Name\"],[10],[0,\"\\n      \"],[1,[27,\"input\",null,[[\"type\",\"cols\",\"rows\",\"value\",\"placeholder\"],[\"text\",\"50\",\"1\",[23,[\"title\"]],\"add title\"]]],false],[0,\"\\n    \"],[10],[0,\"\\n  \"],[10],[0,\"\\n\"],[10],[0,\"\\n\"],[7,\"br\"],[9],[10],[0,\"\\n\"],[7,\"div\"],[11,\"class\",\"actions\"],[9],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"ui black deny button\"],[9],[0,\"\\n    Cancel\\n  \"],[10],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"ui positive right labeled icon button\"],[9],[0,\"\\n    Save\\n    \"],[7,\"i\"],[11,\"class\",\"checkmark icon\"],[9],[10],[0,\"\\n  \"],[10],[0,\"\\n\"],[10]],\"hasEval\":false}",
+    "id": "uMsEdJJu",
+    "block": "{\"symbols\":[],\"statements\":[[7,\"div\"],[11,\"class\",\"ui middle aligned center aligned grid\"],[11,\"id\",\"createElement\"],[9],[0,\"\\n\"],[7,\"div\"],[11,\"class\",\"six wide column\"],[9],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"row\"],[9],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"header\"],[9],[0,\"\\n      Adding new task force\\n    \"],[10],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"content\"],[9],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"ui form\"],[9],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"field\"],[9],[0,\"\\n          \"],[7,\"label\"],[9],[0,\"Task Force Name\"],[10],[0,\"\\n          \"],[1,[27,\"input\",null,[[\"type\",\"cols\",\"rows\",\"value\",\"placeholder\"],[\"text\",\"50\",\"1\",[23,[\"title\"]],\"add title\"]]],false],[0,\"\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n    \"],[10],[0,\"\\n    \"],[7,\"br\"],[9],[10],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"actions\"],[9],[0,\"\\n\"],[4,\"link-to\",[\"task-force-management\"],null,{\"statements\":[[0,\"        \"],[7,\"div\"],[11,\"class\",\"ui black deny button\"],[9],[0,\"\\n          Cancel\\n        \"],[10],[0,\"\\n\"]],\"parameters\":[]},null],[4,\"link-to\",[\"task-force-management\"],null,{\"statements\":[[0,\"        \"],[7,\"div\"],[11,\"class\",\"ui positive right labeled icon button\"],[9],[0,\"\\n          Save\\n          \"],[7,\"i\"],[11,\"class\",\"checkmark icon\"],[9],[10],[0,\"\\n        \"],[10],[0,\"\\n\"]],\"parameters\":[]},null],[0,\"    \"],[10],[0,\"\\n  \"],[10],[0,\"\\n\"],[10],[0,\"\\n\"],[10]],\"hasEval\":false}",
     "meta": {
       "moduleName": "aouda-ceams-frontend/templates/components/new-task-force.hbs"
     }
@@ -1142,8 +1143,8 @@
   _exports.default = void 0;
 
   var _default = Ember.HTMLBars.template({
-    "id": "VD/W8NRO",
-    "block": "{\"symbols\":[],\"statements\":[[7,\"h1\"],[11,\"class\",\"centered\"],[9],[0,\"GA TEAMS AND TASK FORCE MANAGEMENT\"],[10],[0,\"\\n\"],[7,\"div\"],[11,\"class\",\"ui divided very relaxed animated list\"],[9],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"item\"],[9],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"ui top aligned avatar image\"],[9],[0,\"\\n      \"],[7,\"img\"],[11,\"src\",\"https://www.eng.uwo.ca/people/aouda/images/IMG_0311.png\"],[11,\"alt\",\"\"],[9],[10],[0,\"\\n    \"],[10],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"content\"],[9],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"header\"],[9],[0,\"\\n        Committee Name: TASK FORCE DELTA\\n        \"],[7,\"div\"],[11,\"class\",\"ui teal button\"],[9],[0,\"\\n          Edit\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n    \"],[10],[0,\"\\n  \"],[10],[0,\"\\n\"],[10],[0,\"\\n\"],[4,\"link-to\",[\"new-task-force\"],null,{\"statements\":[[0,\"  \"],[7,\"div\"],[11,\"class\",\"ui red button\"],[9],[0,\"\\n    New\\n  \"],[10],[0,\"\\n\"]],\"parameters\":[]},null]],\"hasEval\":false}",
+    "id": "hLHitYn1",
+    "block": "{\"symbols\":[],\"statements\":[[7,\"div\"],[11,\"class\",\"ui middle aligned center aligned grid\"],[9],[0,\"\\n  \"],[7,\"br\"],[9],[10],[7,\"br\"],[9],[10],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"six wide column\"],[9],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"row\"],[9],[0,\"\\n        \"],[7,\"h1\"],[11,\"class\",\"centered\"],[11,\"id\",\"title\"],[9],[0,\"GA TEAMS AND TASK FORCE MANAGEMENT\"],[10],[0,\"\\n      \"],[10],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"row\"],[11,\"id\",\"ForceList\"],[9],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"ui raised segment divided very relaxed animated list\"],[9],[0,\"\\n          \"],[7,\"div\"],[11,\"class\",\"item\"],[9],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"content\"],[9],[0,\"\\n              \"],[7,\"div\"],[11,\"class\",\"header\"],[9],[0,\"\\n                TASK FORCE DELTA\\n                \"],[7,\"div\"],[11,\"class\",\"ui teal button\"],[9],[0,\"\\n                  Edit\\n                \"],[10],[0,\"\\n              \"],[10],[0,\"\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"div\"],[11,\"class\",\"item\"],[9],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"content\"],[9],[0,\"\\n              \"],[7,\"div\"],[11,\"class\",\"header\"],[9],[0,\"\\n                Party Planning Committee\\n                \"],[7,\"div\"],[11,\"class\",\"ui right-align teal button\"],[9],[0,\"\\n                  Edit\\n                \"],[10],[0,\"\\n              \"],[10],[0,\"\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"div\"],[11,\"class\",\"item\"],[9],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"content\"],[9],[0,\"\\n              \"],[7,\"div\"],[11,\"class\",\"header\"],[9],[0,\"\\n                Project Management Ideas\\n                \"],[7,\"div\"],[11,\"class\",\"ui right-align teal button\"],[9],[0,\"\\n                  Edit\\n                \"],[10],[0,\"\\n              \"],[10],[0,\"\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"row\"],[9],[0,\"\\n\"],[4,\"link-to\",[\"new-task-force\"],null,{\"statements\":[[0,\"        \"],[7,\"div\"],[11,\"class\",\"ui red button\"],[9],[0,\"\\n          New\\n        \"],[10],[0,\"\\n\"]],\"parameters\":[]},null],[0,\"    \"],[10],[0,\"\\n  \"],[10],[0,\"\\n\"],[10]],\"hasEval\":false}",
     "meta": {
       "moduleName": "aouda-ceams-frontend/templates/components/task-force-management.hbs"
     }
@@ -1214,8 +1215,8 @@
   _exports.default = void 0;
 
   var _default = Ember.HTMLBars.template({
-    "id": "uxTnlATP",
-    "block": "{\"symbols\":[],\"statements\":[[1,[21,\"outlet\"],false]],\"hasEval\":false}",
+    "id": "k4jvjj1n",
+    "block": "{\"symbols\":[],\"statements\":[[1,[21,\"new-task-force\"],false]],\"hasEval\":false}",
     "meta": {
       "moduleName": "aouda-ceams-frontend/templates/new-task-force.hbs"
     }
