@@ -11,6 +11,10 @@ Router.map(function() {
   this.route('home-page', {path: '/'});
   this.route('login');
   this.route('team-detail');
+  this.route('meeting', function() {
+    this.route('view-meeting');
+    this.route('new-meeting');
+  });
 });
 
 export default Router;
