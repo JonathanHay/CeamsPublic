@@ -16,6 +16,14 @@ h1.header {
   /*background-size: cover;*/
   background-color: #502783;
 }
+.team-detail {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.committee-name {
+ margin-top:15px;
+}
 
 .home.page >
 .ui.inverted.vertical.segment h1.header.item {

@@ -10,7 +10,7 @@ Router.map(function() {
   this.route('main-menu');
   this.route('home-page', {path: '/'});
   this.route('login');
-  this.route('ga-task-force', function() {
+  this.route('team-detail', function() {
     this.route('manage-users');
   });
 });
