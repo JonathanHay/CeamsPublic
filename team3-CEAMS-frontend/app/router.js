@@ -11,7 +11,7 @@ Router.map(function() {
   this.route('home-page', {path: '/'});
   this.route('login');
   this.route('committees', function() {
-    this.route('detail', { path: '/team/:id' });
+    this.route('detail');
     this.route('manage-users');
   });
 });
