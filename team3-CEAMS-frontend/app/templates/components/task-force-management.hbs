@@ -2,14 +2,14 @@
   <br><br>
   <div class="six wide column">
       <div class="row">
-        <h1 class="centered" id="title">GA TEAMS AND TASK FORCE MANAGEMENT</h1>
+        <h1 class="centered" id="title">GA COMMITTEES AND TASK FORCE MANAGEMENT</h1>
       </div>
       <div class="row" id="ForceList">
         <div class="ui raised segment divided very relaxed animated list">
           <div class="item">
             <div class="content">
               <div class="header">
-                TASK FORCE DELTA
+                TASK FORCE DELTA 747
                 <div class="ui teal button">
                   View
                 </div>
@@ -37,6 +37,18 @@
             </div>
           </div>
         </div>
+        {{#each this.allCommittees as |committee|}}
+          <div class="item">
+            <div class="content">
+              <div class="header">
+                {{committee.name}}
+                <div class="ui right-align teal button">
+                  View
+                </div>
+              </div>
+            </div>
+          </div>
+        {{/each}}
       </div>
     <div class="row">
       {{#link-to "new-task-force"}}
