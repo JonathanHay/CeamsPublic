@@ -11,6 +11,9 @@ export default Component.extend({
                 $('.meetingInput').prop("readonly", false);
             });
         },
+        closeModal: function(){
+            $('.ui.viewMeeting.modal').modal('hide');
+        },
         openModal: function () {
             /*
                 instead of null, must put in onePost.meetingTitle.... 

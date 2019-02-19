@@ -5,6 +5,9 @@ export default Component.extend({
     DS: service('store'),
 
     actions:{
+        closeModal: function(){
+            $('.ui.newMeeting.modal').modal('hide');
+        },
         openModal: function () {
             this.set('meetingTitle', null);
             this.set('meetingPlace', null);
