@@ -13,4 +13,4 @@ export default DS.Model.extend({
   userAccount: DS.belongsto('user-account'),
   membersAttendingMeeting: DS.hasmany('member-attending-meeting')
 
-})
+});

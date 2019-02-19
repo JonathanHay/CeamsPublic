@@ -76,3 +76,5 @@ typings/
 .fusebox/
 
 node_modules/
+# Build folder
+dist/

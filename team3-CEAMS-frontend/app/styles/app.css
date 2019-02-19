@@ -1,3 +1,12 @@
+/* Site wide styles */
+.content-container {
+  margin-top: 4em;
+}
+
+h1.header {
+  margin-top: 1em;
+}
+
 /*home-page specific style */
 .home.page >
 .ui.inverted.vertical.segment {
@@ -6,6 +15,13 @@
   /*background-repeat: no-repeat;*/
   /*background-size: cover;*/
   background-color: #502783;
+}
+.team-detail {
+  margin-top: 8em;
+}
+
+.committee-name {
+ margin-top:15px;
 }
 
 .home.page >
@@ -192,3 +208,28 @@ footer {
 #createElement{
   margin-top: 100px;
 }
+
+/* ga-task-force/manage-users styles */
+.manage-users .section {
+  margin-top: 1em;
+}
+
+.manage-users .user-container {
+  height: 60vh;
+  margin-top: 3em;
+  border: 1px solid black;
+  padding-top: 1em;
+  overflow-y: scroll;
+}
+
+.manage-users .user-container .item {
+  padding: 1em 0;
+  margin: 5px;
+  padding-left: 10px;
+}
+
+  .manage-users .user-container .item .username {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }

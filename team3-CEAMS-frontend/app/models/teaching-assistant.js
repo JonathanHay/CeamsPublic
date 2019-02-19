@@ -10,4 +10,4 @@ export default DS.Model.extend({
   userGivenRoles: DS.hasmany('user-given-role'),
   userAccount: DS.belongsto('user-account'),
   membersAttendingMeeting: DS.hasmany('member-attending-meeting')
-})
+});
