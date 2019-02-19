@@ -8,4 +8,4 @@ courses: [{type: mongoose.Schema.ObjectId, ref: ('Courses')}]
  }
 );
 var LabTypes = mongoose.model("lab-type", labTypeSchema);
-exports.Model = LabTypes
+exports.Model = LabTypes;

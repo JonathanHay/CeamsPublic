@@ -10,6 +10,9 @@ Router.map(function() {
   this.route('main-menu');
   this.route('home-page', {path: '/'});
   this.route('login');
+  this.route('task-force-management');
+  this.route('committee');
+  this.route('new-task-force');
   this.route('committees', function() {
     this.route('detail');
     this.route('manage-users');

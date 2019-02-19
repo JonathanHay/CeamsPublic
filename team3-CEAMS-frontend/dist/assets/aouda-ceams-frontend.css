@@ -1,0 +1,194 @@
+/*home-page specific style */
+.home.page >
+.ui.inverted.vertical.segment {
+  height: 100vh;
+  /*background-image: url("/assets/images/background.png") ;*/
+  /*background-repeat: no-repeat;*/
+  /*background-size: cover;*/
+  background-color: #502783;
+}
+
+.home.page >
+.ui.inverted.vertical.segment h1.header.item {
+  font-size: 2em;
+}
+
+.home.page >
+.ui.inverted.vertical.segment a.item {
+  font-size: 1.2em;
+}
+
+.home.page >
+.ui.inverted.vertical.segment .ui.text.container {
+  height: 300px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  max-width: 900px !important;
+}
+
+.home.page >
+.ui.inverted.vertical.segment .ui.text.container h1.header {
+  font-size: 3em;
+
+}
+
+.home.page >
+.ui.inverted.vertical.segment .ui.text.container p {
+  font-size: 1.5em;
+  line-height: 1.5;
+
+}
+
+.home.page >
+.ui.inverted.segment .ui.footer.segment {
+  height: 80px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  font-size: 1.2em;
+  color: gray;
+  background-color: transparent;
+
+}
+
+.home.page >
+.ui.inverted.vertical.segment .ui.footer.segment a {
+  color: white;
+}
+
+.home.page >
+.ui.inverted.vertical.segment .ui.massive.borderless.attached.inverted.menu {
+  background-color: transparent;
+}
+
+/* Task Force Management Styles START*/
+  .task.force.management >
+
+/* Task Force Management Styles END*/
+
+/* Main Menu specific style */
+
+.three.wide.column > .ui.vertical.menu,
+.ui.right.sidebar.vertical.menu {
+  height: 520px !important;
+  border-radius: 4px !important;
+}
+
+.three.wide.column > .ui.vertical.menu > a.item,
+.ui.right.sidebar.vertical.menu > a.item {
+  color: #502783;
+}
+
+.three.wide.column > .ui.vertical.menu > a.item.active,
+.ui.right.sidebar.vertical.menu > a.item.active {
+  background-color: #502783;
+  color: white;
+  border: none !important;
+}
+
+.three.wide.column > .ui.vertical.menu > a.item:hover,
+.ui.right.sidebar.vertical.menu > a.item:hover {
+  background-color: #502783;
+  color: white;
+}
+
+.ui.grid > .computer.only.row > .column {
+  margin-top: 4em;
+}
+
+.three.wide.column > .ui.vertical.menu {
+  margin-top: 1.5em;
+}
+
+.ui.right.sidebar.vertical.menu {
+  margin-top: 6em !important;
+}
+
+.tablet.mobile.only.row .ui.container {
+  padding-top: 4em !important;
+}
+
+.ui.fixed.borderless.menu .row > a.header.item {
+  font-size: 1.2em;
+}
+
+.ui.fixed.borderless.menu .ui.vertical.menu {
+  display: none;
+  border: none;
+  box-shadow: none;
+}
+
+.ui.fixed.borderless.menu .ui.vertical.menu > .item {
+  padding-left: 1.428em;
+}
+
+.ui.message {
+  background-color: #ebebeb;
+  box-shadow: none;
+  padding: 5em 4em;
+  margin-top: 2em !important;
+}
+
+.ui.message h1.ui.header {
+  font-size: 4.5em;
+}
+
+.ui.message p.lead {
+  font-size: 1.3em;
+  color: #333333;
+  line-height: 1.4;
+  font-weight: 300;
+}
+
+.ui.footer.basic.segment,
+footer {
+  padding: 0 0 2em 0;
+}
+
+/* Login specific style*/
+.login .ui.grid .column {
+  background-color: #b8b8b8;
+  height: 50%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  max-width: 450px !important;
+}
+
+.login .ui.grid .column .header {
+  color: #502783 !important;
+}
+
+.login .ui.grid .column .error {
+  color: #ca1010;
+}
+
+.login .ui.grid .column .ui.message {
+  padding: 1em ;
+
+}
+
+.login .ui.teal.button {
+  background-color: #502783;
+  color: #FFFFFF;
+  text-shadow: none;
+  background-image: none;
+}
+#title{
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+#ForceList{
+  padding: 10px;
+  margin-bottom: 50px;
+}
+#createElement{
+  margin-top: 100px;
+}

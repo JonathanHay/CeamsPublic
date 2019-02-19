@@ -7,11 +7,6 @@ var instructorSchema = mongoose.Schema(
  hireDate: Date,
  estimatedRetirementDate: Date,
  keyPerformanceIndicator: Double,
- firstName: String,
- lastName: String, 
- email: String, 
- building: String,
- officeNumber: String, 
 
  //userprofile attr
  firstName: String,
