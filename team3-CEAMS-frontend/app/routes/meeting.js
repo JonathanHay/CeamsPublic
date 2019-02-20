@@ -31,7 +31,7 @@ export default Route.extend({
             {
               _id: "hhrtfsdgs",
               firstName: "Billy",
-              lastName: "fetcher",
+              lastName: "Fincher",
               email: "jason.chin@gmail.com",
               building: "ACHUB",
               officeNumber: "32"
@@ -40,16 +40,16 @@ export default Route.extend({
           members: [
             {
               _id: "43tgrarg",
-              firstName: "Jakeo",
-              lastName: "Bakeo",
+              firstName: "Jake",
+              lastName: "Prouse",
               email: "jason.chin@gmail.com",
               building: "ACHUB",
               officeNumber: "32"
             },
             {
               _id: "f43gagaaa",
-              firstName: "Jonathon",
-              lastName: "Lastname",
+              firstName: "Jonathan",
+              lastName: "Hay",
               email: "jason.chin@gmail.com",
               building: "ACHUB",
               officeNumber: "32"
