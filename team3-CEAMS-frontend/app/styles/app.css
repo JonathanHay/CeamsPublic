@@ -233,3 +233,17 @@ footer {
     display: flex;
     align-items: center;
   }
+
+  .modals .scrollME{
+    margin-left: 0 !important;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0 !important;
+    overflow-y: scroll;
+}
+
+.ui.modal .accordion{
+  width:100%;
+}
