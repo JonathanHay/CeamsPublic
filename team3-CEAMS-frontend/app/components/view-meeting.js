@@ -1,9 +1,14 @@
 import Component from '@ember/component';
 import {inject as service} from '@ember/service';
+import { computed } from '@ember/object';
 import $ from 'jquery';
 
 export default Component.extend({
     DS: service('store'),
+
+    modalName: computed(function () {
+        return 'newMeeting' + this.get('ID');
+      }),
 
     actions:{
         edit: function(){
@@ -12,7 +17,7 @@ export default Component.extend({
             });
         },
         closeModal: function(){
-            $('.ui.viewMeeting.modal').modal('hide');
+            $('.ui.' + this.get('modalName') +'.modal').modal('hide');
         },
         openModal: function () {
             /*
@@ -27,7 +32,8 @@ export default Component.extend({
             this.set('otherDetail', null);
             this.set('recommendations', null);
             this.set('decisions', null);
-            $('.ui.viewMeeting.modal').modal({
+            $('.ui.' + this.get('modalName') +'.modal').addClass('scrollME');
+            $('.ui.' + this.get('modalName') +'.modal').modal({
               closable: false,
       
               onDeny: () => {
