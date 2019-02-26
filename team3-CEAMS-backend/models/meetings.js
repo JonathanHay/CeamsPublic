@@ -1,11 +1,15 @@
+//meetings.js
 var mongoose = require('mongoose');
 var meetingsSchema = mongoose.Schema(
-    {   
+    {
         startDateTime: Date,
         endDateTime: Date,
-        memberAttendingMeeting: { type: mongoose.Schema.ObjectId, ref: ('MemberAttendingMeetings') },
-        meetingMinutes: { type: mongoose.Schema.ObjectId, ref: ('MeetingMinutes') }
+        location: String,
+        description: String,
+        minutes:String,  //PDF file name of the meeting minutes
+        outcomes: [{type: mongoose.Schema.ObjectId, ref: ('MeetingOutcomes')}],
+        attendees: [{type: mongoose.Schema.ObjectId, ref: ('CommitteeMemberships')}]
     }
 );
-var Meeting = mongoose.model('meeting', meetingsSchema);
-exports.Model = Meeting;
+var Meetings = mongoose.model('meeting', meetingsSchema);
+exports.Model = Meetings;

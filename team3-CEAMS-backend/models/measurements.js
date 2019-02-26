@@ -1,20 +1,16 @@
 //measurements.js
 var mongoose = require('mongoose');
-var measurementSchema = mongoose.Schema(
-{
-coursesNumber: String,
-courseTitle: String,
-instructorNumber: String,
-instructorName: String,
-weekNumber: Integer,
-
- measuredindicator: [{type: mongoose.Schema.ObjectId, ref: ('MeasuredIndicators')}],
-
- //routes
- academicYear: {type: mongoose.Schema.ObjectId, ref:('AcademicYears')},
- academicTerm: {type: mongoose.Schema.ObjectId, ref: ("AcademicTerms")}
-}
-
+var measurementsSchema = mongoose.Schema(
+    {
+        courseNumber: String,
+        courseTitle: String,
+        instructorNumber: String,
+        instructorName: String,
+        weekNumber: Number,
+        academicTerm: {type: mongoose.Schema.ObjectId, ref: ('AcademicTerms')},
+        academicYear: {type: mongoose.Schema.ObjectId, ref: ('AcademicYears')},
+        indicators: [{type: mongoose.Schema.ObjectId, ref: ('MeasuredIndicators')}]
+    }
 );
-var Measurements = mongoose.model("measurement", measurementSchema);
-exports.Model = Measurements
+var Measurements = mongoose.model('measurement', measurementsSchema);
+exports.Model = Measurements;
