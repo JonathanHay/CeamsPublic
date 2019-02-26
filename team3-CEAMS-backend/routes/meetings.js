@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var Meetings = require('../models/meetings');
+var MeetingOutcomes = require('../models/meetingOutcomes');
 
 /* GET all */
 router.get('/', function(req, res) {
@@ -33,10 +34,7 @@ router.put('/:id', function(req, res) {
   Meetings.Model.findById(req.params.id, function (err, meeting) {
     if (err) res.status(500).json(err);
     else {
-        meeting.startDateTime = req.body.meeting.startDateTime;
-        meeting.endDateTime = req.body.meeting.endDateTime;
-        meeting.memberAttendingMeeting = req.body.meeting.memberAttendingMeeting;
-        meeting.meetingMinutes = req.body.meeting.meetingMinutes;
+        meeting = req.body.meeting;
         meeting.save(function (err) {
             if (err) res.status(500).json(err);
             else {
@@ -53,6 +51,11 @@ router.delete('/:id', function(req, res) {
     function (err, deleted) {
       if (err) res.status(500).json(err);
       else {
+        MeetingOutcomes.Model.deleteMany({meetings: { $eq: req.params.id}}, function (err){
+          if(err){
+            res.status(500).json(err);
+          }
+        })
         res.json({meeting: deleted});
       }
     }
