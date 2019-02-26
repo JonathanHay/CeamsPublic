@@ -591,7 +591,7 @@ define("aouda-ceams-frontend/tests/lint/templates.template.lint-test", [], funct
   });
   QUnit.test('aouda-ceams-frontend/templates/components/main-menu.hbs', function (assert) {
     assert.expect(1);
-    assert.ok(true, 'aouda-ceams-frontend/templates/components/main-menu.hbs should pass TemplateLint.\n\n');
+    assert.ok(false, 'aouda-ceams-frontend/templates/components/main-menu.hbs should pass TemplateLint.\n\naouda-ceams-frontend/templates/components/main-menu.hbs\n  15:59  error  Incorrect indentation for `a` beginning at L14:C10. Expected `</a>` ending at L15:C59 to be at an indentation of 10 but was found at 55.  block-indentation\n  15:27  error  Incorrect indentation for `Semantic-UI/sidebar examples` beginning at L15:C27. Expected `Semantic-UI/sidebar examples` to be at an indentation of 12 but was found at 27.  block-indentation\n  149:61  error  Incorrect indentation for `a` beginning at L148:C12. Expected `</a>` ending at L149:C61 to be at an indentation of 12 but was found at 57.  block-indentation\n  149:29  error  Incorrect indentation for `Semantic-UI/sidebar examples` beginning at L149:C29. Expected `Semantic-UI/sidebar examples` to be at an indentation of 14 but was found at 29.  block-indentation\n  280:2  error  Incorrect indentation for `<div>` beginning at L280:C2. Expected `<div>` to be at an indentation of 4 but was found at 2.  block-indentation\n');
   });
   QUnit.test('aouda-ceams-frontend/templates/components/meeting-component.hbs', function (assert) {
     assert.expect(1);
