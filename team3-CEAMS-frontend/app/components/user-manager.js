@@ -11,13 +11,13 @@ export default Component.extend({
 
   allUsers: computed('users.allUsers', 'users.members', 'allUsersFilter', function() {
     return this.users.allUsers.filter((u) => {
-      return (u.firstName + u.lastName).startsWith(this.get('allUsersFilter'));
+      return (u.firstName + " " + u.lastName).startsWith(this.get('allUsersFilter'));
     });
   }),
   
   members: computed('users.members', 'users.allUsers', 'membersFilter', function() {
     return this.users.members.filter((u) => {
-      return (u.firstName + u.lastName).startsWith(this.get('membersFilter'));
+      return (u.firstName + " " + u.lastName).startsWith(this.get('membersFilter'));
     });
   }),
 
@@ -33,6 +33,8 @@ export default Component.extend({
         return user._id != u._id;
       }));
       this.get('users.members').pushObject(user);
+      this.set('allUsersFilter', '');
+      this.set('membersFilter', '');
     },
     remove(user) {
       let key = `changes.${user._id}`;
