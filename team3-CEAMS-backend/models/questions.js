@@ -1,13 +1,17 @@
+//questions.js
 var mongoose = require('mongoose');
 var questionsSchema = mongoose.Schema(
-    {   
+    {
         questionCode: String,
         questionText: String,
         questionOrder: Number,
-        measuredIndicator: { type: mongoose.Schema.ObjectId, ref: ('MeasuredIndicator') },
-        test: { type: mongoose.Schema.ObjectId, ref: ('Test') },
-        questionGrade: [{ type: mongoose.Schema.ObjectId, ref: ('QuestionGrade') }]
+        goodAnswerSample: String,
+        averageAnswerSample: String,
+        poorAnswerSample: String,
+        measuredIndicator: {type: mongoose.Schema.ObjectId, ref: ('MeasuredIndicators')},
+        test: {type: mongoose.Schema.ObjectId, ref: ('Tests')},
+        questionGrades: [{type: mongoose.Schema.ObjectId, ref: ('QuestionGrades')}]
     }
 );
-var Question = mongoose.model('question', questionsSchema);
-exports.Model = Question;    
+var Questions = mongoose.model('question', questionsSchema);
+exports.Model = Questions;

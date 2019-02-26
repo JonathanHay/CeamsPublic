@@ -1,13 +1,13 @@
 //semesters.js
-var mongoose        = require('mongoose');
+var mongoose = require('mongoose');
 var semestersSchema = mongoose.Schema(
     {
-        courseContact: String,
-        course: {type: mongoose.Schema.ObjectId, ref: ('Courses')},
-        year: {type: mongoose.Schema.ObjectId, ref: ('AcademicYears')},
+        courseContact: Boolean,
         term: {type: mongoose.Schema.ObjectId, ref: ('AcademicTerms')},
+        year: {type: mongoose.Schema.ObjectId, ref: ('AcademicYears')},
+        course: {type: mongoose.Schema.ObjectId, ref: ('Courses')},
         instructor: {type: mongoose.Schema.ObjectId, ref: ('Instructors')}
     }
-)
+);
 var Semesters = mongoose.model('semester', semestersSchema);
-exports.model = Semesters;
+exports.Model = Semesters;

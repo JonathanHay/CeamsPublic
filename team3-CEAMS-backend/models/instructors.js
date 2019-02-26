@@ -1,32 +1,28 @@
-//instructors.js
+//instructor.js
 var mongoose = require('mongoose');
-var instructorSchema = mongoose.Schema(
- {
- number: String,
- CCMemberStatus: Boolean,
- hireDate: Date,
- estimatedRetirementDate: Date,
- keyPerformanceIndicator: Double,
+var instructorsSchema = mongoose.Schema(
+    {
+        firstName: String,
+        lastName: String,
+        email: String,
+        building: String,
+        officeNumber: String,
+        number: String,
+        ccMemberStatus: Boolean,
+        hireDate: Date,
+        estimatedRetirementDate: Date,
+        keyPerformanceIndicator: Number,
+        gender: {type: mongoose.Schema.ObjectId, ref: ('Genders')},
+        evaluationMethod: {type: mongoose.Schema.ObjectId, ref: ('UserEvaluationMethods')},
+        programs: [{type: mongoose.Schema.ObjectId, ref: ('Programs')}],
+        licenceProviders: [{type: mongoose.Schema.ObjectId, ref: ('LicenceProviders')}],
+        degreeProviders: [{type: mongoose.Schema.ObjectId, ref: ('DegreeProviders')}],
+        rank: {type: mongoose.Schema.ObjectId, ref: ('AcademicRanks')},
+        semesters: [{type: mongoose.Schema.ObjectId, ref: ('Semesters')}],
+        memberships: [{type: mongoose.Schema.ObjectId, ref: ('CommitteeMemberships')}],
+        userShadow: {type: mongoose.Schema.ObjectId, ref: ('UserAccounts')}
 
- //userprofile attr
- firstName: String,
- lastName: String,
- email: String,
- building: String,
- officeNumber: String,
-
- semesters: [{type: mongoose.Schema.ObjectId, ref:('Semesters')}],
- staff: [{type: mongoose.Schema.ObjectId, ref:('Staff')}],
- userEvaluationMethod: {type: mongoose.Schema.ObjectId, ref:('UserEvaluationMethods')},
- teachingAssistants: [{type: mongoose.Schema.ObjectId, ref:('TeachingAssistants')}],
- programs: [{type: mongoose.Schema.ObjectId, ref:('Programs')}],
- 
- //routes
- licenseStatus: [{type: mongoose.Schema.ObjectId, ref:('LicenseStatus')}],
- academicRank: {type: mongoose.Schema.ObjectId, ref:('AcademicRanks')},
- academicDegrees: [{type: mongoose.Schema.ObjectId, ref:('AcademicDegrees')}],
- }
-
+    }
 );
-var Instructors = mongoose.model("instructors", instructorSchema);
-exports.Model = Instructors
+var Instructors = mongoose.model('instructor', instructorsSchema);
+exports.Model = Instructors;
