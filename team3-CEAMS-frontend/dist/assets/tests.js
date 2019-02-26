@@ -420,6 +420,10 @@ define("aouda-ceams-frontend/tests/lint/app.lint-test", [], function () {
     assert.expect(1);
     assert.ok(true, 'app.js should pass ESLint\n\n');
   });
+  QUnit.test('components/committees.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'components/committees.js should pass ESLint\n\n');
+  });
   QUnit.test('components/committees/manage-users.js', function (assert) {
     assert.expect(1);
     assert.ok(true, 'components/committees/manage-users.js should pass ESLint\n\n');
@@ -459,10 +463,6 @@ define("aouda-ceams-frontend/tests/lint/app.lint-test", [], function () {
   QUnit.test('components/new-task-force.js', function (assert) {
     assert.expect(1);
     assert.ok(true, 'components/new-task-force.js should pass ESLint\n\n');
-  });
-  QUnit.test('components/task-force-management.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'components/task-force-management.js should pass ESLint\n\n');
   });
   QUnit.test('components/user-manager.js', function (assert) {
     assert.expect(1);
@@ -512,6 +512,10 @@ define("aouda-ceams-frontend/tests/lint/app.lint-test", [], function () {
     assert.expect(1);
     assert.ok(true, 'router.js should pass ESLint\n\n');
   });
+  QUnit.test('routes/committees.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'routes/committees.js should pass ESLint\n\n');
+  });
   QUnit.test('routes/committees/detail.js', function (assert) {
     assert.expect(1);
     assert.ok(true, 'routes/committees/detail.js should pass ESLint\n\n');
@@ -544,10 +548,6 @@ define("aouda-ceams-frontend/tests/lint/app.lint-test", [], function () {
     assert.expect(1);
     assert.ok(true, 'routes/new-task-force.js should pass ESLint\n\n');
   });
-  QUnit.test('routes/task-force-management.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'routes/task-force-management.js should pass ESLint\n\n');
-  });
   QUnit.test('serializers/application.js', function (assert) {
     assert.expect(1);
     assert.ok(true, 'serializers/application.js should pass ESLint\n\n');
@@ -561,6 +561,10 @@ define("aouda-ceams-frontend/tests/lint/templates.template.lint-test", [], funct
     assert.expect(1);
     assert.ok(true, 'aouda-ceams-frontend/templates/application.hbs should pass TemplateLint.\n\n');
   });
+  QUnit.test('aouda-ceams-frontend/templates/committees.hbs', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'aouda-ceams-frontend/templates/committees.hbs should pass TemplateLint.\n\n');
+  });
   QUnit.test('aouda-ceams-frontend/templates/committees/detail.hbs', function (assert) {
     assert.expect(1);
     assert.ok(true, 'aouda-ceams-frontend/templates/committees/detail.hbs should pass TemplateLint.\n\n');
@@ -568,6 +572,10 @@ define("aouda-ceams-frontend/tests/lint/templates.template.lint-test", [], funct
   QUnit.test('aouda-ceams-frontend/templates/committees/manage-users.hbs', function (assert) {
     assert.expect(1);
     assert.ok(true, 'aouda-ceams-frontend/templates/committees/manage-users.hbs should pass TemplateLint.\n\n');
+  });
+  QUnit.test('aouda-ceams-frontend/templates/components/committees.hbs', function (assert) {
+    assert.expect(1);
+    assert.ok(false, 'aouda-ceams-frontend/templates/components/committees.hbs should pass TemplateLint.\n\naouda-ceams-frontend/templates/components/committees.hbs\n  4:6  error  Incorrect indentation for `<div>` beginning at L4:C6. Expected `<div>` to be at an indentation of 4 but was found at 6.  block-indentation\n  7:6  error  Incorrect indentation for `<div>` beginning at L7:C6. Expected `<div>` to be at an indentation of 4 but was found at 6.  block-indentation\n');
   });
   QUnit.test('aouda-ceams-frontend/templates/components/committees/manage-users.hbs', function (assert) {
     assert.expect(1);
@@ -591,7 +599,7 @@ define("aouda-ceams-frontend/tests/lint/templates.template.lint-test", [], funct
   });
   QUnit.test('aouda-ceams-frontend/templates/components/main-menu.hbs', function (assert) {
     assert.expect(1);
-    assert.ok(true, 'aouda-ceams-frontend/templates/components/main-menu.hbs should pass TemplateLint.\n\n');
+    assert.ok(false, 'aouda-ceams-frontend/templates/components/main-menu.hbs should pass TemplateLint.\n\naouda-ceams-frontend/templates/components/main-menu.hbs\n  15:59  error  Incorrect indentation for `a` beginning at L14:C10. Expected `</a>` ending at L15:C59 to be at an indentation of 10 but was found at 55.  block-indentation\n  15:27  error  Incorrect indentation for `Semantic-UI/sidebar examples` beginning at L15:C27. Expected `Semantic-UI/sidebar examples` to be at an indentation of 12 but was found at 27.  block-indentation\n  149:61  error  Incorrect indentation for `a` beginning at L148:C12. Expected `</a>` ending at L149:C61 to be at an indentation of 12 but was found at 57.  block-indentation\n  149:29  error  Incorrect indentation for `Semantic-UI/sidebar examples` beginning at L149:C29. Expected `Semantic-UI/sidebar examples` to be at an indentation of 14 but was found at 29.  block-indentation\n  280:2  error  Incorrect indentation for `<div>` beginning at L280:C2. Expected `<div>` to be at an indentation of 4 but was found at 2.  block-indentation\n');
   });
   QUnit.test('aouda-ceams-frontend/templates/components/meeting-component.hbs', function (assert) {
     assert.expect(1);
@@ -608,10 +616,6 @@ define("aouda-ceams-frontend/tests/lint/templates.template.lint-test", [], funct
   QUnit.test('aouda-ceams-frontend/templates/components/new-task-force.hbs', function (assert) {
     assert.expect(1);
     assert.ok(false, 'aouda-ceams-frontend/templates/components/new-task-force.hbs should pass TemplateLint.\n\naouda-ceams-frontend/templates/components/new-task-force.hbs\n  2:0  error  Incorrect indentation for `<div>` beginning at L2:C0. Expected `<div>` to be at an indentation of 2 but was found at 0.  block-indentation\n');
-  });
-  QUnit.test('aouda-ceams-frontend/templates/components/task-force-management.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(false, 'aouda-ceams-frontend/templates/components/task-force-management.hbs should pass TemplateLint.\n\naouda-ceams-frontend/templates/components/task-force-management.hbs\n  4:6  error  Incorrect indentation for `<div>` beginning at L4:C6. Expected `<div>` to be at an indentation of 4 but was found at 6.  block-indentation\n  7:6  error  Incorrect indentation for `<div>` beginning at L7:C6. Expected `<div>` to be at an indentation of 4 but was found at 6.  block-indentation\n');
   });
   QUnit.test('aouda-ceams-frontend/templates/components/user-manager.hbs', function (assert) {
     assert.expect(1);
@@ -644,10 +648,6 @@ define("aouda-ceams-frontend/tests/lint/templates.template.lint-test", [], funct
   QUnit.test('aouda-ceams-frontend/templates/new-task-force.hbs', function (assert) {
     assert.expect(1);
     assert.ok(true, 'aouda-ceams-frontend/templates/new-task-force.hbs should pass TemplateLint.\n\n');
-  });
-  QUnit.test('aouda-ceams-frontend/templates/task-force-management.hbs', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'aouda-ceams-frontend/templates/task-force-management.hbs should pass TemplateLint.\n\n');
   });
 });
 define("aouda-ceams-frontend/tests/lint/tests.lint-test", [], function () {
