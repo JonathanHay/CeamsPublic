@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var DelieverableTypes = require('../models/deliverable-types');
+var DelieverableTypes = require('../models/deliverableTypes');
 
 /* GET all */
 router.get('/', function(req, res) {

@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var AcademicTerms = require('../models/academic-terms');
+var AcademicTerms = require('../models/academicTerms');
 
 
 /* GET all */
