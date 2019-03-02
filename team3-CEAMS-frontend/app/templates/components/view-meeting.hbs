@@ -4,46 +4,46 @@
 
 {{#ui-modal name=modalName class=modalName }}
     <div class="content">
-            <label>Meeting Location</label>
-            <br>
-            <div class="ui labeled input">
+        <label>Meeting Location</label>
+        <br>
+        <div class="ui labeled input">
             {{input value=location type="text" class='meetingInput'}}
-            </div>
-            <br>
-            <label>Meeting Description</label>
-            <br>
-            <div class="ui labeled input">
+        </div>
+        <br>
+        <label>Meeting Description</label>
+        <br>
+        <div class="ui labeled input">
             {{input value=description type="text" class='meetingInput'}}
-            </div>
-            <br>
-            <label>Start Time</label>
-            <br>
-            <div class="ui labeled input">
+        </div>
+        <br>
+        <label>Start Time</label>
+        <br>
+        <div class="ui labeled input">
             {{input value=startDateTime type="text" class='meetingInput'}}
-            </div>
-            <br>
-            <label>End Time</label>
-            <br>
-            <div class="ui labeled input">
+        </div>
+        <br>
+        <label>End Time</label>
+        <br>
+        <div class="ui labeled input">
             {{input value=endDateTime type="text" class='meetingInput'}}
+        </div>
+        <br>
+        {{#ui-accordion class="styled"}}
+            <div class="title">
+                Manage Meeting Outcomes
             </div>
-            <br>
-            {{#ui-accordion class="styled"}}
-                <div class="title">
-                    Manage Meeting Outcomes
-                </div>
-                <div class="content">
-                    {{meeting-outcomes outcomes=meetingData.meetingOutcomes}}
-                </div>
-            {{/ui-accordion}}
-            {{#ui-accordion class="styled"}}
-                <div class="title">
-                    Manage Users
-                </div>
-                <div class="content">
-                    {{user-manager users=users submit=(action "userSubmit")}}
-                </div>
-            {{/ui-accordion}}
+            <div class="content">
+                {{meeting-outcomes outcomes=meetingData.meetingOutcomes}}
+            </div>
+        {{/ui-accordion}}
+        {{#ui-accordion class="styled"}}
+            <div class="title">
+                Manage Users
+            </div>
+            <div class="content">
+                {{user-manager users=users submit=(action "userSubmit")}}
+            </div>
+        {{/ui-accordion}}
     </div>
     <div class="actions">
     <div class="ui primary button" {{action "update"}}>
