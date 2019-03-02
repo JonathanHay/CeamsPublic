@@ -12,7 +12,6 @@ Router.map(function () {
   this.route('login');
   this.route('team-detail');
   this.route('meeting');
-  this.route('task-force-management');
   this.route('committee');
   this.route('new-task-force');
   this.route('committees', function () {
