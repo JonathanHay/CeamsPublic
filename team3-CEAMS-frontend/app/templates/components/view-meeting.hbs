@@ -3,37 +3,17 @@
 </div>
 
 {{#ui-modal name=modalName class=modalName }}
-    <div class="header">
-         <label>Meeting Title</label>
-    </div>
-
     <div class="content">
-            <div class="ui labeled input">
-            {{input value=meetingTitle type="text" class='meetingInput'}}
-            </div>
-            <br>
-            <label>Meeting Place</label>
+            <label>Meeting Location</label>
             <br>
             <div class="ui labeled input">
-            {{input value=meetingPlace type="text" class='meetingInput'}}
-            </div>
-            <br>
-            <label>Meeting Objective</label>
-            <br>
-            <div class="ui labeled input">
-            {{input value=meetingObjective type="text" class='meetingInput'}}
+            {{input value=location type="text" class='meetingInput'}}
             </div>
             <br>
             <label>Meeting Description</label>
             <br>
             <div class="ui labeled input">
-            {{input value=meetingDescription type="text" class='meetingInput'}}
-            </div>
-            <br>
-            <label>Other Details</label>
-            <br>
-            <div class="ui labeled input">
-            {{input value=otherDetails type="text" class='meetingInput'}}
+            {{input value=description type="text" class='meetingInput'}}
             </div>
             <br>
             <label>Start Time</label>
@@ -48,19 +28,12 @@
             {{input value=endDateTime type="text" class='meetingInput'}}
             </div>
             <br>
-            <h3>Recommendations</h3>
-            {{textarea value=recommendations type="text" class='meetingInput'}}
-            <br>
-            <h3>Decisions</h3>
-            {{textarea value=decisions type="text" class='meetingInput'}}
-            <br>
-            <br>
             {{#ui-accordion class="styled"}}
                 <div class="title">
                     Manage Users
                 </div>
                 <div class="content">
-                    {{user-manager users=users submit=processChanges}}
+                    {{user-manager users=users submit=(action "userSubmit")}}
                 </div>
             {{/ui-accordion}}
     </div>
