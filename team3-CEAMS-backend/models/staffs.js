@@ -14,5 +14,5 @@ var staffsSchema = mongoose.Schema(
         userShadow: {type: mongoose.Schema.ObjectId, ref: ('UserAccounts')}
     }
 );
-var Staffs = mongoose.model('staff', staffsSchema);
+var Staffs = mongoose.model('staff', staffsSchema, 'staff');
 exports.Model = Staffs;

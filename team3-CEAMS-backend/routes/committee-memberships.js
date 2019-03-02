@@ -55,6 +55,7 @@ router.post('/', function (req, res) {
                 } else {
                     res.status(500).json("No membership found");
                 }
+                console.log(theID);
                 model.Model.findById(theID, function (err, user) {
                     if (err) {
                         res.status(500).json(err);
@@ -81,7 +82,14 @@ router.put('/:id', function (req, res) {
     CommitteeMemberships.Model.findById(req.params.id, function (err, committeeMembership) {
         if (err) res.status(500).json(err);
         else {
-            committeeMembership = req.body.committeeMembership;
+            committeeMembership.participationStartDate = req.body.committeeMembership.participationStartDate;
+            committeeMembership.participationEndDate = req.body.committeeMembership.participationEndDate;
+            committeeMembership.role = req.body.committeeMembership.role;
+            committeeMembership.meetings = req.body.committeeMembership.meetings;
+            committeeMembership.committee = req.body.committeeMembership.committee;
+            committeeMembership.instructorMember = req.body.committeeMembership.instructorMember;
+            committeeMembership.staffMember = req.body.committeeMembership.staffMember;
+            committeeMembership.teachingAssistantMember = req.body.committeeMembership.teachingAssistantMember;
             committeeMembership.save(function (err) {
                 if (err) res.status(500).json(err);
                 else {
