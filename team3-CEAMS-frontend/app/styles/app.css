@@ -81,6 +81,10 @@ h1.header {
   background-color: transparent;
 }
 
+/* Task Force Management Styles START*/
+  .task.force.management >
+
+/* Task Force Management Styles END*/
 
 /* Main Menu specific style */
 
@@ -193,6 +197,17 @@ footer {
   text-shadow: none;
   background-image: none;
 }
+#title{
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+#ForceList{
+  padding: 10px;
+  margin-bottom: 50px;
+}
+#createElement{
+  margin-top: 100px;
+}
 
 /* ga-task-force/manage-users styles */
 .manage-users .section {
@@ -218,3 +233,21 @@ footer {
     display: flex;
     align-items: center;
   }
+
+  .modals .scrollME{
+    margin-left: 0 !important;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0 !important;
+    overflow-y: scroll;
+}
+
+.ui.modal .accordion{
+  width:100%;
+}
+
+.committees-list {
+  margin-top: 30px;
+}
