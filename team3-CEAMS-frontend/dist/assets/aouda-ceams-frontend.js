@@ -1504,7 +1504,20 @@
   });
   _exports.default = void 0;
 
-  var _default = Ember.Route.extend({});
+  var _default = Ember.Route.extend({
+    model() {
+      return {
+        allCommittees: [{
+          _id: "wiofvnewoi",
+          name: "Task Force 1"
+        }, {
+          _id: "asghfddsf",
+          name: "Yeet"
+        }]
+      };
+    }
+
+  });
 
   _exports.default = _default;
 });
@@ -1778,8 +1791,13 @@
   _exports.default = void 0;
 
   var _default = Ember.HTMLBars.template({
+<<<<<<< Updated upstream
     "id": "sIX7eOQ8",
     "block": "{\"symbols\":[\"committee\"],\"statements\":[[7,\"div\"],[11,\"class\",\"content-container manage-forces\"],[9],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"ui middle aligned center aligned grid\"],[9],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"six wide column\"],[9],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"row\"],[9],[0,\"\\n        \"],[7,\"h1\"],[11,\"class\",\"centered\"],[11,\"id\",\"title\"],[9],[0,\"GA COMMITTEES AND TASK FORCE MANAGEMENT\"],[10],[0,\"\\n      \"],[10],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"row\"],[11,\"id\",\"ForceList\"],[9],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"ui raised segment divided very relaxed animated list\"],[9],[0,\"\\n          \"],[7,\"div\"],[11,\"class\",\"item\"],[9],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"content\"],[9],[0,\"\\n              \"],[7,\"div\"],[11,\"class\",\"header\"],[9],[0,\"\\n                TASK FORCE DELTA 747\\n\"],[4,\"link-to\",[\"committees.detail\"],null,{\"statements\":[[0,\"                \"],[7,\"div\"],[11,\"class\",\"ui right-align teal button\"],[9],[0,\"\\n                  View\\n                \"],[10],[0,\"\\n\"]],\"parameters\":[]},null],[0,\"              \"],[10],[0,\"\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"div\"],[11,\"class\",\"item\"],[9],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"content\"],[9],[0,\"\\n              \"],[7,\"div\"],[11,\"class\",\"header\"],[9],[0,\"\\n                Party Planning Committee\\n\"],[4,\"link-to\",[\"committees.detail\"],null,{\"statements\":[[0,\"                \"],[7,\"div\"],[11,\"class\",\"ui right-align teal button\"],[9],[0,\"\\n                  View\\n                \"],[10],[0,\"\\n\"]],\"parameters\":[]},null],[0,\"              \"],[10],[0,\"\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n          \"],[7,\"div\"],[11,\"class\",\"item\"],[9],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"content\"],[9],[0,\"\\n              \"],[7,\"div\"],[11,\"class\",\"header\"],[9],[0,\"\\n                Project Management Ideas\\n\"],[4,\"link-to\",[\"committees.detail\"],null,{\"statements\":[[0,\"                \"],[7,\"div\"],[11,\"class\",\"ui right-align teal button\"],[9],[0,\"\\n                  View\\n                \"],[10],[0,\"\\n\"]],\"parameters\":[]},null],[0,\"              \"],[10],[0,\"\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n\"],[4,\"each\",[[22,0,[\"allCommittees\"]]],null,{\"statements\":[[0,\"        \"],[7,\"div\"],[11,\"class\",\"item\"],[9],[0,\"\\n          \"],[7,\"div\"],[11,\"class\",\"content\"],[9],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"header\"],[9],[0,\"\\n              \"],[1,[22,1,[\"name\"]],false],[0,\"\\n\"],[4,\"link-to\",[\"committees.detail\"],null,{\"statements\":[[0,\"              \"],[7,\"div\"],[11,\"class\",\"ui right-align teal button\"],[9],[0,\"\\n                View\\n              \"],[10],[0,\"\\n\"]],\"parameters\":[]},null],[0,\"            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n\"]],\"parameters\":[1]},null],[0,\"      \"],[10],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"row\"],[9],[0,\"\\n\"],[4,\"link-to\",[\"new-task-force\"],null,{\"statements\":[[0,\"        \"],[7,\"div\"],[11,\"class\",\"ui red button\"],[9],[0,\"\\n          New\\n        \"],[10],[0,\"\\n\"]],\"parameters\":[]},null],[0,\"      \"],[10],[0,\"\\n    \"],[10],[0,\"\\n  \"],[10],[0,\"\\n\"],[10]],\"hasEval\":false}",
+=======
+    "id": "+PA4k2RF",
+    "block": "{\"symbols\":[\"committee\"],\"statements\":[[7,\"div\"],[11,\"class\",\"ui middle aligned center aligned grid\"],[9],[0,\"\\n  \"],[7,\"br\"],[9],[10],[7,\"br\"],[9],[10],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"six wide column\"],[9],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"row\"],[9],[0,\"\\n      \"],[7,\"h1\"],[11,\"class\",\"centered\"],[11,\"id\",\"title\"],[9],[0,\"GA COMMITTEES AND TASK FORCE MANAGEMENT\"],[10],[0,\"\\n    \"],[10],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"row\"],[11,\"id\",\"ForceList\"],[9],[0,\"\\n      \"],[7,\"div\"],[11,\"class\",\"ui raised segment divided very relaxed animated list\"],[9],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"item\"],[9],[0,\"\\n          \"],[7,\"div\"],[11,\"class\",\"content\"],[9],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"header\"],[9],[0,\"\\n              TASK FORCE DELTA 747\\n              \"],[7,\"div\"],[11,\"class\",\"ui teal button\"],[9],[0,\"\\n                View\\n              \"],[10],[0,\"\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"item\"],[9],[0,\"\\n          \"],[7,\"div\"],[11,\"class\",\"content\"],[9],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"header\"],[9],[0,\"\\n              Party Planning Committee\\n              \"],[7,\"div\"],[11,\"class\",\"ui right-align teal button\"],[9],[0,\"\\n                View\\n              \"],[10],[0,\"\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"item\"],[9],[0,\"\\n          \"],[7,\"div\"],[11,\"class\",\"content\"],[9],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"header\"],[9],[0,\"\\n              Project Management Ideas\\n              \"],[7,\"div\"],[11,\"class\",\"ui right-align teal button\"],[9],[0,\"\\n                View\\n              \"],[10],[0,\"\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n\"],[4,\"each\",[[22,0,[\"allCommittees\"]]],null,{\"statements\":[[0,\"      \"],[7,\"div\"],[11,\"class\",\"item\"],[9],[0,\"\\n        \"],[7,\"div\"],[11,\"class\",\"content\"],[9],[0,\"\\n          \"],[7,\"div\"],[11,\"class\",\"header\"],[9],[0,\"\\n            \"],[1,[22,1,[\"name\"]],false],[0,\"\\n            \"],[7,\"div\"],[11,\"class\",\"ui right-align teal button\"],[9],[0,\"\\n              View\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n\"]],\"parameters\":[1]},null],[0,\"    \"],[10],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"row\"],[9],[0,\"\\n\"],[4,\"link-to\",[\"new-task-force\"],null,{\"statements\":[[0,\"      \"],[7,\"div\"],[11,\"class\",\"ui red button\"],[9],[0,\"\\n        New\\n      \"],[10],[0,\"\\n\"]],\"parameters\":[]},null],[0,\"    \"],[10],[0,\"\\n  \"],[10],[0,\"\\n\"],[10]],\"hasEval\":false}",
+>>>>>>> Stashed changes
     "meta": {
       "moduleName": "aouda-ceams-frontend/templates/components/task-force-management.hbs"
     }
@@ -1972,7 +1990,7 @@ catch(err) {
 
 ;
           if (!runningTests) {
-            require("aouda-ceams-frontend/app")["default"].create({"name":"aouda-ceams-frontend","version":"0.0.0+41a80363"});
+            require("aouda-ceams-frontend/app")["default"].create({"name":"aouda-ceams-frontend","version":"0.0.0+9a9726c4"});
           }
         
 //# sourceMappingURL=aouda-ceams-frontend.map

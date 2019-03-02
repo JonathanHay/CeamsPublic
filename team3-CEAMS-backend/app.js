@@ -3,7 +3,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/CEAMS', { useNewUrlParser: true });
+mongoose.connect('mongodb://dbUser:dbpassw0rd@ds039880.mlab.com:39880/ceams-db', { useNewUrlParser: true });
 
 var app = express();
 
