@@ -15,7 +15,7 @@ export default Component.extend({
             console.log(changes);
         },
         create: function(){
-            var newMeeting = this.get('DS').createRecord('meeting-minutes', {
+            var newMeeting = this.get('DS').createRecord('meeting', {
                 location: this.get('location'),
                 description: this.get('description'),
                 startDateTime: this.get('startDateTime'),
@@ -24,11 +24,6 @@ export default Component.extend({
 
             newMeeting.save().then(() => {
                 return true;
-            });
-        },
-        edit: function(){
-            $('#editBtn').click(function() {
-                $('.meetingInput').prop("readonly", false);
             });
         },
         closeModal: function(){
