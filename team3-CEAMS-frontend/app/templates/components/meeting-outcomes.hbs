@@ -1,0 +1,41 @@
+<div class="content">
+    <label>Title</label>
+    <div class="ui labeled input">
+        {{input value=title type="text" class='meetingInput'}}
+    </div>
+    <br><br>
+    <label>Description</label>
+    <div class="ui labeled input">
+        {{input value=resultDescription type="text" class='meetingInput'}}
+    </div>
+    <br><br>
+    <label>Recommendations</label>
+    <div class="ui labeled input">
+        {{input value=recommendations type="text" class='meetingInput'}}
+    </div>
+    <br><br>
+    <label>Decisions</label>
+    <div class="ui labeled input">
+        {{input value=decision type="text" class='meetingInput'}}
+    </div>
+</div>
+<div class="ui red button" {{action 'addtoTable'}}>
+    Add
+</div>
+<table id="outcomesTable" class="ui celled table" style="width:100%">
+    <thead>
+        <tr>
+            <th>Outcome Title</th>
+            <th>Description</th>
+            <th>Recommendations</th>
+            <th>Decision</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            {{#each outcomes as |outcome|}}
+                <td>{{outcome.title}}</td>
+            {{/each}}
+        </tr>
+    </tbody>
+</table>

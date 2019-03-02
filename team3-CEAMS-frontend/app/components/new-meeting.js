@@ -5,8 +5,8 @@ export default Component.extend({
     DS: service('store'),
 
     actions:{
-        create: function(){
-            var newMeeting = this.get('DS').createRecord('meeting-minutes', {
+        update: function(){
+            var newMeeting = this.get('DS').createRecord('meeting', {
                 location: this.get('location'),
                 description: this.get('description'),
                 startDateTime: this.get('startDateTime'),

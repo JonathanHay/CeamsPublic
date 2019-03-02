@@ -30,6 +30,14 @@
             <br>
             {{#ui-accordion class="styled"}}
                 <div class="title">
+                    Manage Meeting Outcomes
+                </div>
+                <div class="content">
+                    {{meeting-outcomes outcomes=meetingData.meetingOutcomes}}
+                </div>
+            {{/ui-accordion}}
+            {{#ui-accordion class="styled"}}
+                <div class="title">
                     Manage Users
                 </div>
                 <div class="content">
@@ -37,17 +45,13 @@
                 </div>
             {{/ui-accordion}}
     </div>
-    <div class="description">
-        
+    <div class="actions">
+    <div class="ui primary button" {{action "update"}}>
+        Update
     </div>
-
-      <div class="actions">
-        <div class="ui primary button" {{action "update"}}>
-            Update
-        </div>
-        <div class="ui red button" {{action 'closeModal'}}>
-            Close
-        </div>
-      </div>
+    <div class="ui red button" {{action 'closeModal'}}>
+        Close
+    </div>
+    </div>
 
 {{/ui-modal}}
