@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var ComplimentaryStudiesTypes = require('../models/complimentary-studies-types');
+var ComplimentaryStudiesTypes = require('../models/complimentaryStudiesTypes');
 
 /* GET all */
 router.get('/', function(req, res) {
