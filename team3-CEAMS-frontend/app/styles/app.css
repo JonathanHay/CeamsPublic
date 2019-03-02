@@ -250,3 +250,7 @@ footer {
 .ui.modal .accordion{
   width:100%;
 }
+
+.committees-list {
+  margin-top: 30px;
+}
