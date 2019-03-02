@@ -9,8 +9,11 @@ export default Route.extend({
                     name: "Task Force 1"
                 },
                 {
-                    _id: "asghfddsf",
-                    name: "Yeet"
+                    _id: "asghfddfsf",
+                    name: "Task Force 2"
+                }, {
+                    _id: "tgdfgdgfdfg",
+                    name: "Task Force 3"
                 }
             ]
         };
