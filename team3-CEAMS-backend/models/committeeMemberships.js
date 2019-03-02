@@ -1,4 +1,4 @@
-//committeeMemberships.js
+co//committeeMemberships.js
 var mongoose = require('mongoose');
 var committeeMembershipsSchema = mongoose.Schema(
     {
