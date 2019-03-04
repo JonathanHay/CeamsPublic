@@ -29,7 +29,7 @@ router.post('/', function (req, res) {
 
     var auditTrailAction = new AuditTrails.Model({
       "authorUserName": req.body.username, "actionDesc": "createMeeting",
-      "changeFrom": null, "changeTo": null, "affectedTable": "Meeting", "notes": "Meeting ID: " + meeting._id
+      "changeFrom": null, "changeTo": JSON.stringify(meeting), "affectedTable": "Meeting", "notes": "Meeting ID: " + meeting._id
     });
     auditTrailAction.save(function (err) {
       if (err) res.status(500).json(err);
@@ -42,7 +42,7 @@ router.post('/', function (req, res) {
 router.put('/:id', function (req, res) {
   Meetings.Model.findById(req.params.id, function (err, meeting) {
     if (err) res.status(500).json(err);
-    var oldMeeting = meeting;
+    var oldMeeting = JSON.stringify(meeting);
     meeting.startDateTime = req.body.meeting.startDateTime;
     meeting.endDateTime = req.body.meeting.endDateTime;
     meeting.location = req.body.meeting.location;
@@ -55,7 +55,7 @@ router.put('/:id', function (req, res) {
 
       var auditTrailAction = new AuditTrails.Model({
         "authorUserName": req.body.username, "actionDesc": "editMeeting",
-        "changeFrom": JSON.stringify(oldMeeting), "changeTo": JSON.stringify(meeting), "affectedTable": "Meeting", "notes": "Meeting ID: " + meeting._id
+        "changeFrom": oldMeeting, "changeTo": JSON.stringify(meeting), "affectedTable": "Meeting", "notes": "Meeting ID: " + meeting._id
       });
       auditTrailAction.save(function (err) {
         if (err) res.status(500).json(err);
@@ -76,7 +76,7 @@ router.delete('/:id', function (req, res) {
 
           var auditTrailAction = new AuditTrails.Model({
             "authorUserName": req.body.username, "actionDesc": "deleteMeeting",
-            "changeFrom": null, "changeTo": null, "affectedTable": "Meeting", "notes": "Meeting ID: " + deleted._id
+            "changeFrom": JSON.stringify(deleted), "changeTo": null, "affectedTable": "Meeting", "notes": "Meeting ID: " + deleted._id
           });
           auditTrailAction.save(function (err) {
             if (err) res.status(500).json(err);

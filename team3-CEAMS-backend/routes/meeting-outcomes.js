@@ -38,7 +38,7 @@ router.post('/', function (req, res) {
 
                 var auditTrailAction = new AuditTrails.Model({
                     "authorUserName": req.body.username, "actionDesc": "createMeetingOutcome",
-                    "changeFrom": null, "changeTo": null, "affectedTable": "MeetingOutcomes", "notes": "MeetingOutcome ID: " + meetingOutcome._id
+                    "changeFrom": null, "changeTo": JSON.stringify(meetingOutcome), "affectedTable": "MeetingOutcomes", "notes": "MeetingOutcome ID: " + meetingOutcome._id
                 });
                 auditTrailAction.save(function (err) {
                     if (err) res.status(500).json(err);
@@ -53,7 +53,7 @@ router.post('/', function (req, res) {
 router.put('/:id', function (req, res) {
     MeetingOutcomes.Model.findById(req.params.id, function (err, meetingOutcome) {
         if (err) res.status(500).json(err);
-        var oldMeetingOutcome = meetingOutcome;
+        var oldMeetingOutcome = JSON.stringify(meetingOutcome);
         meetingOutcome.title = req.body.meetingOutcome.title;
         meetingOutcome.description = req.body.meetingOutcome.description;
         meetingOutcome.recommendations = req.body.meetingOutcome.recommendations;
@@ -64,7 +64,7 @@ router.put('/:id', function (req, res) {
             else {
                 var auditTrailAction = new AuditTrails.Model({
                     "authorUserName": req.body.username, "actionDesc": "editMeetingOutcome",
-                    "changeFrom": JSON.stringify(oldMeetingOutcome), "changeTo": JSON.stringify(meetingOutcome), "affectedTable": "MeetingOutcomes", "notes": "MeetingOutcome ID: " + meetingOutcome._id
+                    "changeFrom": oldMeetingOutcome, "changeTo": JSON.stringify(meetingOutcome), "affectedTable": "MeetingOutcomes", "notes": "MeetingOutcome ID: " + meetingOutcome._id
                 });
                 auditTrailAction.save(function (err) {
                     if (err) res.status(500).json(err);
@@ -91,7 +91,7 @@ router.delete('/:id', function (req, res) {
 
                     var auditTrailAction = new AuditTrails.Model({
                         "authorUserName": req.body.username, "actionDesc": "deleteMeetingOutcome",
-                        "changeFrom": null, "changeTo": null, "affectedTable": "MeetingOutcomes", "notes": "MeetingOutcome ID: " + deleted._id
+                        "changeFrom": JSON.stringify(deleted), "changeTo": null, "affectedTable": "MeetingOutcomes", "notes": "MeetingOutcome ID: " + deleted._id
                     });
                     auditTrailAction.save(function (err) {
                         if (err) res.status(500).json(err);
