@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var NaturalScienceTypes = require('../models/naturalScienceTypes');
+var NaturalScienceTypes = require('../models/natural-science-types');
 
 /* GET all */
 router.get('/', function(req, res) {

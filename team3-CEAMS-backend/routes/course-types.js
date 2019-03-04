@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var CourseTypes = require('../models/courseTypes');
+var CourseTypes = require('../models/course-types');
 
 /* GET all */
 router.get('/', function(req, res) {

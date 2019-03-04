@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var ContentLevels = require('../models/contentLevels');
+var ContentLevels = require('../models/content-levels');
 
 /* GET all */
 router.get('/', function(req, res) {

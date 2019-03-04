@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var AcademicYears = require('../models/academicYears');
+var AcademicYears = require('../models/academic-years');
 
 /* GET all */
 router.get('/', function(req, res) {

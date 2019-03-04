@@ -9,5 +9,5 @@ var meetingOutcomesSchema = mongoose.Schema(
         meetings: {type: mongoose.Schema.ObjectId, ref: ('Meetings')}
     }
 );
-var MeetingOutcomes = mongoose.model('meetingOutcome', meetingOutcomesSchema, 'meetingOutcomes');
+var MeetingOutcomes = mongoose.model('meetingOutcome', meetingOutcomesSchema);
 exports.Model = MeetingOutcomes;

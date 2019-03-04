@@ -5,5 +5,5 @@ export default DS.Model.extend({
     level: DS.attr(String),
     dateCreated: DS.attr(Date),
 
-    committeeMembership: DS.hasMany('committee-membership'),
+    committeeMembership: DS.hasmany('committee-membership'),
 });
