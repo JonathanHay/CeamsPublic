@@ -53,6 +53,7 @@ router.post('/', function (req, res) {
 router.put('/:id', function (req, res) {
     MeetingOutcomes.Model.findById(req.params.id, function (err, meetingOutcome) {
         if (err) res.status(500).json(err);
+        var oldMeetingOutcome = meetingOutcome;
         meetingOutcome.title = req.body.meetingOutcome.title;
         meetingOutcome.description = req.body.meetingOutcome.description;
         meetingOutcome.recommendations = req.body.meetingOutcome.recommendations;
@@ -63,7 +64,7 @@ router.put('/:id', function (req, res) {
             else {
                 var auditTrailAction = new AuditTrails.Model({
                     "authorUserName": req.body.username, "actionDesc": "editMeetingOutcome",
-                    "changeFrom": null, "changeTo": null, "affectedTable": "MeetingOutcomes", "notes": "MeetingOutcome ID: " + meetingOutcome._id
+                    "changeFrom": JSON.stringify(oldMeetingOutcome), "changeTo": JSON.stringify(meetingOutcome), "affectedTable": "MeetingOutcomes", "notes": "MeetingOutcome ID: " + meetingOutcome._id
                 });
                 auditTrailAction.save(function (err) {
                     if (err) res.status(500).json(err);

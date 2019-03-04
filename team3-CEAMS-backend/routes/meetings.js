@@ -42,29 +42,26 @@ router.post('/', function (req, res) {
 router.put('/:id', function (req, res) {
   Meetings.Model.findById(req.params.id, function (err, meeting) {
     if (err) res.status(500).json(err);
-    else {
-      meeting.startDateTime = req.body.meeting.startDateTime;
-      meeting.endDateTime = req.body.meeting.endDateTime;
-      meeting.location = req.body.meeting.location;
-      meeting.description = req.body.meeting.description;
-      meeting.minutes = req.body.meeting.minutes;
-      meeting.outcomes = req.body.meeting.outcomes;
-      meeting.attendees = req.body.meeting.attendees;
-      meeting.save(function (err) {
-        if (err) res.status(500).json(err);
-        else {
+    var oldMeeting = meeting;
+    meeting.startDateTime = req.body.meeting.startDateTime;
+    meeting.endDateTime = req.body.meeting.endDateTime;
+    meeting.location = req.body.meeting.location;
+    meeting.description = req.body.meeting.description;
+    meeting.minutes = req.body.meeting.minutes;
+    meeting.outcomes = req.body.meeting.outcomes;
+    meeting.attendees = req.body.meeting.attendees;
+    meeting.save(function (err) {
+      if (err) res.status(500).json(err);
 
-          var auditTrailAction = new AuditTrails.Model({
-            "authorUserName": req.body.username, "actionDesc": "editMeeting",
-            "changeFrom": null, "changeTo": null, "affectedTable": "Meeting", "notes": "Meeting ID: " + meeting._id
-          });
-          auditTrailAction.save(function (err) {
-            if (err) res.status(500).json(err);
-            res.json({ meeting: meeting });
-          })
-        }
+      var auditTrailAction = new AuditTrails.Model({
+        "authorUserName": req.body.username, "actionDesc": "editMeeting",
+        "changeFrom": JSON.stringify(oldMeeting), "changeTo": JSON.stringify(meeting), "affectedTable": "Meeting", "notes": "Meeting ID: " + meeting._id
       });
-    }
+      auditTrailAction.save(function (err) {
+        if (err) res.status(500).json(err);
+        res.json({ meeting: meeting });
+      })
+    });
   });
 });
 
