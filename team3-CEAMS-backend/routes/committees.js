@@ -28,7 +28,7 @@ router.post('/', function (req, res) {
 
         var auditTrailAction = new AuditTrails.Model({
             "authorUserName": req.body.username, "actionDesc": "createCommittee",
-            "changeFrom": null, "changeTo": null, "affectedTable": "Committee", "notes": "Committee ID: " + committee._id
+            "changeFrom": null, "changeTo": JSON.stringify(committee), "affectedTable": "Committee", "notes": "Committee ID: " + committee._id
         });
         auditTrailAction.save(function (err) {
             if (err) res.status(500).json(err);
@@ -42,7 +42,7 @@ router.put('/:id', function (req, res) {
     Committees.Model.findById(req.params.id, function (err, committee) {
         if (err) res.status(500).json(err);
         else {
-            var oldCommittee = committee;
+            var oldCommittee = JSON.stringify(committee);
             committee.name = req.body.committee.name;
             committee.level = req.body.committee.level;
             committee.dateCreated = req.body.committee.dateCreated;
@@ -51,7 +51,7 @@ router.put('/:id', function (req, res) {
                 if (err) res.status(500).json(err);
                 var auditTrailAction = new AuditTrails.Model({
                     "authorUserName": req.body.username, "actionDesc": "editCommittee",
-                    "changeFrom": JSON.stringify(oldCommittee), "changeTo": JSON.stringify(committee),
+                    "changeFrom": oldCommittee, "changeTo": JSON.stringify(committee),
                     "affectedTable": "Committee", "notes": "Committee ID: " + committee._id
                 });
                 auditTrailAction.save(function (err) {
@@ -71,7 +71,7 @@ router.delete('/:id', function (req, res) {
             else {
                 var auditTrailAction = new AuditTrails.Model({
                     "authorUserName": req.body.username, "actionDesc": "deleteCommittee",
-                    "changeFrom": null, "changeTo": null, "affectedTable": "Committee", "notes": "Committee ID: " + deleted._id
+                    "changeFrom": JSON.stringify(deleted), "changeTo": null, "affectedTable": "Committee", "notes": "Committee ID: " + deleted._id
                 });
                 auditTrailAction.save(function (err) {
                     if (err) res.status(500).json(err);
