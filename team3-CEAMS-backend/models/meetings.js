@@ -7,7 +7,7 @@ var meetingsSchema = mongoose.Schema(
         location: String,
         description: String,
         minutes:String,  //PDF file name of the meeting minutes
-        outcomes: [{type: mongoose.Schema.ObjectId, ref: ('MeetingOutcomes')}],
+        outcomes: [{type: mongoose.Schema.ObjectId, ref: ('meetingOutcome')}],
         attendees: [{type: mongoose.Schema.ObjectId, ref: ('CommitteeMemberships')}]
     }
 );

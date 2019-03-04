@@ -1,4 +1,4 @@
 import DS from 'ember-data';
-export default DS.JSONAPISerializer.extend({
-  primaryKey: '_id'
+export default DS.RESTSerializer.extend(DS.EmbeddedRecordsMixin,{
+  primaryKey: '_id',
 });

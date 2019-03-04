@@ -1,10 +1,11 @@
 var express = require('express');
-var router = express.Router();
 
-var Meetings = require('../models/meetings');
 var MeetingOutcomes = require('../models/meetingOutcomes');
 var AuditTrails = require('../models/auditTrails');
+var Meetings = require('../models/meetings');
 
+
+var router = express.Router();
 /* GET all */
 router.get('/', function (req, res) {
   Meetings.Model.find((err, meetings) => {
@@ -14,11 +15,15 @@ router.get('/', function (req, res) {
 });
 
 /* GET some */
-router.get('/:id', function (req, res) {
-  Meetings.Model.findById(req.params.id, function (err, meeting) {
+router.get('/:id', function(req, res) {
+  Meetings.Model.findById(req.params.id).populate('outcomes').exec(function(err, meeting){
     if (err) res.status(500).json(err);
     else res.json({ meeting: meeting });
   });
+  // Meetings.Model.findById(req.params.id, function (err, meeting) {
+  //   if (err) res.status(500).json(err);
+  //   else res.json({meeting: meeting});
+  // });
 });
 
 /* POST */
