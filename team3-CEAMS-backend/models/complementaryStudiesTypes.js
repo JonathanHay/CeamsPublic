@@ -7,5 +7,5 @@ var complementaryStudiesTypesSchema = mongoose.Schema(
         courses: [{type: mongoose.Schema.ObjectId, ref: ('Courses')}]
     }
 );
-var ComplementaryStudiesTypes = mongoose.model('complementaryStudiesType', complementaryStudiesTypesSchema);
+var ComplementaryStudiesTypes = mongoose.model('complementaryStudiesType', complementaryStudiesTypesSchema, 'ComplementaryStudiesTypes');
 exports.Model = ComplementaryStudiesTypes;

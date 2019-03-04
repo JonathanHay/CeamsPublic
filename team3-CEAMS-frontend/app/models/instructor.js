@@ -16,13 +16,13 @@ export default DS.Model.extend({
   keyPerformanceIndicator: DS.attr(),
   
   //relationships
-  userGivenRoles: DS.hasmany('user-given-role'),
-  committeeMembership: DS.hasmany('committee-membership'),
-  userEvaluationMethod: DS.belongsto('user-evaluation-method'),
-  licenceStatuses: DS.hasmany('licence-status'),
-  academicRank: DS.belongstp('academic-rank'),
-  academicDegrees: DS.hasmany('academic-degree'),
-  semester: DS.hasmany('semester'),
-  program: DS.hasmany('program'),
-  userAccount: DS.belongsto('user-account')
+  userGivenRoles: DS.hasMany('user-given-role'),
+  committeeMembership: DS.hasMany('committee-membership'),
+  userEvaluationMethod: DS.belongsTo('user-evaluation-method'),
+  licenceStatuses: DS.hasMany('licence-status'),
+  academicRank: DS.belongsTo('academic-rank'),
+  academicDegrees: DS.hasMany('academic-degree'),
+  semester: DS.hasMany('semester'),
+  program: DS.hasMany('program'),
+  userAccount: DS.belongsTo('user-account')
 });
