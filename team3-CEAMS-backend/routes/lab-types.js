@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var LabTypes = require('../models/lab-types');
+var LabTypes = require('../models/labTypes');
 
 /* GET all */
 router.get('/', function(req, res) {
