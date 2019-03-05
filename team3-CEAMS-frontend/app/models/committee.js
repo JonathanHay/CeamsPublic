@@ -1,9 +1,9 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-    name: DS.attr(String),
-    level: DS.attr(String),
-    dateCreated: DS.attr(Date),
+    name: DS.attr(),
+    level: DS.attr(),
+    dateCreated: DS.attr(),
 
-    committeeMembership: DS.hasmany('committee-membership'),
+    committeeMembership: DS.hasMany('committee-membership'),
 });
