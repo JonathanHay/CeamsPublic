@@ -17,7 +17,7 @@ Router.map(function() {
   this.route('new-task-force');
   this.route('committees', function() {
     this.route('new');
-    this.route('detail');
+    this.route('detail', { path: '/detail/:committee_id' });
     this.route('manage-users');
   });
 });
