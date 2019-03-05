@@ -5,7 +5,7 @@ router.use('/utilizations', require('./utilizations'));
 router.use('/academic-terms', require('./academic-terms'));
 router.use('/academic-years', require('./academic-years'));
 router.use('/committees', require('./committees'));
-router.use('/committee-memberships', require('./committee-memberships'));
+router.use('/committee-memberships', require('./committee-memberships'))
 router.use('/complementary-studies-types', require('./complementary-studies-types'));
 router.use('/content-levels', require('./content-levels'));
 router.use('/course-types', require('./course-types'));
