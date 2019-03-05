@@ -20,6 +20,10 @@ Router.map(function () {
     this.route('manage-users');
 
   });
+  this.route('indicators', function(){
+    this.route('manage-upi');
+    this.route('manage-kpi');
+  });
 });
 
 export default Router;

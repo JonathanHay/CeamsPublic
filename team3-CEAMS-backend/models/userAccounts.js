@@ -13,5 +13,5 @@ var userAccountsSchema = mongoose.Schema(
         userGivenRoles: [{type: mongoose.Schema.ObjectId, ref: ('UserGivenRoles')}]
     }
 );
-var UserAccounts = mongoose.model('userAccounts', userAccountsSchema);
+var UserAccounts = mongoose.model('userAccounts', userAccountsSchema, 'userAccounts');
 exports.Model = UserAccounts;
