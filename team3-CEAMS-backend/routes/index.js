@@ -10,10 +10,12 @@ router.use('/complementary-studies-types', require('./complementary-studies-type
 router.use('/content-levels', require('./content-levels'));
 router.use('/course-types', require('./course-types'));
 router.use('/deliverable-types', require('./deliverable-types'));
+router.use('/kpi-reports', require('./kpi-reports'));
 router.use('/meetings', require('./meetings'));
 router.use('/meeting-outcomes', require('./meeting-outcomes'));
 router.use('/lab-types', require('./lab-types'));
 router.use('/math-types', require('./math-types'));
 router.use('/natural-science-types', require('./natural-science-types'));
+router.use('/user-evaluation-methods', require('./user-evaluation-methods'));
 
 module.exports = router;
