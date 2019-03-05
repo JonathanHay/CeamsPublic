@@ -1,11 +1,8 @@
 var express = require('express');
 
 var MeetingOutcomes = require('../models/meetingOutcomes');
-<<<<<<< HEAD
 var Meetings = require('../models/meetings');
-=======
 var AuditTrails = require('../models/auditTrails');
->>>>>>> master
 
 
 var router = express.Router();
@@ -18,13 +15,8 @@ router.get('/', function (req, res) {
 });
 
 /* GET some */
-<<<<<<< HEAD
-router.get('/:id', function(req, res) {
-  Meetings.Model.findById(req.params.id).populate('outcomes').exec(function(err, meeting){
-=======
 router.get('/:id', function (req, res) {
   Meetings.Model.findById(req.params.id, function (err, meeting) {
->>>>>>> master
     if (err) res.status(500).json(err);
     else res.json({ meeting: meeting });
   });

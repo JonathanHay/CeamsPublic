@@ -8,10 +8,6 @@ mongoose.connect('mongodb://dbUser:dbpassw0rd@ds039880.mlab.com:39880/ceams-db',
 
 var app = express();
 app.use(cors());
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

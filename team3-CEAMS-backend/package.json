@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "node ./bin/www",
     "db-up": "mongod --dbpath data/db --logpath ./logs/mongodb.log",
     "db-up:linux": "mongod --dbpath data/db --fork --logpath ./logs/mongodb.log",
     "db-down": "mongod --dbpath data/db --shutdown"
