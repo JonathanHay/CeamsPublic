@@ -5,7 +5,7 @@ var committeesSchema = mongoose.Schema(
         name: String,
         level: String,
         dateCreated: Date,
-        members: [{type: mongoose.Schema.ObjectId, ref: ('CommitteeMemberships')}]
+        members: [{type: mongoose.Schema.ObjectId, ref: ('committeeMembership')}]
     }
 );
 var Committees = mongoose.model('committee', committeesSchema);

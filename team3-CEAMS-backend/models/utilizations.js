@@ -7,5 +7,5 @@ var utilizationsSchema = mongoose.Schema(
         indicators: [{type: mongoose.Schema.ObjectId, ref: ('Indicators')}]
     }
 );
-var Utilizations = mongoose.model('utilization', utilizationsSchema, 'utitizations');
+var Utilizations = mongoose.model('utilization', utilizationsSchema);
 exports.Model = Utilizations;

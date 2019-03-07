@@ -18,11 +18,11 @@ export default DS.Model.extend({
   //relationships
   userGivenRoles: DS.hasMany('user-given-role'),
   committeeMembership: DS.hasMany('committee-membership'),
-  userEvaluationMethod: DS.belongsto('user-evaluation-method'),
+  userEvaluationMethod: DS.belongsTo('user-evaluation-method'),
   licenceStatuses: DS.hasMany('licence-status'),
-  academicRank: DS.belongstp('academic-rank'),
+  academicRank: DS.belongsTo('academic-rank'),
   academicDegrees: DS.hasMany('academic-degree'),
   semester: DS.hasMany('semester'),
   program: DS.hasMany('program'),
-  userAccount: DS.belongsto('user-account')
+  userAccount: DS.belongsTo('user-account')
 });

@@ -8,9 +8,9 @@ var teachingAssistantSchema = mongoose.Schema(
         building: String,
         officeNumber: String,
         contractInfo: String,
-        memberships: [{type: mongoose.Schema.ObjectId, ref: ('CommitteeMemberships')}],
-        userShadow: {type: mongoose.Schema.ObjectId, ref: ('UserAccounts')}
+        memberships: [{type: mongoose.Schema.ObjectId, ref: ('committeeMembership')}],
+        userShadow: {type: mongoose.Schema.ObjectId, ref: ('userAccount')}
     }
 );
-var TeachingAssistants = mongoose.model('teachingAssistant', teachingAssistantSchema, 'teachingAssistants');
+var TeachingAssistants = mongoose.model('teachingAssistant', teachingAssistantSchema);
 exports.Model = TeachingAssistants;

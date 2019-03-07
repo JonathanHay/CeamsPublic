@@ -8,7 +8,7 @@ export default DS.Model.extend({
   officeNumber: DS.attr(),
 
   contactInfo: DS.attr(),
-  userGivenRoles: DS.hasMany('user-given-role'),
-  userAccount: DS.belongsto('user-account'),
-  committeeMembership: DS.hasMany('committee-membership')
+  // userGivenRoles: DS.hasMany('user-given-role'),
+  // userAccount: DS.belongsTo('user-account'),
+  // committeeMembership: DS.hasMany('committee-membership')
 });
