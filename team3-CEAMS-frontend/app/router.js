@@ -20,6 +20,11 @@ Router.map(function() {
     this.route('detail', { path: '/detail/:committee_id' });
     this.route('manage-users', { path: '/manage-users/:committee_id' });
   });
+  this.route('indicators', function(){
+    this.route('manage-upi');
+    this.route('manage-kpi');
+    this.route('kpi-gauge');
+  });
 });
 
 export default Router;

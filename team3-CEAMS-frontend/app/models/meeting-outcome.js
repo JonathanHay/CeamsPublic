@@ -5,6 +5,5 @@ export default DS.Model.extend({
     description: DS.attr(),
     recommendations: DS.attr(),
     decision: DS.attr(),
-    
     meeting: DS.belongsTo('meeting'),
 });

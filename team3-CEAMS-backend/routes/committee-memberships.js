@@ -55,7 +55,6 @@ router.post('/', function (req, res) {
                 } else {
                     res.status(500).json("No membership found");
                 }
-                console.log(theID);
                 model.Model.findById(theID, function (err, user) {
                     if (err) {
                         res.status(500).json(err);
