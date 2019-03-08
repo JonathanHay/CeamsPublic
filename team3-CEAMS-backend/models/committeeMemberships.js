@@ -5,7 +5,7 @@ var committeeMembershipsSchema = mongoose.Schema(
         participationStartDate: Date,
         participationEndDate: Date,
         role: String,
-        meetings: [{type: mongoose.Schema.ObjectId, ref: ('Meetings')}],
+        meetings: [{type: mongoose.Schema.ObjectId, ref: ('meeting')}],
         committee: {type: mongoose.Schema.ObjectId, ref: ('Committees')},
         instructorMember: {type: mongoose.Schema.ObjectId, ref: ('Instructors')},
         staffMember: {type: mongoose.Schema.ObjectId, ref: ('Staffs')},
