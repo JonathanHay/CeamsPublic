@@ -45,7 +45,7 @@ router.post('/', function (req, res) {
                 }
                 if (committeeMembership.instructorMember !== null) {
                     var model = Instructors;
-                    var theID = committeeMemberShip.instructorMember;
+                    var theID = committeeMembership.instructorMember;
                 } else if (committeeMembership.staffMember !== null) {
                     var model = Staff;
                     var theID = committeeMembership.staffMember;
@@ -120,7 +120,7 @@ router.delete('/:id', function (req, res) {
                         }
                         if (committeeMembership.instructorMember !== null) {
                             var model = Instructors;
-                            var theID = committeeMemberShip.instructorMember;
+                            var theID = committeeMembership.instructorMember;
                         } else if (committeeMembership.staffMember !== null) {
                             var model = Staff;
                             var theID = committeeMembership.staffMember;
