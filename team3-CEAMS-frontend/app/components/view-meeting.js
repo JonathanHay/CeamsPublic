@@ -17,6 +17,13 @@ export default Component.extend({
         return 'newMeeting' + this.get('ID');
       }),
 
+    didRender(){
+        $( document ).ready(function() {
+            // $('.cookie.nag')
+            //     .nag('clear')
+            // ;
+        });
+    },
     actions:{
         
         userSubmit: function(users){
@@ -29,7 +36,15 @@ export default Component.extend({
                 meeting.set('minutes', this.get('minutes'));
                 meeting.set('startDateTime', this.get('startDateTime'));
                 meeting.set('endDateTime', this.get('endDateTime'));
-                meeting.save();
+                meeting.save().then(() => {
+                    $('.cookie.nag')
+                        .nag('show')
+                    ;
+                }, (err)=>{
+                    $('.cookie.nag.bad')
+                        .nag('show')
+                    ;
+                });
             });
         },
         closeModal: function(){
