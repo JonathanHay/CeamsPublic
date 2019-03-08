@@ -19,7 +19,7 @@
         {{input value=decision type="text" class='meetingInput'}}
     </div>
 </div>
-<div class="ui red button" {{action 'addtoTable'}}>
+<div class="ui red button" {{action 'addToTable'}}>
     Add
 </div>
 <table id="outcomesTable" class="ui celled table" style="width:100%">
@@ -32,13 +32,13 @@
         </tr>
     </thead>
     <tbody>
+        {{#each outcomes as |outcome|}}
         <tr>
-            {{#each outcomes as |outcome|}}
-                <td>{{outcome.title}}</td>
-                <td>{{outcome.description}}</td>
-                <td>{{outcome.recommendations}}</td>
-                <td>{{outcome.decision}}</td>
-            {{/each}}
+            <td>{{outcome.title}}</td>
+            <td>{{outcome.description}}</td>
+            <td>{{outcome.recommendations}}</td>
+            <td>{{outcome.decision}}</td>
         </tr>
+        {{/each}}
     </tbody>
 </table>

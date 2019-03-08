@@ -33,7 +33,7 @@
                 Manage Meeting Outcomes
             </div>
             <div class="content">
-                {{meeting-outcomes outcomes=meetingData.meetingOutcomes}}
+                {{meeting-outcomes outcomes=outcomes}}
             </div>
         {{/ui-accordion}}
         {{#ui-accordion class="styled"}}
@@ -41,7 +41,7 @@
                 Manage Users
             </div>
             <div class="content">
-                {{user-manager users=users submit=(action "userSubmit")}}
+                {{!-- {{meeting-attendees members=users.allUsers attendees=attendees submit=(action "userSubmit")}} --}}
             </div>
         {{/ui-accordion}}
     </div>
