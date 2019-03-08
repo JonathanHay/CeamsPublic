@@ -6,6 +6,7 @@ var Semesters = require('../models/semesters');
 var UserEvaluationMethods = require('../models/userEvaluationMethods');
 
 function getScore(username, callback) {
+    //gets all audittrail data for the user passed to the function
     AuditTrails.Model.find({ authorUserName: username }, function (err, AuditTrails) {
         if (err) res.status(500).json(err);
 
@@ -17,8 +18,9 @@ function getScore(username, callback) {
         var totalActions = 0;
         var KPIScore = 0;
 
-        //Grabbing results for how many times they've logged in or graded a test (based on auditTrail data) as well as total actions
+        //Grabbing results for how many times they've logged in or graded a test (based on auditTrail data) as well as total actions they have in the audittrail
         AuditTrails.forEach(function (obj) {
+            console.log(obj.actionDesc);
             if (obj.actionDesc == "logIn") {
                 numLogins++;
             } else if (obj.actionDesc == "testGraded") {
@@ -27,7 +29,7 @@ function getScore(username, callback) {
             totalActions++;
         })
 
-        //Grabs the UserAccount with the username sent to the database
+        //Grabs the UserAccount with the username sent to the function
         UserAccounts.Model.findOne({ username: username }, function (err, UserAccount) {
             if (err) res.status(500).json(err);
 
@@ -54,7 +56,7 @@ function getScore(username, callback) {
 
                 var formula = JSON.parse(userEvaluationMethod.formulaExpression);
 
-                //if the user requested is an instructor, the instructor values of the last indicator are used to get their score
+                //if the user requested is an instructor, the instructor weight values from the userevaluationmethod grabbed above are used to get the user's KPI score
                 if (UserAccount.instructor !== null) {
                     var score = formula.instructor.numLogins * numLogins +
                         formula.instructor.numGraded * numGraded + formula.instructor.numCourses * numCourses + formula.instructor.totalActions * totalActions;
