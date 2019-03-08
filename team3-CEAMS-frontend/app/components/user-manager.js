@@ -55,7 +55,7 @@ export default Component.extend({
       this.set('membersFilter', e.target.value);
     },
     submit() {
-      this.submit(this.committee_id, this.get('changes'));
+      this.submit(this.committee_id, this.get('changes'), this.users.memberships);
     }
   }
 });

@@ -22,16 +22,22 @@ export default Route.extend({
     
     let allUsers = [];
     let members = [];
+    let memberships = [];
 
     userProfiles.forEach((e) => {
       let isMember = false;
+      let membership = '';
       if (e.memberships.length > 0) {
         for (let i = 0; i < e.memberships.length; i++) {
-          if (e.memberships[i].committee === params.committee_id) isMember = true;
+          if (e.memberships[i].committee === params.committee_id) {
+            isMember = true
+            membership = e.memberships[i]._id;
+          };
         }
       }
       if (isMember) {
         members.push(e);
+        memberships[e.id] = membership;
       } else {
         allUsers.push(e);
       }
@@ -40,7 +46,8 @@ export default Route.extend({
     return {
       users: {
         allUsers,
-        members
+        members,
+        memberships
       },
       cid: params.committee_id,
     };
