@@ -10,7 +10,7 @@ Router.map(function () {
   this.route('main-menu');
   this.route('home-page', { path: '/' });
   this.route('login');
-  this.route('team-detail');
+  this.route('team-detail', { path: '/:committee_id' });
   this.route('meeting');
   this.route('committee');
   this.route('new-task-force');
@@ -18,9 +18,9 @@ Router.map(function () {
     this.route('new');
     this.route('detail');
     this.route('manage-users');
-
+    this.route('team-detail', { path: '/:committee_id' });
   });
-  this.route('indicators', function(){
+  this.route('indicators', function () {
     this.route('manage-upi');
     this.route('manage-kpi');
   });

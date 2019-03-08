@@ -11,7 +11,11 @@
           <div class="content">
             <div class="header">
               {{committee.name}}
-              {{committees/team-detail}}
+              {{#link-to "committees.detail" committee.id }}
+              <div class="ui blue button">
+                View
+              </div>
+              {{/link-to}}
             </div>
           </div>
         </div>
