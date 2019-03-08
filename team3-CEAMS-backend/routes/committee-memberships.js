@@ -43,13 +43,13 @@ router.post('/', function (req, res) {
                 if (err) {
                     res.status(500).json(err);
                 }
-                if (committeeMembership.instructorMember !== null) {
+                if (committeeMembership.instructorMember != null) {
                     var model = Instructors;
                     var theID = committeeMemberShip.instructorMember;
-                } else if (committeeMembership.staffMember !== null) {
+                } else if (committeeMembership.staffMember != null) {
                     var model = Staff;
                     var theID = committeeMembership.staffMember;
-                } else if (committeeMembership.teachingAssistantMember !== null) {
+                } else if (committeeMembership.teachingAssistantMember != null) {
                     var model = TeachingAssistants;
                     var theID = committeeMembership.teachingAssistantMember;
                 } else {
