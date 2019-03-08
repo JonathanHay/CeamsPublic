@@ -12,5 +12,5 @@ var auditTrailsSchema = mongoose.Schema(
     }
 );
 
-var AuditTrails = mongoose.model('auditTrails', auditTrailsSchema, 'auditTrails');
+var AuditTrails = mongoose.model('auditTrails', auditTrailsSchema);
 exports.Model = AuditTrails;

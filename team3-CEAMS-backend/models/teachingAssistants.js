@@ -12,5 +12,5 @@ var teachingAssistantSchema = mongoose.Schema(
         userShadow: {type: mongoose.Schema.ObjectId, ref: ('UserAccounts')}
     }
 );
-var TeachingAssistants = mongoose.model('teachingAssistant', teachingAssistantSchema, 'teachingAssistants');
+var TeachingAssistants = mongoose.model('teachingAssistant', teachingAssistantSchema);
 exports.Model = TeachingAssistants;
