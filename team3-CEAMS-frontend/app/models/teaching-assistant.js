@@ -6,6 +6,7 @@ export default DS.Model.extend({
   email: DS.attr(),
   building: DS.attr(),
   officeNumber: DS.attr(),
+  memberships: DS.attr(),
 
   contactInfo: DS.attr(),
   // userGivenRoles: DS.hasMany('user-given-role'),

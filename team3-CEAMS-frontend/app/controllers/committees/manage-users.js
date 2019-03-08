@@ -5,8 +5,22 @@ export default Controller.extend({
     this._super(...arguments);
   },
   actions: {
-    processChanges(changes) {
-      console.log(changes);
+    processChanges(committee_id, changes) {
+      for (const uid in changes) {
+        if (changes.hasOwnProperty(uid)) {
+          const c = changes[uid];
+
+          if (c[0] === "add") {
+            let membership = this.store.createRecord('committee-membership', {
+              role: "role",
+              participationStartDate: new Date(),
+              [c[1]]: uid,
+              committee: committee_id
+            });
+            membership.save();
+          }
+        }
+      }
     }
   }
 });

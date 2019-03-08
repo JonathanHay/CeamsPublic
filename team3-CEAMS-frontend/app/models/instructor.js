@@ -7,6 +7,7 @@ export default DS.Model.extend({
   email: DS.attr(),
   building: DS.attr(),
   officeNumber: DS.attr(),
+  memberships: DS.attr(),
 
   //instructor attributes
   number: DS.attr(),
@@ -16,13 +17,13 @@ export default DS.Model.extend({
   keyPerformanceIndicator: DS.attr(),
   
   //relationships
-  userGivenRoles: DS.hasMany('user-given-role'),
-  committeeMembership: DS.hasMany('committee-membership'),
-  userEvaluationMethod: DS.belongsTo('user-evaluation-method'),
-  licenceStatuses: DS.hasMany('licence-status'),
-  academicRank: DS.belongsTo('academic-rank'),
-  academicDegrees: DS.hasMany('academic-degree'),
-  semester: DS.hasMany('semester'),
-  program: DS.hasMany('program'),
-  userAccount: DS.belongsTo('user-account')
+  // userGivenRoles: DS.hasMany('user-given-role'),
+  // committeeMembership: DS.hasMany('committee-membership'),
+  // userEvaluationMethod: DS.belongsTo('user-evaluation-method'),
+  // licenceStatuses: DS.hasMany('licence-status'),
+  // academicRank: DS.belongsTo('academic-rank'),
+  // academicDegrees: DS.hasMany('academic-degree'),
+  // semester: DS.hasMany('semester'),
+  // program: DS.hasMany('program'),
+  // userAccount: DS.belongsTo('user-account')
 });
