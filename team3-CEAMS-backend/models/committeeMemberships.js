@@ -12,5 +12,5 @@ var committeeMembershipsSchema = mongoose.Schema(
         teachingAssistantMember: {type: mongoose.Schema.ObjectId, ref: ('TeachingAssistants')}
     }
 );
-var CommitteeMemberships = mongoose.model('committeeMembership', committeeMembershipsSchema, 'committeeMemberships');
+var CommitteeMemberships = mongoose.model('committeeMembership', committeeMembershipsSchema);
 exports.Model = CommitteeMemberships;
