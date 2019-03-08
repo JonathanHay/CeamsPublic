@@ -23,6 +23,7 @@ Router.map(function() {
   this.route('indicators', function(){
     this.route('manage-upi');
     this.route('manage-kpi');
+    this.route('kpi-gauge');
   });
 });
 
