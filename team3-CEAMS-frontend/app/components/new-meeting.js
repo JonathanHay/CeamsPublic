@@ -5,10 +5,11 @@ export default Component.extend({
     DS: service('store'),
 
     actions:{
-        update: function(){
+        create: function(){
             var newMeeting = this.get('DS').createRecord('meeting', {
                 location: this.get('location'),
                 description: this.get('description'),
+                minutes: this.get('minutes'),
                 startDateTime: this.get('startDateTime'),
                 endDateTime: this.get('endDateTime')
             });

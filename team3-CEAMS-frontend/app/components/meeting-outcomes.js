@@ -9,14 +9,16 @@ export default Component.extend({
     DS: service('store'),
     actions:{
         addToTable: function(){
-            var outcome = this.get('DS').createRecord('meeting-outcome',{
+            var meetingID = this.get('DS').peekRecord('meeting', this.get('meetingId'));
+            var meetingOutcome = this.get('DS').createRecord('meeting-outcome',{
                 title: this.get('title'),
                 description: this.get('resultDescription'),
                 recommendations: this.get('recommendations'),
-                decision: this.get('decision')
+                decision: this.get('decision'),
+                meeting: meetingID
             });
 
-            outcome.save().then(() => {
+            meetingOutcome.save().then(() => {
                 return  true;
             })
         },   

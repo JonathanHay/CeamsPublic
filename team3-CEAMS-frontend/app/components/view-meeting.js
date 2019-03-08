@@ -12,13 +12,6 @@ export default Component.extend({
     outcomes: oneWay('meetingData.outcomes'),
     //attendees nested
     attendees: oneWay('meetingData.attendees'),
-    //all data from committeeMembership
-    members:null,
-    role: oneWay('meeting'),
-    //types of user
-    // instructor: oneWay('members.instructor'),
-    // staff: oneWay('members.staff'),
-    // teachingAssistant: oneWay('members.teachingAssistant'),
 
     modalName: computed(function () {
         return 'newMeeting' + this.get('ID');
@@ -29,30 +22,27 @@ export default Component.extend({
         userSubmit: function(users){
             this.set('members', users)
         },
-        create: function(){
-            var newMeeting = this.get('DS').createRecord('meeting', {
-                location: this.get('location'),
-                description: this.get('description'),
-                startDateTime: this.get('startDateTime'),
-                endDateTime: this.get('endDateTime'),
-                committeeMemberships: this.get('attendees'),
-                meetingOutcomes: this.get('outcomes')
-            });
-
-            newMeeting.save().then(() => {
-                return true;
+        update: function(){
+            this.get('DS').findRecord('meeting', this.get('ID')).then((meeting) => {
+                meeting.set('location', this.get('location'));
+                meeting.set('description', this.get('description'));
+                meeting.set('minutes', this.get('minutes'));
+                meeting.set('startDateTime', this.get('startDateTime'));
+                meeting.set('endDateTime', this.get('endDateTime'));
+                meeting.save();
             });
         },
         closeModal: function(){
             $('.ui.' + this.get('modalName') +'.modal').modal('hide');
         },
         openModal: function () {
-            this.set('meetingData', this.get('DS').findRecord('meeting', this.get('ID'), { include: 'meetingOutcomes, committeeMemberships'}));
+            this.set('meetingData', this.get('DS').peekRecord('meeting', this.get('ID'), { include: 'meetingOutcomes, committeeMemberships'}));
             this.set('members', this.get('DS').findAll('committee-membership'));
-            this.set('location', null);
-            this.set('description', null);
-            this.set('startDatetime', null);
-            this.set('endDateTime', null);
+            this.set('location', this.get('meetingData.location'));
+            this.set('description',  this.get('meetingData.description'));
+            this.set('minutes',  this.get('meetingData.minutes'));
+            this.set('startDatetime',  this.get('meetingData.startDateTime'));
+            this.set('endDateTime',  this.get('meetingData.endDateTime'));
             $('.ui.' + this.get('modalName') +'.modal').addClass('scrollME');
             $('.ui.' + this.get('modalName') +'.modal').modal({
               closable: false,
@@ -62,6 +52,7 @@ export default Component.extend({
               },
       
               onApprove: () => {
+                return true;
               }
             })
             .modal('show');

@@ -16,6 +16,12 @@
             {{input value=description type="text" class='meetingInput'}}
         </div>
         <br>
+        <label>Meeting Minutes</label>
+        <br>
+        <div class="ui labeled input">
+            {{input value=minutes type="text" class='meetingMinutes'}}
+        </div>
+        <br>
         <label>Start Time</label>
         <br>
         <div class="ui labeled input">
@@ -33,7 +39,7 @@
                 Manage Meeting Outcomes
             </div>
             <div class="content">
-                {{meeting-outcomes outcomes=outcomes}}
+                {{meeting-outcomes outcomes=outcomes meetingId = ID}}
             </div>
         {{/ui-accordion}}
         {{#ui-accordion class="styled"}}
@@ -46,12 +52,18 @@
         {{/ui-accordion}}
     </div>
     <div class="actions">
-    <div class="ui primary button" {{action "update"}}>
-        Update
+        <div class="ui primary button updateBtn" {{action "update"}}>
+            Update
+        </div>
+        <div class="ui red button" {{action 'closeModal'}}>
+            Close
+        </div>
     </div>
-    <div class="ui red button" {{action 'closeModal'}}>
-        Close
-    </div>
-    </div>
+    {{#ui-nag class="inline cookie"}}
+        <span class="title">
+            We use cookies to ensure you get the best experience on our website
+        </span>
+        <i class="close icon"></i>
+    {{/ui-nag}}
 
 {{/ui-modal}}
