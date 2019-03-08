@@ -7,11 +7,12 @@ export default DS.Model.extend({
   email: DS.attr(),
   building: DS.attr(),
   officeNumber: DS.attr(),
+  memberships: DS.attr(),
 
   roleName: DS.attr(),
   keyPerformanceIndicator: DS.attr(),
-  userEvaluationMethod: DS.belongsTo('user-evaluation-method'),
-  userGivenRoles: DS.hasMany('user-given-role'),
-  userAccount: DS.belongsTo('user-account'),
-  committeeMembership: DS.hasMany('committee-membership')
+  // userEvaluationMethod: DS.belongsTo('user-evaluation-method'),
+  // userGivenRoles: DS.hasMany('user-given-role'),
+  // userAccount: DS.belongsTo('user-account'),
+  // committeeMembership: DS.hasMany('committee-membership')
 });

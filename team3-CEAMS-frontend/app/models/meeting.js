@@ -7,6 +7,6 @@ export default DS.Model.extend({
     description: DS.attr(),
     minutes: DS.attr(),
 
-    attendees: DS.hasMany('committee-membership'),
-    outcomes: DS.hasMany('meeting-outcome')
+    committeeMembership: DS.hasMany('committee-membership'),
+    meetingOutcomes: DS.hasMany('meeting-outcomes')
 });

@@ -6,11 +6,12 @@ var committeeMembershipsSchema = mongoose.Schema(
         participationEndDate: Date,
         role: String,
         meetings: [{type: mongoose.Schema.ObjectId, ref: ('meeting')}],
-        committee: {type: mongoose.Schema.ObjectId, ref: ('Committees')},
-        instructorMember: {type: mongoose.Schema.ObjectId, ref: ('Instructors')},
-        staffMember: {type: mongoose.Schema.ObjectId, ref: ('Staffs')},
-        teachingAssistantMember: {type: mongoose.Schema.ObjectId, ref: ('TeachingAssistants')}
+        committee: {type: mongoose.Schema.ObjectId, ref: ('committee')},
+        instructorMember: {type: mongoose.Schema.ObjectId, ref: ('instructor')},
+        staffMember: {type: mongoose.Schema.ObjectId, ref: ('staff')},
+        teachingAssistantMember: {type: mongoose.Schema.ObjectId, ref: ('teachingAssistant')}
     }
 );
+
 var CommitteeMemberships = mongoose.model('committeeMembership', committeeMembershipsSchema);
 exports.Model = CommitteeMemberships;
