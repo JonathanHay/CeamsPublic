@@ -15,8 +15,13 @@ router.get('/', function(req, res) {
 });
 
 /* GET some */
+<<<<<<< HEAD
 router.get('/:id', function(req, res) {
   Meetings.Model.findById(req.params.id).populate('outcomes').populate('attendees').exec(function(err, meeting){
+=======
+router.get('/:id', function (req, res) {
+  Meetings.Model.findById(req.params.id).populate('outcomes').exec(function (err, meeting) {
+>>>>>>> jhay22
     if (err) res.status(500).json(err);
     else res.json({ meeting: meeting });
   });

@@ -1,4 +1,9 @@
+<div class="ui blue button" {{action 'openModal'}}>
+  View
+</div>
+{{#ui-modal name=detailName class=detailName}}
 <div class="team-detail">
+<<<<<<< HEAD
     <div class="ui two column centered grid">
         <div class="column">
             <div class="ui column centered grid">
@@ -34,7 +39,59 @@
                   </div>
                 {{/each}}
               </div>
+=======
+  <div class="ui two column centered grid">
+    <div class="column">
+      <div class="ui column centered grid">
+        <div class="ui text container">
+          <h1>GA Task Force</h1>
+          <h1>ID: {{_id}}</h1>
+        </div>
+      </div>
+      <div class="ui grid">
+        <div class="four column row">
+          <div class="left floated column">
+            <div class="top">
+              <div class="ui medium rectangle">
+                <span class="committee-name">
+                  <p>Committee Name: {{committeeName}}</p>
+                </span>
+                <span class="committee-level">
+                  <p>Committee Level: Department</p>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="right floated column">
+            <div class="ui right floated button" {{action 'manageUsers'}}>
+              <a>Manage Users</a>
+            </div>
           </div>
         </div>
+      </div>
+      <div class="ui divider"></div>
+      <div class="bottom">
+        <div class="ui relaxed divided list">
+          {{#each members as |member|}}
+          <div class="item">
+            <div class="content">
+              <a class="header">{{member.name}}</a>
+              <div class="description">Member of {{committeeName}}</div>
+              <span>Participation Start Date:</span>
+              <br>
+              <span>Participation End Date:</span>
+            </div>
+          </div>
+          {{/each}}
+          <div class="item">
+            <div class="ui red button" {{action 'closeModal'}}>
+              Close
+            </div>
+>>>>>>> jhay22
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
+{{/ui-modal}}

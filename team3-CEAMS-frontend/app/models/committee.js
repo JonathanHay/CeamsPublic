@@ -5,7 +5,10 @@ export default DS.Model.extend({
     name: DS.attr(),
     level: DS.attr(),
     dateCreated: DS.attr(),
+<<<<<<< HEAD
     members: DS.attr(),
+=======
+>>>>>>> jhay22
 
     membersInfo: computed('members', function() {
       let info = [];
