@@ -25,8 +25,7 @@
               <td>{{meeting.minutes}}</td>
               <td>{{meeting.startDateTime}}</td>
               <td>{{meeting.endDateTime}}</td>
-              <td>{{view-meeting ID = meeting.id users=this.model}}</td>
-              {{!-- <td>{{view-meeting ID = meeting.id users=meeting.attendees}}</td> --}}
+              <td>{{view-meeting ID = meeting.id members = model.members}}</td>
             </tr>
           {{/each}}
         </tbody>

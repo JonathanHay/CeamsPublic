@@ -1,66 +1,64 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
-import { oneWay } from '@ember/object/computed';
-import {inject as service} from '@ember/service';
-
-
 
 export default Component.extend({
+  init() {
+    this._super(...arguments);
+    this.set('changes', {});
+    this.set('membersFilter', '');
+    this.set('attendeesFilter', '');
+  },
 
-    init() {
-        this._super(...arguments);
-        this.set('changes', {});
-        this.set('allUsersFilter', '');
-        this.set('membersFilter', '');
-      },
+  attendees: computed('attendees', 'members', 'attendeesFilter', function() {
+    return this.attendees.filter((u) => {
+      return (u.firstName + " " + u.lastName).startsWith(this.get('attendeesFilter'));
+    });
+  }),
+  
+  members: computed('members', 'attendees', 'membersFilter', function() {
+    return this.members.filter((u) => {
+      return (u.firstName + " " + u.lastName).startsWith(this.get('membersFilter'));
+    });
+  }),
 
-      allUsers: computed('members', 'attendees', 'allUsersFilter', function() {
-        return this.members.filter((u) => {
-          return (u.firstName + " " + u.lastName).startsWith(this.get('allUsersFilter'));
-        });
-      }),
-      
-      members: computed('attendees', 'members', 'membersFilter', function() {
-        return this.attendees.filter((u) => {
-          return (u.firstName + " " + u.lastName).startsWith(this.get('membersFilter'));
-        });
-      }),
-    
-      actions: {
-        add(user) {
-          let key = `changes.${user._id}`;
-          if (this.get(key) == 'remove') {
-            this.set(key, undefined); // if already on remove list, remove entry
-          } else {
-            this.set(key, 'add')
-          }
-          this.set('members', this.get('members').filter((u) => {
-            return user._id != u._id;
-          }));
-          this.get('attendees').pushObject(user);
-          this.set('allUsersFilter', '');
-          this.set('membersFilter', '');
-        },
-        remove(user) {
-          let key = `changes.${user._id}`;
-          if (this.get(key) == 'add') {
-            this.set(key, undefined); // if already on add list, remove entry
-          } else {
-            this.set(key, 'remove')
-          }
-          this.set('attendees', this.get('attendees').filter((u) => {
-            return user._id != u._id;
-          }));
-          this.get('members').pushObject(user);
-        },
-        filterAllUsers(e) {
-          this.set('allUsersFilter', e.target.value);
-        },
-        filtermembers(e) {
-          this.set('membersFilter', e.target.value);
-        },
-        submit() {
-          this.submit(this.get('changes'));
-        }
+  actions: {
+    add(user) {
+      this.set('attendees', this.get('attendees').filter((u) => {
+        return user.id != u.id;
+      }));
+      let key = `changes.${user.cID}`;
+      if (this.get(key) !== undefined && this.get(key)[0] === 'remove') {
+        this.set(key, undefined); // if already on remove list, remove entry
+      } else {
+        this.set(key, ['add', user.type])
       }
+      this.set('members', this.get('members').filter((u) => {
+        return user.id != u.id;
+      }));
+      this.get('attendees').pushObject(user);
+      this.set('membersFilter', '');
+      this.set('attendeesFilter', '');
+    },
+    remove(user) {
+      let key = `changes.${user.id}`;
+      if (this.get(key) !== undefined && this.get(key)[0] === 'add') {
+        this.set(key, undefined); // if already on add list, remove entry
+      } else {
+        this.set(key, ['remove', user.type])
+      }
+      this.set('attendees', this.get('attendees').filter((u) => {
+        return user.id != u.id;
+      }));
+      this.get('members').pushObject(user);
+    },
+    filterMembers(e) {
+      this.set('membersFilter', e.target.value);
+    },
+    filterAttendees(e){
+      this.set('attendeesFilter', e.target.value);
+    },
+    submit() {
+      this.userSubmit(this.get('changes'));
+    }
+  }
 });

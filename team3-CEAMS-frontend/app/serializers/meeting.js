@@ -5,7 +5,7 @@ export default DS.RESTSerializer.extend(DS.EmbeddedRecordsMixin, {
   attrs: {
       outcomes: { 'serialize':'records',
                   'deserialize':'records'},
-      attendees: {'serialize':'records',
+      attendees: {'serialize':false,
                   'deserialize':'records'}
     }
   });
