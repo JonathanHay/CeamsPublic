@@ -270,3 +270,8 @@ footer {
 #staff{
   text-align: center;
 }
+
+input[type="number"]{
+  height:30px;
+  width:100px;
+}
