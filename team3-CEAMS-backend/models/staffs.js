@@ -10,9 +10,9 @@ var staffsSchema = mongoose.Schema(
         roleName: String,
         keyPerformanceIndicator: Number,
         evaluationMethod: {type: mongoose.Schema.ObjectId, ref: ('UserEvaluationMethods')},
-        memberships: [{type: mongoose.Schema.ObjectId, ref: ('CommitteeMemberships')}],
+        memberships: [{type: mongoose.Schema.ObjectId, ref: ('committeeMembership')}],
         userShadow: {type: mongoose.Schema.ObjectId, ref: ('UserAccounts')}
     }
 );
-var Staffs = mongoose.model('staff', staffsSchema);
+var Staffs = mongoose.model('staff', staffsSchema, 'staff');
 exports.Model = Staffs;

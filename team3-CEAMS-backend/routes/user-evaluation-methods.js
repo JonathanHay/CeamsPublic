@@ -46,7 +46,7 @@ router.put('/:id', function (req, res) {
             var oldMethod = JSON.stringify(userEvaluationMethod);
             userEvaluationMethod.formulaExpression = req.body.userEvaluationMethod.formulaExpression;
             userEvaluationMethod.formulaDescription = req.body.userEvaluationMethod.formulaDescription;
-            userEvaluationMethod.timeToApply = req.body.userEvaluationMethod.timeToApply;
+            userEvaluationMethod.formulaType = req.body.userEvaluationMethod.formulaType;
             userEvaluationMethod.instructors = req.body.userEvaluationMethod.instructors;
             userEvaluationMethod.staff = req.body.userEvaluationMethod.staff;
 

@@ -414,7 +414,7 @@ define("aouda-ceams-frontend/tests/lint/app.lint-test", [], function () {
   QUnit.module('ESLint | app');
   QUnit.test('adapters/application.js', function (assert) {
     assert.expect(1);
-    assert.ok(true, 'adapters/application.js should pass ESLint\n\n');
+    assert.ok(false, 'adapters/application.js should pass ESLint\n\n6:12 - Use import { dasherize } from \'@ember/string\'; instead of using Ember.String.dasherize (ember/new-module-imports)\n6:12 - \'Ember\' is not defined. (no-undef)');
   });
   QUnit.test('app.js', function (assert) {
     assert.expect(1);

@@ -10,7 +10,13 @@
   });
   _exports.default = void 0;
 
-  var _default = _emberData.default.RESTAdapter.extend({//host: 'http://127.0.0.1:3000'
+  var _default = _emberData.default.RESTAdapter.extend({
+    host: 'http://127.0.0.1:3000',
+
+    pathForType(type) {
+      return Ember.String.dasherize(type);
+    }
+
   });
 
   _exports.default = _default;
@@ -1972,7 +1978,7 @@ catch(err) {
 
 ;
           if (!runningTests) {
-            require("aouda-ceams-frontend/app")["default"].create({"name":"aouda-ceams-frontend","version":"0.0.0+41a80363"});
+            require("aouda-ceams-frontend/app")["default"].create({"name":"aouda-ceams-frontend","version":"0.0.0+93f7f140"});
           }
         
 //# sourceMappingURL=aouda-ceams-frontend.map
