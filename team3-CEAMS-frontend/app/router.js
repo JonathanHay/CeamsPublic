@@ -16,14 +16,8 @@ Router.map(function () {
   this.route('new-task-force');
   this.route('committees', function () {
     this.route('new');
-<<<<<<< HEAD
     this.route('detail', { path: '/detail/:committee_id' });
     this.route('manage-users', { path: '/manage-users/:committee_id' });
-=======
-    this.route('detail');
-    this.route('manage-users');
-    this.route('team-detail', { path: '/:committee_id' });
->>>>>>> jhay22
   });
   this.route('indicators', function () {
     this.route('manage-upi');
