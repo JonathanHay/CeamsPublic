@@ -19,7 +19,7 @@ var instructorsSchema = mongoose.Schema(
         degreeProviders: [{type: mongoose.Schema.ObjectId, ref: ('DegreeProviders')}],
         rank: {type: mongoose.Schema.ObjectId, ref: ('AcademicRanks')},
         semesters: [{type: mongoose.Schema.ObjectId, ref: ('Semesters')}],
-        memberships: [{type: mongoose.Schema.ObjectId, ref: ('committeeMembership')}],
+        memberships: [{type: mongoose.Schema.ObjectId, ref: ('CommitteeMemberships')}],
         userShadow: {type: mongoose.Schema.ObjectId, ref: ('UserAccounts')}
 
     }

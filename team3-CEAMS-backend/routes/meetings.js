@@ -8,7 +8,7 @@ var Meetings = require('../models/meetings');
 var router = express.Router();
 /* GET all */
 router.get('/', function (req, res) {
-  Meetings.Model.find().populate('outcomes').populate('attendees').exec(function (err, meetings) {
+  Meetings.Model.find(function (err, meetings) {
     if (err) res.status(500).json(err);
     else res.json({ meeting: meetings });
   });
@@ -16,7 +16,7 @@ router.get('/', function (req, res) {
 
 /* GET some */
 router.get('/:id', function (req, res) {
-  Meetings.Model.findById(req.params.id).populate('outcomes').populate('attendees').exec(function (err, meeting) {
+  Meetings.Model.findById(req.params.id, function (err, meeting) {
     if (err) res.status(500).json(err);
     else res.json({ meeting: meeting });
   });

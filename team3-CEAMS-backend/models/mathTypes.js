@@ -7,5 +7,5 @@ var mathTypesSchema = mongoose.Schema(
         courses: [{type: mongoose.Schema.ObjectId, ref: ('Courses')}]
     }
 );
-var MathTypes = mongoose.model('mathType', mathTypesSchema);
+var MathTypes = mongoose.model(mathType, mathTypesSchema);
 exports.Model = MathTypes;
