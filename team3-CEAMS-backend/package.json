@@ -3,13 +3,14 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www",
+    "start": "node ./bin/www",
     "db-up": "mongod --dbpath data/db --logpath ./logs/mongodb.log",
     "db-up:linux": "mongod --dbpath data/db --fork --logpath ./logs/mongodb.log",
     "db-down": "mongod --dbpath data/db --shutdown"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
+    "cors": "^2.8.5",
     "debug": "~2.6.9",
     "express": "~4.16.0",
     "mongoose": "^5.4.6",

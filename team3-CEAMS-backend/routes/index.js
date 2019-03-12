@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-router.use('/utilizations', require('./utilizations'));
 router.use('/academic-terms', require('./academic-terms'));
 router.use('/academic-years', require('./academic-years'));
 router.use('/committees', require('./committees'));
@@ -14,10 +13,16 @@ router.use('/instructors', require('./instructors'));
 router.use('/kpi-reports', require('./kpi-reports'));
 router.use('/meetings', require('./meetings'));
 router.use('/meeting-outcomes', require('./meeting-outcomes'));
+router.use('/instructors', require('./instructors'));
 router.use('/lab-types', require('./lab-types'));
 router.use('/math-types', require('./math-types'));
 router.use('/natural-science-types', require('./natural-science-types'));
 router.use('/staffs', require('./staffs'));
+router.use('/teaching-assistants', require('./teaching-assistants'));
+router.use('/utilizations', require('./utilizations'));
 router.use('/user-evaluation-methods', require('./user-evaluation-methods'));
+router.use('/instructors', require('./instructors'));
+router.use('/teaching-assistants', require('./teaching-assistants'));
+router.use('/staff', require('./staff'));
 
 module.exports = router;

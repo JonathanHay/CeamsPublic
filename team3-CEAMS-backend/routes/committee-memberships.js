@@ -30,26 +30,22 @@ router.post('/', function (req, res) {
         if (err) {
             res.status(500).json(err);
         }
-        //adding committee membership to list of members of the respective committee
         Committees.Model.findById(committeeMembership.committee, function (err, committee) {
             if (err) {
                 res.status(500).json(err);
             }
-            //if array doesn't exist, make it
             if (committee.members == null) {
                 committee.members = [committeeMembership._id];
             } else {
-                //if array already exists, just push the value
                 committee.members.push(committeeMembership._id)
             }
             committee.save(function (err) {
                 if (err) {
                     res.status(500).json(err);
                 }
-                //since the member can be either an instructor, staff member, or teaching assistant, we have to find which one they are
                 if (committeeMembership.instructorMember != null) {
                     var model = Instructors;
-                    var theID = committeeMemberShip.instructorMember;
+                    var theID = committeeMembership.instructorMember;
                 } else if (committeeMembership.staffMember != null) {
                     var model = Staff;
                     var theID = committeeMembership.staffMember;
@@ -59,13 +55,10 @@ router.post('/', function (req, res) {
                 } else {
                     res.status(500).json("No membership found");
                 }
-                console.log(theID);
-                //finding the respective user based on which type of user they are
                 model.Model.findById(theID, function (err, user) {
                     if (err) {
                         res.status(500).json(err);
                     }
-                    //adding the membership to the user's array and saving it
                     if (user.memberships == null) {
                         user.memberships = [committeeMembership._id];
                     } else {
@@ -108,52 +101,51 @@ router.put('/:id', function (req, res) {
 
 /* DELETE */
 router.delete('/:id', function (req, res) {
-    //deleting committee membership
-    CommitteeMemberships.Model.findOneAndDelete({ _id: req.params.id },
-        function (err, committeeMembership) {
-            if (err) { res.status(500).json(err); }
-            //finding committee of the membership and deleting the reference of the membership from inside the committee
-            Committees.Model.findById(committeeMembership.committee, function (err, committee) {
-                if (err) {
-                    res.status(500).json(err);
-                }
-                var index = committee.members.indexOf(req.params.id);
-                if (index > -1) {
-                    committee.members.splice(index, 1);
-                }
-                committee.save(function (err) {
+    CommitteeMemberships.Model.findById(req.params.id, function (err, committeeMembership) {
+        CommitteeMemberships.Model.findOneAndDelete({ _id: req.params.id },
+            function (err, deleted) {
+                if (err) { res.status(500).json(err); }
+                Committees.Model.findById(committeeMembership.committee, function (err, committee) {
                     if (err) {
                         res.status(500).json(err);
                     }
-                    //finding the user type of the user in the membership and deleting the reference of the membership from inside the user
-                    if (committeeMembership.instructorMember !== null) {
-                        var model = Instructors;
-                        var theID = committeeMemberShip.instructorMember;
-                    } else if (committeeMembership.staffMember !== null) {
-                        var model = Staff;
-                        var theID = committeeMembership.staffMember;
-                    } else if (committeeMembership.teachingAssistantMember !== null) {
-                        var model = TeachingAssistants;
-                        var theID = committeeMembership.teachingAssistantMember;
-                    } else {
-                        res.status(500).json("No membership found");
+                    var index = committee.members.indexOf(req.params.id);
+                    if (index > -1) {
+                        committee.members.splice(index, 1);
                     }
-                    model.Model.findById(theID, function (err, user) {
-                        index = user.memberships.indexOf(req.params.id);
-                        if (index > -1) {
-                            user.memberships.splice(index, 1);
+                    committee.save(function (err) {
+                        if (err) {
+                            res.status(500).json(err);
                         }
-                        user.save(function (err) {
-                            if (err) {
-                                res.status(500).json(err);
+                        if (committeeMembership.instructorMember != null) {
+                            var model = Instructors;
+                            var theID = committeeMembership.instructorMember;
+                        } else if (committeeMembership.staffMember != null) {
+                            var model = Staff;
+                            var theID = committeeMembership.staffMember;
+                        } else if (committeeMembership.teachingAssistantMember != null) {
+                            var model = TeachingAssistants;
+                            var theID = committeeMembership.teachingAssistantMember;
+                        } else {
+                            res.status(500).json("No membership found");
+                        }
+                        model.Model.findById(theID, function (err, user) {
+                            index = user.memberships.indexOf(req.params.id);
+                            if (index > -1) {
+                                user.memberships.splice(index, 1);
                             }
-                            res.json({ committeeMembership: deleted });
+                            user.save(function (err) {
+                                if (err) {
+                                    res.status(500).json(err);
+                                }
+                                res.json({ committeeMembership: deleted });
+                            })
                         })
                     })
                 })
-            })
-        }
-    );
+            }
+        );
+    })
 });
 
 module.exports = router;

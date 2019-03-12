@@ -1,37 +1,63 @@
 import Component from '@ember/component';
 import {inject as service} from '@ember/service';
 import { computed } from '@ember/object';
+import { oneWay } from '@ember/object/computed';
 import $ from 'jquery';
 
 export default Component.extend({
     DS: service('store'),
+    //all data from meeting
+    meetingData: null,
+    //outcomes nested
+    outcomes: oneWay('meetingData.outcomes'),
+    //attendees nested
+    attendees: oneWay('meetingData.attendees'),
 
     modalName: computed(function () {
         return 'newMeeting' + this.get('ID');
       }),
 
+    didRender(){
+        $( document ).ready(function() {
+            // $('.cookie.nag')
+            //     .nag('clear')
+            // ;
+        });
+    },
     actions:{
-        edit: function(){
-            $('#editBtn').click(function() {
-                $('.meetingInput').prop("readonly", false);
+        
+        userSubmit: function(users){
+            this.set('members', users)
+        },
+        update: function(){
+            this.get('DS').findRecord('meeting', this.get('ID')).then((meeting) => {
+                meeting.set('location', this.get('location'));
+                meeting.set('description', this.get('description'));
+                meeting.set('minutes', this.get('minutes'));
+                meeting.set('startDateTime', this.get('startDateTime'));
+                meeting.set('endDateTime', this.get('endDateTime'));
+                meeting.save().then(() => {
+                    $('.cookie.nag')
+                        .nag('show')
+                    ;
+                }, (err)=>{
+                    $('.cookie.nag.bad')
+                        .nag('show')
+                    ;
+                });
             });
         },
         closeModal: function(){
             $('.ui.' + this.get('modalName') +'.modal').modal('hide');
         },
         openModal: function () {
-            /*
-                instead of null, must put in onePost.meetingTitle.... 
-                that is passed from template meeting
-            */
-           
-            this.set('meetingTitle', null);
-            this.set('meetingPlace', null);
-            this.set('meetingObjective', null);
-            this.set('meetingDescription', null);
-            this.set('otherDetail', null);
-            this.set('recommendations', null);
-            this.set('decisions', null);
+            this.set('meetingData', this.get('DS').peekRecord('meeting', this.get('ID'), { include: 'meetingOutcomes, committeeMemberships'}));
+            this.set('members', this.get('DS').findAll('committee-membership'));
+            this.set('location', this.get('meetingData.location'));
+            this.set('description',  this.get('meetingData.description'));
+            this.set('minutes',  this.get('meetingData.minutes'));
+            this.set('startDatetime',  this.get('meetingData.startDateTime'));
+            this.set('endDateTime',  this.get('meetingData.endDateTime'));
             $('.ui.' + this.get('modalName') +'.modal').addClass('scrollME');
             $('.ui.' + this.get('modalName') +'.modal').modal({
               closable: false,
@@ -41,28 +67,7 @@ export default Component.extend({
               },
       
               onApprove: () => {
-                var newMeetingMinute = this.get('DS').createRecord('meeting-minutes', {
-                    meetingTitle: this.get('meetingTitle'),
-                    meetingPlace: this.get('meetingPlace'),
-                    meetingObjective: this.get('meetingObjective'),
-                    meetingDescription: this.get('meetingDescription'),
-                    otherDetail:this.get('otherDetail'),
-                    recommendations: this.get('recommendations'),
-                    decisions: this.get('decisions')
-                });
-    
-                newMeetingMinute.save().then(() => {
-                    return true;
-                });
-    
-                var newMeeting = this.get('DS').createRecord('meetings', {
-                    startDateTime: this.get('startDateTime'),
-                    endDateTime: this.get('endDateTime')
-                });
-    
-                newMeeting.save().then(() => {
-                    return true;
-                });
+                return true;
               }
             })
             .modal('show');

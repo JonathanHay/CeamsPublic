@@ -9,28 +9,26 @@
         <table id="example" class="ui celled table" style="width:100%">
         <thead>
             <tr>
-                <th>Meeting Title</th>
-                <th>Meeting Place</th>
+                <th>Meeting Location</th>
+                <th>Meeting Description</th>
+                <th>Meeting Minutes</th>
                 <th>Start Time</th>
                 <th>End Time</th>
-                <th>Detail</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
+          {{#each model.meetings as |meeting|}}
             <tr>
-                <td>Meeting 1</td>
-                <td>Place 1</td>
-                <td>12</td>
-                <td>1</td>
-                <td>{{view-meeting ID='1' users=this.model}}</td>
+              <td>{{meeting.location}}</td>
+              <td>{{meeting.description}}</td>
+              <td>{{meeting.minutes}}</td>
+              <td>{{meeting.startDateTime}}</td>
+              <td>{{meeting.endDateTime}}</td>
+              <td>{{view-meeting ID = meeting.id users=this.model}}</td>
+              {{!-- <td>{{view-meeting ID = meeting.id users=meeting.attendees}}</td> --}}
             </tr>
-            <tr>
-                <td>Meeting 2</td>
-                <td>Place 2</td>
-                <td>12</td>
-                <td>1</td>
-                <td>{{view-meeting ID='2' users=this.model}}</td>
-            </tr>
+          {{/each}}
         </tbody>
         </table>
         {{new-meeting}}

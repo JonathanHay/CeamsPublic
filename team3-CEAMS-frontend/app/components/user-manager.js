@@ -23,28 +23,28 @@ export default Component.extend({
 
   actions: {
     add(user) {
-      let key = `changes.${user._id}`;
-      if (this.get(key) == 'remove') {
+      let key = `changes.${user.id}`;
+      if (this.get(key) !== undefined && this.get(key)[0] === 'remove') {
         this.set(key, undefined); // if already on remove list, remove entry
       } else {
-        this.set(key, 'add')
+        this.set(key, ['add', user.type])
       }
       this.set('users.allUsers', this.get('users.allUsers').filter((u) => {
-        return user._id != u._id;
+        return user.id != u.id;
       }));
       this.get('users.members').pushObject(user);
       this.set('allUsersFilter', '');
       this.set('membersFilter', '');
     },
     remove(user) {
-      let key = `changes.${user._id}`;
-      if (this.get(key) == 'add') {
+      let key = `changes.${user.id}`;
+      if (this.get(key) !== undefined && this.get(key)[0] === 'add') {
         this.set(key, undefined); // if already on add list, remove entry
       } else {
-        this.set(key, 'remove')
+        this.set(key, ['remove', user.type])
       }
       this.set('users.members', this.get('users.members').filter((u) => {
-        return user._id != u._id;
+        return user.id != u.id;
       }));
       this.get('users.allUsers').pushObject(user);
     },
@@ -55,7 +55,7 @@ export default Component.extend({
       this.set('membersFilter', e.target.value);
     },
     submit() {
-      this.submit(this.get('changes'));
+      this.submit(this.committee_id, this.get('changes'), this.users.memberships);
     }
   }
 });
