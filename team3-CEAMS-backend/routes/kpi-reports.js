@@ -10,6 +10,8 @@ var UserEvaluationMethods = require('../models/userEvaluationMethods');
 
 function getScore(id, callback) {
     UserAccounts.Model.findById(id, function (err, UserAccount) {
+        if (err) res.status(500).json(err);
+
         //gets all audittrail data for the user passed to the function
         AuditTrails.Model.find({ authorUserName: UserAccount.username }, function (err, AuditTrails) {
             if (err) res.status(500).json(err);
@@ -39,9 +41,27 @@ function getScore(id, callback) {
                         numCourses++;
                     })
                     Instructors.Model.findById(instructorID, function (err, Instructor) {
+                        if (err) res.status(500).json(err);
+
+                        console.log(Instructor);
+
+                        if (!Instructor) {
+                            var rawData = { "numLogins": null, "numGraded": null, "numCourses": null, "totalActions": null };
+                            var results = { [UserAccount.username]: { "rawData": rawData, "score": null, "error": "UserAccount has invalid Instructor ID" } };
+                            return callback(results);
+                        }
+
                         evaluationMethod = Instructor.evaluationMethod;
 
                         UserEvaluationMethods.Model.findById(evaluationMethod, function (err, EvaluationMethod) {
+                            if (err) res.status(500).json(err);
+
+                            if (!EvaluationMethod) {
+                                var rawData = { "numLogins": null, "numGraded": null, "numCourses": null, "totalActions": null };
+                                var results = { [UserAccount.username]: { "rawData": rawData, "score": null, "error": "Instructor has invalid EvaluationMethod ID" } };
+                                return callback(results);
+                            }
+
                             var formula = JSON.parse(EvaluationMethod.formulaExpression);
 
                             var score = formula.numLogins * numLogins +
@@ -59,10 +79,24 @@ function getScore(id, callback) {
                 var staffID = UserAccount.staff;
 
                 Staff.Model.findById(staffID, function (err, Staff) {
+                    if (err) res.status(500).json(err);
+
+                    if (!Staff) {
+                        var rawData = { "numLogins": null, "totalActions": null };
+                        var results = { [UserAccount.username]: { "rawData": rawData, "score": null, "error": "UserAccount has invalid Staff ID" } };
+                        return callback(results);
+                    }
+
                     evaluationMethod = Staff.evaluationMethod;
 
                     UserEvaluationMethods.Model.findById(evaluationMethod, function (err, EvaluationMethod) {
+                        if (err) res.status(500).json(err);
 
+                        if (!EvaluationMethod) {
+                            var rawData = { "numLogins": null, "totalActions": null };
+                            var results = { [UserAccount.username]: { "rawData": rawData, "score": null, "error": "Staff has invalid EvaluationMethod ID" } };
+                            return callback(results);
+                        }
                         var formula = JSON.parse(EvaluationMethod.formulaExpression);
 
                         var score = formula.numLogins * numLogins + formula.totalActions * totalActions;
