@@ -29,21 +29,39 @@ router.post('/', function (req, res) {
 });
 
 /* PUT */
-// router.put('/:id', function(req, res) {
-//   Instructors.Model.findById(req.params.id, function (err, instructor) {
-//     if (err) res.status(500).json(err);
-//     else {
-//         instructor.code = req.body.instructor.code;
-//         instructor.name = req.body.instructor.name;
-//         instructor.save(function (err) {
-//             if (err) res.status(500).json(err);
-//             else {
-//                 res.json({instructor: instructor});
-//             }
-//         });
-//     }
-//   });
-// });
+router.put('/:id', function(req, res) {
+  Instructors.Model.findById(req.params.id, function (err, instructor) {
+    if (err) res.status(500).json(err);
+    else {
+        instructor.firstName = req.body.instructor.firstName;
+        instructor.lastName = req.body.instructor.lastName;
+        instructor.email = req.body.instructor.email;
+        instructor.building = req.body.instructor.building;
+        instructor.officeNumber = req.body.instructor.officeNumber;
+        instructor.number = req.body.instructor.number;
+        instructor.ccMemberStatus = req.body.instructor.ccMemberStatus;
+        instructor.hireDate = req.body.instructor.hireDate;
+        instructor.estimatedRetirementDate = req.body.instructor.estimatedRetirementDate;
+        instructor.keyPerformanceIndicator = req.body.instructor.keyPerformanceIndicator;
+        instructor.gender = req.body.instructor.gender;
+        instructor.evaluationMethod = req.body.instructor.evaluationMethod;
+        instructor.programs = req.body.instructor.programs;
+        instructor.licenceProviders = req.body.instructor.licenceProviders;
+        instructor.degreeProviders = req.body.instructor.degreeProviders;
+        instructor.rank = req.body.instructor.rank;
+        instructor.semesters = req.body.instructor.semesters;
+        instructor.memberships = req.body.instructor.memberships;
+        instructor.userShadow = req.body.instructor.userShadow;
+
+        instructor.save(function (err) {
+            if (err) res.status(500).json(err);
+            else {
+                res.json({instructor: instructor});
+            }
+        });
+    }
+  });
+});
 
 /* DELETE */
 router.delete('/:id', function (req, res) {
