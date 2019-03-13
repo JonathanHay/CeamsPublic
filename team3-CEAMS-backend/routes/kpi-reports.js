@@ -1,79 +1,117 @@
 var express = require('express');
 var router = express.Router();
 var AuditTrails = require('../models/auditTrails');
+var UserEvaluationMethods = require('../models/userEvaluationMethods');
+var Instructors = require('../models/instructors');
 var UserAccounts = require('../models/userAccounts');
 var Semesters = require('../models/semesters');
+var Staff = require('../models/staffs');
 var UserEvaluationMethods = require('../models/userEvaluationMethods');
 
-function getScore(username, callback) {
-    //gets all audittrail data for the user passed to the function
-    AuditTrails.Model.find({ authorUserName: username }, function (err, AuditTrails) {
+function getScore(id, callback) {
+    UserAccounts.Model.findById(id, function (err, UserAccount) {
         if (err) res.status(500).json(err);
 
-        //The formula depends on up to four factors: number of times they've logged in, number of tests they've graded, number of courses they teach,
-        //and total actions they have performed that are stored in the auditTrail.
-        var numLogins = 0;
-        var numGraded = 0;
-        var numCourses = 0;
-        var totalActions = 0;
-        var KPIScore = 0;
-
-        //Grabbing results for how many times they've logged in or graded a test (based on auditTrail data) as well as total actions they have in the audittrail
-        AuditTrails.forEach(function (obj) {
-            console.log(obj.actionDesc);
-            if (obj.actionDesc == "logIn") {
-                numLogins++;
-            } else if (obj.actionDesc == "testGraded") {
-                numGraded++;
-            }
-            totalActions++;
-        })
-
-        //Grabs the UserAccount with the username sent to the function
-        UserAccounts.Model.findOne({ username: username }, function (err, UserAccount) {
+        //gets all audittrail data for the user passed to the function
+        AuditTrails.Model.find({ authorUserName: UserAccount.username }, function (err, AuditTrails) {
             if (err) res.status(500).json(err);
 
-            //If they're an instructor it grabs the number of courses they have taught
-            if (UserAccount.instructor !== null) {
-                var instructorID = UserAccount.instructor._id;
+            //The formula depends on up to four factors: number of times they've logged in, number of tests they've graded, number of courses they teach,
+            //and total actions they have performed that are stored in the auditTrail.
+            var numLogins = 0, numGraded = 0, numCourses = 0, totalActions = 0, KPIScore = 0;
+
+            //Grabbing results for how many times they've logged in or graded a test (based on auditTrail data) as well as total actions they have in the audittrail
+            AuditTrails.forEach(function (obj) {
+                if (obj.actionDesc == "logIn") {
+                    numLogins++;
+                } else if (obj.actionDesc == "testGraded") {
+                    numGraded++;
+                }
+                totalActions++;
+            })
+
+            var evaluationMethod;
+
+            console.log(UserAccount.instructor);
+            //If they're an instructor it grabs the number of courses they have taught and the evaluation method to use
+            if (UserAccount.instructor !== null && UserAccount.instructor !== undefined) {
+                var instructorID = UserAccount.instructor;
                 Semesters.Model.find({ instructor: instructorID }, function (err, Semesters) {
                     if (err) res.status(500).json(err);
                     Semesters.forEach(function (obj2) {
                         numCourses++;
                     })
+                    Instructors.Model.findById(instructorID, function (err, Instructor) {
+                        if (err) res.status(500).json(err);
+
+                        if (!Instructor) {
+                            var rawData = { "numLogins": null, "numGraded": null, "numCourses": null, "totalActions": null };
+                            var results = { [UserAccount._id]: { "rawData": rawData, "score": null, "error": "UserAccount has invalid Instructor ID" } };
+                            return callback(results);
+                        }
+
+                        evaluationMethod = Instructor.evaluationMethod;
+
+                        UserEvaluationMethods.Model.findById(evaluationMethod, function (err, EvaluationMethod) {
+                            if (err) res.status(500).json(err);
+
+                            if (!EvaluationMethod) {
+                                var rawData = { "numLogins": null, "numGraded": null, "numCourses": null, "totalActions": null };
+                                var results = { [UserAccount._id]: { "rawData": rawData, "score": null, "error": "Instructor has invalid EvaluationMethod ID" } };
+                                return callback(results);
+                            }
+
+                            var formula = JSON.parse(EvaluationMethod.formulaExpression);
+
+                            var score = formula.numLogins * numLogins +
+                                formula.numGraded * numGraded + formula.numCourses * numCourses + formula.totalActions * totalActions;
+                            var rawData = { "numLogins": numLogins, "numGraded": numGraded, "numCourses": numCourses, "totalActions": totalActions };
+
+                            var results = { [UserAccount._id]: { "rawData": rawData, "score": score } }
+
+                            //return score
+                            return callback(results);
+                        });
+                    })
                 })
-            }
+            } else if (UserAccount.staff !== null && UserAccount.staff !== undefined) {
+                var staffID = UserAccount.staff;
 
-            //console.log("Number of logins: " + numLogins);
-            //console.log("Number of grades: " + numGraded);
-            //console.log("Number of courses: " + numCourses);
-            //console.log("Total actions in auditTrail: " + totalActions);
+                Staff.Model.findById(staffID, function (err, Staff) {
+                    if (err) res.status(500).json(err);
 
-            //finds the UserEvaluationMethod with the timeToApply closest to today's date
-            UserEvaluationMethods.Model.findOne({ "timeToApply": { $lt: new Date() } }).sort({ "timeToApply": 'desc' }).exec(function (err, userEvaluationMethod) {
-                if (err) res.status(500).json(err);
-                //console.log(userEvaluationMethod);
+                    if (!Staff) {
+                        var rawData = { "numLogins": null, "totalActions": null };
+                        var results = { [UserAccount._id]: { "rawData": rawData, "score": null, "error": "UserAccount has invalid Staff ID" } };
+                        return callback(results);
+                    }
 
-                var formula = JSON.parse(userEvaluationMethod.formulaExpression);
+                    evaluationMethod = Staff.evaluationMethod;
 
-                //if the user requested is an instructor, the instructor weight values from the userevaluationmethod grabbed above are used to get the user's KPI score
-                if (UserAccount.instructor !== null) {
-                    var score = formula.instructor.numLogins * numLogins +
-                        formula.instructor.numGraded * numGraded + formula.instructor.numCourses * numCourses + formula.instructor.totalActions * totalActions;
-                    var rawData = { "numLogins": numLogins, "numGraded": numGraded, "numCourses": numCourses, "totalActions": totalActions };
-                } else {
-                    //if they are staff, the staff values are used
-                    var score = formula.staff.numLogins * numLogins + formula.staff.totalActions * totalActions;
-                    var rawData = { "numLogins": numLogins, "totalActions": totalActions };
+                    UserEvaluationMethods.Model.findById(evaluationMethod, function (err, EvaluationMethod) {
+                        if (err) res.status(500).json(err);
 
-                }
+                        if (!EvaluationMethod) {
+                            var rawData = { "numLogins": null, "totalActions": null };
+                            var results = { [UserAccount._id]: { "rawData": rawData, "score": null, "error": "Staff has invalid EvaluationMethod ID" } };
+                            return callback(results);
+                        }
+                        var formula = JSON.parse(EvaluationMethod.formulaExpression);
 
-                var results = { [username]: { "rawData": rawData, "score": score } }
+                        var score = formula.numLogins * numLogins + formula.totalActions * totalActions;
+                        var rawData = { "numLogins": numLogins, "totalActions": totalActions };
 
-                //return score
+                        var results = { [UserAccount._id]: { "rawData": rawData, "score": score } }
 
+                        //return score
+                        return callback(results);
+                    });
+                })
+            } else {
+                var rawData = { "numLogins": null, "totalActions": null };
+                var results = { [UserAccount._id]: { "rawData": rawData, "score": null, "error": "UserAccount has no Instructor or Staff ID" } };
                 return callback(results);
-            });
+            }
         });
     });
 }
@@ -85,7 +123,7 @@ router.get('/', function (req, res) {
         //console.log("usraccts: " + userAccounts);
         if (err) res.status(500).json(err);
         for (var i = 0; i < userAccounts.length; i++) {
-            getScore(userAccounts[i].username, (result) => {
+            getScore(userAccounts[i]._id, (result) => {
                 results.push(result);
                 if (results.length === userAccounts.length) res.json(results);
             })
@@ -94,9 +132,9 @@ router.get('/', function (req, res) {
 });
 
 /* GET some */
-router.get('/:username', function (req, res) {
+router.get('/:id', function (req, res) {
 
-    getScore(req.params.username, (results) => {
+    getScore(req.params.id, (results) => {
         res.json({ results });
     })
 
