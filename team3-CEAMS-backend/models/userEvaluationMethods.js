@@ -2,9 +2,9 @@
 var mongoose = require('mongoose');
 var userEvaluationMethodsSchema = mongoose.Schema(
     {
+        formulaType: String,
         formulaExpression: String,
         formulaDescription: String,
-        timeToApply: Date,
         instructors: [{type: mongoose.Schema.ObjectId, ref: ('Instructors')}],
         staff: [{type: mongoose.Schema.ObjectId, ref: ('Staff')}]
     }

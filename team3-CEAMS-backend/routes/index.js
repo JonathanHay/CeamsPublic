@@ -9,6 +9,7 @@ router.use('/complementary-studies-types', require('./complementary-studies-type
 router.use('/content-levels', require('./content-levels'));
 router.use('/course-types', require('./course-types'));
 router.use('/deliverable-types', require('./deliverable-types'));
+router.use('/instructors', require('./instructors'));
 router.use('/kpi-reports', require('./kpi-reports'));
 router.use('/meetings', require('./meetings'));
 router.use('/meeting-outcomes', require('./meeting-outcomes'));

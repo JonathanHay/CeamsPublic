@@ -29,21 +29,29 @@ router.post('/', function(req, res) {
 });
 
 /* PUT */
-// router.put('/:id', function(req, res) {
-//   Staffs.Model.findById(req.params.id, function (err, staff) {
-//     if (err) res.status(500).json(err);
-//     else {
-//         staff.code = req.body.staff.code;
-//         staff.name = req.body.staff.name;
-//         staff.save(function (err) {
-//             if (err) res.status(500).json(err);
-//             else {
-//                 res.json({staff: staff});
-//             }
-//         });
-//     }
-//   });
-// });
+router.put('/:id', function(req, res) {
+  Staffs.Model.findById(req.params.id, function (err, staff) {
+    if (err) res.status(500).json(err);
+    else {
+        staff.firstName = req.body.staff.firstName;
+        staff.lastName = req.body.staff.lastName;
+        staff.email = req.body.staff.email;
+        staff.building = req.body.staff.building;
+        staff.officeNumber = req.body.staff.officeNumber;
+        staff.roleName = req.body.staff.roleName;
+        staff.keyPerformanceIndicator = req.body.staff.keyPerformanceIndicator;
+        staff.evaluationMethod = req.body.staff.evaluationMethod;
+        staff.memberships = req.body.staff.memberships;
+        staff.userShadow = req.body.staff.userShadow;
+        staff.save(function (err) {
+            if (err) res.status(500).json(err);
+            else {
+                res.json({staff: staff});
+            }
+        });
+    }
+  });
+});
 
 /* DELETE */
 router.delete('/:id', function(req, res) {

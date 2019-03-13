@@ -19,7 +19,7 @@ export default DS.Model.extend({
   //relationships
   // userGivenRoles: DS.hasMany('user-given-role'),
   // committeeMembership: DS.hasMany('committee-membership'),
-  // userEvaluationMethod: DS.belongsTo('user-evaluation-method'),
+  evaluationMethod: DS.belongsTo('user-evaluation-method'),
   // licenceStatuses: DS.hasMany('licence-status'),
   // academicRank: DS.belongsTo('academic-rank'),
   // academicDegrees: DS.hasMany('academic-degree'),
