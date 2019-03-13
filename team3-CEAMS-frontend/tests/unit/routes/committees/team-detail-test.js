@@ -1,11 +1,11 @@
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 
-module('Unit | Route | TaskForceManagement', function(hooks) {
+module('Unit | Route | committees/team-detail', function(hooks) {
   setupTest(hooks);
 
   test('it exists', function(assert) {
-    let route = this.owner.lookup('route:task-force-management');
+    let route = this.owner.lookup('route:committees/team-detail');
     assert.ok(route);
   });
 });

@@ -7,24 +7,24 @@ var TeachingAssistants = require('../models/teachingAssistants');
 router.get('/', async function(req, res) {
   TeachingAssistants.Model.find((err, teachingAssistants) => {
     if (err) res.status(500).json(err);
-    res.json({teachingAssistant: teachingAssistants});
+    res.json({ teachingAssistant: teachingAssistants });
   });
 });
 
 /* GET some */
-router.get('/:id', function(req, res) {
+router.get('/:id', function (req, res) {
   TeachingAssistants.Model.findById(req.params.id, function (err, teachingAssistant) {
     if (err) res.status(500).json(err);
-    else res.json({teachingAssistant: teachingAssistant});
+    else res.json({ teachingAssistant: teachingAssistant });
   });
 });
 
 /* POST */
-router.post('/', function(req, res) {
+router.post('/', function (req, res) {
   var teachingAssistant = new TeachingAssistants.Model(req.body.teachingAssistant);
   teachingAssistant.save(function (err) {
-      if (err) res.status(500).json(err);
-      res.json({teachingAssistant: teachingAssistant});
+    if (err) res.status(500).json(err);
+    res.json({ teachingAssistant: teachingAssistant });
   });
 });
 
@@ -46,15 +46,15 @@ router.post('/', function(req, res) {
 // });
 
 /* DELETE */
-router.delete('/:id', function(req, res) {
-  TeachingAssistants.Model.findOneAndDelete({_id: req.params.id},
+router.delete('/:id', function (req, res) {
+  TeachingAssistants.Model.findOneAndDelete({ _id: req.params.id },
     function (err, deleted) {
       if (err) res.status(500).json(err);
       else {
-        res.json({teachingAssistant: deleted});
+        res.json({ teachingAssistant: deleted });
       }
     }
-);
+  );
 });
 
 module.exports = router;

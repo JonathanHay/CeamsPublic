@@ -10,7 +10,7 @@ var router = express.Router();
 router.get('/', function(req, res) {
   Meetings.Model.find((err, meetings) => {
     if (err) res.status(500).json(err);
-    else res.json({meeting: meetings});
+    else res.json({ meeting: meetings });
   });
 });
 
