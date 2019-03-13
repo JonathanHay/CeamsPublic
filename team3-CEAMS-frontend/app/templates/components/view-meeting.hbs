@@ -42,12 +42,13 @@
                 {{meeting-outcomes outcomes=outcomes meetingId = ID}}
             </div>
         {{/ui-accordion}}
+        
         {{#ui-accordion class="styled"}}
             <div class="title">
                 Manage Users
             </div>
             <div class="content">
-                {{!-- {{meeting-attendees members=users.allUsers attendees=attendees submit=(action "userSubmit")}} --}}
+                {{meeting-attendees attendees=attendees memberships = memberships meetingId = ID}}
             </div>
         {{/ui-accordion}}
     </div>

@@ -5,7 +5,7 @@ var Staffs = require('../models/staffs');
 
 /* GET all */
 router.get('/', function(req, res) {
-  Staffs.Model.find().populate('memberships').exec((err, staffs) => {
+  Staffs.Model.find((err, staffs) => {
     if (err) res.status(500).json(err);
     res.json({staff: staffs});
   });

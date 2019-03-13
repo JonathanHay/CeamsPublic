@@ -40,27 +40,5 @@ export default Component.extend({
             })
             .modal('show');
         },
-        create: function () {
-            var newMeetingMinute = this.get('DS').createRecord('meeting-minutes', {
-                meetingTitle: this.get('meetingTitle'),
-                meetingPlace: this.get('meetingPlace'),
-                meetingObjective: this.get('meetingObjective'),
-                meetingDescription: this.get('meetingDescription'),
-                otherDetail:this.get('otherDetail')
-            });
-
-            newMeetingMinute.save().then(() => {
-                return true;
-            });
-
-            var newMeeting = this.get('DS').createRecord('meetings', {
-                startDateTime: this.get('startDateTime'),
-                endDateTime: this.get('endDateTime')
-            });
-
-            newMeeting.save().then(() => {
-                return true;
-            });
-        }
     }
 });
