@@ -1,33 +1,36 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AoudaCEAMSFrontend</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    {{content-for "head"}}
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>AoudaCEAMSFrontend</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link integrity="" rel="stylesheet" href="{{rootURL}}assets/vendor.css">
-    <link integrity="" rel="stylesheet" href="{{rootURL}}assets/aouda-ceams-frontend.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
+  {{content-for "head"}}
+
+  <link integrity="" rel="stylesheet" href="{{rootURL}}assets/vendor.css">
+  <link integrity="" rel="stylesheet" href="{{rootURL}}assets/aouda-ceams-frontend.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
 
 
 
-    {{content-for "head-footer"}}
-  </head>
-  <body>
-    {{content-for "body"}}
+  {{content-for "head-footer"}}
+</head>
 
-    <script src="{{rootURL}}assets/vendor.js"></script>
-    <script src="{{rootURL}}assets/aouda-ceams-frontend.js"></script>
+<body>
+  {{content-for "body"}}
 
-    {{content-for "body-footer"}}
+  <script src="{{rootURL}}assets/vendor.js"></script>
+  <script src="{{rootURL}}assets/aouda-ceams-frontend.js"></script>
 
-    <script src="{{rootURL}}assets/javascripts/ga.js"></script>
-    <script src="{{rootURL}}assets/javascripts/growingio.js"></script>
+  {{content-for "body-footer"}}
 
-  </body>
+  <script src="{{rootURL}}assets/javascripts/ga.js"></script>
+  <script src="{{rootURL}}assets/javascripts/growingio.js"></script>
+  <script src="{{rootURL}}assets/javascripts/pdfmake.min.js"></script>
+
+</body>
 
 </html>
