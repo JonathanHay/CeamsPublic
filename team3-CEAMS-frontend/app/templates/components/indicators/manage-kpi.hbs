@@ -17,8 +17,9 @@
             <br>
             <br>
 
+
             <div id="instructor-factors">
-                <form>
+                <form onsubmit={{action "submitInstructorKPI"}}>
                     <div class="instructor">
                         <h3>Instructors</h3>
                     </div>
@@ -31,7 +32,12 @@
                                         Logins
                                         <div class="right floated column">
                                             <div class="ui input">
+<<<<<<< HEAD
                                                 <input style="width:55px" class="weight">
+=======
+                                                {{input class="weight" type="number" value=this.instructorLogins
+                                                step="1" placeholder="0"}}
+>>>>>>> d2bc8aa3a61eec6a912488ebbdf5910b58b643fd
                                             </div>
                                             %
                                         </div>
@@ -44,7 +50,12 @@
                                     <span>
                                         <div class="right floated column">
                                             <div class="ui input">
+<<<<<<< HEAD
                                                 <input style="width:55px" class="weight">
+=======
+                                                {{input class="weight" type="number" value=this.instructorTestsGraded
+                                                step="1" placeholder="0"}}
+>>>>>>> d2bc8aa3a61eec6a912488ebbdf5910b58b643fd
                                             </div>
                                             %
                                         </div>
@@ -57,7 +68,12 @@
                                     <span>
                                         <div class="right floated column">
                                             <div class="ui input">
+<<<<<<< HEAD
                                                 <input style="width:55px" class="weight">
+=======
+                                                {{input class="weight" type="number" value=this.instructorClassesTaught
+                                                step="1" placeholder="0"}}
+>>>>>>> d2bc8aa3a61eec6a912488ebbdf5910b58b643fd
                                             </div>
                                             %
                                         </div>
@@ -70,12 +86,20 @@
                                     <span>
                                         <div class="right floated column">
                                             <div class="ui input">
+<<<<<<< HEAD
                                                 <input style="width:55px" class="weight">
+=======
+                                                {{input class="weight" type="number" value=this.instructorActions
+                                                step="1" placeholder="0"}}
+>>>>>>> d2bc8aa3a61eec6a912488ebbdf5910b58b643fd
                                             </div>
                                             %
                                         </div>
                                     </span>
                                 </div>
+                            </div>
+                            <div class="error-message" style="color: red; display: none">
+                                Error: weights must sum to 100.
                             </div>
                             <div class="kpi-button-group">
                                 <div class="right floated column">
@@ -104,7 +128,12 @@
                                 <span>
                                     <div class="right floated column">
                                         <div class="ui input">
+<<<<<<< HEAD
                                             <input style="width:55px" class="weight">
+=======
+                                            {{input class="weight" type="number" value=this.staffLogins
+                                                step="1" placeholder="0"}}
+>>>>>>> d2bc8aa3a61eec6a912488ebbdf5910b58b643fd
                                         </div>
                                         %
                                     </div>
@@ -117,7 +146,12 @@
                                 <span>
                                     <div class="right floated column">
                                         <div class="ui input">
+<<<<<<< HEAD
                                             <input style="width:55px" class="weight">
+=======
+                                            {{input class="weight" type="number" value=this.staffActions
+                                                step="1" placeholder="0"}}
+>>>>>>> d2bc8aa3a61eec6a912488ebbdf5910b58b643fd
                                         </div>
                                         %
                                     </div>
