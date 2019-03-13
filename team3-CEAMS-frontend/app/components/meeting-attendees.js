@@ -1,7 +1,13 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
+import {inject as service} from '@ember/service';
+
 
 export default Component.extend({
+  DS: service('store'),
+  members: null,
+  attendeesInfo : null,
+
   init() {
     this._super(...arguments);
     this.set('changes', {});
@@ -9,17 +15,17 @@ export default Component.extend({
     this.set('attendeesFilter', '');
   },
 
-  attendees: computed('attendees', 'members', 'attendeesFilter', function() {
-    return this.attendees.filter((u) => {
-      return (u.firstName + " " + u.lastName).startsWith(this.get('attendeesFilter'));
-    });
-  }),
+  // attendees: computed('attendees', 'members', 'attendeesFilter', function() {
+  //   return this.attendees.filter((u) => {
+  //     return (u.firstName + " " + u.lastName).startsWith(this.get('attendeesFilter'));
+  //   });
+  // }),
   
-  members: computed('members', 'attendees', 'membersFilter', function() {
-    return this.members.filter((u) => {
-      return (u.firstName + " " + u.lastName).startsWith(this.get('membersFilter'));
-    });
-  }),
+  // members: computed('members', 'attendees', 'membersFilter', function() {
+  //   return this.members.filter((u) => {
+  //     return (u.firstName + " " + u.lastName).startsWith(this.get('membersFilter'));
+  //   });
+  // }),
 
   actions: {
     add(user) {
