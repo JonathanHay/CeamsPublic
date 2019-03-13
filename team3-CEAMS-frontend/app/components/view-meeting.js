@@ -13,6 +13,8 @@ export default Component.extend({
     //attendees nested
     attendees: null,
 
+    memberships:null,
+
     modalName: computed(function () {
         return 'newMeeting' + this.get('ID');
       }),
@@ -72,6 +74,7 @@ export default Component.extend({
             $('.ui.' + this.get('modalName') +'.modal').modal('hide');
         },
         openModal: function () {
+            this.set('attendees', []);
             this.set('meetingData', this.get('DS').peekRecord('meeting', this.get('ID')));
             this.set('location', this.get('meetingData.location'));
             this.set('description',  this.get('meetingData.description'));
@@ -79,68 +82,115 @@ export default Component.extend({
             this.set('startDatetime',  this.get('meetingData.startDateTime'));
             this.set('endDateTime',  this.get('meetingData.endDateTime'));
             this.set('outcomes', this.get('meetingData.outcomes'));
-            let attInfo = []
 
-            let meetingRecord = this.get('DS').peekRecord('meeting', this.get('ID'));
-            meetingRecord.get('attendees').then((attendeesArray)=>{
-                attendeesArray.forEach((attendee)=>{
-                    let instructorMember = attendee.get('instructorMember').then((e)=>{
-                        console.log(e.id)
-                        return e
+            let memberInfo=[]
+            let a = null;
+
+            this.get('DS').findAll('committee-membership').then((members) => {
+                members.forEach((member)=>{
+                    member.get('instructorMember').then((e) => {
+                        if(e != undefined){
+                            this.get('DS').findRecord('committee', member.committee).then((committee)=>{
+                                a = {
+                                    firstName : e.firstName,
+                                    lastName : e.lastName,
+                                    memberID : member.id,
+                                    committeeName : committee.name
+                                }
+                                memberInfo.push(a);
+                                a=null;
+                                this.set('memberships', memberInfo);
+                            });
+                        }
                     })
-                    
-                    if(instructorMember != undefined){
-                        // console.log(instructorMember.id)
-                    }
+                    member.get('staffMember').then((e) => {
+                        if(e != undefined){
+                            this.get('DS').findRecord('committee', member.committee).then((committee)=>{
+                                a = {
+                                    firstName : e.firstName,
+                                    lastName : e.lastName,
+                                    memberID : member.id,
+                                    committeeName : committee.name
+                                }
+                                memberInfo.push(a);
+                                a=null;
+                                this.set('memberships', memberInfo);
+                            });
+                        }
+                    })
+                    member.get('teachingAssistantMember').then((e) => {
+                        if(e != undefined){
+                            this.get('DS').findRecord('committee', member.committee).then((committee)=>{
+                                a = {
+                                    firstName : e.firstName,
+                                    lastName : e.lastName,
+                                    memberID : member.id,
+                                    committeeName : committee.name
+                                }
+                                memberInfo.push(a);
+                                a=null;
+                                this.set('memberships', memberInfo);
+                            });
+                        }
+                    })
+                })
+            })
 
-                    
-
+            //variable for storing user info (fn, ln, cname)
+            let attInfo = []
+            /* 
+            getting names and committeenames
+            */
+            let meetingRecord = this.get('DS').peekRecord('meeting', this.get('ID'));
+            meetingRecord.get('attendees').then((attendeesArray) => {
+                attendeesArray.forEach((attendee) => {
+                    attendee.get('instructorMember').then((e) => {
+                        if(e != undefined){
+                            this.get('DS').findRecord('committee', attendee.committee).then((committee)=>{
+                                a = {
+                                    firstName : e.firstName,
+                                    lastName : e.lastName,
+                                    memberID : attendee.id,
+                                    committeeName : committee.name
+                                }
+                                attInfo.push(a);
+                                a=null;
+                                this.set('attendees', attInfo);
+                            });
+                        }
+                    })
+                    attendee.get('staffMember').then((e) => {
+                        if(e != undefined){
+                            this.get('DS').findRecord('committee', attendee.committee).then((committee)=>{
+                                a = {
+                                    firstName : e.firstName,
+                                    lastName : e.lastName,
+                                    memberID : attendee.id,
+                                    committeeName : committee.name
+                                }
+                                attInfo.push(a);
+                                a=null;
+                                this.set('attendees', attInfo);
+                            });
+                        }
+                    })
+                    attendee.get('teachingAssistantMember').then((e) => {
+                        if(e != undefined){
+                            this.get('DS').findRecord('committee', attendee.committee).then((committee)=>{
+                                a = {
+                                    firstName : e.firstName,
+                                    lastName : e.lastName,
+                                    memberID : attendee.id,
+                                    committeeName : committee.name
+                                }
+                                attInfo.push(a);
+                                a=null;
+                                this.set('attendees', attInfo);
+                            });
+                        }
+                    })
                 })
             });
-            // })
-            // attendeesArray.forEach((attendee)=>{
-            //   if(attendee.get('instructorMember')!= undefined){
-            //     this.get('DS').findRecord('instructor', attendee.get('instructorMember')).then((user)=>{
-            //       let a = {}
-            //       a.firstName = user.firstName;
-            //       a.lastName = user.lastName;
-            //       a.id = attendee.id;
-            //       console.log(user);
-            //       this.get('DS').findRecord('committee', attendee.committee).then((committee)=>{
-            //         a.commiteeName =committee.name;
-            //       })
-            //       attInfo.push(a);
-            //     })
-
-            //   }else if(attendee.get('staffMember') != undefined){
-            //     this.get('DS').findRecord('staff', attendee.get('staffMember')).then((user)=>{
-            //         let a = {}
-            //         a.firstName = user.firstName;
-            //         a.lastName = user.lastName;
-            //         a.id = attendee.id;
-            //         console.log(user);
-            //         this.get('DS').findRecord('committee', attendee.committee).then((committee)=>{
-            //           a.commiteeName =committee.name;
-            //         })
-            //         attInfo.push(a);
-            //       })
-        
-            //   }else if(attendee.attendee.get('teachingAssistantMember') != undefined){
-            //     this.get('DS').findRecord('teaching-assistant', attendee.get('teachingAssistantMember')).then((user)=>{
-            //         let a = {}
-            //         a.firstName = user.firstName;
-            //         a.lastName = user.lastName;
-            //         a.id = attendee.id;
-            //         console.log(user);
-            //         this.get('DS').findRecord('committee', attendee.committee).then((committee)=>{
-            //           a.commiteeName =committee.name;
-            //         })
-            //         attInfo.push(a);
-            //       })
-        
-            //   }else{}
-            // });
-
             $('.ui.' + this.get('modalName') +'.modal').addClass('scrollME');
             $('.ui.' + this.get('modalName') +'.modal').modal({
               closable: false,

@@ -8,14 +8,14 @@
         <h3 class="ui centered aligned header">All Users</h3>
         <div class="ui centered grid section">
           <div class="ui action input">
-            <input oninput={{action "filterMembers"}} type="text" placeholder="Search...">
+            <input oninput={{action "filterMemberships"}} type="text" placeholder="Search...">
             <button class="ui button">Search</button>
           </div>
         </div>
         <div class="section">
           <div class="user-container">
             <div class="ui middle aligned divided list">
-              {{#each members as |user|}}
+              {{#each memberships as |user|}}
                 <div class="item">
                   <div class="left floated content username">
                     {{user.firstName}} {{user.lastName}} - {{user.committeeName}}
@@ -45,7 +45,7 @@
                   <div class="left floated content username">
                     {{user.firstName}} {{user.lastName}} - {{user.committeeName}}
                   </div>
-                  <button onclick={{action "remove" user.id}} class="ui button right floated middle aligned">
+                  <button onclick={{action "remove" user}} class="ui button right floated middle aligned">
                     Remove
                   </button>
                 </div>

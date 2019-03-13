@@ -30,7 +30,7 @@ router.get('/:id', function (req, res) {
         //         }
         //     }
 
-        //     res.json({ committee: committee })
+            res.json({ committee: committee })
         // };
     });
 });
