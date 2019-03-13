@@ -9,9 +9,9 @@ export default Component.extend({
     //all data from meeting
     meetingData: null,
     //outcomes nested
-    outcomes: oneWay('meetingData.outcomes'),
+    outcomes: null,
     //attendees nested
-    attendees: oneWay('meetingData.attendees'),
+    attendees: null,
 
     modalName: computed(function () {
         return 'newMeeting' + this.get('ID');
@@ -40,34 +40,34 @@ export default Component.extend({
                 });
             });
         },
-        async userSubmit(changes) {
-          let meetingID = this.get('ID')
-          console.log(changes);
-          for (const uid in changes) {
-            if (changes.hasOwnProperty(uid)) {
-              const c = changes[uid];
-              console.log(uid)
-              if (c !== undefined) {
-                if (c[0] === "add") {
-                    console.log(uid)
-                    console.log(meetingID)
-                  let memberRecord =this.get('DS').peekRecord('committee-membership',uid);
-                  let meetingRecord = this.get('DS').peekRecord('meeting', meetingID);
+        // async userSubmit(changes) {
+        //   let meetingID = this.get('ID')
+        //   console.log(changes);
+        //   for (const uid in changes) {
+        //     if (changes.hasOwnProperty(uid)) {
+        //       const c = changes[uid];
+        //       console.log(uid)
+        //       if (c !== undefined) {
+        //         // if (c[0] === "add") {
+        //         //     console.log(uid)
+        //         //     console.log(meetingID)
+        //         //   let memberRecord =this.get('DS').peekRecord('committee-membership',uid);
+        //         //   let meetingRecord = this.get('DS').peekRecord('meeting', meetingID);
 
-                  memberRecord.get('meetings').pushObject(meetingRecord);
-                  memberRecord.save();
-                  meetingRecord.get('attendees').pushObject(memberRecord);
-                  meetingRecord.save();
+        //         //   memberRecord.get('meetings').pushObject(meetingRecord);
+        //         //   memberRecord.save();
+        //         //   meetingRecord.get('attendees').pushObject(memberRecord);
+        //         //   meetingRecord.save();
                   
     
-                } else if (c[0] === "remove") {
-                  let m = await this.store.findRecord('committee-membership', memberships[uid], { backgroundReload: false });
-                  await m.destroyRecord();
-                }
-              }
-            }
-          }
-        },
+        //         // } else if (c[0] === "remove") {
+        //         //   let m = await this.store.findRecord('committee-membership', memberships[uid], { backgroundReload: false });
+        //         //   await m.destroyRecord();
+        //         // }
+        //       }
+        //     }
+        //   }
+        // },
         closeModal: function(){
             $('.ui.' + this.get('modalName') +'.modal').modal('hide');
         },
@@ -78,21 +78,24 @@ export default Component.extend({
             this.set('minutes',  this.get('meetingData.minutes'));
             this.set('startDatetime',  this.get('meetingData.startDateTime'));
             this.set('endDateTime',  this.get('meetingData.endDateTime'));
-            let members = this.get('members');
-            let att = this.get('attendees');
-            members.forEach((member)=>{
-                member.memberships.forEach((m)=>{
-                    att.forEach((a)=>{
-                        if(a.id == m._id){
-                            a.firstName = member.firstName;
-                            a.lastName = member.lastName;
-                            a.committeeName = member.committeeName;
-                            a.type = member.type;
-                        }
-                    })
-                });
-            });
-            this.set('attendees', att); 
+            this.set('attendees', this.get('meetingData.attendees'))
+            this.set('outcomes', this.get('meetingData.outcomes'))
+
+            // let members = this.get('members');
+            // let att = this.get('attendees');
+            // members.forEach((member)=>{
+            //     member.memberships.forEach((m)=>{
+            //         att.forEach((a)=>{
+            //             if(a.id == m._id){
+            //                 a.firstName = member.firstName;
+            //                 a.lastName = member.lastName;
+            //                 a.committeeName = member.committeeName;
+            //                 a.type = member.type;
+            //             }
+            //         })
+            //     });
+            // });
+            // this.set('attendees', att); 
             $('.ui.' + this.get('modalName') +'.modal').addClass('scrollME');
             $('.ui.' + this.get('modalName') +'.modal').modal({
               closable: false,

@@ -8,5 +8,5 @@ var gendersSchema = mongoose.Schema(
         teachingAssistantMember: {type: mongoose.Schema.ObjectId, ref: ('TeachingAssistants')}
     }
 );
-var Genders = mongoose.model('role', gendersSchema);
+var Genders = mongoose.model('gender', gendersSchema);
 exports.Model = Genders;
