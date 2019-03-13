@@ -22,7 +22,6 @@ function getScore(id, callback) {
 
             //Grabbing results for how many times they've logged in or graded a test (based on auditTrail data) as well as total actions they have in the audittrail
             AuditTrails.forEach(function (obj) {
-                console.log(obj.actionDesc);
                 if (obj.actionDesc == "logIn") {
                     numLogins++;
                 } else if (obj.actionDesc == "testGraded") {
@@ -32,8 +31,10 @@ function getScore(id, callback) {
             })
 
             var evaluationMethod;
+
+            console.log(UserAccount.instructor);
             //If they're an instructor it grabs the number of courses they have taught and the evaluation method to use
-            if (UserAccount.instructor !== null) {
+            if (UserAccount.instructor !== null && UserAccount.instructor !== undefined) {
                 var instructorID = UserAccount.instructor;
                 Semesters.Model.find({ instructor: instructorID }, function (err, Semesters) {
                     if (err) res.status(500).json(err);
@@ -42,8 +43,6 @@ function getScore(id, callback) {
                     })
                     Instructors.Model.findById(instructorID, function (err, Instructor) {
                         if (err) res.status(500).json(err);
-
-                        console.log(Instructor);
 
                         if (!Instructor) {
                             var rawData = { "numLogins": null, "numGraded": null, "numCourses": null, "totalActions": null };
@@ -75,7 +74,7 @@ function getScore(id, callback) {
                         });
                     })
                 })
-            } else if (UserAccount.staff !== null) {
+            } else if (UserAccount.staff !== null && UserAccount.staff !== undefined) {
                 var staffID = UserAccount.staff;
 
                 Staff.Model.findById(staffID, function (err, Staff) {
@@ -108,6 +107,10 @@ function getScore(id, callback) {
                         return callback(results);
                     });
                 })
+            } else {
+                var rawData = { "numLogins": null, "totalActions": null };
+                var results = { [UserAccount.username]: { "rawData": rawData, "score": null, "error": "UserAccount has no Instructor or Staff ID" } };
+                return callback(results);
             }
         });
     });
