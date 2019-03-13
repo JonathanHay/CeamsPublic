@@ -1,40 +1,44 @@
 <div class="team-detail">
-    <div class="ui two column centered grid">
-        <div class="column">
-            <div class="ui column centered grid">
-                <div class="ui text container">
-                    <h1>GA Task Force</h1>
-                </div>
-            </div>
-        <div class="ui grid">
-            <div class="ten wide column">
-              Committee Name: <strong>{{ committee.name }}</strong>
-              <br>
-              Committee Level: <strong>{{ committee.level }}</strong>
-            </div>
-            <div class="right floated column">
-              <div class="ui right floated button">
-                {{#link-to "committees.manage-users" committee.id class="item"}}<a>Manage Users</a>{{/link-to}}
-              </div>
-            </div>
-        </div>  
-
-        <div class="ui divider"></div>
-          <div class="bottom">
-              <div class="ui relaxed divided list">
-                {{#each this.committee.membersInfo as |mInfo|}}
-                  <div class="item">
-                    <div class="content">
-                    <a class="header">{{ mInfo.name }}</a>
-                    <div class="description">Member of Team3</div>
-                    <span>Participation Start Date: {{ mInfo.participationStartDate }}</span>
-                    <br>
-                    <span>Participation End Date: {{ mInfo.participationEndDate }}</span>
-                    </div>
-                  </div>
-                {{/each}}
-              </div>
+  <div class="ui two column centered grid">
+    <div class="column">
+      <div class="ui column centered grid">
+        <div class="ui text container">
+          <h1>GA Task Force</h1>
+        </div>
+      </div>
+      <div class="ui grid">
+        <div class="ten wide column">
+          Committee Name: <strong>{{ committee.name }}</strong>
+          <br>
+          Committee Level: <strong>{{ committee.level }}</strong>
+        </div>
+        <div class="right floated column">
+          <div class="ui right floated button">
+            {{#link-to "committees.manage-users" committee.id class="item"}}<a>Manage Users</a>{{/link-to}}
           </div>
         </div>
+      </div>
+
+      <div class="ui divider"></div>
+      <div class="bottom">
+        <div class="ui relaxed divided list">
+          {{#if this.committee.membersInfo}}
+          {{#each this.committee.membersInfo as |mInfo|}}
+          <div class="item">
+            <div class="content">
+              <a class="header">{{ mInfo.name }}</a>
+              <div class="description">Member of Team3</div>
+              <span>Participation Start Date: {{ mInfo.participationStartDate }}</span>
+              <br>
+              <span>Participation End Date: {{ mInfo.participationEndDate }}</span>
+            </div>
+          </div>
+          {{/each}}
+          {{else}}
+          <p>There are currently no members in this task force.</p>
+          {{/if}}
+        </div>
+      </div>
     </div>
+  </div>
 </div>

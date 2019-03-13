@@ -11,7 +11,7 @@ export default Component.extend({
             var myChart = new Chart(ctx, {
                 type: 'pie',
                 data: {
-                  labels: ["Kpi #1", "Kpi #2", "Kpi #3", "Kpi #4"],
+                  labels: ["Number of logins", "Number of tests graded", "Number of courses taught", "Total audit trail actions"],
                   datasets: [{
                     backgroundColor: [
                       "#2ecc71",
@@ -27,7 +27,7 @@ export default Component.extend({
               var myChart2 = new Chart(ctx, {
                   type: 'pie',
                   data: {
-                    labels: ["Kpi #1", "Kpi #2"],
+                    labels: ["Number of logins", "Total audit trail actions"],
                     datasets: [{
                       backgroundColor: [
                         "#2ecc71",

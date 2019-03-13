@@ -20,5 +20,8 @@ router.use('/staffs', require('./staffs'));
 router.use('/teaching-assistants', require('./teaching-assistants'));
 router.use('/utilizations', require('./utilizations'));
 router.use('/user-evaluation-methods', require('./user-evaluation-methods'));
+router.use('/instructors', require('./instructors'));
+router.use('/teaching-assistants', require('./teaching-assistants'));
+router.use('/staff', require('./staff'));
 
 module.exports = router;
