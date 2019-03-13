@@ -11,7 +11,8 @@ export default DS.Model.extend({
 
   roleName: DS.attr(),
   keyPerformanceIndicator: DS.attr(),
-  // userEvaluationMethod: DS.belongsTo('user-evaluation-method'),
+
+  evaluationMethod: DS.belongsTo('user-evaluation-method'),
   // userGivenRoles: DS.hasMany('user-given-role'),
   // userAccount: DS.belongsTo('user-account'),
   // committeeMembership: DS.hasMany('committee-membership')
