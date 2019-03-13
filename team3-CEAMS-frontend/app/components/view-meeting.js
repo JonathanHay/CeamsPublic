@@ -19,8 +19,7 @@ export default Component.extend({
         return 'newMeeting' + this.get('ID');
       }),
 
-    actions:{
-        
+    actions:{        
         userSubmit: function(users){
             this.set('members', users)
         },
@@ -32,46 +31,51 @@ export default Component.extend({
                 meeting.set('startDateTime', this.get('startDateTime'));
                 meeting.set('endDateTime', this.get('endDateTime'));
                 meeting.save().then(() => {
-                    $('.cookie.nag')
-                        .nag('show')
-                    ;
-                }, (err)=>{
-                    $('.cookie.nag.bad')
-                        .nag('show')
-                    ;
+                    window.alert('Updated')
+                    location.reload();
+                },(err)=>{
+                    window.alert('Error, please try again')
                 });
+                
             });
         },
-        // async userSubmit(changes) {
-        //   let meetingID = this.get('ID')
-        //   console.log(changes);
-        //   for (const uid in changes) {
-        //     if (changes.hasOwnProperty(uid)) {
-        //       const c = changes[uid];
-        //       console.log(uid)
-        //       if (c !== undefined) {
-        //         // if (c[0] === "add") {
-        //         //     console.log(uid)
-        //         //     console.log(meetingID)
-        //         //   let memberRecord =this.get('DS').peekRecord('committee-membership',uid);
-        //         //   let meetingRecord = this.get('DS').peekRecord('meeting', meetingID);
+        async submit(changes) {
+          let meetingRecord = this.get('DS').peekRecord('meeting', this.get('ID'));        
+          for(const memberID in changes){
+            if (changes.hasOwnProperty(memberID)){
+                const member = changes[memberID]
+                console.log(member);
+                if(member !== undefined){
+                    //records for deleting and saving
+                    let memberRecord = this.get('DS').peekRecord('committee-membership', member[1]);
+                    if(member[0] === "add"){
+                        memberRecord.get('meetings').pushObject(meetingRecord);
+                        memberRecord.save();
+                        meetingRecord.get('attendees').pushObject(memberRecord);
 
-        //         //   memberRecord.get('meetings').pushObject(meetingRecord);
-        //         //   memberRecord.save();
-        //         //   meetingRecord.get('attendees').pushObject(memberRecord);
-        //         //   meetingRecord.save();
-                  
-    
-        //         // } else if (c[0] === "remove") {
-        //         //   let m = await this.store.findRecord('committee-membership', memberships[uid], { backgroundReload: false });
-        //         //   await m.destroyRecord();
-        //         // }
-        //       }
-        //     }
-        //   }
-        // },
+                    }else if(member[0] === "remove"){
+                        memberRecord.get('meetings').removeObject(meetingRecord);
+                        memberRecord.save();
+                        meetingRecord.get('attendees').removeObject(memberRecord);
+                    }
+                    else{}
+                }
+            }
+          }
+          meetingRecord.save();
+
+        },
         closeModal: function(){
             $('.ui.' + this.get('modalName') +'.modal').modal('hide');
+        },
+        removeDuplicates: function(){
+            this.get('attendees').filter((a)=>{
+                this.get('memberships').filter((m)=>{
+                    if(m.memberID==a.memberID){
+                    this.get('memberships').removeObject(m);
+                    }
+                })
+            })
         },
         openModal: function () {
             this.set('attendees', []);
@@ -79,7 +83,7 @@ export default Component.extend({
             this.set('location', this.get('meetingData.location'));
             this.set('description',  this.get('meetingData.description'));
             this.set('minutes',  this.get('meetingData.minutes'));
-            this.set('startDatetime',  this.get('meetingData.startDateTime'));
+            this.set('startDateTime',  this.get('meetingData.startDateTime'));
             this.set('endDateTime',  this.get('meetingData.endDateTime'));
             this.set('outcomes', this.get('meetingData.outcomes'));
 
@@ -89,7 +93,7 @@ export default Component.extend({
             this.get('DS').findAll('committee-membership').then((members) => {
                 members.forEach((member)=>{
                     member.get('instructorMember').then((e) => {
-                        if(e != undefined){
+                        if(e!=undefined){
                             this.get('DS').findRecord('committee', member.committee).then((committee)=>{
                                 a = {
                                     firstName : e.firstName,
@@ -191,6 +195,7 @@ export default Component.extend({
                     })
                 })
             });
+            
             $('.ui.' + this.get('modalName') +'.modal').addClass('scrollME');
             $('.ui.' + this.get('modalName') +'.modal').modal({
               closable: false,

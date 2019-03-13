@@ -30,7 +30,7 @@ export default Component.extend({
       let key = `changes.${user.memberID}`;
       if (this.get(key) !== undefined && this.get(key)[0] === 'remove') {
         this.set(key, undefined); // if already on remove list, remove entry
-      } else {
+      }else{
         this.set(key, ['add', user.memberID])
       }
       this.set('memberships', this.get('memberships').filter((u) => {
@@ -59,8 +59,8 @@ export default Component.extend({
       this.set('attendeesFilter', e.target.value);
     },
     submit() {
-      console.log(this.get('changes'))
-      // this.userSubmit(this.get('changes'));
+      this.submit(this.get('changes'));
+      this.set('changes', {});
     }
   }
 });
