@@ -67,7 +67,7 @@ function getScore(id, callback) {
                                 formula.numGraded * numGraded + formula.numCourses * numCourses + formula.totalActions * totalActions;
                             var rawData = { "numLogins": numLogins, "numGraded": numGraded, "numCourses": numCourses, "totalActions": totalActions };
 
-                            var results = { [UserAccount._id]: { "rawData": rawData, "score": score } }
+                            var results = { [UserAccount._id]: { "rawData": rawData, "username": UserAccount.username, "score": score } }
 
                             //return score
                             return callback(results);
@@ -82,7 +82,7 @@ function getScore(id, callback) {
 
                     if (!Staff) {
                         var rawData = { "numLogins": null, "totalActions": null };
-                        var results = { [UserAccount._id]: { "rawData": rawData, "score": null, "error": "UserAccount has invalid Staff ID" } };
+                        var results = { [UserAccount._id]: { "rawData": rawData, "score": null, "username": UserAccount.username, "error": "UserAccount has invalid Staff ID" } };
                         return callback(results);
                     }
 
@@ -101,7 +101,7 @@ function getScore(id, callback) {
                         var score = formula.numLogins * numLogins + formula.totalActions * totalActions;
                         var rawData = { "numLogins": numLogins, "totalActions": totalActions };
 
-                        var results = { [UserAccount._id]: { "rawData": rawData, "score": score } }
+                        var results = { [UserAccount._id]: { "rawData": rawData, "username": UserAccount.username, "score": score } }
 
                         //return score
                         return callback(results);

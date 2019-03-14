@@ -5,20 +5,23 @@ import { inject as service } from '@ember/service';
 export default Component.extend({
     DS: service('store'),
     actions: {
-        export: function () {
+        exportAll: function () {
             var pdfDocument = {
                 content: [
                     {
-                        text: 'List of Courses\n\n', style: 'header'
+                        text: 'List of KPI Reports\n\n', style: 'header'
                     },
                     {
                         table: {
                             widths: [80, 300, 80],
                             headerRows: 1,
                             body: [
-                                [{ text: 'Course Code', style: 'tableHeader' },
-                                { text: 'Course Name', style: 'tableHeader' },
-                                { text: 'Academic Credit', style: 'tableHeader' }]
+                                [{ text: 'Username', style: 'tableHeader' },
+                                { text: '# of Logins', style: 'tableHeader' },
+                                { text: '# of Audit Trail Entries', style: 'tableHeader' },
+                                { text: '# of Tests Graded', style: 'tableHeader' },
+                                { text: '# of Classes Taught', style: 'tableHeader' },
+                                { text: 'Score', style: 'tableHeader' }]
                             ]
                         }
                     }
@@ -35,11 +38,14 @@ export default Component.extend({
             };
 
             // fill the document data
-            this.get('courses').forEach((course) => {
-                let cel1 = course.number || "";
-                let cel2 = course.title || "";
-                let cel3 = course.academicCredit || "";
-                let row = [cel1, cel2, cel3];
+            this.get('kpiList').forEach((one) => {
+                let c1 = one.username || "";
+                let c2 = one.rawData.numLogins || "";
+                let c3 = course.rawData.totalActions || "";
+                let c4 = course.rawData.numGraded || "";
+                let c5 = course.rawData.numCourses || "";
+                let c6 = course.score || "";
+                let row = [c1, c2, c3, c4, c5, c6];
 
                 pdfDocument.content[1].table.body.push(row);
 
