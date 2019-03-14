@@ -13,9 +13,11 @@
           Committee Level: <strong>{{ committee.level }}</strong>
         </div>
         <div class="right floated column">
+          {{#link-to "committees.manage-users" committee.id class="item"}}
           <div class="ui right floated button">
-            {{#link-to "committees.manage-users" committee.id class="item"}}<a>Manage Users</a>{{/link-to}}
+            <a>Manage Users</a>
           </div>
+          {{/link-to}}
         </div>
       </div>
 

@@ -1,9 +1,25 @@
 import Component from '@ember/component';
-
+import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 
 export default Component.extend({
     DS: service('store'),
+    errorlessList: computed(function () {
+        var result = [];
+        this.get('kpiList').forEach((one) => {
+            if (one.error == undefined) {
+                let c1 = one.username || "";
+                let c2 = one.rawData.numLogins || "0";
+                let c3 = one.rawData.totalActions || "0";
+                let c4 = one.rawData.numGraded || "0";
+                let c5 = one.rawData.numCourses || "0";
+                let c6 = one.score || "0";
+                let row = { c1, c2, c3, c4, c5, c6 };
+                result.push(row);
+            }
+        });
+        return result;
+    }),
     actions: {
         exportAll: function () {
             var pdfDocument = {
@@ -38,18 +54,9 @@ export default Component.extend({
             };
 
             // fill the document data
-            this.get('kpiList').forEach((one) => {
-                if (one.error == undefined) {
-                    let c1 = one.username || "";
-                    let c2 = one.rawData.numLogins || "0";
-                    let c3 = one.rawData.totalActions || "0";
-                    let c4 = one.rawData.numGraded || "0";
-                    let c5 = one.rawData.numCourses || "0";
-                    let c6 = one.score || "0";
-                    let row = [c1, c2, c3, c4, c5, c6];
-
-                    pdfDocument.content[1].table.body.push(row);
-                }
+            this.get('errorlessList').forEach((one) => {
+                var temp = [one.c1, one.c2, one.c3, one.c4, one.c5, one.c6];
+                pdfDocument.content[1].table.body.push(temp);
             });
 
             pdfMake.createPdf(pdfDocument).download();
