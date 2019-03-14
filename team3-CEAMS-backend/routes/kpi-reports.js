@@ -46,7 +46,7 @@ function getScore(id, callback) {
 
                         if (!Instructor) {
                             var rawData = { "numLogins": null, "numGraded": null, "numCourses": null, "totalActions": null };
-                            var results = { [UserAccount._id]: { "rawData": rawData, "score": null, "error": "UserAccount has invalid Instructor ID" } };
+                            var results = { "_id": UserAccount._id, "rawData": rawData, "score": null, "error": "UserAccount has invalid Instructor ID" };
                             return callback(results);
                         }
 
@@ -57,7 +57,7 @@ function getScore(id, callback) {
 
                             if (!EvaluationMethod) {
                                 var rawData = { "numLogins": null, "numGraded": null, "numCourses": null, "totalActions": null };
-                                var results = { [UserAccount._id]: { "rawData": rawData, "score": null, "error": "Instructor has invalid EvaluationMethod ID" } };
+                                var results = { "_id": UserAccount._id, "rawData": rawData, "score": null, "error": "Instructor has invalid EvaluationMethod ID" };
                                 return callback(results);
                             }
 
@@ -67,7 +67,7 @@ function getScore(id, callback) {
                                 formula.numGraded * numGraded + formula.numCourses * numCourses + formula.totalActions * totalActions;
                             var rawData = { "numLogins": numLogins, "numGraded": numGraded, "numCourses": numCourses, "totalActions": totalActions };
 
-                            var results = { [UserAccount._id]: { "rawData": rawData, "username": UserAccount.username, "score": score } }
+                            var results = { "_id": UserAccount._id, "rawData": rawData, "username": UserAccount.username, "score": score }
 
                             //return score
                             return callback(results);
@@ -82,7 +82,7 @@ function getScore(id, callback) {
 
                     if (!Staff) {
                         var rawData = { "numLogins": null, "totalActions": null };
-                        var results = { [UserAccount._id]: { "rawData": rawData, "score": null, "username": UserAccount.username, "error": "UserAccount has invalid Staff ID" } };
+                        var results = { "_id": UserAccount._id, "rawData": rawData, "score": null, "username": UserAccount.username, "error": "UserAccount has invalid Staff ID" };
                         return callback(results);
                     }
 
@@ -93,7 +93,7 @@ function getScore(id, callback) {
 
                         if (!EvaluationMethod) {
                             var rawData = { "numLogins": null, "totalActions": null };
-                            var results = { [UserAccount._id]: { "rawData": rawData, "score": null, "error": "Staff has invalid EvaluationMethod ID" } };
+                            var results = { "_id": UserAccount._id, "rawData": rawData, "score": null, "error": "Staff has invalid EvaluationMethod ID" };
                             return callback(results);
                         }
                         var formula = JSON.parse(EvaluationMethod.formulaExpression);
@@ -101,7 +101,7 @@ function getScore(id, callback) {
                         var score = formula.numLogins * numLogins + formula.totalActions * totalActions;
                         var rawData = { "numLogins": numLogins, "totalActions": totalActions };
 
-                        var results = { [UserAccount._id]: { "rawData": rawData, "username": UserAccount.username, "score": score } }
+                        var results = { "_id": UserAccount._id, "rawData": rawData, "username": UserAccount.username, "score": score }
 
                         //return score
                         return callback(results);
@@ -109,7 +109,7 @@ function getScore(id, callback) {
                 })
             } else {
                 var rawData = { "numLogins": null, "totalActions": null };
-                var results = { [UserAccount._id]: { "rawData": rawData, "score": null, "error": "UserAccount has no Instructor or Staff ID" } };
+                var results = { "_id": UserAccount._id, "rawData": rawData, "score": null, "error": "UserAccount has no Instructor or Staff ID" };
                 return callback(results);
             }
         });
@@ -119,13 +119,15 @@ function getScore(id, callback) {
 /* GET all */
 router.get('/', function (req, res) {
     var results = [];
+    var reports;
     UserAccounts.Model.find(function (err, userAccounts) {
         //console.log("usraccts: " + userAccounts);
         if (err) res.status(500).json(err);
         for (var i = 0; i < userAccounts.length; i++) {
             getScore(userAccounts[i]._id, (result) => {
                 results.push(result);
-                if (results.length === userAccounts.length) res.json(results);
+                reports = { "kpiReport": results }
+                if (results.length === userAccounts.length) res.json(reports);
             })
         }
     })
