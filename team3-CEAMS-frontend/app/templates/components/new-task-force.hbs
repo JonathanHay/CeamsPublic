@@ -1,36 +1,30 @@
-<div class="ui red button" {{action 'openModal'}}>
-  New
+<div class="ui green button" {{action 'openModal'}}>
+  New <i class="right floated plus icon"></i>
 </div>
 {{#ui-modal name="newModal" class="newModal"}}
-<div class="ui middle aligned center aligned grid" id="createElement">
-  <div class="six wide column">
-    <div class="row">
-      <div class="header">
-        Adding new task force
-      </div>
-      <div class="content">
-        <div class="ui form">
-          <div class="field">
-            <label>Task Force Name</label>
-            {{input type="text" cols="50" rows="1" value = title placeholder="committee name"}}
-          </div>
-        </div>
-        <br>
-      </div>
-      <br>
-      <div class="actions">
-        <div class="ui black deny button" {{action 'closeModal'}}>
-          Cancel
-        </div>
-        {{#link-to "committees"}}
-        <button class="ui positive right labeled icon button" {{action 'createCommittee'}}>
-          Save
-          <i class="checkmark icon"></i>
-        </button>
-        {{/link-to}}
-        <br>
-      </div>
+<div class="ui relaxed centered grid container">
+  <div class="row"></div>
+  <div class="row">
+    <div class="ui big top aligned header">
+      Add New Committee
     </div>
   </div>
+  <div class="row">
+    <div class="ui input">
+      {{input type="text" cols="50" rows="1" value = title placeholder="committee name"}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="ui black deny button" {{action 'closeModal'}}>
+      Cancel
+    </div>
+    {{#link-to "committees"}}
+    <button class="ui positive right labeled icon button" {{action 'createCommittee'}}>
+      Save
+      <i class="checkmark icon"></i>
+    </button>
+    {{/link-to}}
+  </div>
+  <div class="row"></div>
 </div>
 {{/ui-modal}}

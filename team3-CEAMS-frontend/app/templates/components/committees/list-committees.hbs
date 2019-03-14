@@ -1,27 +1,20 @@
-<div class="ui middle aligned center aligned grid">
-  <br><br>
-  <div class="six wide column committees-list">
-    <div class="row">
-      <h1 class="centered" id="title">GA COMMITTEES AND TASK FORCE MANAGEMENT</h1>
+<br><br><br>
+<div class=" ui center aligned huge header" id="title">GA Committees</div>
+<div class="ui two column vertically divided centered middle aligned grid text container">
+  <div class="row"></div>
+  {{#each committeeList as |committee|}}
+  <div class="row">
+    <div class="column">
+      <div class="ui left floated ">{{committee.name}}</div>
     </div>
-    <div class="row" id="ForceList">
-      <div class="ui raised segment divided very relaxed animated list">
-        {{#each committeeList as |committee|}}
-        <div class="item">
-          <div class="content">
-            <div class="header">
-              {{committee.name}}
-              {{#link-to "committees.detail" committee.id}}
-              <div class="ui blue button">View</div>
-              {{/link-to}}
-            </div>
-          </div>
-        </div>
-        {{/each}}
-      </div>
+    <div class="column">
+      {{#link-to "committees.detail" committee.id}}
+      <div class="ui right floated blue button">View <i class="right floated eye icon"></i></div>
+      {{/link-to}}
     </div>
-    <div class="row">
-      {{new-task-force}}
-    </div>
+  </div>
+  {{/each}}
+  <div class="row">
+    <div class="ui center aligned container">{{new-task-force}}</div>
   </div>
 </div>
