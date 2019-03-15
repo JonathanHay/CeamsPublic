@@ -18,17 +18,15 @@ router.get('/:id', function (req, res) {
     Committees.Model.findById(req.params.id, async function (err, committee) {
         if (err) res.status(500).json(err);
         else {
-            await committee.populate('members').execPopulate();
-            
-            for (let i = 0; i < committee.members.length; i++) {
-                if (committee.members[i].instructorMember !== null) {
-                    await committee.members[i].populate('instructorMember').execPopulate();
-                } else if (committee.members[i].staffMember !== null) {
-                    await committee.members[i].populate('staffMember').execPopulate();
-                } else if (committee.members[i].teachingAssistantMember !== null) {
-                    await committee.members[i].populate('teachingAssistantMember').execPopulate();
-                }
-            }
+            // for (let i = 0; i < committee.members.length; i++) {
+            //     if (committee.members[i].instructorMember !== null) {
+            //         await committee.members[i].populate('instructorMember').execPopulate();
+            //     } else if (committee.members[i].staffMember !== null) {
+            //         await committee.members[i].populate('staffMember').execPopulate();
+            //     } else if (committee.members[i].teachingAssistantMember !== null) {
+            //         await committee.members[i].populate('teachingAssistantMember').execPopulate();
+            //     }
+            // }
 
             res.json({ committee: committee })
         };

@@ -26,7 +26,7 @@ export default Controller.extend({
                 committee: committee_id
               });
               await membership.save();
-              member.get('memberships').pushObject(membership.id);
+              member.get('memberships').pushObject(membership);
               await member.save();
               committee.get('members').pushObject(membership);
               await committee.save();

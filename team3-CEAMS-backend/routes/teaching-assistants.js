@@ -5,7 +5,7 @@ var TeachingAssistants = require('../models/teachingAssistants');
 
 /* GET all */
 router.get('/', async function (req, res) {
-  TeachingAssistants.Model.find().populate('memberships').exec((err, teachingAssistants) => {
+  TeachingAssistants.Model.find((err, teachingAssistants) => {
     if (err) res.status(500).json(err);
     res.json({ teachingAssistant: teachingAssistants });
   });
