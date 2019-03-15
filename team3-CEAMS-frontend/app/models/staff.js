@@ -7,7 +7,7 @@ export default DS.Model.extend({
   email: DS.attr(),
   building: DS.attr(),
   officeNumber: DS.attr(),
-  memberships: DS.attr(),
+  memberships: DS.hasMany('committee-membership'),
 
   roleName: DS.attr(),
   keyPerformanceIndicator: DS.attr(),

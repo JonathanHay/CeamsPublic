@@ -24,14 +24,17 @@ export default Route.extend({
     let members = [];
     let memberships = [];
 
-    userProfiles.forEach((e) => {
+    for (let i = 0; i < userProfiles.length; i++) {
+      const e = userProfiles[i];
+      
+      let userMemberships = (await e.get('memberships')).toArray();
       let isMember = false;
       let membership = '';
-      if (e.memberships.length > 0) {
-        for (let i = 0; i < e.memberships.length; i++) {
-          if (e.memberships[i].committee === params.committee_id) {
+      if (userMemberships.length > 0) {
+        for (let i = 0; i < userMemberships.length; i++) {
+          if (userMemberships[i].committee === params.committee_id) {
             isMember = true
-            membership = e.memberships[i]._id;
+            membership = userMemberships[i].id;
           };
         }
       }
@@ -41,7 +44,7 @@ export default Route.extend({
       } else {
         allUsers.push(e);
       }
-    });
+    }
 
     return {
       users: {

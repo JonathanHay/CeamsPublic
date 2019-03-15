@@ -7,10 +7,24 @@
     <div class="column">
       <div class="ui left floated ">{{committee.name}}</div>
     </div>
-    <div class="column">
-      {{#link-to "committees.detail" committee.id}}
-      <div class="ui right floated blue button">View <i class="right floated eye icon"></i></div>
-      {{/link-to}}
+    <div class="row" id="ForceList">
+      <div class="ui raised segment divided very relaxed animated list">
+        {{#each committeeList as |committee|}}
+        <div class="item">
+          <div class="content">
+            <div class="header">
+              {{committee.name}}
+              {{#link-to "committees.detail" committee.id}}
+                <div class="ui blue button">View</div>
+              {{/link-to}}
+            </div>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+    <div class="row">
+      {{new-task-force}}
     </div>
   </div>
   {{/each}}
