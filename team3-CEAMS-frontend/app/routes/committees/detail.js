@@ -5,16 +5,23 @@ export default Route.extend({
     let committee = await this.store.findRecord('committee', params.committee_id);
     let members = await committee.get('members');
     let membersInfo = [];
+
     for (let i = 0; i < members.length; i++) {
-      const m = members[i];
+      const m = members.objectAt(i);
+      
       let info = await m.get('teachingAssistantMember') 
               || await m.get('instructorMember') 
               ||  await m.get('staffMember');
-      console.log(info);
+      membersInfo.push({
+        name: info.firstName + " " + info.lastName,
+        startDate: m.participationStartDate,
+        endDate: m.participationEndDate || "Still participating"
+      });
     }
+
     return {
       committee,
-      members
+      membersInfo
     };
   }
 });

@@ -7,6 +7,8 @@ export default Component.extend({
     this.set('changes', {});
     this.set('allUsersFilter', '');
     this.set('membersFilter', '');
+    console.log(this.get('allUsers'));
+    console.log(this.get('users.members'));
   },
 
   allUsers: computed('users.allUsers', 'users.members', 'allUsersFilter', function() {

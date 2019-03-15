@@ -1,4 +1,5 @@
 import Controller from '@ember/controller';
+import $ from 'jquery';
 
 const modelMap = {
   teachingAssistantMember: 'teaching-assistant',
@@ -12,7 +13,7 @@ export default Controller.extend({
   },
   actions: {
     async processChanges(committee_id, changes, memberships) {
-      let committee = await this.store.findRecord('committee', committee_id);
+      $('.loader-overlay').show();
       for (const uid in changes) {
         if (changes.hasOwnProperty(uid)) {
           const c = changes[uid];
@@ -26,10 +27,6 @@ export default Controller.extend({
                 committee: committee_id
               });
               await membership.save();
-              member.get('memberships').pushObject(membership);
-              await member.save();
-              committee.get('members').pushObject(membership);
-              await committee.save();
             } else if (c[0] === "remove") {
               let m = await this.store.findRecord('committee-membership', memberships[uid], { backgroundReload: false });
               await m.destroyRecord();
@@ -37,7 +34,7 @@ export default Controller.extend({
           }
         }
       }
-      // location.reload();
+      location.reload();
     }
   }
 });

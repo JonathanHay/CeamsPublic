@@ -24,7 +24,9 @@ export default Route.extend({
     let members = [];
     let memberships = [];
 
-    userProfiles.forEach(async (e) => {
+    for (let i = 0; i < userProfiles.length; i++) {
+      const e = userProfiles[i];
+      
       let userMemberships = (await e.get('memberships')).toArray();
       let isMember = false;
       let membership = '';
@@ -42,7 +44,7 @@ export default Route.extend({
       } else {
         allUsers.push(e);
       }
-    });
+    }
 
     return {
       users: {

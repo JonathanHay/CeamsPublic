@@ -270,3 +270,15 @@ footer {
 #staff{
   text-align: center;
 }
+
+.loader-overlay {
+  position: fixed;
+  top: 60px;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
