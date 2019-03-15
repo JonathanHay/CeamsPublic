@@ -5,32 +5,32 @@ export default DS.Model.extend({
   name: DS.attr(),
   level: DS.attr(),
   dateCreated: DS.attr(),
-  members: DS.attr(),
+  members: DS.hasMany('committee-membership'),
 
-  membersInfo: computed('members', function () {
-    let info = [];
+  // membersInfo: computed('members', function () {
+  //   let info = [];
 
-    for (let i = 0; i < this.members.length; i++) {
-      const m = this.members[i];
+  //   for (let i = 0; i < this.members.length; i++) {
+  //     const m = this.members[i];
 
-      let memberInfo = {};
+  //     let memberInfo = {};
 
-      let memberType = "";
-      if (m.teachingAssistantMember != null) {
-        memberType = "teachingAssistantMember";
-      } else if (m.staffMember != null) {
-        memberType = "staffMember";
-      } else if (m.instructorMember != null) {
-        memberType = "instructorMember";
-      }
+  //     let memberType = "";
+  //     if (m.teachingAssistantMember != null) {
+  //       memberType = "teachingAssistantMember";
+  //     } else if (m.staffMember != null) {
+  //       memberType = "staffMember";
+  //     } else if (m.instructorMember != null) {
+  //       memberType = "instructorMember";
+  //     }
 
-      memberInfo.name = m[memberType].firstName + " " + m[memberType].lastName;
-      memberInfo.participationStartDate = new Date(m.participationStartDate).toDateString();
-      memberInfo.participationEndDate = m.participationEndDate !== null ? new Date(m.participationEndDate).toDateString() : "Still participating";
+  //     memberInfo.name = m[memberType].firstName + " " + m[memberType].lastName;
+  //     memberInfo.participationStartDate = new Date(m.participationStartDate).toDateString();
+  //     memberInfo.participationEndDate = m.participationEndDate !== null ? new Date(m.participationEndDate).toDateString() : "Still participating";
 
-      info.push(memberInfo);
-    }
+  //     info.push(memberInfo);
+  //   }
 
-    return info;
-  })
+  //   return info;
+  // })
 });

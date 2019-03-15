@@ -29,21 +29,28 @@ router.post('/', function (req, res) {
 });
 
 /* PUT */
-// router.put('/:id', function(req, res) {
-//   TeachingAssistants.Model.findById(req.params.id, function (err, teachingAssistant) {
-//     if (err) res.status(500).json(err);
-//     else {
-//         teachingAssistant.code = req.body.teachingAssistant.code;
-//         teachingAssistant.name = req.body.teachingAssistant.name;
-//         teachingAssistant.save(function (err) {
-//             if (err) res.status(500).json(err);
-//             else {
-//                 res.json({teachingAssistant: teachingAssistant});
-//             }
-//         });
-//     }
-//   });
-// });
+router.put('/:id', function(req, res) {
+  TeachingAssistants.Model.findById(req.params.id, function (err, teachingAssistant) {
+    if (err) return res.status(500).json(err);
+    else {
+        teachingAssistant.code = req.body.teachingAssistant.code;
+        teachingAssistant.firstName = req.body.teachingAssistant.firstName;
+        teachingAssistant.lastName = req.body.teachingAssistant.lastName;
+        teachingAssistant.email = req.body.teachingAssistant.email;
+        teachingAssistant.building = req.body.teachingAssistant.building;
+        teachingAssistant.officeNumber = req.body.teachingAssistant.officeNumber;
+        teachingAssistant.contractInfo = req.body.teachingAssistant.contractInfo;
+        teachingAssistant.memberships = req.body.teachingAssistant.memberships;
+        teachingAssistant.userShadow = req.body.teachingAssistant.userShadow;
+        teachingAssistant.save(function (err) {
+            if (err) return res.status(500).json(err);
+            else {
+                res.json({teachingAssistant: teachingAssistant});
+            }
+        });
+    }
+  });
+});
 
 /* DELETE */
 router.delete('/:id', function (req, res) {

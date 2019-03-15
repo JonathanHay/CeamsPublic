@@ -22,14 +22,14 @@
       <div class="ui divider"></div>
       <div class="bottom">
         <div class="ui relaxed divided list">
-          {{#each this.committee.membersInfo as |mInfo|}}
+          {{#each this.members as |members|}}
           <div class="item">
             <div class="content">
-              <a class="header">{{ mInfo.name }}</a>
+              <a class="header">{{ members.name }}</a>
               <div class="description">Member of Team3</div>
-              <span>Participation Start Date: {{ mInfo.participationStartDate }}</span>
+              <span>Participation Start Date: {{ members.participationStartDate }}</span>
               <br>
-              <span>Participation End Date: {{ mInfo.participationEndDate }}</span>
+              <span>Participation End Date: {{ members.participationEndDate }}</span>
             </div>
           </div>
           {{/each}}

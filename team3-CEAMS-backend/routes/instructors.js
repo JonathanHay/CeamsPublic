@@ -5,8 +5,8 @@ var Instructors = require('../models/instructors');
 
 /* GET all */
 router.get('/', function (req, res) {
-  Instructors.Model.find().populate('memberships').exec((err, instructors) => {
-    if (err) res.status(500).json(err);
+  Instructors.Model.find((err, instructors) => {
+    if (err) return res.status(500).json(err);
     res.json({ instructor: instructors });
   });
 });
