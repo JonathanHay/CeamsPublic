@@ -31,7 +31,8 @@ export default Component.extend({
         createCommittee: function () {
             console.log("Saving Committee...")
             var newCommittee = this.get('DS').createRecord('committee', {
-                name: this.get('title')
+                name: this.get('title'),
+                level: this.get('level')
             });
             newCommittee.save().then(() => {
                 console.log("Committee Saved");
