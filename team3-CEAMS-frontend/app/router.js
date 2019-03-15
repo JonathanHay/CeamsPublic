@@ -24,6 +24,7 @@ Router.map(function () {
     this.route('manage-kpi');
     this.route('kpi-gauge');
     this.route('list-kpi');
+    this.route('assign-evaluation-methods');
   });
 });
 
