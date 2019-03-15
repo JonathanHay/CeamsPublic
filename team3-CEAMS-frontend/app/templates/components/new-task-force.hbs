@@ -12,11 +12,17 @@
   <div class="row">
     <div class="ui input">
       {{input type="text" cols="50" rows="1" value = title placeholder="committee name"}}
+      <div class="ui error message hidden" id="nerr">
+        <p>Name cannot be empty</p>
+      </div>
     </div>
   </div>
   <div class="row">
     <div class="ui input">
       {{input type="text" cols="50" rows="1" value = level placeholder="committee level"}}
+      <div class="ui error message hidden" id="lerr">
+        <p>level cannot be empty</p>
+      </div>
     </div>
   </div>
   <div class="row">
@@ -30,6 +36,7 @@
     </button>
     {{/link-to}}
   </div>
-  <div class="row"></div>
+  <div class="row">
+  </div>
 </div>
 {{/ui-modal}}
