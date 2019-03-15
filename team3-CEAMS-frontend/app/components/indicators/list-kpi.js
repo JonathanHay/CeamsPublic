@@ -22,7 +22,7 @@ export default Component.extend({
         this.set("allUsers", temp);
     },
     DS: service('store'),
-    allUsers: computed(function () {
+    allUsers: computed('users', 'query', function () {
         var temp = this.get("users");
         var theQuery = this.get("query");
         console.log("Query: " + theQuery);
