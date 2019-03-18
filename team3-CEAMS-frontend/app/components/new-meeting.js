@@ -23,6 +23,7 @@ export default Component.extend({
         },
         closeModal: function(){
             $('.ui.newMeeting.modal').modal('hide');
+            location.reload();
         },
         openModal: function () {
             this.set('location', null);

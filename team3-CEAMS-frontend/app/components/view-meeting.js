@@ -66,6 +66,7 @@ export default Component.extend({
 
         },
         closeModal: function(){
+            location.reload();
             $('.ui.' + this.get('modalName') +'.modal').modal('hide');
         },
         removeDuplicates: function(){
