@@ -15,7 +15,10 @@ export default Component.extend({
             });
 
             newMeeting.save().then(() => {
-                return true;
+                window.alert('Meeting Created')
+                location.reload();
+            },(err)=>{
+                window.alert('Error, please try again')
             });
         },
         closeModal: function () {

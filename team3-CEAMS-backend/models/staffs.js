@@ -10,7 +10,7 @@ var staffsSchema = mongoose.Schema(
         roleName: String,
         keyPerformanceIndicator: Number,
         evaluationMethod: {type: mongoose.Schema.ObjectId, ref: ('UserEvaluationMethods')},
-        memberships: [{type: mongoose.Schema.ObjectId, ref: ('committeeMembership')}],
+        memberships: [{type: mongoose.Schema.ObjectId, ref: ('CommitteeMemberships')}],
         userShadow: {type: mongoose.Schema.ObjectId, ref: ('UserAccounts')}
     }
 );

@@ -17,13 +17,14 @@ Router.map(function () {
   this.route('committees', function () {
     this.route('new');
     this.route('detail', { path: '/detail/:committee_id' });
-    this.route('manage-users', { path: '/manage-users/:committee_id' });
+    this.route('manage-users', { path: '//:committee_id' });
   });
   this.route('indicators', function () {
     this.route('manage-upi');
     this.route('manage-kpi');
     this.route('kpi-gauge');
     this.route('list-kpi');
+    this.route('assign-evaluation-methods');
   });
 });
 

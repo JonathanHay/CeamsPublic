@@ -82,6 +82,20 @@
                                     </span>
                                 </div>
                             </div>
+                            <div class="item">
+                                <div class="content">
+                                    <span class="kpi-content">Method Description</span>
+                                    <span>
+                                        <div class="right floated column">
+                                            <div class="ui input">
+                                                {{input value=this.instructorMethodDescription}}
+                                            </div>
+                                            &nbsp;
+                                            &nbsp;
+                                        </div>
+                                    </span>
+                                </div>
+                            </div>
                             <div class="error-message" style="color: red; display: none">
                                 Error: weights must sum to 100.
                             </div>
@@ -134,9 +148,26 @@
                                 </span>
                             </div>
                         </div>
+                        <div class="item">
+                            <div class="content">
+                                <span class="kpi-content">Method Description</span>
+                                <span>
+                                    <div class="right floated column">
+                                        <div class="ui input">
+                                            {{input value=this.staffMethodDescription}}
+                                        </div>
+                                        &nbsp;
+                                        &nbsp;
+                                    </div>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="error-message" style="color: red; display: none">
+                            Error: weights must sum to 100.
+                        </div>
                         <div class="kpi-button-group">
                             <div class="right floated column">
-                                <button id="staff-save-button" class="ui right floated button">
+                                <button id="staff-save-button" class="ui right floated button" onclick={{action "submitStaffKPI"}}>
                                     <a>Create</a>
                                 </button>
                                 <div class="ui right floated button">

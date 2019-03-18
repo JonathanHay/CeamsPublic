@@ -21,6 +21,10 @@ export default Component.extend({
             meetingOutcome.save().then(() => {
                 return  true;
             })
+            this.set('title', null)
+            this.set('resultDescription', null)
+            this.set('recommendations', null) 
+            this.set('decision', null)
         },   
     }
 });

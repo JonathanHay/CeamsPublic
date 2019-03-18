@@ -19,7 +19,7 @@
         <label>Meeting Minutes</label>
         <br>
         <div class="ui labeled input">
-            {{input value=minutes type="text" class='meetingMinutes'}}
+            {{textarea value=minutes type="text" class='meetingInput'}}
         </div>
         <br>
         <label>Start Time</label>
@@ -42,12 +42,13 @@
                 {{meeting-outcomes outcomes=outcomes meetingId = ID}}
             </div>
         {{/ui-accordion}}
-        {{#ui-accordion class="styled"}}
+        
+        {{#ui-accordion class="styled" onOpening = (action 'removeDuplicates')}}
             <div class="title">
                 Manage Users
             </div>
             <div class="content">
-                {{!-- {{meeting-attendees members=users.allUsers attendees=attendees submit=(action "userSubmit")}} --}}
+                {{meeting-attendees attendees=attendees memberships = memberships meetingId = ID submit=(action "submit")}}
             </div>
         {{/ui-accordion}}
     </div>
@@ -62,12 +63,6 @@
     <div class="ui inline cookie nag">
         <span class="title">
             Updated
-        </span>
-        <i class="close icon"></i>
-    </div>
-    <div class="ui inline cookie nag bad">
-        <span class="title">
-            Error, please try again
         </span>
         <i class="close icon"></i>
     </div>
