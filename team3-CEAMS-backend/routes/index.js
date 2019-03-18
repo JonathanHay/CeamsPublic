@@ -11,6 +11,7 @@ router.use('/course-types', require('./course-types'));
 router.use('/deliverable-types', require('./deliverable-types'));
 router.use('/instructors', require('./instructors'));
 router.use('/kpi-reports', require('./kpi-reports'));
+router.use('/user-accounts', require('./user-accounts'));
 router.use('/meetings', require('./meetings'));
 router.use('/meeting-outcomes', require('./meeting-outcomes'));
 router.use('/instructors', require('./instructors'));

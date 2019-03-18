@@ -16,14 +16,14 @@
           <div class="user-container">
             <div class="ui middle aligned divided list">
               {{#each this.allUsers as |user|}}
-                <div class="item">
-                  <div class="left floated content username">
-                    {{user.firstName}} {{user.lastName}}
-                  </div>
-                  <button onclick={{action "add" user}} class="ui button right floated middle aligned">
-                    Add
-                  </button>
+              <div class="item">
+                <div class="left floated content username">
+                  {{user.firstName}} {{user.lastName}}
                 </div>
+                <button onclick={{action "add" user}} class="ui button right floated middle aligned">
+                  Add
+                </button>
+              </div>
               {{/each}}
             </div>
           </div>
@@ -41,14 +41,14 @@
           <div class="user-container">
             <div class="ui middle aligned divided list">
               {{#each this.members as |user|}}
-                <div class="item">
-                  <div class="left floated content username">
-                    {{user.firstName}} {{user.lastName}}
-                  </div>
-                  <button onclick={{action "remove" user}} class="ui button right floated middle aligned">
-                    Remove
-                  </button>
+              <div class="item">
+                <div class="left floated content username">
+                  {{user.firstName}} {{user.lastName}}
                 </div>
+                <button onclick={{action "remove" user}} class="ui button right floated middle aligned">
+                  Remove
+                </button>
+              </div>
               {{/each}}
             </div>
           </div>

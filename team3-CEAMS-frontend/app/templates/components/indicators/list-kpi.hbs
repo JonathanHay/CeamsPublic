@@ -1,6 +1,118 @@
 <br><br><br><br>
-<div class="ui centered grid container">
-    <div class="ui center aligned black button" {{action 'exportAll'}}>
-        F U C K
+<div class="content-container manage-users">
+    <div class="ui center aligned huge header">
+        Generate KPI Reports
+    </div>
+    <div class="ui centered grid">
+        <div class="eight wide row">
+            <div class="six wide column">
+                <div class="ui centered grid section">
+                    <h3 class="ui centered aligned header">All Users</h3>
+                </div>
+            </div>
+            <div class="six wide column">
+                <div class="ui centered grid section">
+                    <h3 class="ui centered aligned header">Selected Users</h3>
+                </div>
+            </div>
+        </div>
+        <div class="eight wide row">
+            <div class="six wide column">
+                <div class="ui centered grid section">
+                    <div class="ui input">
+                        {{input type="text" cols="50" rows="1" value = query placeholder="Search...." }}
+                    </div>
+                </div>
+            </div>
+            <div class="six wide column">
+                <div class="ui centered grid section">
+                </div>
+            </div>
+        </div>
+        <div class="eight wide row">
+            <div class="six wide column">
+                <div class="section">
+                    <div class="user-container">
+                        <div class="ui middle aligned divided list">
+                            {{#each this.allUsers as |user|}}
+                            <div class="item">
+                                <div class="left floated content username">
+                                    {{user.username}}
+                                </div>
+                                <button onclick={{action "add" user}} class="ui button right floated middle aligned">
+                                    Add
+                                </button>
+                            </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="six wide column">
+                <div class="section">
+                    <div class="user-container">
+                        <div class="ui middle aligned divided list">
+                            {{#each this.selectedUsers as |suser|}}
+                            <div class="item">
+                                <div class="left floated content username">
+                                    {{suser.username}}
+                                </div>
+                                <button onclick={{action "remove" suser}}
+                                    class="ui button right floated middle aligned">
+                                    Remove
+                                </button>
+                            </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="eight wide row">
+            <div class="six wide column">
+                <div class="ui centered grid container">
+                    <div class="ui center aligned black button" {{action 'exportAll'}}>
+                        Export All
+                    </div>
+                </div>
+            </div>
+            <div class="six wide column">
+                <div class="ui centered grid container">
+                    <div class="ui center aligned black button" {{action 'export'}}>
+                        Export Selected
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="eight wide row"></div>
+        <!--<div class="eight wide row">
+            <div class="ui centered grid container">
+                <table class="ui celled table">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th># of Logins</th>
+                            <th># of Audit Trail Entries</th>
+                            <th># of Tests Graded</th>
+                            <th># of Classes Taught</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each errorlessList as |one|}}
+                        <tr>
+                            <td data-label="Name">{{one.c1}}</td>
+                            <td data-label="Name">{{one.c2}}</td>
+                            <td data-label="Name">{{one.c3}}</td>
+                            <td data-label="Name">{{one.c4}}</td>
+                            <td data-label="Name">{{one.c5}}</td>
+                            <td data-label="Name">{{one.c6}}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>!-->
+        <div class="eight wide row"></div>
     </div>
 </div>
