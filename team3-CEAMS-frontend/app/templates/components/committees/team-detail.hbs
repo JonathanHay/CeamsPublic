@@ -22,21 +22,17 @@
       <div class="ui divider"></div>
       <div class="bottom">
         <div class="ui relaxed divided list">
-          {{#if this.committee.membersInfo}}
-          {{#each this.committee.membersInfo as |mInfo|}}
+          {{#each this.members as |members|}}
           <div class="item">
             <div class="content">
-              <a class="header">{{ mInfo.name }}</a>
+              <a class="header">{{ members.name }}</a>
               <div class="description">Member of Team3</div>
-              <span>Participation Start Date: {{ mInfo.participationStartDate }}</span>
+              <span>Participation Start Date: {{ members.startDate }}</span>
               <br>
-              <span>Participation End Date: {{ mInfo.participationEndDate }}</span>
+              <span>Participation End Date: {{ members.endDate }}</span>
             </div>
           </div>
           {{/each}}
-          {{else}}
-          <p>There are currently no members in this task force.</p>
-          {{/if}}
         </div>
       </div>
     </div>
