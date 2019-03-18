@@ -226,6 +226,9 @@ export default Component.extend({
                     pdfDocument.content[1] = {};
                     pdfDocument.content[2] = {};
                 }
+                if (hasInstructors && hasStaff) {
+                    pdfDocument.content[1] = { text: '\n\nStaff:\n\n', style: 'header' };
+                }
                 pdfMake.createPdf(pdfDocument).download();
                 if (issue) {
                     issue = false;

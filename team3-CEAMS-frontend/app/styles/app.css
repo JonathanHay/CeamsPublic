@@ -225,6 +225,30 @@ footer {
   overflow-y: scroll;
 }
 
+.committeeList .user-container {
+  height: 60vh;
+  width: 60vw;
+  margin-top: 3em;
+  border: 1px solid black;
+  padding-top: 1em;
+  overflow-y: scroll;
+}
+
+.committeeList .user-container .item {
+  padding: 1em 0;
+  margin: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#nerr p{
+  height: 1ch;
+}
+
+#lerr p{
+  height: 1ch;
+}
+
 .manage-users .user-container .item {
   padding: 1em 0;
   margin: 5px;
