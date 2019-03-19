@@ -14,6 +14,7 @@ Router.map(function () {
   this.route('meeting');
   this.route('committee');
   this.route('new-task-force');
+  this.route('delete-task-force');
   this.route('committees', function () {
     this.route('new');
     this.route('detail', { path: '/detail/:committee_id' });
@@ -26,6 +27,7 @@ Router.map(function () {
     this.route('list-kpi');
     this.route('assign-evaluation-methods');
   });
+  this.route('delete-task-force');
 });
 
 export default Router;

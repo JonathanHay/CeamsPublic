@@ -18,6 +18,7 @@
               {{#link-to "committees.detail" committee.id}}
               <div class="ui right floated blue button">View<i class="right floated eye icon"></i></div>
               {{/link-to}}
+              {{delete-task-force correctTitle=committee.name delID=committee.id }}
             </div>
             {{/each}}
           </div>
