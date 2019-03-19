@@ -32,7 +32,6 @@ export default Component.extend({
                 meeting.set('endDateTime', this.get('endDateTime'));
                 meeting.save().then(() => {
                     window.alert('Updated')
-                    location.reload();
                 },(err)=>{
                     window.alert('Error, please try again')
                 });
@@ -66,7 +65,6 @@ export default Component.extend({
 
         },
         closeModal: function(){
-            location.reload();
             $('.ui.' + this.get('modalName') +'.modal').modal('hide');
         },
         removeDuplicates: function(){

@@ -16,14 +16,12 @@ export default Component.extend({
 
             newMeeting.save().then(() => {
                 window.alert('Meeting Created')
-                location.reload();
             },(err)=>{
                 window.alert('Error, please try again')
             });
         },
         closeModal: function(){
             $('.ui.newMeeting.modal').modal('hide');
-            location.reload();
         },
         openModal: function () {
             this.set('location', null);
