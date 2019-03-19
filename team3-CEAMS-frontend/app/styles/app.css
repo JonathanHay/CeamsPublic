@@ -7,8 +7,6 @@ h1.header {
   margin-top: 1em;
 }
 
-
-
 /*home-page specific style */
 .home.page >
 .ui.inverted.vertical.segment {
@@ -148,8 +146,8 @@ h1.header {
 .ui.message {
   background-color: #ebebeb;
   box-shadow: none;
-  padding: 5em 4em;
-  margin-top: 2em !important;
+  padding: 1em 1em;
+  margin-top: 0em;
 }
 
 .ui.message h1.ui.header {
