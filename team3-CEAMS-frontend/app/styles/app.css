@@ -239,8 +239,10 @@ footer {
   padding-right: 20px;
 }
 
-#nerr p{
-  height: 1ch;
+#nerr.ui.error.message{
+  padding: 0em 0em;
+  height: 30px;
+  width: 50%;
 }
 
 #lerr p{
@@ -312,4 +314,20 @@ input[type="number"]{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+#ui-input{
+  float: left;
+  box-shadow: none;
+  padding: 1.5em 1.5em;
+  margin-top: 2em !important;
+}
+#ui-err{
+  float:right;
+  box-shadow: none;
+  padding: 1.5em 1.5em;
+  margin-top: 2em !important;
+}
+
+#inline-row{
+  display:inline-block;
 }
