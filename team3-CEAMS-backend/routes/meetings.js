@@ -7,26 +7,16 @@ var Meetings = require('../models/meetings');
 
 var router = express.Router();
 /* GET all */
-<<<<<<< HEAD
 router.get('/', function(req, res) {
   Meetings.Model.find((err, meetings) => {
-=======
-router.get('/', function (req, res) {
-  Meetings.Model.find(function (err, meetings) {
->>>>>>> wfincher
     if (err) res.status(500).json(err);
     else res.json({ meeting: meetings });
   });
 });
 
 /* GET some */
-<<<<<<< HEAD
 router.get('/:id', function(req, res) {
   Meetings.Model.findById(req.params.id,function(err, meeting){
-=======
-router.get('/:id', function (req, res) {
-  Meetings.Model.findById(req.params.id, function (err, meeting) {
->>>>>>> wfincher
     if (err) res.status(500).json(err);
     else res.json({ meeting: meeting });
   });

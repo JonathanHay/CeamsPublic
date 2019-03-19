@@ -41,10 +41,6 @@ export default Component.extend({
               }
             })
             .modal('show');
-<<<<<<< HEAD
         },
-=======
-        }
->>>>>>> wfincher
     }
 });
