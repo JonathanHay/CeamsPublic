@@ -15,7 +15,7 @@ export default Component.extend({
         var temp = this.get("users");
         var theQuery = this.get("query");
         if (this.get("query") != "") {
-            temp = temp.filter(function (item) { return (item.username.includes(theQuery)) });
+            temp = temp.filter(function (item) { return (item.userName.includes(theQuery)) });
         }
         this.set("allUsers", temp);
     },
@@ -24,7 +24,7 @@ export default Component.extend({
         var temp = this.get("users");
         var theQuery = this.get("query");
         if (this.get("query") != "") {
-            temp = temp.filter(function (item) { return (item.username.includes(theQuery)) });
+            temp = temp.filter(function (item) { return (item.userName.includes(theQuery)) });
         }
         return temp;
     }),
@@ -32,7 +32,7 @@ export default Component.extend({
         var result = [];
         this.get('kpiList').forEach((one) => {
             if (one.error == undefined) {
-                let c1 = one.username || "";
+                let c1 = one.userName || "";
                 let c2 = one.rawData;
                 let c3 = one.score || "0";
                 let c4 = one.id;
@@ -259,7 +259,7 @@ export default Component.extend({
             var temp = this.get("users");
             var theQuery = this.get("query");
             if (this.get("query") != "") {
-                temp = temp.filter(function (item) { return (item.username.includes(theQuery)) });
+                temp = temp.filter(function (item) { return (item.userName.includes(theQuery)) });
             }
             this.set("allUsers", temp);
         }

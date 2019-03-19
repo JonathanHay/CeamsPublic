@@ -37,7 +37,7 @@
                             {{#each this.allUsers as |user|}}
                             <div class="item">
                                 <div class="left floated content username">
-                                    {{user.username}}
+                                    {{user.userName}}
                                 </div>
                                 <button onclick={{action "add" user}} class="ui button right floated middle aligned">
                                     Add
@@ -55,7 +55,7 @@
                             {{#each this.selectedUsers as |suser|}}
                             <div class="item">
                                 <div class="left floated content username">
-                                    {{suser.username}}
+                                    {{suser.userName}}
                                 </div>
                                 <button onclick={{action "remove" suser}}
                                     class="ui button right floated middle aligned">
