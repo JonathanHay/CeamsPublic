@@ -10,7 +10,7 @@ export default Component.extend({
     committeeList: computed('allCommittees', 'comQuery', function () {
         var temp = this.get("allCommittees");
         var theQuery = this.get("comQuery");
-        if (this.get("query") != "") {
+        if (this.get("comQuery") != "") {
             temp = temp.filter(function (item) { return (item.name.includes(theQuery)) });
         }
         return temp;

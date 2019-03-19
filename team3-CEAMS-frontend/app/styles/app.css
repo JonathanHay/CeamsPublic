@@ -239,16 +239,6 @@ footer {
   padding-right: 20px;
 }
 
-#nerr.ui.error.message{
-  padding: 0em 0em;
-  height: 30px;
-  width: 50%;
-}
-
-#lerr p{
-  height: 1ch;
-}
-
 .manage-users .user-container .item {
   padding: 1em 0;
   margin: 5px;
