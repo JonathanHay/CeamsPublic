@@ -63,7 +63,7 @@ export default Component.extend({
               onApprove: () => {
                 }
             })
-                .modal('show');
+            .modal('show');
         },
     }
 });
