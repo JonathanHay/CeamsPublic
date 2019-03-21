@@ -43,7 +43,7 @@ export default Component.extend({
             });
         },
         closeModal: function () {
-            $('.ui.newModal.modal').modal('hide');
+            $('.ui.newMeeting.modal').modal('hide');
         },
         openModal: function () {
             this.set('location', null);
@@ -61,16 +61,6 @@ export default Component.extend({
               },
       
               onApprove: () => {
-
-            $('.ui.newModal.modal').modal({
-                closable: false,
-
-                onDeny: () => {
-                    return true;
-                },
-
-                onApprove: () => {
-
                 }
             })
                 .modal('show');
