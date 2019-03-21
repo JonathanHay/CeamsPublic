@@ -13,7 +13,7 @@ function getScore(id, callback) {
         if (err) res.status(500).json(err);
 
         //gets all audittrail data for the user passed to the function
-        AuditTrails.Model.find({ authorUserName: UserAccount.username }, function (err, AuditTrails) {
+        AuditTrails.Model.find({ authorUserName: UserAccount.userName }, function (err, AuditTrails) {
             if (err) res.status(500).json(err);
 
             //The formula depends on up to four factors: number of times they've logged in, number of tests they've graded, number of courses they teach,
@@ -67,7 +67,7 @@ function getScore(id, callback) {
                                 formula.numGraded * numGraded + formula.numCourses * numCourses + formula.totalActions * totalActions;
                             var rawData = { "numLogins": numLogins, "numGraded": numGraded, "numCourses": numCourses, "totalActions": totalActions };
 
-                            var results = { "_id": UserAccount._id, "rawData": rawData, "username": UserAccount.username, "score": score }
+                            var results = { "_id": UserAccount._id, "rawData": rawData, "userName": UserAccount.userName, "score": score }
 
                             //return score
                             return callback(results);
@@ -82,7 +82,7 @@ function getScore(id, callback) {
 
                     if (!Staff) {
                         var rawData = { "numLogins": null, "totalActions": null };
-                        var results = { "_id": UserAccount._id, "rawData": rawData, "score": null, "username": UserAccount.username, "error": "UserAccount has invalid Staff ID" };
+                        var results = { "_id": UserAccount._id, "rawData": rawData, "score": null, "userName": UserAccount.userName, "error": "UserAccount has invalid Staff ID" };
                         return callback(results);
                     }
 
@@ -101,7 +101,7 @@ function getScore(id, callback) {
                         var score = formula.numLogins * numLogins + formula.totalActions * totalActions;
                         var rawData = { "numLogins": numLogins, "totalActions": totalActions };
 
-                        var results = { "_id": UserAccount._id, "rawData": rawData, "username": UserAccount.username, "score": score }
+                        var results = { "_id": UserAccount._id, "rawData": rawData, "userName": UserAccount.userName, "score": score }
 
                         //return score
                         return callback(results);

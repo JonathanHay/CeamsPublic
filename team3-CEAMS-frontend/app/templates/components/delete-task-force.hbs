@@ -1,0 +1,36 @@
+<div class="ui right floated red button" {{action 'openModal'}}>
+    Delete <i class="right floated minus icon"></i>
+</div>
+{{#ui-modal name=modalName class=modalName}}
+<div class="ui relaxed centered grid container">
+    <div class="row"></div>
+    <div class="row">
+        <div class="ui big top aligned header">
+            Delete Committee
+        </div>
+    </div>
+    <div class="row" id="nameField">
+        <div class="ui orange input">
+            {{input type="text" cols="50" rows="1" value = title placeholder="enter name to confirm..."}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="ui error message hidden" id="nerr2">
+            <p>Committee name incorrect!</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="ui black deny button" {{action 'closeModal'}}>
+            Cancel
+        </div>
+        {{#link-to "committees"}}
+        <button class="ui negative right labeled icon button" {{action 'delCommittee'}}>
+            Confirm
+            <i class="checkmark icon"></i>
+        </button>
+        {{/link-to}}
+    </div>
+    <div class="row">
+    </div>
+</div>
+{{/ui-modal}}

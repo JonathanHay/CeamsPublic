@@ -7,8 +7,6 @@ h1.header {
   margin-top: 1em;
 }
 
-
-
 /*home-page specific style */
 .home.page >
 .ui.inverted.vertical.segment {
@@ -148,8 +146,8 @@ h1.header {
 .ui.message {
   background-color: #ebebeb;
   box-shadow: none;
-  padding: 5em 4em;
-  margin-top: 2em !important;
+  padding: 1em 1em;
+  margin-top: 0em;
 }
 
 .ui.message h1.ui.header {
@@ -225,6 +223,22 @@ footer {
   overflow-y: scroll;
 }
 
+.committeeList .user-container {
+  height: 60vh;
+  width: 60vw;
+  margin-top: 3em;
+  border: 1px solid black;
+  padding-top: 1em;
+  overflow-y: scroll;
+}
+
+.committeeList .user-container .item {
+  padding: 1em 0;
+  margin: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 .manage-users .user-container .item {
   padding: 1em 0;
   margin: 5px;
@@ -290,4 +304,20 @@ input[type="number"]{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+#ui-input{
+  float: left;
+  box-shadow: none;
+  padding: 1.5em 1.5em;
+  margin-top: 2em !important;
+}
+#ui-err{
+  float:right;
+  box-shadow: none;
+  padding: 1.5em 1.5em;
+  margin-top: 2em !important;
+}
+
+#inline-row{
+  display:inline-block;
 }

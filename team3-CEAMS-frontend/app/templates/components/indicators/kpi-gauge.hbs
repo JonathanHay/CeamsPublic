@@ -13,43 +13,35 @@
             </div>
             <br>
 
-
         <div id="instructor-graph">
-
-            
-
-        <div class="chart">
-            <br>
-            <select class="ui selection dropdown" onchange={{action 'populateInstructorChart' value="target.value"}}>
-                <option selected disabled hidden>Choose Method</option>
-                {{#each instructorEvalMethods as |method index|}}
-                <option class="item" value="{{index}}">{{method.description}}</option>
-                {{/each}}
-            </select>
-            <br>
-            <br>
-            <canvas id="instructorPieChart" style="width:40%"></canvas>
-        </div>
-
+            <div class="chart">
+                <br>
+                <select style="height:50px; width:100%;" class="ui selection dropdown" onchange={{action 'populateInstructorChart' value="target.value"}}>
+                    <option selected disabled hidden>Choose Method</option>
+                    {{#each instructorEvalMethods as |method index|}}
+                    <option class="item" value="{{index}}">{{method.description}}</option>
+                    {{/each}}
+                </select>
+                <br>
+                <br>
+                <canvas id="instructorPieChart" style="width:40%"></canvas>
+            </div>
         </div>
 
         <div id="staff-graph">
-
-        <div class="chart">
-            <br>
-            <select class="ui selection dropdown" onchange={{action 'populateStaffChart' value="target.value"}}>
-                <option selected disabled hidden>Choose Method</option>
-                {{#each staffEvalMethods as |method index|}}
-                <option class="item" value="{{index}}">{{method.description}}</option>
-                {{/each}}
-            </select>
-            <br>
-            <br>
-            <canvas id="staffPieChart" style="width:40%"></canvas>
+            <div class="chart">
+                <br>
+                <select style="height:50px; width:100%;" class="ui selection dropdown" onchange={{action 'populateStaffChart' value="target.value"}}>
+                    <option selected disabled hidden>Choose Method</option>
+                    {{#each staffEvalMethods as |method index|}}
+                    <option class="item" value="{{index}}">{{method.description}}</option>
+                    {{/each}}
+                </select>
+                <br>
+                <br>
+                <canvas id="staffPieChart" style="width:40%"></canvas>
+            </div>
         </div>
-
-        </div>
-
 
         <div class="kpi-button-group">
             <div class="right floated column">

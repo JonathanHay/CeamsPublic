@@ -23,7 +23,7 @@
                     <h3>Instructors</h3>
                 </div>
 
-                <select class="ui selection dropdown" onchange={{action 'setInstructor' value="target.value"}}>
+                <select style="height:50px; width:100%;" class="ui selection dropdown" onchange={{action 'setInstructor' value="target.value"}}>
                     <option selected disabled hidden>Choose Instructor</option>
                     {{#each instructors as |instructor index|}}
                     <option class="item" value="{{index}}">{{instructor.lastName}}, {{instructor.firstName}} -
@@ -32,7 +32,7 @@
                 </select>
 
                 <br>
-                <select class="ui selection dropdown" onchange={{action 'setStaffMethod' value="target.value"}}>
+                <select style="height:50px; width:100%;" class="ui selection dropdown" onchange={{action 'setInstructorMethod' value="target.value"}}>
                     <option selected disabled hidden>Choose Method</option>
                     {{#each instructorMethods as |method index|}}
                     <option class="item" value="{{index}}">{{method.formulaDescription}}</option>
@@ -45,7 +45,7 @@
                             <div class="right floated column">
                                 {{!-- <button id="staff-save-button" class="ui right floated button" onclick={{action "submitStaffKPI"}}> --}}
                                 <button id="staff-save-button" class="ui right floated button"
-                                    onclick={{action "assignStaffMethod"}}>
+                                    onclick={{action "assignInstructorMethod"}}>
                                     <a>Save</a>
                                 </button>
                                 <div class="ui right floated button">
@@ -61,7 +61,7 @@
                 <div class="instructor">
                     <h3>Staff</h3>
                 </div>
-                <select class="ui selection dropdown" onchange={{action 'setStaff' value="target.value"}}>
+                <select style="height:50px; width:100%;" class="ui selection dropdown" onchange={{action 'setStaff' value="target.value"}}>
                     <option selected disabled hidden>Choose Staff</option>
                     {{#each staff as |staff index|}}
                     <option class="item" value="{{index}}">{{staff.lastName}}, {{staff.firstName}} -
@@ -70,7 +70,7 @@
                 </select>
 
                 <br>
-                <select class="ui selection dropdown" onchange={{action 'setStaffMethod' value="target.value"}}>
+                <select style="height:50px; width:100%;" class="ui selection dropdown" onchange={{action 'setStaffMethod' value="target.value"}}>
                     <option selected disabled hidden>Choose Method</option>
                     {{#each staffMethods as |method index|}}
                     <option class="item" value="{{index}}">{{method.formulaDescription}}</option>
