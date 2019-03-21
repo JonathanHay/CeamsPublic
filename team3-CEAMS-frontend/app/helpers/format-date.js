@@ -1,8 +1,6 @@
 import { helper } from '@ember/component/helper';
 
 export function formatDate(params/*, hash*/) {
-  //params = 'test';
-  console.log(params);
   var monthNames = [
     "January", "February", "March",
     "April", "May", "June", "July",
@@ -10,11 +8,16 @@ export function formatDate(params/*, hash*/) {
     "November", "December"
   ];
   let date = new Date(params[0]);
+  // date.setHours(date.getHours()+2);
+  // date.setMonth(date.getMonth());
   var day = date.getDate();
   var monthIndex = date.getMonth();
   var year = date.getFullYear();
   var hour = date.getHours();
-  var minutes = date.getMinutes();
+  var minutes = date.getMinutes().toString();
+  if(minutes.length==1){
+    minutes = "0"+minutes;
+  }
 
   return day + ' ' + monthNames[monthIndex] + ' ' + year + ' ' + hour + ':' + minutes;
 }

@@ -24,14 +24,36 @@
         <br>
         <label>Start Time</label>
         <br>
-        <div class="ui labeled input">
-            {{input value=startDateTime type="date" class='meetingInput'}}
+        <div class="two fields">
+            <div class="field">
+              <div class="ui labeled input">
+                <label style="padding-left:10px;margin-top: 7px;">Date</label>
+                    {{input value=startDate type="date" class='meetingInput'}}
+                </div>
+            </div>
+            <div class="field">
+                <div class="ui labeled input">
+                    <label style="padding-left:10px;margin-top: 7px;">Time</label>
+                    {{input value=startTime type="time" class='meetingInput'}}
+                </div>
+            </div>
         </div>
         <br>
         <label>End Time</label>
         <br>
-        <div class="ui labeled input">
-            {{input value=endDateTime type="text" class='meetingInput'}}
+        <div class="two fields">
+            <div class="field">
+              <div class="ui labeled input">
+                <label style="padding-left:10px;margin-top: 7px;">Date: </label>
+                    {{input value=endDate type="date" class='meetingInput'}}
+                </div>
+            </div>
+            <div class="field">
+                <div class="ui labeled input">
+                    <label style="padding-left:10px;margin-top: 7px;">Time: </label>
+                    {{input value=endTime type="time" class='meetingInput'}}
+                </div>
+            </div>
         </div>
         <br>
         {{#ui-accordion class="styled"}}

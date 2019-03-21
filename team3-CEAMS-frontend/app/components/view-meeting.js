@@ -24,12 +24,20 @@ export default Component.extend({
             this.set('members', users)
         },
         update: function(){
+            let startDate = this.get('startDate').split('-');
+            let startTime= this.get('startTime').split(':');
+            let finalStartDate = new Date(startDate[0], startDate[1], startDate[2], startTime[0], startTime[1]); 
+            console.log(finalStartDate);
+            let endDate = this.get('endDate').split('-');
+            let endTime= this.get('endTime').split(':');
+            let finalEndDate = new Date(endDate[0], endDate[1], endDate[2], endTime[0], endTime[1]); 
+            console.log(finalEndDate);
             this.get('DS').findRecord('meeting', this.get('ID')).then((meeting) => {
                 meeting.set('location', this.get('location'));
                 meeting.set('description', this.get('description'));
                 meeting.set('minutes', this.get('minutes'));
-                meeting.set('startDateTime', this.get('startDateTime'));
-                meeting.set('endDateTime', this.get('endDateTime'));
+                meeting.set('startDateTime', finalStartDate);
+                meeting.set('endDateTime', finalEndDate);
                 meeting.save().then(() => {
                     window.alert('Updated')
                 },(err)=>{
@@ -82,12 +90,17 @@ export default Component.extend({
             this.set('location', this.get('meetingData.location'));
             this.set('description',  this.get('meetingData.description'));
             this.set('minutes',  this.get('meetingData.minutes'));
-            this.set('endDateTime',  this.get('meetingData.endDateTime'));
             this.set('outcomes', this.get('meetingData.outcomes'));
 
-            let date = new Date(this.get('meetingData.startDateTime'));
-            console.log(date);
-            this.set('startDateTime', date.toISOString().substring(0,10));
+            let startDate = new Date(this.get('meetingData.startDateTime'));
+            startDate.setHours(startDate.getHours()-4)
+            this.set('startDate', startDate.toISOString().substring(0,10));
+            this.set('startTime', startDate.toISOString().substring(11, 16 ));
+
+            let endDate = new Date(this.get('meetingData.endDateTime'));
+            endDate.setHours(endDate.getHours()-4)
+            this.set('endDate', endDate.toISOString().substring(0,10));
+            this.set('endTime', endDate.toISOString().substring(11,16));
 
             let memberInfo=[]
             let a = null;
