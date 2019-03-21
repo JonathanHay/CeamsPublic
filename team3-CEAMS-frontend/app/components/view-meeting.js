@@ -82,9 +82,12 @@ export default Component.extend({
             this.set('location', this.get('meetingData.location'));
             this.set('description',  this.get('meetingData.description'));
             this.set('minutes',  this.get('meetingData.minutes'));
-            this.set('startDateTime',  this.get('meetingData.startDateTime'));
             this.set('endDateTime',  this.get('meetingData.endDateTime'));
             this.set('outcomes', this.get('meetingData.outcomes'));
+
+            let date = new Date(this.get('meetingData.startDateTime'));
+            console.log(date);
+            this.set('startDateTime', date.toISOString().substring(0,10));
 
             let memberInfo=[]
             let a = null;

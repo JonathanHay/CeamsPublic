@@ -21,8 +21,8 @@
             <tr>
               <td>{{meeting.location}}</td>
               <td>{{meeting.description}}</td>
-              <td>{{meeting.startDateTime}}</td>
-              <td>{{meeting.endDateTime}}</td>
+              <td>{{format-date meeting.startDateTime}}</td>
+              <td>{{format-date meeting.endDateTime}}</td>
               <td>{{view-meeting ID = meeting.id}}</td>
             </tr>
           {{/each}}

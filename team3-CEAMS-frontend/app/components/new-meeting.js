@@ -6,12 +6,20 @@ export default Component.extend({
 
     actions:{
         create: function(){
+            let startDate = this.get('startDate').split('-');
+            let startTime= this.get('startTime').split(':');
+            let finalStartDate = new Date(startDate[0], startDate[1], startDate[2], startTime[0], startTime[1]); 
+
+            let endDate = this.get('endDate').split('-');
+            let endTime= this.get('endTime').split(':');
+            let finalEndDate = new Date(endDate[0], endDate[1], endDate[2], endTime[0], endTime[1]); 
+
             var newMeeting = this.get('DS').createRecord('meeting', {
                 location: this.get('location'),
                 description: this.get('description'),
                 minutes: this.get('minutes'),
-                startDateTime: this.get('startDateTime'),
-                endDateTime: this.get('endDateTime')
+                startDateTime: finalStartDate,
+                endDateTime: finalEndDate
             });
 
             newMeeting.save().then(() => {
@@ -26,8 +34,10 @@ export default Component.extend({
         openModal: function () {
             this.set('location', null);
             this.set('description', null);
-            this.set('startDatetime', null);
-            this.set('endDateTime', null);
+            this.set('startDate', null);
+            this.set('startTime', null);
+            this.set('endTime', null);
+            this.set('endDate', null);
             
             $('.ui.newMeeting.modal').modal({
               closable: false,
