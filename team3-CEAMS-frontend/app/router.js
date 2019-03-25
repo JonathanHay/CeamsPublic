@@ -25,13 +25,13 @@ Router.map(function() {
 
     this.route('indicators', function() {
       this.route('list-kpi');
+      this.route('manage-upi');
+      this.route('manage-kpi');
       this.route('assign-evaluation-methods');
     });
     
     this.route('new-task-force');
     this.route('meeting');
-    this.route('manage-upi');
-    this.route('manage-kpi');
     this.route('ga-task-force');
     this.route('delete-task-force');
   });
