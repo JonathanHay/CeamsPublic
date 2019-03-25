@@ -74,6 +74,7 @@ export default Component.extend({
         setInstructor(index) {
             this.set('instructorIndex', index);
             console.log(index);
+            $('#instructor-factors .save-message').hide();
         },
         setInstructorMethod(index) {
             this.set('instructorMethodIndex', index);
@@ -93,11 +94,13 @@ export default Component.extend({
 
             //send put request for instructor
             chosenInstructor.save();
+            $('#instructor-factors .error-message').show();
 
         },
         setStaff(index) {
             this.set('staffIndex', index);
             console.log(index);
+            $('#staff-factors .save-message').hide();
         },
         setStaffMethod(index) {
             this.set('staffMethodIndex', index);
@@ -116,7 +119,7 @@ export default Component.extend({
 
             //send put request for instructor
             chosenStaff.save();
-
+            $('#staff-factors .error-message').show();
         }
     }
 });
