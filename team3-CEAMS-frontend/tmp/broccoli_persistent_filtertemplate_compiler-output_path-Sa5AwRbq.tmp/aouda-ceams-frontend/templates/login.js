@@ -1,0 +1,1 @@
+export default Ember.HTMLBars.template({"id":"YLcrMcMv","block":"{\"symbols\":[],\"statements\":[[1,[21,\"log-in\"],false]],\"hasEval\":false}","meta":{"moduleName":"aouda-ceams-frontend/templates/login.hbs"}});

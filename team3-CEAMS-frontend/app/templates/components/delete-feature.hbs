@@ -1,0 +1,50 @@
+{{#if FEAT28_012IsPermitted }}
+  <button class="ui red circular icon button" {{action 'deleteOneFeature' ID}}
+          title="Delete"><i class="trash alternate icon"></i>
+  </button>
+
+  {{#ui-modal name=confirmDeleteModalName class=confirmDeleteModalName }}
+    <div class="ui icon header">
+      <i class="warning sign icon"></i>
+      Please Confirm ...
+    </div>
+    <div class="content">
+      <p>Are you sure you need to delete this feature?</p>
+    </div>
+    <br>
+    <div class="actions">
+      <div class="ui red cancel inverted button">
+        <i class="remove icon"></i>
+        No
+      </div>
+      <div class="ui green ok inverted button">
+        <i class="checkmark icon"></i>
+        Yes
+      </div>
+    </div>
+  {{/ui-modal}}
+
+  {{#ui-modal name=errorDeleteModalName class=errorDeleteModalName }}
+    <div class="ui icon header">
+      <i class="warning sign icon"></i>
+      Operation Error ...
+    </div>
+    <div class="content">
+      <p>This feature is associated with at least one system role and can not be deleted</p>
+    </div>
+    <br>
+    <div class="actions">
+      <div class="ui green ok inverted button">
+        <i class="checkmark icon"></i>
+        Ok
+      </div>
+    </div>
+  {{/ui-modal}}
+
+{{else}}
+  {{#ui-popup content="This feature (FEAT28_012: Delete Feature) is disabled"}}
+    <div class="ui mini circular icon button">
+      <i class="remove icon"></i>
+    </div>
+  {{/ui-popup}}
+{{/if}}

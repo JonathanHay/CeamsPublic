@@ -1,0 +1,66 @@
+<div class="ui segment container">
+
+{{#if FEAT07_000IsPermitted }}
+<div class="ui container">
+  <br>
+  <h1>Manage Courses Example</h1>
+  <br>
+
+  <div class="ui grid">
+    <div class="two wide column"></div>
+    <div class="four wide column">{{add-new-course}}</div>
+    <div class="four wide column">{{export-to-excel courses=model}}</div>
+    <div class="four wide column">{{export-to-pdf courses=model}}</div>
+  </div>
+
+  <br>
+  <table id="example" class="ui celled table" cellspacing="0" width="100%">
+    <thead>
+    <tr>
+      <th>Number</th>
+      <th>Title</th>
+      <th>Academic Credit</th>
+      <th></th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each model as |courseLine|}}
+      <tr>
+        <td>{{courseLine.number}}</td>
+        <td>{{courseLine.title}}</td>
+        <td>{{courseLine.academicCredit}}</td>
+        <td>{{edit-course ID=courseLine.id}}</td>
+        <td>{{delete-course ID=courseLine.id}}</td>
+
+      </tr>
+
+    {{/each}}
+    </tbody>
+    <tfoot>
+    <tr>
+      <th>Number</th>
+      <th>Title</th>
+      <th>Academic Credit</th>
+      <th></th>
+      <th></th>
+    </tr>
+    </tfoot>
+  </table>
+</div>
+
+
+{{else}}
+  <div class="ui center aligned raised segment">
+    <div class="ui icon header">
+      <i class="protect icon"></i>
+      Permission Denied
+    </div>
+    <div>
+      <p>The feature (FEAT07_000: Manage Courses Information) is not allowed for your account.</p>
+      <p>Please contact the system administrator for more information.</p>
+    </div>
+  </div>
+{{/if}}
+
+</div>

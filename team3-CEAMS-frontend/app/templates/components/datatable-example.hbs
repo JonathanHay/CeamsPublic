@@ -1,0 +1,33 @@
+<div class="ui container">
+  <br>
+  <h1>Data table Example</h1>
+  <br>
+  <table id="example" class="ui celled table" cellspacing="0" width="100%">
+    <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email Address</th>
+      <th>Gender</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each model as |tableLine|}}
+      <tr>
+        <td>{{tableLine.first_name}}</td>
+        <td>{{tableLine.last_name}}</td>
+        <td>{{tableLine.email}}</td>
+        <td>{{tableLine.gender}}</td>
+      </tr>
+    {{/each}}
+    </tbody>
+    <tfoot>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email Address</th>
+      <th>Gender</th>
+    </tr>
+    </tfoot>
+  </table>
+</div>

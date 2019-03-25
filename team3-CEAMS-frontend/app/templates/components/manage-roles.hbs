@@ -1,0 +1,64 @@
+<div class="ui segment container">
+
+{{#if FEAT28_008IsPermitted }}
+  <div class="ui grid">
+    <div class="eight wide column">
+      <h2 class="ui header" style="margin-top: 2px;">Manage System Roles</h2>
+    </div>
+    <div class="eight wide column right aligned">
+        {{add-new-role}}
+    </div>
+  </div>
+
+
+  <table class="ui table" style="margin-top: 25px;">
+    <thead>
+    <tr>
+      <th>System Role Name</th>
+      <th>Assigned Permissions</th>
+      <th></th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+
+    {{#each model as |oneCode|}}
+      <tr>
+        <td class="three wide left aligned">
+          {{oneCode.name}}
+        </td>
+
+        <td class="eleven wide">
+          {{#each oneCode.permissions as |givenFeatures|}}
+            {{givenFeatures.feature.code}}&nbsp;
+          {{/each}}
+        </td>
+
+
+        <td class="one wide right aligned">
+          {{manage-permission model = oneCode}}
+
+        </td>
+
+        <td class="one wide right aligned">
+            {{delete-role model = oneCode}}
+        </td>
+
+      </tr>
+    {{/each}}
+    </tbody>
+  </table>
+
+{{else}}
+  <div class="ui center aligned raised segment">
+    <div class="ui icon header">
+      <i class="protect icon"></i>
+      Permission Denied
+    </div>
+    <div>
+      <p>This feature (FEAT28_008: Manage System Roles) is not allowed for your account.</p>
+      <p>Please contact the system administrator for more information.</p>
+    </div>
+  </div>
+{{/if}}
+</div>
