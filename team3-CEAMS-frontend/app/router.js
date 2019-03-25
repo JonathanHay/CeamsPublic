@@ -37,6 +37,8 @@ Router.map(function() {
   });
 
   this.route('seams', function() {});
+
+  this.route('indicators', function() {});
 });
 
 export default Router;
