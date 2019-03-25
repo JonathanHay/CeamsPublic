@@ -16,6 +16,12 @@ Router.map(function() {
     this.route('manage-roles');
     this.route('manage-capabilities');
     this.route('courses');
+
+    this.route('committees', function() {
+      this.route('detail');
+      this.route('manage-users.js');
+      this.route('team-detail');
+    });
   });
 
   this.route('seams', function() {});
