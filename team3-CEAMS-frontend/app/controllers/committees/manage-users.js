@@ -13,7 +13,6 @@ export default Controller.extend({
   },
   actions: {
     async processChanges(committee_id, changes, memberships) {
-      $('.loader-overlay').show();
       for (const uid in changes) {
         if (changes.hasOwnProperty(uid)) {
           const c = changes[uid];
@@ -34,7 +33,6 @@ export default Controller.extend({
           }
         }
       }
-      location.reload();
     }
   }
 });
