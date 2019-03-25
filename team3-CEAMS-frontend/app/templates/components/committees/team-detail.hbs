@@ -1,0 +1,41 @@
+<div class="team-detail">
+    <div class="ui two column centered grid">
+        <div class="column">
+            <div class="ui column centered grid">
+                <div class="ui text container">
+                    <h1>GA Task Force</h1>
+                </div>
+            </div>
+            <div class="ui grid">
+                <div class="ten wide column">
+                    Committee Name: <strong>{{ committee.name }}</strong>
+                    <br>
+                    Committee Level: <strong>{{ committee.level }}</strong>
+                </div>
+                <div class="right floated column">
+                    {{#link-to "committees.manage-users" committee.id class="item"}}
+                    <div class="ui right floated button">
+                        <a>Manage Users</a>
+                    </div>
+                    {{/link-to}}
+                </div>
+            </div>
+            <div class="ui divider"></div>
+            <div class="bottom">
+                <div class="ui relaxed divided list">
+                    {{#each this.members as |members|}}
+                    <div class="item">
+                        <div class="content">
+                            <a class="header">{{ members.name }}</a>
+                            <div class="description">Member of Team3</div>
+                            <span>Participation Start Date: {{ members.startDate }}</span>
+                            <br>
+                            <span>Participation End Date: {{ members.endDate }}</span>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
