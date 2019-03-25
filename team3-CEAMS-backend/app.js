@@ -22,6 +22,22 @@ let teachingAssistants = require('./routes/teachingAssistants');
 let courses = require('./routes/courses');
 let courseTypes = require('./routes/courseTypes');
 
+let academicTerms = require('./routes/academicTerms');
+let academicYears = require('./routes/academicYears');
+let committees = require('./routes/committees');
+let committeeMemberships = require('./routes/committeeMemberships')
+let complementaryStudiesTypes = require('./routes/complementaryStudiesTypes');
+let contentLevels = require('./routes/contentLevels');
+let deliverableTypes = require('./routes/deliverableTypes');
+let kpiReports = require('./routes/kpiReports');
+let meetings = require('./routes/meetings');
+let meetingOutcomes = require('./routes/meetingOutcomes');
+let labTypes = require('./routes/labTypes');
+let mathTypes = require('./routes/mathTypes');
+let naturalScienceTypes = require('./routes/naturalScienceTypes');
+let utilizations = require('./routes/utilizations');
+let userEvaluationMethods = require('./routes/userEvaluationMethods');
+
 let app = express();
 
 //Set up mongoose connection
@@ -68,7 +84,22 @@ app.use('/teachingAssistants', teachingAssistants);
 app.use('/courses', courses);
 app.use('/courseTypes', courseTypes);
 
-
+app.use('/academicTerms', academicTerms);
+app.use('/academicYears', academicYears);
+app.use('/committees', committees);
+app.use('/committeeMemberships', committeeMemberships);
+app.use('/complementaryStudiesTypes', complementaryStudiesTypes);
+app.use('/contentLevels', contentLevels);
+app.use('/courseTypes', courseTypes);
+app.use('/deliverableTypes', deliverableTypes);
+app.use('/kpiReports', kpiReports);
+app.use('/meetings', meetings);
+app.use('/meetingOutcomes', meetingOutcomes);
+app.use('/labTypes', labTypes);
+app.use('/mathTypes', mathTypes);
+app.use('/naturalScienceTypes', naturalScienceTypes);
+app.use('/utilizations', utilizations);
+app.use('/userEvaluationMethods', userEvaluationMethods);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
