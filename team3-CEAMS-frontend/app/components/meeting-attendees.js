@@ -53,17 +53,37 @@ export default Component.extend({
         }
     }),
 
-    // attendees: computed('attendees', 'memberships', 'attendeesFilter', function() {
-    //   return this.attendees.filter((u) => {
-    //     return (u.firstName + " " + u.lastName).startsWith(this.get('attendeesFilter'));
-    //   });
-    // }),
+    attendeesList: computed('attendees', 'attendeesFilter', {
+        get(key) {
+            //console.log('compute');
+            if(this.get('attendeesFilter') === ""){
+                return this.attendees;
+            } else{
+                return this.attendees.filter((u) => {
+                    return (u.firstName + " " + u.lastName).startsWith(this.get('attendeesFilter'));
+                })
+            }
+        },
+        set(key, value) {
+          return value;
+        }
+      }),
 
-    // memberships: computed('memberships', 'attendees', 'membershipsFilter', function() {
-    //   return this.memberships.filter((u) => {
-    //     return (u.firstName + " " + u.lastName).startsWith(this.get('membershipsFilter'));
-    //   });
-    // }),
+    membershipsList: computed('memberships', 'membershipsFilter', {
+        get(key) {
+            //console.log('compute');
+            if(this.get('membershipsFilter') === ""){
+                return this.memberships;
+            } else{
+                return this.memberships.filter((u) => {
+                    return (u.firstName + " " + u.lastName).startsWith(this.get('membershipsFilter'));
+                })
+            }
+        },
+        set(key, value) {
+          return value;
+        }
+      }),
 
     actions: {
         add(user) {
