@@ -35,6 +35,7 @@ Router.map(function () {
     this.route('indicators', function () {
       this.route('list-kpi');
       this.route('manage-upi');
+      this.route('kpi-gauge');
       this.route('manage-kpi');
       this.route('assign-evaluation-methods');
     });
