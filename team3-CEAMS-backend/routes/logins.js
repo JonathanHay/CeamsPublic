@@ -1,6 +1,4 @@
 let express = require('express');
-let assert = require('assert');
-
 let router = express.Router();
 let UserRoles = require('../models/userGivenRoles');
 let UserAccounts = require('../models/userAccounts');
@@ -19,24 +17,24 @@ function hash(text) {
     const hash = crypto.createHash('sha256');
     hash.update(text);
     return hash.digest('binary');
-};
+}
 
 function encrypt(plainText) {
     let cipher = crypto.createCipher('aes256', 'SE3350b Winter 2019');
     let crypted = cipher.update(plainText, 'ascii', 'binary');
     crypted += cipher.final('binary');
     return crypted;
-};
+}
 
 function decrypt(cipherText) {
     let decipher = crypto.createDecipher('aes256', 'SE3350b Winter 2019');
     let dec = decipher.update(cipherText, 'binary', 'ascii');
     dec += decipher.final('ascii');
     return dec;
-};
+}
 
 function failedLogin() {
-    let failed = new Logins({
+    let failed = new Logins.Model({
         nonce: null,
         token: null,
         loginFailed: true
@@ -47,119 +45,7 @@ function failedLogin() {
         return failed;
     });
 
-};
-
-// function getToken(UserShadow, callback) {
-//     UserRoles.Model.find({"user": UserShadow.id}, function (error, userRoles) {
-//         if (error) response.json({login: failedLogin()});
-//         let token = ["about"];
-//         let k = 1;
-//         let n = 0;
-//
-//         let UserRolesSize = Object.keys(userRoles).length;
-//         if (UserRolesSize === 0) {
-//             callback(token);
-//         } else {
-//             for (i = 0; i < UserRolesSize; i++) {
-//                 let roleID = userRoles[i].role;
-//                 Permissions.Model.find({"role": roleID}, function (error, permissions) {
-//                     n++;
-//                     if (error) response.json({login: failedLogin()});
-//                     let FeaturesSize = Object.keys(permissions).length;
-//
-//                     if (FeaturesSize === 0) {
-//                         callback(token);
-//                     } else {
-//                         for (j = 0; j < FeaturesSize; j++) {
-//                             Features.Model.findById(permissions[j].feature, function (err, feature) {
-//                                 console.log(feature.code);
-//                                 token[k++] = feature.code;
-//                             });
-//                             if (n === UserRolesSize) {
-//                                 if (j === FeaturesSize - 1) {
-//                                     callback(token);
-//                                 }
-//                             }
-//                         }
-//                     }
-//                 });
-//             }
-//         }
-//
-//     });
-// };
-
-function getToken(UserShadow, callback) {
-
-    let token = ["about"];
-
-    let userRolesQuery = UserRoles.Model.find({"user": UserShadow.id});
-    assert.ok(!(userRolesQuery instanceof Promise));
-
-    let promise = userRolesQuery.exec();
-    assert.ok(promise instanceof Promise);
-
-    promise.then(function (userRoles) {
-        userRoles.forEach((userRole) => {
-
-            let roleID = userRole.role;
-
-
-            let permissionsQuery = Permissions.Model.find({"role": roleID});
-            assert.ok(!(permissionsQuery instanceof Promise));
-
-            let promise = permissionsQuery.exec();
-            assert.ok(promise instanceof Promise);
-
-            promise.then(function (permissions) {
-
-                while (permissions.length > 0) {
-                    let permission = permissions.pop();
-
-                    let featuresQuery = Features.Model.findById(permission.feature);
-                    assert.ok(!(featuresQuery instanceof Promise));
-
-                    let promise = featuresQuery.exec();
-                    assert.ok(promise instanceof Promise);
-
-                    promise.then(function (feature) {
-                        console.log(feature.code);
-                        token[k++] = feature.code;
-
-
-                    });
-
-
-
-                }
-
-                if (permissions.length === 0) {
-                    message4.token = encrypt(JSON.stringify(token));
-                    message4.sessionIsActive = true;
-                    message4.loginFailed = false;
-                    message4.save(function (error) { // fourth message in the oudaAuth protocol
-                        if (error) response.json({login: failedLogin()});
-
-                        let rec = new Logins.Model({
-                            token: encrypt(JSON.stringify(token)),
-                            sessionIsActive: true,
-                            loginFailed: false
-                        });
-
-                        response.json({login: rec});
-                    });
-                }
-
-
-
-
-
-            });
-        })
-
-    })
-
-};
+}
 
 
 router.route('/')
@@ -215,7 +101,7 @@ router.route('/')
                                     let receivedNonce = decrypt(request.body.login.response);
                                     let storedNonce = null;
                                     Logins.Model.findOne({"userName": request.body.login.userName}, function (error, message4) {
-                                        if (!error) {
+                                        if (message4) {
                                             storedNonce = message4.nonce;
                                             if (receivedNonce === storedNonce) {
                                                 // Now this session is confirmed fresh. Let us authenticate the user.
@@ -243,86 +129,43 @@ router.route('/')
 
                                                         response.json({login: rec});
                                                     } else {
-
-                                                        let k = 1;
+                                                        let counter = {};
                                                         let token = ["about"];
-
-                                                        let userRolesQuery = UserRoles.Model.find({"user": UserShadow.id});
-
-
-                                                        assert.ok(!(userRolesQuery instanceof Promise));
-
-                                                        userRolesQuery.then(function (userRoles) {
-
+                                                        UserRoles.Model.find({"user": UserShadow.id}, function (error, userRoles) {
                                                             userRoles.forEach((userRole) => {
-
                                                                 let roleID = userRole.role;
-
-
-                                                                let permissionsQuery = Permissions.Model.find({"role": roleID});
-                                                                assert.ok(!(permissionsQuery instanceof Promise));
-
-                                                                permissionsQuery.then(function (permissions) {
+                                                                Permissions.Model.find({"role": roleID}, function (error, permissions) {
+                                                                    counter[roleID] = permissions.length;
                                                                     while (permissions.length > 0) {
                                                                         let permission = permissions.pop();
-
-                                                                        let featuresQuery = Features.Model.findById(permission.feature);
-                                                                        assert.ok(!(featuresQuery instanceof Promise));
-
-                                                                        featuresQuery.then(function (feature) {
-                                                                            token[k++] = feature.code;
-                                                                            if (k==3) {
+                                                                        Features.Model.findById(permission.feature, function (err, feature) {
+                                                                            token.push(feature.code);
+                                                                            counter[roleID] = counter[roleID] - 1;
+                                                                            let numberOfRoles = (Object.keys(counter)).length;
+                                                                            let totalFeaturesLeft = counter[roleID];
+                                                                            userRoles.forEach((userRole) => {
+                                                                                totalFeaturesLeft += counter[userRole.role];
+                                                                            });
+                                                                            if (totalFeaturesLeft === 0) {
                                                                                 message4.token = encrypt(JSON.stringify(token));
                                                                                 message4.sessionIsActive = true;
                                                                                 message4.loginFailed = false;
                                                                                 message4.save(function (error) { // fourth message in the oudaAuth protocol
                                                                                     if (error) response.json({login: failedLogin()});
-
                                                                                     let rec = new Logins.Model({
                                                                                         token: encrypt(JSON.stringify(token)),
                                                                                         sessionIsActive: true,
                                                                                         loginFailed: false
                                                                                     });
-
                                                                                     response.json({login: rec});
                                                                                 });
                                                                             }
                                                                         });
-
-
-
                                                                     }
-
-
-
-
-
-
-
-
                                                                 });
                                                             })
 
                                                         })
-
-                                                        // //get the user role
-                                                        // //getToken(UserShadow, function (token) {
-                                                        //     //console.log(token);
-                                                        //     message4.token = encrypt(JSON.stringify(token));
-                                                        //     message4.sessionIsActive = true;
-                                                        //     message4.loginFailed = false;
-                                                        //     message4.save(function (error) { // fourth message in the oudaAuth protocol
-                                                        //         if (error) response.json({login: failedLogin()});
-                                                        //
-                                                        //         let rec = new Logins.Model({
-                                                        //             token: encrypt(JSON.stringify(token)),
-                                                        //             sessionIsActive: true,
-                                                        //             loginFailed: false
-                                                        //         });
-                                                        //
-                                                        //         response.json({login: rec});
-                                                        //     });
-                                                        // });
                                                     }
                                                 } else {
                                                     // password must be wrong, server will send "wrong password" message
