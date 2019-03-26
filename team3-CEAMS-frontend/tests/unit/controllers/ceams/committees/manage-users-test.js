@@ -1,12 +1,12 @@
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 
-module('Unit | Controller | committees/manage-users', function(hooks) {
+module('Unit | Controller | ceams/committees/manage-users', function(hooks) {
   setupTest(hooks);
 
   // Replace this with your real tests.
   test('it exists', function(assert) {
-    let controller = this.owner.lookup('controller:committees/manage-users');
+    let controller = this.owner.lookup('controller:ceams/committees/manage-users');
     assert.ok(controller);
   });
 });
