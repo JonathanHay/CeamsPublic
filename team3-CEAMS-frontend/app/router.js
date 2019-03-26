@@ -16,21 +16,6 @@ Router.map(function () {
     this.route('manage-roles');
     this.route('manage-capabilities');
     this.route('courses');
-<<<<<<< Updated upstream
-=======
-
-    this.route('indicators', function() {
-      this.route('list-kpi');
-      this.route('assign-evaluation-methods');
-    });
-    this.route('new-task-force');
-    this.route('meeting');
-    this.route('manage-upi');
-    this.route('manage-kpi');
-    this.route('ga-task-force');
-    this.route('delete-task-force');
-  });
->>>>>>> Stashed changes
 
     this.route('committees', function () {
       this.route('detail', { path: '/detail/:committee_id' });
