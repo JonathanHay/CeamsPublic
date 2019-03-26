@@ -42,7 +42,7 @@ export default Component.extend({
             })
 
             staff.forEach(function (obj) {
-                if(obj.set('email') != null){
+                if(obj.get('email') != null){
                     obj.set('username', obj.get('email').substr(0, obj.get('email').indexOf('@')))
                     }
                 staffArray.push(obj);
