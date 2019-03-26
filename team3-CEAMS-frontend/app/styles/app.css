@@ -202,6 +202,35 @@ footer {
 }
 
 
+
+.committeeList .user-container {
+  height: 60vh;
+  width: 60vw;
+  margin-top: 3em;
+  border: 1px solid black;
+  padding-top: 1em;
+  overflow-y: scroll;
+}
+
+.committeeList .user-container .item {
+  padding: 1em 0;
+  margin: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#title{
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+#ForceList{
+  padding: 10px;
+  margin-bottom: 50px;
+}
+#createElement{
+  margin-top: 100px;
+}
+
 /* ga-task-force/manage-users styles */
 .manage-users .section {
   margin-top: 1em;
@@ -281,3 +310,26 @@ input[type="number"]{
   justify-content: center;
   align-items: center;
 }
+
+#ui-input{
+  float: left;
+  box-shadow: none;
+  padding: 1.5em 1.5em;
+  margin-top: 2em !important;
+}
+#ui-err{
+  float:right;
+  box-shadow: none;
+  padding: 1.5em 1.5em;
+  margin-top: 2em !important;
+}
+
+#inline-row{
+  display:inline-block;
+}
+
+/* Task Force Management Styles START*/
+.manage-forces{
+  padding-top: 5px;
+}
+/* Task Force Management Styles END*/
