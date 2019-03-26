@@ -1,72 +1,72 @@
 {{#if oudaAuth.isLoginRequested }}
-  {{outlet "login"}}
+{{outlet "login"}}
 {{else}}
 
 
-  <div class="ui top fixed borderless huge inverted menu">
-    <div class="ui container grid">
-      <div class="computer only row">
-        <a class="header item">CEAMS</a>
+<div class="ui top fixed borderless huge inverted menu">
+  <div class="ui container grid">
+    <div class="computer only row">
+      <a class="header item">CEAMS</a>
 
-        {{#if FEAT07_000IsPermitted }}
-          {{#link-to "ceams.courses" class="item"}}Manage Courses{{/link-to}}
-        {{/if}}
-        {{#if FEAT07_000IsPermitted }}
-          {{#link-to "ceams.meeting" class="item"}}Manage Meetings{{/link-to}}
-        {{/if}}
-        {{#if FEAT07_000IsPermitted }}
-          {{#link-to "ceams.committees" class="item"}}Manage Committees{{/link-to}}
-        {{/if}}
-        {{#if FEAT07_000IsPermitted }}
-          {{#link-to "ceams.indicators.manage-upi" class="item"}}Manage Indicators{{/link-to}}
-        {{/if}}
+      {{#if FEAT07_000IsPermitted }}
+      {{#link-to "ceams.courses" class="item"}}Manage Courses{{/link-to}}
+      {{/if}}
+      {{#if FEAT07_000IsPermitted }}
+      {{#link-to "ceams.meeting" class="item"}}Manage Meetings{{/link-to}}
+      {{/if}}
+      {{#if FEAT07_000IsPermitted }}
+      {{#link-to "ceams.committees" class="item"}}Manage Committees{{/link-to}}
+      {{/if}}
+      {{#if FEAT07_000IsPermitted }}
+      {{#link-to "ceams.indicators.manage-upi" class="item"}}Manage Indicators{{/link-to}}
+      {{/if}}
 
-        {{#if FEAT28_000IsPermitted }}
-          <div class="ui admin dropdown item">
-            System Administration <i class="dropdown icon"></i>
-            <div class="menu">
-              {{#link-to "ceams.manage-user-accounts" class="item"}}
-                <i class="users icon"></i>
-                Manage User Accounts
-              {{/link-to}}
-              {{#link-to "ceams.manage-roles" class="item"}}
-                <i class="list layout icon"></i>
-                Manage system Roles Accounts
-              {{/link-to}}
-              {{#link-to "ceams.manage-capabilities" class="item"}}
-                <i class="lock icon"></i>
-                Manage Capabilities
-              {{/link-to}}
-            </div>
-          </div>
-        {{/if}}
-
-
-        {{#link-to "ceams.about" class="right item"}}About{{/link-to}}
-        <div class="item">
-          Logged in as:  {{oudaAuth.getName}}
+      {{#if FEAT28_000IsPermitted }}
+      <div class="ui admin dropdown item">
+        System Administration <i class="dropdown icon"></i>
+        <div class="menu">
+          {{#link-to "ceams.manage-user-accounts" class="item"}}
+          <i class="users icon"></i>
+          Manage User Accounts
+          {{/link-to}}
+          {{#link-to "ceams.manage-roles" class="item"}}
+          <i class="list layout icon"></i>
+          Manage system Roles Accounts
+          {{/link-to}}
+          {{#link-to "ceams.manage-capabilities" class="item"}}
+          <i class="lock icon"></i>
+          Manage Capabilities
+          {{/link-to}}
         </div>
-        <a class=" item">{{log-out name=oudaAuth.getName}} </a>
-
       </div>
-      <div class="tablet mobile only row">
-        <a class="header item"> CEAMS</a>
-        <div class="right menu">
-          <a class="menu item">
-            <div class="ui icon toggle basic inverted button">
-              <i class="content large icon"></i>
-            </div>
-          </a>
-        </div>
-        <div class="ui vertical borderless fluid inverted menu">
-          {{#link-to "home-page"}} <a class="item">Home</a>{{/link-to}}
-          {{#link-to "datatable-example"}} <a class="item">DataTable Example</a>{{/link-to}}
-        </div>
+      {{/if}}
+
+
+      {{#link-to "ceams.about" class="right item"}}About{{/link-to}}
+      <div class="item">
+        Logged in as: {{oudaAuth.getName}}
+      </div>
+      <a class=" item">{{log-out name=oudaAuth.getName}} </a>
+
+    </div>
+    <div class="tablet mobile only row">
+      <a class="header item"> CEAMS</a>
+      <div class="right menu">
+        <a class="menu item">
+          <div class="ui icon toggle basic inverted button">
+            <i class="content large icon"></i>
+          </div>
+        </a>
+      </div>
+      <div class="ui vertical borderless fluid inverted menu">
+        {{#link-to "home-page"}} <a class="item">Home</a>{{/link-to}}
+        {{#link-to "datatable-example"}} <a class="item">DataTable Example</a>{{/link-to}}
       </div>
     </div>
   </div>
-  <div class="ui hidden divider"></div>
-  <div class="ui hidden divider"></div>
-  <div class="ui hidden divider"></div>
-  {{outlet }}
+</div>
+<div class="ui hidden divider"></div>
+<div class="ui hidden divider"></div>
+<div class="ui hidden divider"></div>
+{{outlet }}
 {{/if}}
