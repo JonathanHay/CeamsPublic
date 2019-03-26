@@ -1,0 +1,45 @@
+
+
+<button class="ui mini circular icon red button" {{action 'openModal' }} title="Delete">
+  <i class="remove icon"></i>
+</button>
+
+{{#if FEAT07_003IsPermitted }}
+{{#ui-modal name= modalName class= modalName }}
+  <div class="ui icon header">
+    <i class="warning sign icon"></i>
+    Please Confirm ...
+  </div>
+  <div class="content">
+    <p>Are you sure you need to delete this course?</p>
+  </div>
+  <br>
+  <div class="actions">
+    <div class="ui red cancel inverted button">
+      <i class="remove icon"></i>
+      No
+    </div>
+    <div class="ui green ok inverted button">
+      <i class="checkmark icon"></i>
+      Yes
+    </div>
+  </div>
+{{/ui-modal}}
+{{else}}
+  {{#ui-modal name= modalName class= modalName }}
+    <div class="ui icon header">
+      <i class="protect icon"></i>
+      Permission Denied
+    </div>
+    <div class="content">
+      <p>This feature (FEAT07_003: Delete course) is not allowed for your account.</p>
+      <p>Please contact the system administrator for more information.</p>
+    </div>
+
+    <div class="actions">
+      <div class="ui black deny button">
+        Understand
+      </div>
+    </div>
+  {{/ui-modal}}
+{{/if}}

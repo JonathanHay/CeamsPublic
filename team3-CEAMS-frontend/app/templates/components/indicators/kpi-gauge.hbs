@@ -3,53 +3,58 @@
     <div class="ui two column centered grid">
         <div class="column">
             <div class="ui column centered grid">
-                <div class="ui text container" style="height:80px">
-                    <div class="text-title"><h1>Visualize Evaluation Method</h1></div>
+                <div class="ui text container">
+                    <div class="text-title">
+                        <h1>Visualize Evaluation Method</h1>
+                    </div>
                 </div>
             </div>
+            
             <div class="ui basic buttons">
                 <div class="ui button active" id="instructor-button">Instructor</div>
                 <div class="ui button" id="staff-button">Staff</div>
             </div>
             <br>
 
-        <div id="instructor-graph">
-            <div class="chart">
-                <br>
-                <select style="height:50px; width:100%;" class="ui selection dropdown" onchange={{action 'populateInstructorChart' value="target.value"}}>
-                    <option selected disabled hidden>Choose Method</option>
-                    {{#each instructorEvalMethods as |method index|}}
-                    <option class="item" value="{{index}}">{{method.description}}</option>
-                    {{/each}}
-                </select>
-                <br>
-                <br>
-                <canvas id="instructorPieChart" style="width:40%"></canvas>
-            </div>
-        </div>
-
-        <div id="staff-graph">
-            <div class="chart">
-                <br>
-                <select style="height:50px; width:100%;" class="ui selection dropdown" onchange={{action 'populateStaffChart' value="target.value"}}>
-                    <option selected disabled hidden>Choose Method</option>
-                    {{#each staffEvalMethods as |method index|}}
-                    <option class="item" value="{{index}}">{{method.description}}</option>
-                    {{/each}}
-                </select>
-                <br>
-                <br>
-                <canvas id="staffPieChart" style="width:40%"></canvas>
-            </div>
-        </div>
-
-        <div class="kpi-button-group">
-            <div class="right floated column">
-                <div class="ui right floated button">
-                    {{#link-to "indicators.manage-upi" class="item"}}<a>Back</a>{{/link-to}}
+            <div id="instructor-graph">
+                <div class="chart">
+                    <br>
+                    <select style="height:50px; width:100%;" class="ui selection dropdown"
+                        onchange={{action 'populateInstructorChart' value="target.value"}}>
+                        <option selected disabled hidden>Choose Method</option>
+                        {{#each instructorEvalMethods as |method index|}}
+                        <option class="item" value="{{index}}">{{method.description}}</option>
+                        {{/each}}
+                    </select>
+                    <br>
+                    <br>
+                    <canvas id="instructorPieChart" style="width:40%"></canvas>
                 </div>
             </div>
-        </div>
+
+            <div id="staff-graph">
+                <div class="chart">
+                    <br>
+                    <select style="height:50px; width:100%;" class="ui selection dropdown"
+                        onchange={{action 'populateStaffChart' value="target.value"}}>
+                        <option selected disabled hidden>Choose Method</option>
+                        {{#each staffEvalMethods as |method index|}}
+                        <option class="item" value="{{index}}">{{method.description}}</option>
+                        {{/each}}
+                    </select>
+                    <br>
+                    <br>
+                    <canvas id="staffPieChart" style="width:40%"></canvas>
+                </div>
+            </div>
+
+            <div class="kpi-button-group">
+                <div class="right floated column">
+                    <div class="ui right floated button">
+                        {{#link-to "ceams.indicators.manage-upi" class="item"}}<a>Back</a>{{/link-to}}
+                    </div>
+                </div>
+            </div>
 
         </div>
     </div>

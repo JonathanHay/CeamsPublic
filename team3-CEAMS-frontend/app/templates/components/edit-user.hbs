@@ -1,0 +1,93 @@
+<button class="ui mini green circular icon button" {{action 'openModal' }}
+        title="Edit"><i class="edit icon"></i>
+</button>
+
+
+{{#if FEAT28_002IsPermitted }}
+  {{#ui-modal name=modalName class=modalName }}
+
+    <div class="header">Modify User Account for
+      {{userRecord.instructor.firstName}} {{userRecord.staff.firstName}}{{userRecord.teachingAssistant.firstName}}
+      {{userRecord.instructor.lastName}}{{userRecord.staff.lastName}}{{userRecord.teachingAssistant.lastName}}
+    </div>
+    <div class="content">
+      <div class="ui form">
+        <div class="inline field">
+          <label>User Name</label>
+          {{input value=userName type="text" placeholder="enter user name"}}
+        </div>
+        {{#if  isResettingPassword }}
+          {{#if FEAT28_003IsPermitted}}
+            <div class="inline field">
+              <label>Temp. Password</label>
+              {{input value=tempPassword type="text" placeholder="enter temporary password"}}
+              <button class="ui button"  {{action 'cancelResetPassword'}}>Cancel</button>
+            </div>
+          {{else}}
+
+            <div class="ui icon message" {{action 'cancelResetPassword'}}>
+              <i class="protect icon"></i>
+              <div class="content">
+                <div class="header">
+                  This feature (FEAT28_003: Reset User Password) is not allowed for your account
+                </div>
+                <p>Please contact the system administrator for more information</p>
+              </div>
+            </div>
+
+
+
+          {{/if}}
+        {{else}}
+          <div class="inline field">
+            <label>Password</label>
+            <button class="ui button"  {{action 'resetPassword'}}>Reset password</button>
+          </div>
+
+        {{/if}}
+        <div class="inline field">
+          <label>Account Expiry Date</label>
+          <input value={{selectedDate}} id="AccountExpiryDate" type="date" onchange={{action 'assignDate'
+                                                                                             value="target.value"}}>
+        </div>
+      </div>
+    </div>
+    <div class="actions">
+
+      <div class="ui black deny button">
+        Cancel
+      </div>
+      <div class="ui positive right labeled icon button">
+        Save
+        <i class="checkmark icon"></i>
+      </div>
+      <div class="ui center aligned container">
+        <p style="color: #ca1010"> {{errorMessage}}</p>
+      </div>
+    </div>
+  {{/ui-modal}}
+
+{{else}}
+
+  {{#ui-modal name= modalName class= modalName }}
+    <div class="ui icon header">
+      <i class="protect icon"></i>
+      Permission Denied
+    </div>
+    <div class="content">
+      <p>This feature (FEAT28_002: Edit User Account) is not allowed for your account.</p>
+      <p>Please contact the system administrator for more information.</p>
+    </div>
+
+    <div class="actions">
+      <div class="ui black deny button">
+        Understand
+      </div>
+    </div>
+  {{/ui-modal}}
+{{/if}}
+
+
+
+
+

@@ -1,68 +1,67 @@
-
 <div class="ui blue button" {{action 'openModal'}}>
-  New Meeting
+    New Meeting
 </div>
 
 {{#ui-modal name="newMeeting" class="newMeeting" }}
-    <div class="header">
-      <h1>New Meeting</h1>
+<div class="header">
+    <h1>New Meeting</h1>
+</div>
+<br>
+<div class="content">
+    <label>Meeting Location</label>
+    <br>
+    <div class="ui labeled input">
+        {{input value=location type="text" class='meetingInput'}}
     </div>
     <br>
-    <div class="content">
-        <label>Meeting Location</label>
-        <br>
-        <div class="ui labeled input">
-          {{input value=location type="text" class='meetingInput'}}
-        </div>
-        <br>
-        <label>Meeting Description</label>
-        <br>
-        <div class="ui labeled input">
-          {{input value=description type="text" class='meetingInput'}}
-        </div>
-        <br>
-        <label>Start Time</label>
-        <br>
-          <div class="two fields">
-            <div class="field">
-              <div class="ui labeled input">
-              <label style="padding-left:10px;margin-top: 7px;">Date</label>
-                {{input value=startDate type="date" class='meetingInput'}}
-                </div>
-            </div>
-            <div class="field">
+    <label>Meeting Description</label>
+    <br>
+    <div class="ui labeled input">
+        {{input value=description type="text" class='meetingInput'}}
+    </div>
+    <br>
+    <label>Start Time</label>
+    <br>
+    <div class="two fields">
+        <div class="field">
             <div class="ui labeled input">
-            <label style="padding-left:10px;margin-top: 7px;">Time</label>
+                <label style="padding-left:10px;margin-top: 7px;">Date</label>
+                {{input value=startDate type="date" class='meetingInput'}}
+            </div>
+        </div>
+        <div class="field">
+            <div class="ui labeled input">
+                <label style="padding-left:10px;margin-top: 7px;">Time</label>
                 {{input value=startTime type="time" class='meetingInput'}}
             </div>
-            </div>
-          </div>
-        <br>
-        <label>End Time</label>
-        <br>
-        <div class="two fields">
-            <div class="field">
-              <div class="ui labeled input">
-              <label style="padding-left:10px;margin-top: 7px;">Date</label>
-                {{input value=endDate type="date" class='meetingInput'}}
-                </div>
-            </div>
-            <div class="field">
+        </div>
+    </div>
+    <br>
+    <label>End Time</label>
+    <br>
+    <div class="two fields">
+        <div class="field">
             <div class="ui labeled input">
-            <label style="padding-left:10px;margin-top: 7px;">Time</label>
+                <label style="padding-left:10px;margin-top: 7px;">Date</label>
+                {{input value=endDate type="date" class='meetingInput'}}
+            </div>
+        </div>
+        <div class="field">
+            <div class="ui labeled input">
+                <label style="padding-left:10px;margin-top: 7px;">Time</label>
                 {{input value=endTime type="time" class='meetingInput'}}
             </div>
-            </div>
-          </div>
-        <br>
-        <br>
+        </div>
     </div>
-    <div class="actions">
-      <div class="ui primary button" {{action "create"}}>
-          Create Meeting
-      </div>
-      <div class="ui red button" {{action 'closeModal'}}>
+    <br>
+    <br>
+</div>
+<div class="actions">
+    <div class="ui primary button" {{action "create"}}>
+        Create Meeting
+    </div>
+    <div class="ui red button" {{action 'closeModal'}}>
         Close
-      </div>
     </div>
+</div>
 {{/ui-modal}}

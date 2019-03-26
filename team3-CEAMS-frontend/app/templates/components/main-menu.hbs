@@ -1,293 +1,72 @@
-{{nav-bar}}
-
-<div class="ui stackable grid container">
-  <div class="computer only row">
-    <div class="thirteen wide column">
-      <div class="ui message">
-        <h1 class="ui huge header">
-          Hello, SE3350b Teams!
-        </h1>
-        <p class="lead">
-          This is a simple example to show the Semantic-UI pattern we will use through out CEAMS project,
-          click the green button to see the left sidebar coming in and out of the page, and try to change
-          the browser size to see right sidebar toggle button. You could check out more wonderful effects here:
-          <a target="_blank" href="http://semantic-ui.com/modules/sidebar.html#/examples"
-            rel="noopener">Semantic-UI/sidebar examples</a>
-        </p>
-        <div class="ui hidden divider"></div>
-        <div class="ui green button">
-          <i class="left arrow icon"></i> Toggle left sidebar
-        </div>
-      </div>
-      <div class="ui hidden section divider"></div>
-      <div class="ui stackable grid">
-        <div class="three column row">
-          <div class="column">
-            <h1 class="ui header">
-              Heading
-            </h1>
-            <p>
-              Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-              condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
-              euismod. Donec sed odio dui.
-            </p>
-            <div class="ui small basic button">
-              View detailes &raquo;
-            </div>
-          </div>
-          <div class="column">
-            <h1 class="ui header">
-              Heading
-            </h1>
-            <p>
-              Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-              condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
-              euismod. Donec sed odio dui.
-            </p>
-            <div class="ui small basic button">
-              View detailes &raquo;
-            </div>
-          </div>
-          <div class="column">
-            <h1 class="ui header">
-              Heading
-            </h1>
-            <p>
-              Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-              condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
-              euismod. Donec sed odio dui.
-            </p>
-            <div class="ui small basic button">
-              View detailes &raquo;
-            </div>
-          </div>
-        </div>
-        <div class="three column row">
-          <div class="column">
-            <h1 class="ui header">
-              Heading
-            </h1>
-            <p>
-              Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-              condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
-              euismod. Donec sed odio dui.
-            </p>
-            <div class="ui small basic button">
-              View detailes &raquo;
-            </div>
-          </div>
-          <div class="column">
-            <h1 class="ui header">
-              Heading
-            </h1>
-            <p>
-              Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-              condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
-              euismod. Donec sed odio dui.
-            </p>
-            <div class="ui small basic button">
-              View detailes &raquo;
-            </div>
-          </div>
-          <div class="column">
-            <h1 class="ui header">
-              Heading
-            </h1>
-            <p>
-              Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-              condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
-              euismod. Donec sed odio dui.
-            </p>
-            <div class="ui small basic button">
-              View detailes &raquo;
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="ui hidden divider"></div>
-      <div class="ui divider"></div>
-      <footer>
-        &copy; 2019 SE3350b Class
-      </footer>
-    </div>
-
-    <div class="three wide column">
-      <div class="ui vertical menu">
-        <a class="active item">Link</a>
-        <a class="item">Link</a>
-        <a class="item">Link</a>
-        <a class="item">Link</a>
-        <a class="item">Link</a>
-        <a class="item">Link</a>
-        <a class="item">Link</a>
-        <a class="item">Link</a>
-        <a class="item">Link</a>
-        <a class="item">Link</a>
-        <a class="item">Link</a>
-        <a class="item">Link</a>
-        <a class="item">Link</a>
-      </div>
-    </div>
-  </div>
+{{#if oudaAuth.isLoginRequested }}
+{{outlet "login"}}
+{{else}}
 
 
-  <div class="tablet mobile only row pushable">
-    <div class="ui basic segment pusher">
-      <div class="ui container">
-        <div class="ui message">
-          <div class="ui blue right floated icon button">
-            Toggle right sidebar<i class="right arrow icon"></i>
-          </div>
-          <h1 class="ui huge header">
-            Hello, world!
-          </h1>
-          <p class="lead">
-            This is a simple example to show the Semantic-UI pattern we will use through out CEAMS project,
-            click the green button to see the left sidebar coming in and out of the page, and try to change
-            the browser size to see right sidebar toggle button. You could check out more wonderful effects here:
-            <a target="_blank" href="http://semantic-ui.com/modules/sidebar.html#/examples"
-              rel="noopener">Semantic-UI/sidebar examples</a>
-          </p>
-          <div class="ui hidden divider"></div>
-          <div class="ui green button">
-            <i class="left arrow icon"></i> Toggle left sidebar
-          </div>
-        </div>
-        <div class="ui hidden section divider"></div>
-        <div class="ui stackable grid">
-          <div class="three column row">
-            <div class="column">
-              <h1 class="ui header">
-                Heading
-              </h1>
-              <p>
-                Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-                mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna
-                mollis euismod. Donec sed odio dui.
-              </p>
-              <div class="ui small basic button">
-                View detailes &raquo;
-              </div>
-            </div>
-            <div class="column">
-              <h1 class="ui header">
-                Heading
-              </h1>
-              <p>
-                Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-                mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna
-                mollis euismod. Donec sed odio dui.
-              </p>
-              <div class="ui small basic button">
-                View detailes &raquo;
-              </div>
-            </div>
-            <div class="column">
-              <h1 class="ui header">
-                Heading
-              </h1>
-              <p>
-                Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-                mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna
-                mollis euismod. Donec sed odio dui.
-              </p>
-              <div class="ui small basic button">
-                View detailes &raquo;
-              </div>
-            </div>
-          </div>
-          <div class="three column row">
-            <div class="column">
-              <h1 class="ui header">
-                Heading
-              </h1>
-              <p>
-                Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-                mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna
-                mollis euismod. Donec sed odio dui.
-              </p>
-              <div class="ui small basic button">
-                View detailes &raquo;
-              </div>
-            </div>
-            <div class="column">
-              <h1 class="ui header">
-                Heading
-              </h1>
-              <p>
-                Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-                mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna
-                mollis euismod. Donec sed odio dui.
-              </p>
-              <div class="ui small basic button">
-                View detailes &raquo;
-              </div>
-            </div>
-            <div class="column">
-              <h1 class="ui header">
-                Heading
-              </h1>
-              <p>
-                Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-                mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna
-                mollis euismod. Donec sed odio dui.
-              </p>
-              <div class="ui small basic button">
-                View detailes &raquo;
-              </div>
-            </div>
-          </div>
+<div class="ui top fixed borderless huge inverted menu">
+  <div class="ui container grid">
+    <div class="computer only row">
+      <a class="header item">CEAMS</a>
+
+      {{#if FEAT07_000IsPermitted }}
+      {{#link-to "ceams.courses" class="item"}}Manage Courses{{/link-to}}
+      {{/if}}
+      {{#if FEAT07_000IsPermitted }}
+      {{#link-to "ceams.meeting" class="item"}}Manage Meetings{{/link-to}}
+      {{/if}}
+      {{#if FEAT07_000IsPermitted }}
+      {{#link-to "ceams.committees" class="item"}}Manage Committees{{/link-to}}
+      {{/if}}
+      {{#if FEAT07_000IsPermitted }}
+      {{#link-to "ceams.indicators.manage-upi" class="item"}}Manage Indicators{{/link-to}}
+      {{/if}}
+
+      {{#if FEAT28_000IsPermitted }}
+      <div class="ui admin dropdown item">
+        System Administration <i class="dropdown icon"></i>
+        <div class="menu">
+          {{#link-to "ceams.manage-user-accounts" class="item"}}
+          <i class="users icon"></i>
+          Manage User Accounts
+          {{/link-to}}
+          {{#link-to "ceams.manage-roles" class="item"}}
+          <i class="list layout icon"></i>
+          Manage system Roles Accounts
+          {{/link-to}}
+          {{#link-to "ceams.manage-capabilities" class="item"}}
+          <i class="lock icon"></i>
+          Manage Capabilities
+          {{/link-to}}
         </div>
       </div>
-      <div class="ui hidden divider"></div>
-      <div class="ui divider"></div>
-      <div class="ui basic footer segment">
-        <p>
-          &copy; 2019 SE3350b Class
-        </p>
+      {{/if}}
+
+
+      {{#link-to "ceams.about" class="right item"}}About{{/link-to}}
+      <div class="item">
+        Logged in as: {{oudaAuth.getName}}
       </div>
+      <a class=" item">{{log-out name=oudaAuth.getName}} </a>
 
     </div>
-
-
-    <div class="ui right sidebar vertical menu">
-      <a class="active item">Link</a>
-      <a class="item">Link</a>
-      <a class="item">Link</a>
-      <a class="item">Link</a>
-      <a class="item">Link</a>
-      <a class="item">Link</a>
-      <a class="item">Link</a>
-      <a class="item">Link</a>
-      <a class="item">Link</a>
-      <a class="item">Link</a>
-      <a class="item">Link</a>
-      <a class="item">Link</a>
-      <a class="item">Link</a>
+    <div class="tablet mobile only row">
+      <a class="header item"> CEAMS</a>
+      <div class="right menu">
+        <a class="menu item">
+          <div class="ui icon toggle basic inverted button">
+            <i class="content large icon"></i>
+          </div>
+        </a>
+      </div>
+      <div class="ui vertical borderless fluid inverted menu">
+        {{#link-to "home-page"}} <a class="item">Home</a>{{/link-to}}
+        {{#link-to "datatable-example"}} <a class="item">DataTable Example</a>{{/link-to}}
+      </div>
     </div>
-
-
   </div>
 </div>
-
-
-<div class="ui left inverted labeled icon inline vertical menu sidebar">
-  <div class="ui section hidden divider">
-
-  </div>
-
-  {{#link-to "home-page" }}
-  <div class="item">
-    <i class="home icon"></i>
-    Home
-  </div>
-  {{/link-to}}
-
-  <a class="item">
-    <i class="block layout icon"></i>Topics
-  </a>
-  <a class="item">
-    <i class="smile icon"></i>Friends
-  </a>
-
-</div>
+<div class="ui hidden divider"></div>
+<div class="ui hidden divider"></div>
+<div class="ui hidden divider"></div>
+{{outlet }}
+{{/if}}

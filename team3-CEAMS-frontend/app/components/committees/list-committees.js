@@ -14,5 +14,5 @@ export default Component.extend({
             temp = temp.filter(function (item) { return (item.name.includes(theQuery)) });
         }
         return temp;
-    }),
+    })
 });

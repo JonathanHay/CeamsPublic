@@ -1,92 +1,92 @@
 <div class="ui blue button" {{action 'openModal'}}>
-  View Meeting
+    View Meeting
 </div>
 
 {{#ui-modal name=modalName class=modalName }}
-    <div class="content">
-        <label>Meeting Location</label>
-        <br>
-        <div class="ui labeled input">
-            {{input value=location type="text" class='meetingInput'}}
-        </div>
-        <br>
-        <label>Meeting Description</label>
-        <br>
-        <div class="ui labeled input">
-            {{input value=description type="text" class='meetingInput'}}
-        </div>
-        <br>
-        <label>Meeting Minutes</label>
-        <br>
-        <div class="ui labeled input">
-            {{textarea value=minutes type="text" class='meetingInput'}}
-        </div>
-        <br>
-        <label>Start Time</label>
-        <br>
-        <div class="two fields">
-            <div class="field">
-              <div class="ui labeled input">
+<div class="content">
+    <label>Meeting Location</label>
+    <br>
+    <div class="ui labeled input">
+        {{input value=location type="text" class='meetingInput'}}
+    </div>
+    <br>
+    <label>Meeting Description</label>
+    <br>
+    <div class="ui labeled input">
+        {{input value=description type="text" class='meetingInput'}}
+    </div>
+    <br>
+    <label>Meeting Minutes</label>
+    <br>
+    <div class="ui labeled input">
+        {{textarea value=minutes type="text" class='meetingInput'}}
+    </div>
+    <br>
+    <label>Start Time</label>
+    <br>
+    <div class="two fields">
+        <div class="field">
+            <div class="ui labeled input">
                 <label style="padding-left:10px;margin-top: 7px;">Date</label>
-                    {{input value=startDate type="date" class='meetingInput'}}
-                </div>
-            </div>
-            <div class="field">
-                <div class="ui labeled input">
-                    <label style="padding-left:10px;margin-top: 7px;">Time</label>
-                    {{input value=startTime type="time" class='meetingInput'}}
-                </div>
+                {{input value=startDate type="date" class='meetingInput'}}
             </div>
         </div>
-        <br>
-        <label>End Time</label>
-        <br>
-        <div class="two fields">
-            <div class="field">
-              <div class="ui labeled input">
+        <div class="field">
+            <div class="ui labeled input">
+                <label style="padding-left:10px;margin-top: 7px;">Time</label>
+                {{input value=startTime type="time" class='meetingInput'}}
+            </div>
+        </div>
+    </div>
+    <br>
+    <label>End Time</label>
+    <br>
+    <div class="two fields">
+        <div class="field">
+            <div class="ui labeled input">
                 <label style="padding-left:10px;margin-top: 7px;">Date: </label>
-                    {{input value=endDate type="date" class='meetingInput'}}
-                </div>
-            </div>
-            <div class="field">
-                <div class="ui labeled input">
-                    <label style="padding-left:10px;margin-top: 7px;">Time: </label>
-                    {{input value=endTime type="time" class='meetingInput'}}
-                </div>
+                {{input value=endDate type="date" class='meetingInput'}}
             </div>
         </div>
-        <br>
-        {{#ui-accordion class="styled"}}
-            <div class="title">
-                Manage Meeting Outcomes
+        <div class="field">
+            <div class="ui labeled input">
+                <label style="padding-left:10px;margin-top: 7px;">Time: </label>
+                {{input value=endTime type="time" class='meetingInput'}}
             </div>
-            <div class="content">
-                {{meeting-outcomes outcomes=outcomes meetingId = ID}}
-            </div>
-        {{/ui-accordion}}
-        
-        {{#ui-accordion class="styled" onOpening = (action 'removeDuplicates')}}
-            <div class="title">
-                Manage Users
-            </div>
-            <div class="content">
-                {{meeting-attendees attendees=attendees memberships = memberships meetingId = ID submit=(action "submit")}}
-            </div>
-        {{/ui-accordion}}
-    </div>
-    <div class="actions">
-        <div class="ui primary button updateBtn" {{action "update"}}>
-            Update
-        </div>
-        <div class="ui red button" {{action 'closeModal'}}>
-            Close
         </div>
     </div>
-    <div class="ui inline cookie nag">
-        <span class="title">
-            Updated
-        </span>
-        <i class="close icon"></i>
+    <br>
+    {{#ui-accordion class="styled"}}
+    <div class="title">
+        Manage Meeting Outcomes
     </div>
+    <div class="content">
+        {{meeting-outcomes outcomes=outcomes meetingId = ID}}
+    </div>
+    {{/ui-accordion}}
+
+    {{#ui-accordion class="styled" onOpening = (action 'removeDuplicates')}}
+    <div class="title">
+        Manage Users
+    </div>
+    <div class="content">
+        {{meeting-attendees attendees=attendees memberships = memberships meetingId = ID submit=(action "submit")}}
+    </div>
+    {{/ui-accordion}}
+</div>
+<div class="actions">
+    <div class="ui primary button updateBtn" {{action "update"}}>
+        Update
+    </div>
+    <div class="ui red button" {{action 'closeModal'}}>
+        Close
+    </div>
+</div>
+<div class="ui inline cookie nag">
+    <span class="title">
+        Updated
+    </span>
+    <i class="close icon"></i>
+</div>
 
 {{/ui-modal}}

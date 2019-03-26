@@ -23,7 +23,8 @@
                     <h3>Instructors</h3>
                 </div>
 
-                <select style="height:50px; width:100%;" class="ui selection dropdown" onchange={{action 'setInstructor' value="target.value"}}>
+                <select style="height:50px; width:100%;" class="ui selection dropdown"
+                    onchange={{action 'setInstructor' value="target.value"}}>
                     <option selected disabled hidden>Choose Instructor</option>
                     {{#each instructors as |instructor index|}}
                     <option class="item" value="{{index}}">{{instructor.lastName}}, {{instructor.firstName}} -
@@ -32,13 +33,13 @@
                 </select>
 
                 <br>
-                <select style="height:50px; width:100%;" class="ui selection dropdown" onchange={{action 'setInstructorMethod' value="target.value"}}>
+                <select style="height:50px; width:100%;" class="ui selection dropdown"
+                    onchange={{action 'setInstructorMethod' value="target.value"}}>
                     <option selected disabled hidden>Choose Method</option>
                     {{#each instructorMethods as |method index|}}
                     <option class="item" value="{{index}}">{{method.formulaDescription}}</option>
                     {{/each}}
                 </select>
-
                 <div class="save-message" style="color: Green; display: none">
                     Changes Saved
                 </div>
@@ -54,7 +55,7 @@
                                     <a>Save</a>
                                 </button>
                                 <div class="ui right floated button">
-                                    {{#link-to "indicators.manage-upi" class="item"}}<a>Cancel</a>{{/link-to}}
+                                    {{#link-to "ceams.indicators.manage-upi" class="item"}}<a>Cancel</a>{{/link-to}}
                                 </div>
                             </div>
                         </div>
@@ -66,7 +67,8 @@
                 <div class="instructor">
                     <h3>Staff</h3>
                 </div>
-                <select style="height:50px; width:100%;" class="ui selection dropdown" onchange={{action 'setStaff' value="target.value"}}>
+                <select style="height:50px; width:100%;" class="ui selection dropdown"
+                    onchange={{action 'setStaff' value="target.value"}}>
                     <option selected disabled hidden>Choose Staff</option>
                     {{#each staff as |staff index|}}
                     <option class="item" value="{{index}}">{{staff.lastName}}, {{staff.firstName}} -
@@ -75,12 +77,18 @@
                 </select>
 
                 <br>
-                <select style="height:50px; width:100%;" class="ui selection dropdown" onchange={{action 'setStaffMethod' value="target.value"}}>
+                <select style="height:50px; width:100%;" class="ui selection dropdown"
+                    onchange={{action 'setStaffMethod' value="target.value"}}>
                     <option selected disabled hidden>Choose Method</option>
                     {{#each staffMethods as |method index|}}
                     <option class="item" value="{{index}}">{{method.formulaDescription}}</option>
                     {{/each}}
                 </select>
+
+                <div class="save-message" style="color: Green; display: none">
+                    Changes Saved
+                </div>
+
                 <div class="bottom">
 
                 <div class="save-message" style="color: Green; display: none">
@@ -97,7 +105,7 @@
                                     <a>Save</a>
                                 </button>
                                 <div class="ui right floated button">
-                                    {{#link-to "indicators.manage-upi" class="item"}}<a>Cancel</a>{{/link-to}}
+                                    {{#link-to "ceams.indicators.manage-upi" class="item"}}<a>Cancel</a>{{/link-to}}
                                 </div>
                             </div>
                         </div>

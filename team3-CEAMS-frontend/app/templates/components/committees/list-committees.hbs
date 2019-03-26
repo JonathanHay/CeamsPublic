@@ -1,32 +1,32 @@
 <br><br><br>
 <div class=" ui center aligned huge header" id="title">GA Committees</div>
 <div class="ui centered grid">
-  <div class="row"></div>
-  <div class="committeeList">
-    <div class="ui centered grid section">
-      <div class="ui input">
-        {{input type="text" cols="50" rows="1" value = comQuery placeholder="Search...." }}
-      </div>
-    </div>
-    <div class="user-container">
-      <div class="eight wide row">
-        <div class="section">
-          <div class="ui middle aligned divided list">
-            {{#each committeeList as |committee|}}
-            <div class="item">
-              <div class="ui left floated ">{{committee.name}}</div>
-              {{#link-to "committees.detail" committee.id}}
-              <div class="ui right floated blue button">View<i class="right floated eye icon"></i></div>
-              {{/link-to}}
-              {{delete-task-force correctTitle=committee.name delID=committee.id }}
+    <div class="row"></div>
+    <div class="committeeList">
+        <div class="ui centered grid section">
+            <div class="ui input">
+                {{input type="text" cols="50" rows="1" value = comQuery placeholder="Search...." }}
             </div>
-            {{/each}}
-          </div>
         </div>
-      </div>
+        <div class="user-container">
+            <div class="eight wide row">
+                <div class="section">
+                    <div class="ui middle aligned divided list">
+                        {{#each committeeList as |committee|}}
+                        <div class="item">
+                            <div class="ui left floated ">{{committee.name}}</div>
+                            {{#link-to "ceams.committees.detail" committee.id}}
+                            <div class="ui right floated blue button">View<i class="right floated eye icon"></i></div>
+                            {{/link-to}}
+                            {{delete-task-force correctTitle=committee.name delID=committee.id }}
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="ui center aligned container">{{new-task-force}}</div>
-  </div>
+    <div class="row">
+        <div class="ui center aligned container">{{new-task-force}}</div>
+    </div>
 </div>

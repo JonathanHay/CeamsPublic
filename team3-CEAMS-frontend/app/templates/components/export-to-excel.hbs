@@ -1,0 +1,14 @@
+
+
+
+{{#if FEAT07_002IsPermitted }}
+  <div class="ui green button" {{action 'export'}}>
+    Export excel file
+  </div>
+{{else}}
+  {{#ui-popup content="This feature (FEAT07_002: Edit course Information) is disabled"}}
+    <div class="ui green button" >
+      Export excel file
+    </div>
+  {{/ui-popup}}
+{{/if}}

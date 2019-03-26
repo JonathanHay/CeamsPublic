@@ -1,29 +1,25 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-  //userprofile attributes
   firstName: DS.attr(),
   lastName: DS.attr(),
   email: DS.attr(),
   building: DS.attr(),
   officeNumber: DS.attr(),
-  memberships: DS.hasMany('committee-membership'),
-
-  //instructor attributes
   number: DS.attr(),
-  CCMemberStatus: DS.attr(),
-  hireDate: DS.attr(),
-  estimatedRetirementDate: DS.attr(),
-  keyPerformanceIndicator: DS.attr(),
-  
-  //relationships
-  // userGivenRoles: DS.hasMany('user-given-role'),
-  // committeeMembership: DS.hasMany('committee-membership'),
-  evaluationMethod: DS.belongsTo('user-evaluation-method'),
-  // licenceStatuses: DS.hasMany('licence-status'),
-  // academicRank: DS.belongsTo('academic-rank'),
-  // academicDegrees: DS.hasMany('academic-degree'),
-  // semester: DS.hasMany('semester'),
-  // program: DS.hasMany('program'),
-  // userAccount: DS.belongsTo('user-account')
+  ccMemberStatus: DS.attr('boolean'),
+  hireDate: DS.attr('date'),
+  estimatedRetirementDate: DS.attr('date'),
+  keyPerformanceIndicator: DS.attr('number'),
+
+  gender: DS.belongsTo('gender'),
+  evaluationMethod: DS.belongsTo('userEvaluationMethod'),
+  rank: DS.belongsTo('academicRank'),
+  userShadow: DS.belongsTo('userAccount', { inverse: 'instructor' }),
+
+  programs: DS.hasMany('program'),
+  licenceProviders: DS.hasMany('licenceProvider'),
+  degreeProviders: DS.hasMany('degreeProvider'),
+  semesters: DS.hasMany('semester'),
+  memberships: DS.hasMany('committeeMembership')
 });

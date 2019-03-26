@@ -1,27 +1,27 @@
 <div class="ui top fixed borderless huge inverted menu">
-  <div class="ui container grid">
-    <div class="computer only row">
-      <a class="header item">CEAMS</a>
-      {{#link-to "main-menu" class="item"}}<a>Home</a>{{/link-to}}
-      {{#link-to "committees" class="item"}}<a>Committees</a>{{/link-to}}
-      {{#link-to "meeting" class="item"}}<a>Meeting</a>{{/link-to}}
-      {{#link-to "indicators.manage-upi" class="item"}}<a>Indicators</a>{{/link-to}}
+    <div class="ui container grid">
+        <div class="computer only row">
+            <a class="header item">CEAMS</a>
+            {{#link-to "main-menu" class="item"}}<a>Home</a>{{/link-to}}
+            {{#link-to "committees" class="item"}}<a>Committees</a>{{/link-to}}
+            {{#link-to "meeting" class="item"}}<a>Meeting</a>{{/link-to}}
+            {{#link-to "indicators.manage-upi" class="item"}}<a>Indicators</a>{{/link-to}}
+        </div>
+        <div class="tablet mobile only row">
+            <a class="header item"> CEAMS</a>
+            <div class="right menu">
+                <a class="menu item">
+                    <div class="ui icon toggle basic inverted button">
+                        <i class="content large icon"></i>
+                    </div>
+                </a>
+            </div>
+            <div class="ui vertical borderless fluid inverted menu">
+                {{#link-to "main-menu"}} <a class="item">Home</a>{{/link-to}}
+                {{#link-to "committees" class="item"}}<a>Committees</a>{{/link-to}}
+                {{#link-to "meeting" class="item"}}<a>Meeting</a>{{/link-to}}
+                {{#link-to "indicators.manage-upi" class="item"}}<a>Indicators</a>{{/link-to}}
+            </div>
+        </div>
     </div>
-    <div class="tablet mobile only row">
-      <a class="header item"> CEAMS</a>
-      <div class="right menu">
-        <a class="menu item">
-          <div class="ui icon toggle basic inverted button">
-            <i class="content large icon"></i>
-          </div>
-        </a>
-      </div>
-      <div class="ui vertical borderless fluid inverted menu">
-        {{#link-to "main-menu"}} <a class="item">Home</a>{{/link-to}}
-        {{#link-to "committees" class="item"}}<a>Committees</a>{{/link-to}}
-        {{#link-to "meeting" class="item"}}<a>Meeting</a>{{/link-to}}
-        {{#link-to "indicators.manage-upi" class="item"}}<a>Indicators</a>{{/link-to}}
-      </div>
-    </div>
-  </div>
 </div>

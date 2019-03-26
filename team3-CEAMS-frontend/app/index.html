@@ -1,39 +1,43 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>CEAMS</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AoudaCEAMSFrontend</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{content-for "head"}}
 
-  {{content-for "head"}}
+    <link integrity="" rel="stylesheet" href="{{rootURL}}assets/vendor.css">
+    <link integrity="" rel="stylesheet" href="{{rootURL}}assets/aouda-ceams-frontend.css">
 
-  <link integrity="" rel="stylesheet" href="{{rootURL}}assets/vendor.css">
-  <link integrity="" rel="stylesheet" href="{{rootURL}}assets/aouda-ceams-frontend.css">
-  <link integrity="" rel="stylesheet" href="{{rootURL}}assets/css/dataTables.semanticui.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
-
+    <link integrity="" rel="stylesheet" href="{{rootURL}}assets/css/dataTables.semanticui.min.css">
 
 
-  {{content-for "head-footer"}}
-</head>
+    {{content-for "head-footer"}}
+  </head>
+  <body>
+    {{content-for "body"}}
 
-<body>
-  {{content-for "body"}}
+    <script src="{{rootURL}}assets/vendor.js"></script>
+    <script src="{{rootURL}}assets/aouda-ceams-frontend.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
 
-  <script src="{{rootURL}}assets/vendor.js"></script>
-  <script src="{{rootURL}}assets/aouda-ceams-frontend.js"></script>
+    
+    {{content-for "body-footer"}}
 
-  {{content-for "body-footer"}}
+    <script src="{{rootURL}}assets/javascripts/ga.js"></script>
+    <script src="{{rootURL}}assets/javascripts/growingio.js"></script>
+    <script src="{{rootURL}}assets/javascripts/pdfmake.min.js"></script>
 
-  <script src="{{rootURL}}assets/javascripts/ga.js"></script>
-  <script src="{{rootURL}}assets/javascripts/growingio.js"></script>
-  <script src="{{rootURL}}assets/javascripts/pdfmake.min.js"></script>
-  <script src="{{rootURL}}assets/javascripts/vfs_fonts.js"></script>
-  <script src="{{rootURL}}assets/javascripts/jquery.dataTables.min.js"></script>
-  <script src="{{rootURL}}assets/javascripts/dataTables.semanticui.min.js"></script>
-</body>
+    <script src="{{rootURL}}assets/javascripts/jquery.dataTables.min.js"></script>
+    <script src="{{rootURL}}assets/javascripts/dataTables.semanticui.min.js"></script>
+
+    <script src="{{rootURL}}assets/javascripts/FileSaver.min.js"></script>
+    <script src="{{rootURL}}assets/javascripts/vfs_fonts.js"></script>
+
+
+  </body>
 
 </html>

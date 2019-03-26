@@ -1,0 +1,89 @@
+{{#if oudaAuth.isAuthenticated }}
+  <div class="ui button" {{action 'openModal' }}>
+    Add New User
+  </div>
+{{else}}
+  <a  {{action 'openModal'}}>  Sign in </a>
+{{/if}}
+
+
+{{#ui-modal name="newUser" class="newUser" }}
+  <div class="header">
+      <span>Create New User Account for
+      {{#ui-dropdown class="inline search selection" allowAdditions=false selected='User Name'
+                     onChange=(action (mut selectedUser))}}
+        <div class="default text">Select user</div>
+        <i class="search icon"></i>
+        <div class="menu">
+          {{#each instructors as |user|}}
+            <div data-value="{{user.id}} {{user._internalModel.modelName}}" class="item">
+              {{user.firstName}} {{user.lastName}} - (Instructor)
+            </div>
+          {{/each}}
+          {{#each staffs as |user|}}
+            <div data-value="{{user.id}} {{user._internalModel.modelName}}" class="item">
+              {{user.firstName}} {{user.lastName}} - (Staff)
+            </div>
+          {{/each}}
+          {{#each TAs as |user|}}
+            <div data-value="{{user.id}} {{user._internalModel.modelName}}" class="item">
+              {{user.firstName}} {{user.lastName}} - (Teaching Assistant)
+            </div>
+          {{/each}}
+        </div>
+      {{/ui-dropdown}}
+      </span>
+
+  </div>
+
+  <div class="content">
+    <div class="ui form">
+      <div class="inline field">
+        <label>First Name: {{firstName}}</label>
+      </div>
+      <div class="inline field">
+        <label>Last Name: {{lastName}}</label>
+      </div>
+      <div class="inline field">
+        <label>EMail Address: {{email}}</label>
+      </div>
+      <br>
+      <div class="inline field">
+        <label>User Name</label>
+        {{input value=userName type="text" placeholder="enter user name"}}
+      </div>
+      <div class="inline field">
+        <label>Initial Password</label>
+        {{input value=password type="password" placeholder="enter password"}}
+      </div>
+      <div class="inline field">
+        <label>Account Expiry Date</label>
+        <input value={{selectedDate}} id="AccountExpiryDate" type="date" onchange={{action 'assignDate'
+                                                                                           value="target.value"}}>
+      </div>
+    </div>
+  </div>
+  <div class="actions">
+    <div class="ui black deny button">
+      Cancel
+    </div>
+    <div class="ui positive right labeled icon button">
+      Save
+      <i class="checkmark icon"></i>
+    </div>
+    <div class="ui center aligned container">
+      <p style="color: #ca1010"> {{errorMessage}}</p>
+    </div>
+  </div>
+
+
+
+{{/ui-modal}}
+
+
+
+
+
+
+
+

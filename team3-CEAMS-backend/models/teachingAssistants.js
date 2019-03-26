@@ -8,6 +8,7 @@ var teachingAssistantSchema = mongoose.Schema(
         building: String,
         officeNumber: String,
         contractInfo: String,
+        gender: {type: mongoose.Schema.ObjectId, ref: ('Genders')},
         memberships: [{type: mongoose.Schema.ObjectId, ref: ('CommitteeMemberships')}],
         userShadow: {type: mongoose.Schema.ObjectId, ref: ('UserAccounts')}
     }

@@ -1,68 +1,83 @@
 var express = require('express');
 var router = express.Router();
-
 var Staffs = require('../models/staffs');
+var bodyParser = require('body-parser');
+var parseUrlencoded = bodyParser.urlencoded({extended: false});
+var parseJSON = bodyParser.json();
 
-/* GET all */
-router.get('/', function(req, res) {
-  Staffs.Model.find((err, staffs) => {
-    if (err) res.status(500).json(err);
-    res.json({staff: staffs});
-  });
-});
-
-/* GET some */
-router.get('/:id', function(req, res) {
-  Staffs.Model.findById(req.params.id, function (err, staff) {
-    if (err) res.status(500).json(err);
-    else res.json({staff: staff});
-  });
-});
-
-/* POST */
-router.post('/', function(req, res) {
-  var staff = new Staffs.Model(req.body.staff);
-  staff.save(function (err) {
-      if (err) res.status(500).json(err);
-      res.json({staff: staff});
-  });
-});
-
-/* PUT */
-router.put('/:id', function(req, res) {
-  Staffs.Model.findById(req.params.id, function (err, staff) {
-    if (err) res.status(500).json(err);
-    else {
-        staff.firstName = req.body.staff.firstName;
-        staff.lastName = req.body.staff.lastName;
-        staff.email = req.body.staff.email;
-        staff.building = req.body.staff.building;
-        staff.officeNumber = req.body.staff.officeNumber;
-        staff.roleName = req.body.staff.roleName;
-        staff.keyPerformanceIndicator = req.body.staff.keyPerformanceIndicator;
-        staff.evaluationMethod = req.body.staff.evaluationMethod;
-        staff.memberships = req.body.staff.memberships;
-        staff.userShadow = req.body.staff.userShadow;
-        staff.save(function (err) {
-            if (err) res.status(500).json(err);
+router.route('/')
+    .post(parseUrlencoded, parseJSON, function (request, response) {
+        var staff = new Staffs.Model(request.body.staff);
+        Staffs.save(function (error) {
+            if (error) {
+                response.send({error: error});
+            }
             else {
-                res.json({staff: staff});
+                response.json({staff: staff});
             }
         });
-    }
-  });
-});
+    })
+    .get(parseUrlencoded, parseJSON, function (request, response) {
+        Staffs.Model.find(function (error, staffs) {
+            if (error) {
+                response.send({error: error});
+            }
+            else {
+                response.json({staff: staffs});
+            }
+        });
+    });
 
-/* DELETE */
-router.delete('/:id', function(req, res) {
-  Staffs.Model.findOneAndDelete({_id: req.params.id},
-    function (err, deleted) {
-      if (err) res.status(500).json(err);
-      else {
-        res.json({staff: deleted});
-      }
-    }
-);
-});
+router.route('/:staff_id')
+    .get(parseUrlencoded, parseJSON, function (request, response) {
+        Staffs.Model.findById(request.params.staff_id, function (error, staff) {
+            if (error) {
+                response.send({error: error});
+            }
+            else {
+                response.json({staff: staff});
+            }
+        });
+    })
+    .put(parseUrlencoded, parseJSON, function (request, response) {
+        Staffs.Model.findById(request.params.staff_id, function (error, staff) {
+            if (error) {
+                response.send({error: error});
+            }
+            else {
+                // update the staff info
+                staff.firstName = request.body.staff.firstName;
+                staff.lastName = request.body.staff.lastName;
+                staff.email = request.body.staff.email;
+                staff.building = request.body.staff.building;
+                staff.officeNumber = request.body.staff.officeNumber;
+                staff.roleName = request.body.staff.roleName;
+                staff.keyPerformanceIndicator = request.body.staff.keyPerformanceIndicator;
+                staff.gender = request.body.staff.gender;
+                staff.evaluationMethod = request.body.staff.evaluationMethod;
+                staff.userShadow = request.body.staff.userShadow;
+                staff.memberships = request.body.staff.memberships;
+
+                staff.save(function (error) {
+                    if (error) {
+                        response.send({error: error});
+                    }
+                    else {
+                        response.json({staff: staff});
+                    }
+                });
+            }
+        });
+    })
+    .delete(parseUrlencoded, parseJSON, function (request, response) {
+        Staffs.Model.findByIdAndRemove(request.params.staff_id,
+            function (error, deleted) {
+                if (!error) {
+                    response.json({staff: deleted});
+                };
+            }
+        );
+    });
+
 
 module.exports = router;

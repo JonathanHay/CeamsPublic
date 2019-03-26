@@ -1,42 +1,42 @@
 <div class="ui green button" {{action 'openModal'}}>
-  New <i class="right floated plus icon"></i>
+    New <i class="right floated plus icon"></i>
 </div>
 {{#ui-modal name="newModal" class="newModal"}}
 <div class="ui relaxed centered grid container">
-  <div class="row"></div>
-  <div class="row">
-    <div class="ui big top aligned header">
-      Add New Committee
+    <div class="row"></div>
+    <div class="row">
+        <div class="ui big top aligned header">
+            Add New Committee
+        </div>
     </div>
-  </div>
-  <div class="row" id="nameField">
-    <div class="ui input">
-      {{input type="text" cols="50" rows="1" value = title placeholder="committee name"}}
+    <div class="row" id="nameField">
+        <div class="ui input">
+            {{input type="text" cols="50" rows="1" value = title placeholder="committee name"}}
+        </div>
+        <div class="ui error message hidden" id="nerr">
+            <p>Name cannot be empty</p>
+        </div>
     </div>
-    <div class="ui error message hidden" id="nerr">
-      <p>Name cannot be empty</p>
+    <div class="row" id="levelField">
+        <div class="ui input">
+            {{input type="text" cols="50" rows="1" value = level placeholder="committee level"}}
+        </div>
+        <div class="ui error message hidden" id="lerr">
+            <p>Level cannot be empty</p>
+        </div>
     </div>
-  </div>
-  <div class="row" id="levelField">
-    <div class="ui input">
-      {{input type="text" cols="50" rows="1" value = level placeholder="committee level"}}
+    <div class="row">
+        <div class="ui black deny button" {{action 'closeModal'}}>
+            Cancel
+        </div>
+        {{#link-to "ceams.committees"}}
+        <button class="ui positive right labeled icon button" {{action 'createCommittee'}}>
+            Save
+            <i class="checkmark icon"></i>
+        </button>
+        {{/link-to}}
     </div>
-    <div class="ui error message hidden" id="lerr">
-      <p>Level cannot be empty</p>
+    <div class="row">
     </div>
-  </div>
-  <div class="row">
-    <div class="ui black deny button" {{action 'closeModal'}}>
-      Cancel
-    </div>
-    {{#link-to "committees"}}
-    <button class="ui positive right labeled icon button" {{action 'createCommittee'}}>
-      Save
-      <i class="checkmark icon"></i>
-    </button>
-    {{/link-to}}
-  </div>
-  <div class="row">
-  </div>
 </div>
 {{/ui-modal}}

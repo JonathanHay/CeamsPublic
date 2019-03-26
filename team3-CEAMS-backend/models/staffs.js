@@ -9,10 +9,11 @@ var staffsSchema = mongoose.Schema(
         officeNumber: String,
         roleName: String,
         keyPerformanceIndicator: Number,
+        gender: {type: mongoose.Schema.ObjectId, ref: ('Genders')},
         evaluationMethod: {type: mongoose.Schema.ObjectId, ref: ('UserEvaluationMethods')},
         memberships: [{type: mongoose.Schema.ObjectId, ref: ('CommitteeMemberships')}],
         userShadow: {type: mongoose.Schema.ObjectId, ref: ('UserAccounts')}
     }
 );
-var Staffs = mongoose.model('staff', staffsSchema, 'staff');
+var Staffs = mongoose.model('staff', staffsSchema);
 exports.Model = Staffs;

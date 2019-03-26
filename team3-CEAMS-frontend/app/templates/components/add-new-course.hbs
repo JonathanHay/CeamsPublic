@@ -1,0 +1,39 @@
+<div class="ui blue button" {{action "openModal"}}>
+  Add New Course
+</div>
+
+{{#ui-modal name="newCourse" class="newCourse" }}
+
+
+  <div class="header">
+    Adding new Course
+  </div>
+  <div class="content">
+    <div class="ui form">
+      <div class="field">
+        <label>Course Number</label>
+        {{input type="text"   rows="1" value = number placeholder="add number"}}
+      </div>
+      <div class="field">
+        <label>Course Title</label>
+        {{input type="text"   rows="1" value = title placeholder="add title"}}
+      </div>
+      <div class="field">
+        <label>Academic Credit</label>
+        {{input type="text"   rows="1" value=academicCredit placeholder="add academic credit"}}
+      </div>
+
+    </div>
+  </div>
+  <br>
+
+  <div class="actions">
+    <div class="ui black deny button">
+      Cancel
+    </div>
+    <div class="ui positive right labeled icon button">
+      Save
+      <i class="checkmark icon"></i>
+    </div>
+  </div>
+{{/ui-modal}}
