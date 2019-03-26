@@ -35,14 +35,16 @@ export default Component.extend({
             let staffEvaluationMethodsArray = [];
 
             instructors.forEach(function (obj) {
-
-                obj.username = obj.email.substr(0, obj.email.indexOf('@'))
+                if(obj.get('email') != null){
+                obj.set('username', obj.get('email').substr(0, obj.get('email').indexOf('@')))
+                }
                 instructorsArray.push(obj);
             })
 
             staff.forEach(function (obj) {
-
-                obj.username = obj.email.substr(0, obj.email.indexOf('@'))
+                if(obj.set('email') != null){
+                    obj.set('username', obj.get('email').substr(0, obj.get('email').indexOf('@')))
+                    }
                 staffArray.push(obj);
             })
 
