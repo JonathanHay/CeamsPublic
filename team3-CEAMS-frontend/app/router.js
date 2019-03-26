@@ -22,6 +22,7 @@ Router.map(function () {
       this.route('assign-evaluation-methods');
     });
     this.route('new-task-force');
+    this.route('team-detail', { path: '/:committee_id' });
     this.route('meeting');
     this.route('manage-upi');
     this.route('manage-kpi');
@@ -29,8 +30,7 @@ Router.map(function () {
     this.route('delete-task-force');
     this.route('committees', function () {
       this.route('detail', { path: '/detail/:committee_id' });
-      this.route('manage-users', { path: '/manage-users/:committee_id' });
-      this.route('team-detail');
+      this.route('manage-users', { path: '//:committee_id' });
     });
     this.route('indicators', function () {
       this.route('list-kpi');
