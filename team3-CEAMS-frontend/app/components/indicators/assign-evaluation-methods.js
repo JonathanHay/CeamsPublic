@@ -35,14 +35,16 @@ export default Component.extend({
             let staffEvaluationMethodsArray = [];
 
             instructors.forEach(function (obj) {
-
-                obj.username = obj.email.substr(0, obj.email.indexOf('@'))
+                if(obj.get('email') != null){
+                obj.set('username', obj.get('email').substr(0, obj.get('email').indexOf('@')))
+                }
                 instructorsArray.push(obj);
             })
 
             staff.forEach(function (obj) {
-
-                obj.username = obj.email.substr(0, obj.email.indexOf('@'))
+                if(obj.set('email') != null){
+                    obj.set('username', obj.get('email').substr(0, obj.get('email').indexOf('@')))
+                    }
                 staffArray.push(obj);
             })
 
@@ -74,6 +76,7 @@ export default Component.extend({
         setInstructor(index) {
             this.set('instructorIndex', index);
             console.log(index);
+            $('#instructor-factors .save-message').hide();
         },
         setInstructorMethod(index) {
             this.set('instructorMethodIndex', index);
@@ -93,11 +96,12 @@ export default Component.extend({
 
             //send put request for instructor
             chosenInstructor.save();
-
+            $('#instructor-factors .save-message').show();
         },
         setStaff(index) {
             this.set('staffIndex', index);
             console.log(index);
+            $('#staff-factors .save-message').hide();
         },
         setStaffMethod(index) {
             this.set('staffMethodIndex', index);
@@ -116,7 +120,7 @@ export default Component.extend({
 
             //send put request for instructor
             chosenStaff.save();
-
+            $('#staff-factors .save-message').show();
         }
     }
 });
