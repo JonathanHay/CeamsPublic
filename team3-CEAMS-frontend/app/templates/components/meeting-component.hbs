@@ -11,9 +11,12 @@
                     <tr>
                         <th>Meeting Location</th>
                         <th>Meeting Description</th>
+                        <th>Meeting Minutes</th>
                         <th>Start Time</th>
                         <th>End Time</th>
-                        <th></th>
+                        {{#if FEAT022_004IsPermitted }}
+                            <th></th>
+                        {{/if}}
                     </tr>
                 </thead>
                 <tbody>
@@ -21,14 +24,20 @@
                     <tr>
                         <td>{{meeting.location}}</td>
                         <td>{{meeting.description}}</td>
+                        <td>{{meeting.minutes}}</td>
                         <td>{{format-date meeting.startDateTime}}</td>
                         <td>{{format-date meeting.endDateTime}}</td>
-                        <td>{{view-meeting ID = meeting.id}}</td>
+                        {{#if FEAT022_004IsPermitted }}
+                            <td>{{view-meeting ID = meeting.id}}</td>
+                        {{/if}}
+
                     </tr>
                     {{/each}}
                 </tbody>
             </table>
-            {{new-meeting}}
+            {{#if FEAT022_001IsPermitted }}
+                {{new-meeting}}
+            {{/if}}
         </div>
     </div>
 </div>

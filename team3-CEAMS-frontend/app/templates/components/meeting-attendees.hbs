@@ -20,9 +20,11 @@
                                 <div class="left floated content username">
                                     {{user.firstName}} {{user.lastName}} - {{user.committeeName}}
                                 </div>
-                                <button onclick={{action "add" user}} class="ui button right floated middle aligned">
-                                    Add
-                                </button>
+                                {{#if FEAT022_002IsPermitted }}
+                                    <button onclick={{action "add" user}} class="ui button right floated middle aligned">
+                                        Add
+                                    </button>
+                                {{/if}}
                             </div>
                             {{/each}}
                         </div>
@@ -45,9 +47,11 @@
                                 <div class="left floated content username">
                                     {{user.firstName}} {{user.lastName}} - {{user.committeeName}}
                                 </div>
-                                <button onclick={{action "remove" user}} class="ui button right floated middle aligned">
-                                    Remove
-                                </button>
+                                {{#if FEAT022_002IsPermitted }}
+                                    <button onclick={{action "remove" user}} class="ui button right floated middle aligned">
+                                        Remove
+                                    </button>
+                                {{/if}}
                             </div>
                             {{/each}}
                         </div>
@@ -55,9 +59,11 @@
                 </div>
             </div>
             <div class="six wide column">
-                <button onclick={{action "submit"}} class="ui button right floated middle aligned">
-                    Confirm
-                </button>
+                {{#if FEAT022_002IsPermitted }}
+                    <button onclick={{action "submit"}} class="ui button right floated middle aligned">
+                        Confirm
+                    </button>
+                {{/if}}
             </div>
         </div>
     </div>

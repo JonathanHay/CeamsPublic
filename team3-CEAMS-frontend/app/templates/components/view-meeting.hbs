@@ -74,14 +74,18 @@
     </div>
     {{/ui-accordion}}
 </div>
-<div class="actions">
-    <div class="ui primary button updateBtn" {{action "update"}}>
-        Update
+
+{{#if FEAT022_002IsPermitted }}
+    <div class="actions">
+        <div class="ui primary button updateBtn" {{action "update"}}>
+            Update
+        </div>
+        <div class="ui red button" {{action 'closeModal'}}>
+            Close
+        </div>
     </div>
-    <div class="ui red button" {{action 'closeModal'}}>
-        Close
-    </div>
-</div>
+{{/if}}
+
 <div class="ui inline cookie nag">
     <span class="title">
         Updated
