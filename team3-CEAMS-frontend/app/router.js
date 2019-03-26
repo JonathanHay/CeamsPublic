@@ -29,7 +29,7 @@ Router.map(function () {
     this.route('delete-task-force');
     this.route('committees', function () {
       this.route('detail', { path: '/detail/:committee_id' });
-      this.route('manage-users.js', { path: '//:committee_id' });
+      this.route('manage-users', { path: '/manage-users/:committee_id' });
       this.route('team-detail');
     });
     this.route('indicators', function () {
