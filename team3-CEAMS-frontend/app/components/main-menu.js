@@ -15,6 +15,15 @@ export default Component.extend({
     }
   }),
 
+  FEAT21_004IsPermitted: computed(function () {
+    let authentication = this.get('oudaAuth');
+    if (authentication.getName === "Root") {
+      return true;
+    } else {
+      return (authentication.get('userCList').indexOf("FEAT21_004") >= 0);
+    }
+  }),
+
   FEAT28_000IsPermitted: computed(function(){ //Admin Portal functionality
     var authentication = this.get('oudaAuth');
     if (authentication.getName === "Root") {
