@@ -1,0 +1,54 @@
+<div class="ui segment container">
+<div class="ui grid">
+  <div class="eight wide column">
+    <h2 class="ui header" style="margin-top: 2px;">Manage Users</h2>
+  </div>
+  <div class="eight wide column right aligned">
+    {{add-new-user model=model}}
+  </div>
+</div>
+
+
+<table class="ui table" style="margin-top: 25px;">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>username</th>
+    <th>Email Address</th>
+    <th>Enabled</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+
+  {{#each model as |user|}}
+    <tr>
+      <td>
+        {{user.instructor.firstName}} {{user.staff.firstName}}{{user.teachingAssistant.firstName}}
+        {{user.instructor.lastName}}{{user.staff.lastName}}{{user.teachingAssistant.lastName}}
+      </td>
+      <td>
+        {{user.userName}}
+      </td>
+      <td>
+        {{user.instructor.email}}{{user.staff.email}}{{user.teachingAssistant.email}}
+      </td>
+      <td>
+        {{enable-disable-account ID=user.id status=user.enabled}}
+      </td>
+      <td class="right aligned">
+           {{assign-role userRecord=user}}
+       </td>
+       <td class="right aligned">
+            {{edit-user userRecord=user }}
+       </td>
+       <td class="right aligned">
+          {{delete-user userRecord=user }}
+       </td>
+     </tr>
+   {{/each}}
+   </tbody>
+ </table>
+</div>

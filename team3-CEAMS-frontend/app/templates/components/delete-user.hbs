@@ -1,0 +1,34 @@
+{{#if FEAT28_004IsPermitted }}
+
+  <button class="ui mini red circular icon button" {{action 'openModal' }}
+          title="Delete"><i class="trash alternate icon"></i>
+  </button>
+
+  {{#ui-modal name= modalName class= modalName }}
+    <div class="ui icon header">
+      <i class="warning sign icon"></i>
+      Please Confirm ...
+    </div>
+    <div class="content">
+      <p>Are you sure you need to delete this user?</p>
+    </div>
+    <br>
+    <div class="actions">
+      <div class="ui red cancel inverted button">
+        <i class="remove icon"></i>
+        No
+      </div>
+      <div class="ui green ok inverted button">
+        <i class="checkmark icon"></i>
+        Yes
+      </div>
+    </div>
+  {{/ui-modal}}
+
+{{else}}
+  {{#ui-popup content="This feature (FEAT28_004: Delete User Account) is disabled"}}
+    <div class="ui mini circular icon button">
+      <i class="remove icon"></i>
+    </div>
+  {{/ui-popup}}
+{{/if}}

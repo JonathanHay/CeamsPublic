@@ -7,5 +7,5 @@ var userGivenRolesSchema = mongoose.Schema(
         user: {type: mongoose.Schema.ObjectId, ref: ('UserAccounts')}
     }
 );
-var userGivenRoles = mongoose.model('userGivenRoles', userGivenRolesSchema);
+var UserGivenRoles = mongoose.model('userGivenRole', userGivenRolesSchema);
 exports.Model = UserGivenRoles;

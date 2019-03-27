@@ -7,5 +7,5 @@ var permissionsSchema = mongoose.Schema(
         feature: {type: mongoose.Schema.ObjectId, ref: ('Capabilities')}
     }
 );
-var Permissions = mongoose.model(permission, permissionsSchema);
+var Permissions = mongoose.model('permission', permissionsSchema);
 exports.Model = Permissions;

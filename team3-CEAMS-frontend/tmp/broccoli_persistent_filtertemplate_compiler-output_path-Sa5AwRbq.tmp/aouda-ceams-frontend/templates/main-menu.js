@@ -1,0 +1,1 @@
+export default Ember.HTMLBars.template({"id":"L4bdw7K+","block":"{\"symbols\":[],\"statements\":[[1,[21,\"main-menu\"],false],[0,\"\\n\"]],\"hasEval\":false}","meta":{"moduleName":"aouda-ceams-frontend/templates/main-menu.hbs"}});

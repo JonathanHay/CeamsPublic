@@ -1,0 +1,76 @@
+
+<button class="ui green circular icon button" {{action 'openModal'}}
+        title="Edit"><i class="edit icon"></i>
+</button>
+
+
+{{#if FEAT28_014IsPermitted }}
+
+  {{#ui-modal name= modalName class= modalName }}
+    <div class="header">Assign Capabilities for {{model.name}}</div>
+    <div class="scrolling content">
+      <div class="ui form">
+          <div class="six wide field">
+            <label>Role Name</label>
+            {{input type="text"  value = model.name}}
+          </div>
+          <div class="field">
+            <<label>Permissions</label>
+            {{#ui-dropdown   class="fluid multiple selection" selected=givenFeatures
+                             onChange=(action (mut selectedFeatures))}}
+              <i class="dropdown icon"></i>
+              <div class="default text">Select permissions</div>
+              <div class="menu">
+                {{#each capabilityModel as |permissionChoice|}}
+                  <div class="item" data-value="{{permissionChoice.id}}">
+                    {{permissionChoice.code}} {{permissionChoice.systemFeature}}
+                  </div>
+                {{/each}}
+              </div>
+            {{/ui-dropdown}}
+          </div>
+      </div>
+    </div>
+
+
+    <div class="actions">
+      <div class="ui black deny button">
+        Cancel
+      </div>
+      <div class="ui positive right labeled icon button">
+        Save
+        <i class="checkmark icon"></i>
+      </div>
+    </div>
+
+
+
+  {{/ui-modal}}
+
+{{else}}
+
+  {{#ui-modal name= modalName class= modalName }}
+    <div class="ui icon header">
+      <i class="protect icon"></i>
+      Permission Denied
+    </div>
+    <div class="content">
+      <p>This feature (FEAT28_014: Manage permissions) is not allowed for your account.</p>
+      <p>Please contact the system administrator for more information.</p>
+    </div>
+
+    <div class="actions">
+      <div class="ui black deny button">
+        Understand
+      </div>
+    </div>
+  {{/ui-modal}}
+
+{{/if}}
+
+
+
+
+
+
+

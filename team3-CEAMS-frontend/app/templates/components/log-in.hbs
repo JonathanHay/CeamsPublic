@@ -26,14 +26,43 @@
             Login
           </button>
         </div>
-
         <p class="error"> {{errorMessage}}</p>
-
       </form>
-
-      <div class="ui message">
-        New to us?<a href="#"> Sign Up</a>
-      </div>
     </div>
   </div>
 </div>
+
+
+{{#ui-modal name="changePassword" class="changePassword" }}
+  <div class="header">
+    Please change your password and login again
+  </div>
+  <div class="content">
+    <div class="ui form">
+      <div class="inline field">
+        <label>Password</label>
+        {{input value=firstPassword type="password" placeholder="enter password"}}
+      </div>
+      <div class="inline field">
+        <label>Reenter Password</label>
+        {{input value=secondPassword type="password" placeholder="re-enter password"}}
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="actions">
+    <div class="ui black deny button">
+      Cancel
+    </div>
+    <div class="ui positive right labeled icon button">
+      Save
+      <i class="checkmark icon"></i>
+    </div>
+    <div class="ui center aligned container">
+      <p style="color: #ca1010"> {{errorMessage}}</p>
+    </div>
+
+  </div>
+{{/ui-modal}}

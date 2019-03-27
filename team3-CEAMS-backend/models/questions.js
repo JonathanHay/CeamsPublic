@@ -8,6 +8,7 @@ var questionsSchema = mongoose.Schema(
         goodAnswerSample: String,
         averageAnswerSample: String,
         poorAnswerSample: String,
+        rubricLevel: Number,
         measuredIndicator: {type: mongoose.Schema.ObjectId, ref: ('MeasuredIndicators')},
         test: {type: mongoose.Schema.ObjectId, ref: ('Tests')},
         questionGrades: [{type: mongoose.Schema.ObjectId, ref: ('QuestionGrades')}]

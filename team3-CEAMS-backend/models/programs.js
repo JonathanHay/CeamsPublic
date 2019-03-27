@@ -2,6 +2,7 @@
 var mongoose = require('mongoose');
 var programsSchema = mongoose.Schema(
     {
+        title: String,
         questionOne: String,
         questionTwo: String,
         questionThree: String,

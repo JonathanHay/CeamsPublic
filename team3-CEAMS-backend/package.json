@@ -1,22 +1,26 @@
 {
-  "name": "team3-ceams-backend",
+  "name": "aouda-ceams-backend",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www",
-    "db-up": "mongod --dbpath data/db --logpath ./logs/mongodb.log",
-    "db-up:linux": "mongod --dbpath data/db --fork --logpath ./logs/mongodb.log",
-    "db-down": "mongod --dbpath data/db --shutdown"
+    "start": "node ./bin/www",
+    "devstart": "nodemon ./bin/www"
   },
   "dependencies": {
+    "body-parser": "^1.18.3",
     "cookie-parser": "~1.4.3",
-    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "csprng": "^0.1.2",
     "debug": "~2.6.9",
     "express": "~4.16.0",
-    "mongoose": "^5.4.6",
-    "morgan": "~1.9.0"
+    "http-errors": "~1.6.2",
+    "jade": "~1.11.0",
+    "mongoose": "^5.4.5",
+    "morgan": "~1.9.0",
+    "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
-    "nodemon": "^1.18.10"
+    "eslint": "^5.12.1",
+    "nodemon": "^1.18.9"
   }
 }

@@ -31,7 +31,7 @@ export default Component.extend({
     errorlessList: computed(function () {
         var result = [];
         this.get('kpiList').forEach((one) => {
-            if (one.error == undefined) {
+            if (one.error == null) {
                 let c1 = one.userName || "";
                 let c2 = one.rawData;
                 let c3 = one.score || "0";

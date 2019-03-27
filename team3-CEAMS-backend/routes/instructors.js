@@ -1,78 +1,93 @@
 var express = require('express');
 var router = express.Router();
-
 var Instructors = require('../models/instructors');
+var bodyParser = require('body-parser');
+var parseUrlencoded = bodyParser.urlencoded({extended: false});
+var parseJSON = bodyParser.json();
 
-/* GET all */
-router.get('/', function (req, res) {
-  Instructors.Model.find((err, instructors) => {
-    if (err) return res.status(500).json(err);
-    res.json({ instructor: instructors });
-  });
-});
-
-/* GET some */
-router.get('/:id', function (req, res) {
-  Instructors.Model.findById(req.params.id, function (err, instructor) {
-    if (err) res.status(500).json(err);
-    else res.json({ instructor: instructor });
-  });
-});
-
-/* POST */
-router.post('/', function (req, res) {
-  var instructor = new Instructors.Model(req.body.instructor);
-  instructor.save(function (err) {
-    if (err) res.status(500).json(err);
-    res.json({ instructor: instructor });
-  });
-});
-
-/* PUT */
-router.put('/:id', function(req, res) {
-  Instructors.Model.findById(req.params.id, function (err, instructor) {
-    if (err) res.status(500).json(err);
-    else {
-        instructor.firstName = req.body.instructor.firstName;
-        instructor.lastName = req.body.instructor.lastName;
-        instructor.email = req.body.instructor.email;
-        instructor.building = req.body.instructor.building;
-        instructor.officeNumber = req.body.instructor.officeNumber;
-        instructor.number = req.body.instructor.number;
-        instructor.ccMemberStatus = req.body.instructor.ccMemberStatus;
-        instructor.hireDate = req.body.instructor.hireDate;
-        instructor.estimatedRetirementDate = req.body.instructor.estimatedRetirementDate;
-        instructor.keyPerformanceIndicator = req.body.instructor.keyPerformanceIndicator;
-        instructor.gender = req.body.instructor.gender;
-        instructor.evaluationMethod = req.body.instructor.evaluationMethod;
-        instructor.programs = req.body.instructor.programs;
-        instructor.licenceProviders = req.body.instructor.licenceProviders;
-        instructor.degreeProviders = req.body.instructor.degreeProviders;
-        instructor.rank = req.body.instructor.rank;
-        instructor.semesters = req.body.instructor.semesters;
-        instructor.memberships = req.body.instructor.memberships;
-        instructor.userShadow = req.body.instructor.userShadow;
-
-        instructor.save(function (err) {
-            if (err) res.status(500).json(err);
+router.route('/')
+    .post(parseUrlencoded, parseJSON, function (request, response) {
+        var instructor = new Instructors.Model(request.body.instructor);
+        instructor.save(function (error) {
+            if (error) {
+                response.send({error: error});
+            }
             else {
-                res.json({instructor: instructor});
+                response.json({instructor: instructor});
             }
         });
-    }
-  });
-});
+    })
+    .get(parseUrlencoded, parseJSON, function (request, response) {
+        Instructors.Model.find(function (error, instructors) {
+            if (error) {
+                response.send({error: error});
+            }
+            else {
+                response.json({instructor: instructors});
+            }
+        });
+    });
 
-/* DELETE */
-router.delete('/:id', function (req, res) {
-  Instructors.Model.findOneAndDelete({ _id: req.params.id },
-    function (err, deleted) {
-      if (err) res.status(500).json(err);
-      else {
-        res.json({ instructor: deleted });
-      }
-    }
-  );
-});
+router.route('/:instructor_id')
+    .get(parseUrlencoded, parseJSON, function (request, response) {
+        Instructors.Model.findById(request.params.instructor_id, function (error, instructor) {
+            if (error) {
+                response.send({error: error});
+            }
+            else {
+                response.json({instructor: instructor});
+            }
+        });
+    })
+    .put(parseUrlencoded, parseJSON, function (request, response) {
+        Instructors.Model.findById(request.params.instructor_id, function (error, instructor) {
+            if (error) {
+                response.send({error: error});
+            }
+            else {
+                // update the instructor info
+                instructor.firstName = request.body.instructor.firstName;
+                instructor.lastName = request.body.instructor.lastName;
+                instructor.email = request.body.instructor.email;
+                instructor.building = request.body.instructor.building;
+                instructor.officeNumber = request.body.instructor.officeNumber;
+                instructor.number = request.body.instructor.number;
+                instructor.ccMemberStatus = request.body.instructor.ccMemberStatus;
+                instructor.hireDate = request.body.instructor.hireDate;
+                instructor.estimatedRetirementDate = request.body.instructor.estimatedRetirementDate;
+                instructor.keyPerformanceIndicator = request.body.instructor.keyPerformanceIndicator;
+
+                instructor.gender = request.body.instructor.gender;
+                instructor.evaluationMethod = request.body.instructor.evaluationMethod;
+                instructor.rank = request.body.instructor.rank;
+                instructor.userShadow = request.body.instructor.userShadow;
+
+                instructor.programs = request.body.instructor.programs;
+                instructor.licenceProviders = request.body.instructor.licenceProviders;
+                instructor.degreeProviders = request.body.instructor.degreeProviders;
+                instructor.semesters = request.body.instructor.semesters;
+                instructor.memberships = request.body.instructor.memberships;
+
+                instructor.save(function (error) {
+                    if (error) {
+                        response.send({error: error});
+                    }
+                    else {
+                        response.json({instructor: instructor});
+                    }
+                });
+            }
+        });
+    })
+    .delete(parseUrlencoded, parseJSON, function (request, response) {
+        Instructors.Model.findByIdAndRemove(request.params.instructor_id,
+            function (error, deleted) {
+                if (!error) {
+                    response.json({instructor: deleted});
+                };
+            }
+        );
+    });
+
 
 module.exports = router;

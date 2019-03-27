@@ -3,9 +3,9 @@ var mongoose = require('mongoose');
 var gendersSchema = mongoose.Schema(
     {
         type: String,
-        instructorMember: {type: mongoose.Schema.ObjectId, ref: ('Instructors')},
-        staffMember: {type: mongoose.Schema.ObjectId, ref: ('Staffs')},
-        teachingAssistantMember: {type: mongoose.Schema.ObjectId, ref: ('TeachingAssistants')}
+        instructorMembers: [{type: mongoose.Schema.ObjectId, ref: ('Instructors')}],
+        staffMembers: [{type: mongoose.Schema.ObjectId, ref: ('Staffs')}],
+        teachingAssistantMembers: [{type: mongoose.Schema.ObjectId, ref: ('TeachingAssistants')}]
     }
 );
 var Genders = mongoose.model('gender', gendersSchema);

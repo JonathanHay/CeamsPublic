@@ -1,5 +1,5 @@
-var mongoose = require('mongoose');
-var userAccountsSchema = mongoose.Schema(
+let mongoose = require('mongoose');
+let userAccountsSchema = mongoose.Schema(
     {
         userName: String,
         encryptedPassword: String,
@@ -7,11 +7,12 @@ var userAccountsSchema = mongoose.Schema(
         userAccountExpiryDate: Date,
         passwordMustChanged: Boolean,
         passwordReset: Boolean,
-        instructor: { type: mongoose.Schema.ObjectId, ref: ('Instructors') },
-        staff: { type: mongoose.Schema.ObjectId, ref: ('Staffs') },
-        teachingAssistant: { type: mongoose.Schema.ObjectId, ref: ('TeachingAssistants') },
-        userGivenRoles: [{ type: mongoose.Schema.ObjectId, ref: ('UserGivenRoles') }]
+        enabled: Boolean,
+        instructor: {type: mongoose.Schema.ObjectId, ref: ('Instructors')},
+        staff: {type: mongoose.Schema.ObjectId, ref: ('Staffs')},
+        teachingAssistant: {type: mongoose.Schema.ObjectId, ref: ('TeachingAssistants')},
+        userGivenRoles: [{type: mongoose.Schema.ObjectId, ref: ('UserGivenRoles')}]
     }
 );
-var UserAccounts = mongoose.model('userAccounts', userAccountsSchema);
+let UserAccounts = mongoose.model('userAccount', userAccountsSchema);
 exports.Model = UserAccounts;

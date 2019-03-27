@@ -1,12 +1,3 @@
-/* Site wide styles */
-.content-container {
-  margin-top: 4em;
-}
-
-h1.header {
-  margin-top: 1em;
-}
-
 /*home-page specific style */
 .home.page >
 .ui.inverted.vertical.segment {
@@ -15,13 +6,6 @@ h1.header {
   /*background-repeat: no-repeat;*/
   /*background-size: cover;*/
   background-color: #502783;
-}
-.team-detail {
-  margin-top: 8em;
-}
-
-.committee-name {
- margin-top:15px;
 }
 
 .home.page >
@@ -81,11 +65,6 @@ h1.header {
   background-color: transparent;
 }
 
-/* Task Force Management Styles START*/
-  .manage-forces{
-    padding-top: 5px;
-  }
-/* Task Force Management Styles END*/
 
 /* Main Menu specific style */
 
@@ -146,8 +125,8 @@ h1.header {
 .ui.message {
   background-color: #ebebeb;
   box-shadow: none;
-  padding: 1em 1em;
-  margin-top: 0em;
+  padding: 5em 4em;
+  margin-top: 2em !important;
 }
 
 .ui.message h1.ui.header {
@@ -182,7 +161,10 @@ footer {
 .login .ui.grid .column .header {
   color: #502783 !important;
 }
-
+.progressBar{
+  width: 5%;
+  height: 5%;
+}
 .login .ui.grid .column .error {
   color: #ca1010;
 }
@@ -198,6 +180,45 @@ footer {
   text-shadow: none;
   background-image: none;
 }
+
+.pageFormat {
+  padding: 2em 5em;
+  padding-bottom: 7em;
+}
+
+.listFormat {
+  padding: 3em 3em;
+}
+
+.uiAccordion{
+  width: 150%;
+}
+
+/*ideally this input width would be scaled logically*/
+/*50% on full page, page width on small*/
+/*Ideally  would only apply inputWidth scaling if not a full page*/
+.inputWidth{
+  width: 50%;
+}
+
+
+
+.committeeList .user-container {
+  height: 60vh;
+  width: 60vw;
+  margin-top: 3em;
+  border: 1px solid black;
+  padding-top: 1em;
+  overflow-y: scroll;
+}
+
+.committeeList .user-container .item {
+  padding: 1em 0;
+  margin: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 #title{
   margin-bottom: 50px;
   margin-top: 50px;
@@ -221,22 +242,6 @@ footer {
   border: 1px solid black;
   padding-top: 1em;
   overflow-y: scroll;
-}
-
-.committeeList .user-container {
-  height: 60vh;
-  width: 60vw;
-  margin-top: 3em;
-  border: 1px solid black;
-  padding-top: 1em;
-  overflow-y: scroll;
-}
-
-.committeeList .user-container .item {
-  padding: 1em 0;
-  margin: 5px;
-  padding-left: 20px;
-  padding-right: 20px;
 }
 
 .manage-users .user-container .item {
@@ -272,6 +277,7 @@ footer {
   margin-top:30px;
 }
 .text-title{
+  margin-top:80px;
   margin-bottom:60px;
 }
 .kpi-button-group{
@@ -305,6 +311,7 @@ input[type="number"]{
   justify-content: center;
   align-items: center;
 }
+
 #ui-input{
   float: left;
   box-shadow: none;
@@ -321,3 +328,9 @@ input[type="number"]{
 #inline-row{
   display:inline-block;
 }
+
+/* Task Force Management Styles START*/
+.manage-forces{
+  padding-top: 5px;
+}
+/* Task Force Management Styles END*/

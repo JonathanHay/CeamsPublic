@@ -7,27 +7,44 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function () {
-  this.route('main-menu');
   this.route('home-page', { path: '/' });
   this.route('login');
-  this.route('team-detail', { path: '/:committee_id' });
-  this.route('meeting');
-  this.route('committee');
-  this.route('new-task-force');
-  this.route('delete-task-force');
-  this.route('committees', function () {
-    this.route('new');
-    this.route('detail', { path: '/detail/:committee_id' });
-    this.route('manage-users', { path: '//:committee_id' });
-  });
-  this.route('indicators', function () {
+  this.route('datatable-example');
+  this.route('ceams', function () {
+    this.route('about');
+    this.route('manage-user-accounts');
+    this.route('manage-roles');
+    this.route('manage-capabilities');
+    this.route('courses');
+
+    this.route('indicators', function () {
+      this.route('list-kpi');
+      this.route('assign-evaluation-methods');
+    });
+    this.route('new-task-force');
+    this.route('team-detail', { path: '/:committee_id' });
+    this.route('meeting');
     this.route('manage-upi');
     this.route('manage-kpi');
-    this.route('kpi-gauge');
-    this.route('list-kpi');
-    this.route('assign-evaluation-methods');
+    this.route('ga-task-force');
+    this.route('delete-task-force');
+    this.route('committees', function () {
+      this.route('detail', { path: '/detail/:committee_id' });
+      this.route('manage-users', { path: '/manage-users/:committee_id' });
+    });
+    this.route('indicators', function () {
+      this.route('list-kpi');
+      this.route('manage-upi');
+      this.route('kpi-gauge');
+      this.route('manage-kpi');
+      this.route('assign-evaluation-methods');
+    });
+
+    this.route('new-task-force');
+    this.route('meeting');
+    this.route('ga-task-force');
+    this.route('delete-task-force');
   });
-  this.route('delete-task-force');
 });
 
 export default Router;

@@ -1,0 +1,64 @@
+{{#if FEAT28_011IsPermitted }}
+  <h2>{{selectedPost.title}}</h2>
+  {{#if isLoading}}
+    <button class="ui positive button" {{action 'save' tableData}}>Confirm</button>
+    <button class="ui button" {{action 'cancel'}}>Cancel</button>
+
+
+    <table id="ExcelData" class="ui celled table" cellspacing="0" width="100%">
+      <thead>
+      <tr>
+        {{#each tableHeader as |header|}}
+          <th>{{header}}</th>
+        {{/each}}
+      </tr>
+      </thead>
+      <tbody>
+      {{#each tableData as |oneRow|}}
+        <tr>
+          {{#each oneRow as |oneCol|}}
+            <td>{{oneCol}}</td>
+          {{/each}}
+        </tr>
+      {{/each}}
+      </tbody>
+      <tfoot>
+      <tr>
+        {{#each tableHeader as |header|}}
+          <th>{{header}}</th>
+        {{/each}}
+      </tr>
+      </tfoot>
+    </table>
+
+
+
+
+  {{else}}
+    {{#file-picker fileLoaded="fileImported" accept=".xlsx" readAs="readAsArrayBuffer" dropzone=true progress=false  preview=true }}
+      <div class="ui icon green message">
+        <i class="inbox icon"></i>
+        <div class="content">
+          <div class="header">
+            Drag the Excel file here ...
+          </div>
+          <p>or Click to upload the file.</p>
+        </div>
+      </div>
+    {{/file-picker}}
+
+  {{/if}}
+
+{{else}}
+  <div class="ui center aligned raised segment">
+    <div class="ui icon header">
+      <i class="protect icon"></i>
+      Permission Denied
+    </div>
+    <div>
+      <p>This feature (FEAT28_011: Import System Features) is not allowed for your account.</p>
+      <p>Please contact the system administrator for more information.</p>
+    </div>
+
+  </div>
+{{/if}}

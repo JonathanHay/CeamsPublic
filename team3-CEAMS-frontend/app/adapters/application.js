@@ -1,8 +1,7 @@
 import DS from 'ember-data';
-import Inflector from 'ember-inflector';
+
 export default DS.RESTAdapter.extend({
-  host: 'http://127.0.0.1:3000',
-  pathForType(type) {
-    return Inflector.inflector.pluralize(Ember.String.dasherize(type));
-  }
+  host: 'http://localhost:3000'
+ // host: 'https://localhost:8443'
 });
+

@@ -1,0 +1,64 @@
+
+<div class="ui segment container">
+{{#if FEAT28_006IsPermitted }}
+
+  {{#if isDataImporting}}
+    {{import-features flag = isDataImporting}}
+  {{else}}
+<br>
+    <div class="ui grid  ">
+      <div class="eight wide column">
+        <h1>Manage System Features</h1>
+      </div>
+      <div class="four wide column right aligned">
+        {{add-new-feature}}
+      </div>
+      <div class="four wide column right aligned">
+        <button class="ui button" {{action 'import'}}>
+          Import Features
+        </button>
+      </div>
+    </div>
+
+
+    <table id="features" class="ui celled table" cellspacing="0" width="100%">
+      <thead>
+        <tr>
+          <th>Code</th>
+          <th>Feature</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each model as |oneFeature|}}
+          <tr>
+            <td>{{oneFeature.code}}</td>
+            <td>{{oneFeature.systemFeature}}</td>
+            <td>{{delete-feature ID=oneFeature.id}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+      <tfoot>
+        <tr>
+          <th>Code</th>
+          <th>Feature</th>
+          <th></th>
+        </tr>
+      </tfoot>
+    </table>
+  {{/if}}
+
+
+{{else}}
+  <div class="ui center aligned raised segment">
+    <div class="ui icon header">
+      <i class="protect icon"></i>
+      Permission Denied
+    </div>
+    <div>
+      <p>The feature (FEAT28_006: Manage System Features/Privilege) is not allowed for your account.</p>
+      <p>Please contact the system administrator for more information.</p>
+    </div>
+  </div>
+{{/if}}
+</div>

@@ -4,6 +4,8 @@ module.exports = {
     ecmaVersion: 2017,
     sourceType: 'module'
   },
+  "globals":{"Ember": true},
+
   plugins: [
     'ember'
   ],
@@ -15,7 +17,6 @@ module.exports = {
     browser: true
   },
   rules: {
-    "indent": "off"
   },
   overrides: [
     // node files

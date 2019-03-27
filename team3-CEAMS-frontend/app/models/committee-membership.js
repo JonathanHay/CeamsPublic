@@ -7,6 +7,6 @@ export default DS.Model.extend({
     committee: DS.attr(),
     instructorMember: DS.belongsTo('instructor'),
     staffMember: DS.belongsTo('staff'),
-    teachingAssistantMember: DS.belongsTo('teaching-assistant'),
+    teachingAssistantMember: DS.belongsTo('teachingAssistant'),
     meetings: DS.hasMany('meeting')
 });
