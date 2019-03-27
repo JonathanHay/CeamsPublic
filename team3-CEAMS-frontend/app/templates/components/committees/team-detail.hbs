@@ -15,11 +15,13 @@
                     Committee Level: <strong>{{ committee.level }}</strong>
                 </div>
                 <div class="right floated column">
+                    {{#if FEAT021_000IsPermitted }}
                     {{#link-to "ceams.committees.manage-users" committee.id class="item"}}
                     <div class="ui right floated button">
                         <a>Manage Users</a>
                     </div>
                     {{/link-to}}
+                    {{/if}}
                 </div>
             </div>
             <div class="ui divider"></div>

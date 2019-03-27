@@ -1,3 +1,5 @@
+{{#if FEAT021_000IsPermitted}}
+
 <div class="content-container manage-users">
     <div class="ui row centered grid">
         <h1 class="header">Manage Users</h1>
@@ -53,12 +55,15 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="six wide column">
-                <button onclick={{action "submit"}} class="ui button right floated middle aligned">
+                {{#if isChanges}}
+                <button onclick={{action "submit"}} class="ui button right floated middle aligned" style="margin-top: 20px;">
                     {{ submitLabel }}
                 </button>
+                {{/if}}
             </div>
         </div>
     </div>
 </div>
+{{else}}
+<h1>You are not permitted to manage committees.</h1>
+{{/if}}

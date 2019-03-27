@@ -15,6 +15,7 @@ export default Component.extend({
     }
   }),
 
+<<<<<<< HEAD
   FEAT21_000IsPermitted: computed(function () { //Manage committees
     var authentication = this.get('oudaAuth');
     if (authentication.getName === "Root") {
@@ -25,6 +26,18 @@ export default Component.extend({
   }),
 
   FEAT28_000IsPermitted: computed(function () { //Admin Portal functionality
+=======
+  FEAT21_004IsPermitted: computed(function () {
+    let authentication = this.get('oudaAuth');
+    if (authentication.getName === "Root") {
+      return true;
+    } else {
+      return (authentication.get('userCList').indexOf("FEAT21_004") >= 0);
+    }
+  }),
+
+  FEAT28_000IsPermitted: computed(function(){ //Admin Portal functionality
+>>>>>>> 4d1bc8d83fa1dc1fcc8abb310a31345958dd4493
     var authentication = this.get('oudaAuth');
     if (authentication.getName === "Root") {
       return true;
