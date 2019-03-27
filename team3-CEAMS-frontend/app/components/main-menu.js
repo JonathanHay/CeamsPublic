@@ -15,6 +15,15 @@ export default Component.extend({
     }
   }),
 
+  FEAT22_004IsPermitted: computed(function () { //Manage committees
+    var authentication = this.get('oudaAuth');
+    if (authentication.getName === "Root") {
+      return true;
+    } else {
+      return (authentication.get('userCList').indexOf("FEAT22_004") >= 0);
+    }
+  }),
+
   FEAT21_000IsPermitted: computed(function () { //Manage committees
     var authentication = this.get('oudaAuth');
     if (authentication.getName === "Root") {
