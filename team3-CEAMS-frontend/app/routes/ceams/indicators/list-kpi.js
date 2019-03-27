@@ -7,7 +7,6 @@ export default Route.extend({
         temp1 = temp1.toArray();
         temp2 = temp2.toArray()
         var models = { users: temp1, kpiReports: temp2 };
-        console.log(temp1);
         return models;
     }
 });
