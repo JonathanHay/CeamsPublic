@@ -11,45 +11,44 @@ export default Component.extend({
         this.set('changes', {});
         this.set('membershipsFilter', '');
         this.set('attendeesFilter', '');
-    },
-    FEAT022_000IsPermitted: computed(function(){ //Delete course
+    },    FEAT22_000IsPermitted: computed(function(){ //Delete course
         var authentication = this.get('oudaAuth');
         if (authentication.getName === "Root") {
           return true;
         } else {
-          return (authentication.get('userCList').indexOf("FEAT022_000") >= 0);
+          return (authentication.get('userCList').indexOf("FEAT22_000") >= 0);
         }
     }),
-    FEAT022_001IsPermitted: computed(function(){ //Delete course
+    FEAT22_001IsPermitted: computed(function(){ //Delete course
         var authentication = this.get('oudaAuth');
         if (authentication.getName === "Root") {
           return true;
         } else {
-          return (authentication.get('userCList').indexOf("FEAT022_001") >= 0);
+          return (authentication.get('userCList').indexOf("FEAT22_001") >= 0);
         }
     }),
-    FEAT022_002IsPermitted: computed(function(){ //Delete course
+    FEAT22_002IsPermitted: computed(function(){ //Delete course
         var authentication = this.get('oudaAuth');
         if (authentication.getName === "Root") {
           return true;
         } else {
-          return (authentication.get('userCList').indexOf("FEAT022_002") >= 0);
+          return (authentication.get('userCList').indexOf("FEAT22_002") >= 0);
         }
     }),
-    FEAT022_003IsPermitted: computed(function(){ //Delete course
+    FEAT22_003IsPermitted: computed(function(){ //Delete course
         var authentication = this.get('oudaAuth');
         if (authentication.getName === "Root") {
           return true;
         } else {
-          return (authentication.get('userCList').indexOf("FEAT022_003") >= 0);
+          return (authentication.get('userCList').indexOf("FEAT22_003") >= 0);
         }
     }),
-    FEAT022_004IsPermitted: computed(function(){ //Delete course
+    FEAT22_004IsPermitted: computed(function(){ //Delete course
         var authentication = this.get('oudaAuth');
         if (authentication.getName === "Root") {
           return true;
         } else {
-          return (authentication.get('userCList').indexOf("FEAT022_004") >= 0);
+          return (authentication.get('userCList').indexOf("FEAT22_004") >= 0);
         }
     }),
 
