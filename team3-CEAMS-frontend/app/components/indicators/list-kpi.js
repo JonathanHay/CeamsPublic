@@ -26,8 +26,6 @@ export default Component.extend({
         if (this.get("query") != "") {
             temp = temp.filter(function (item) { return (item.userName.includes(theQuery)) });
         }
-        console.log("temp: ");
-        console.log(temp);
         return temp;
     }),
     errorlessList: computed(function () {
