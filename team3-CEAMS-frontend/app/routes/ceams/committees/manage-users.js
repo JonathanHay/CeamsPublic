@@ -27,7 +27,13 @@ export default Route.extend({
     for (let i = 0; i < userProfiles.length; i++) {
       const e = userProfiles[i];
       
-      let userMemberships = (await e.get('memberships')).toArray();
+      let userMemberships;
+      try {
+        userMemberships = (await e.get('memberships')).toArray();
+      } catch (error) {
+        continue;
+      }
+      
       let isMember = false;
       let membership = '';
       if (userMemberships.length > 0) {

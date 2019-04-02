@@ -9,7 +9,7 @@ const modelMap = {
 
 export default Controller.extend({
     init() {
-        this._super(...arguments);
+      this._super(...arguments);
     },
     actions: {
         async processChanges(committee_id, changes, memberships) {
