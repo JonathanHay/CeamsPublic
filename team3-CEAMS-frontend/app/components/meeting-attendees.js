@@ -54,7 +54,6 @@ export default Component.extend({
 
     attendeesList: computed('attendees', 'attendeesFilter', {
         get(key) {
-            //console.log('compute');
             if(this.get('attendeesFilter') === ""){
                 return this.attendees;
             } else{
@@ -70,7 +69,6 @@ export default Component.extend({
 
     membershipsList: computed('memberships', 'membershipsFilter', {
         get(key) {
-            //console.log('compute');
             if(this.get('membershipsFilter') === ""){
                 return this.memberships;
             } else{

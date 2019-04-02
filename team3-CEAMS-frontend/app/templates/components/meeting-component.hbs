@@ -14,7 +14,7 @@
                         <th>Meeting Minutes</th>
                         <th>Start Time</th>
                         <th>End Time</th>
-                        {{#if FEAT22_004IsPermitted }}
+                        {{#if FEAT21_100IsPermitted }}
                             <th></th>
                         {{/if}}
                     </tr>
@@ -27,7 +27,7 @@
                         <td>{{meeting.minutes}}</td>
                         <td>{{format-date meeting.startDateTime}}</td>
                         <td>{{format-date meeting.endDateTime}}</td>
-                        {{#if FEAT22_004IsPermitted }}
+                        {{#if FEAT21_100IsPermitted }}
                             <td>{{view-meeting ID = meeting.id}}</td>
                         {{/if}}
 
@@ -35,7 +35,7 @@
                     {{/each}}
                 </tbody>
             </table>
-            {{#if FEAT22_001IsPermitted }}
+            {{#if FEAT21_101IsPermitted }}
                 {{new-meeting}}
             {{/if}}
         </div>

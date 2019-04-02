@@ -20,6 +20,8 @@
             {{input value=decision type="text" class='meetingInput'}}
         </div>
     </div>
+{{/if}}
+{{#if FEAT22_001IsPermitted }}
     <div class="ui red button" {{action 'addToTable'}}>
         Add
     </div>

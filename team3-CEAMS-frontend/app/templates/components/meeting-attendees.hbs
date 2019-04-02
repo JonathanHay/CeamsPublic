@@ -19,7 +19,7 @@
                                 <div class="left floated content username">
                                     {{user.firstName}} {{user.lastName}} - {{user.committeeName}}
                                 </div>
-                                {{#if FEAT22_002IsPermitted }}
+                                {{#if FEAT21_100IsPermitted }}
                                     <button onclick={{action "add" user}} class="ui button right floated middle aligned">
                                         Add
                                     </button>
@@ -45,7 +45,7 @@
                                 <div class="left floated content username">
                                     {{user.firstName}} {{user.lastName}} - {{user.committeeName}}
                                 </div>
-                                {{#if FEAT22_002IsPermitted }}
+                                {{#if FEAT21_100IsPermitted }}
                                     <button onclick={{action "remove" user}} class="ui button right floated middle aligned">
                                         Remove
                                     </button>
@@ -57,7 +57,7 @@
                 </div>
             </div>
             <div class="six wide column">
-                {{#if FEAT22_002IsPermitted }}
+                {{#if FEAT21_100IsPermitted }}
                     <button onclick={{action "submit"}} class="ui button right floated middle aligned">
                         Confirm
                     </button>

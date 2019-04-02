@@ -32,7 +32,22 @@ export default Component.extend({
       return (authentication.get('userCList').indexOf("FEAT21_000") >= 0);
     }
   }),
-
+  FEAT21_102IsPermitted: computed(function () { //view meetings
+    var authentication = this.get('oudaAuth');
+    if (authentication.getName === "Root") {
+      return true;
+    } else {
+      return (authentication.get('userCList').indexOf("FEAT21_102") >= 0);
+    }
+  }),
+  FEAT21_100IsPermitted: computed(function () { //manage meetings
+    var authentication = this.get('oudaAuth');
+    if (authentication.getName === "Root") {
+      return true;
+    } else {
+      return (authentication.get('userCList').indexOf("FEAT21_100") >= 0);
+    }
+  }),
   FEAT28_000IsPermitted: computed(function () { //Admin Portal functionality
     var authentication = this.get('oudaAuth');
     if (authentication.getName === "Root") {

@@ -15,26 +15,37 @@ export default Component.extend({
     memberships: null,
 
     didRender(){
-        this.get('DS').findAll('committee');
-        this.get('DS').findAll('committee-membership')
-        this.get('DS').findAll('teaching-assistant')
-        this.get('DS').findAll('instructor')
-        this.get('DS').findAll('staff')
+        
     },
 
     modalName: computed(function () {
         return 'newMeeting' + this.get('ID');
     }),
-
-    FEAT22_000IsPermitted: computed(function(){ //Delete course
+    FEAT21_100IsPermitted: computed(function(){ //Manage meetings
         var authentication = this.get('oudaAuth');
         if (authentication.getName === "Root") {
           return true;
         } else {
-          return (authentication.get('userCList').indexOf("FEAT22_000") >= 0);
+          return (authentication.get('userCList').indexOf("FEAT21_100") >= 0);
         }
     }),
-    FEAT22_001IsPermitted: computed(function(){ //Delete course
+    FEAT21_101IsPermitted: computed(function(){ //Add new meetings
+        var authentication = this.get('oudaAuth');
+        if (authentication.getName === "Root") {
+          return true;
+        } else {
+          return (authentication.get('userCList').indexOf("FEAT21_101") >= 0);
+        }
+    }),
+    FEAT21_102IsPermitted: computed(function(){ //View meetings
+        var authentication = this.get('oudaAuth');
+        if (authentication.getName === "Root") {
+          return true;
+        } else {
+          return (authentication.get('userCList').indexOf("FEAT21_102") >= 0);
+        }
+    }),
+    FEAT22_001IsPermitted: computed(function(){ //add decisions
         var authentication = this.get('oudaAuth');
         if (authentication.getName === "Root") {
           return true;
@@ -42,30 +53,14 @@ export default Component.extend({
           return (authentication.get('userCList').indexOf("FEAT22_001") >= 0);
         }
     }),
-    FEAT22_002IsPermitted: computed(function(){ //Delete course
-        var authentication = this.get('oudaAuth');
-        if (authentication.getName === "Root") {
-          return true;
-        } else {
-          return (authentication.get('userCList').indexOf("FEAT22_002") >= 0);
-        }
-    }),
-    FEAT22_003IsPermitted: computed(function(){ //Delete course
-        var authentication = this.get('oudaAuth');
-        if (authentication.getName === "Root") {
-          return true;
-        } else {
-          return (authentication.get('userCList').indexOf("FEAT22_003") >= 0);
-        }
-    }),
-    FEAT22_004IsPermitted: computed(function(){ //Delete course
-        var authentication = this.get('oudaAuth');
-        if (authentication.getName === "Root") {
-          return true;
-        } else {
-          return (authentication.get('userCList').indexOf("FEAT22_004") >= 0);
-        }
-    }),
+    FEAT22_002IsPermitted: computed(function(){ //add decisions
+      var authentication = this.get('oudaAuth');
+      if (authentication.getName === "Root") {
+        return true;
+      } else {
+        return (authentication.get('userCList').indexOf("FEAT22_002") >= 0);
+      }
+  }),
 
     actions: {
         userSubmit: function (users) {
@@ -113,7 +108,6 @@ export default Component.extend({
             for (const memberID in changes) {
                 if (changes.hasOwnProperty(memberID)) {
                     const member = changes[memberID]
-                    console.log(member);
                     if (member !== undefined) {
                         //records for deleting and saving
                         let memberRecord = this.get('DS').peekRecord('committee-membership', member[1]);
@@ -198,8 +192,6 @@ export default Component.extend({
                     }
                 })
                 member.get('teachingAssistantMember').then((e) => {
-                    console.log(member.committee);
-                    console.log(member)
                     if (e != undefined && e!= null) {
                         let committee = this.get('DS').peekRecord('committee', member.committee);
                             a = {
