@@ -14,6 +14,14 @@ export default Component.extend({
 
     memberships: null,
 
+    didRender(){
+        this.get('DS').findAll('committee');
+        this.get('DS').findAll('committee-membership')
+        this.get('DS').findAll('teaching-assistant')
+        this.get('DS').findAll('instructor')
+        this.get('DS').findAll('staff')
+    },
+
     modalName: computed(function () {
         return 'newMeeting' + this.get('ID');
     }),
@@ -141,7 +149,7 @@ export default Component.extend({
         openModal: function () {
             this.set('attendees', []);
             this.set('meetingData', this.get('DS').peekRecord('meeting', this.get('ID')));
-            this.set('location', this.get('meetingData.location'));
+            this.set('location', this.get('mezetingData.location'));
             this.set('description', this.get('meetingData.description'));
             this.set('minutes', this.get('meetingData.minutes'));
             this.set('outcomes', this.get('meetingData.outcomes'));
@@ -159,53 +167,51 @@ export default Component.extend({
             let memberInfo = []
             let a = null;
 
-            this.get('DS').findAll('committee-membership').then((members) => {
-                members.forEach((member) => {
-                    member.get('instructorMember').then((e) => {
-                        if (e != undefined) {
-                            this.get('DS').findRecord('committee', member.committee).then((committee) => {
-                                a = {
-                                    firstName: e.firstName,
-                                    lastName: e.lastName,
-                                    memberID: member.id,
-                                    committeeName: committee.name
-                                }
-                                memberInfo.push(a);
-                                a = null;
-                                this.set('memberships', memberInfo);
-                            });
-                        }
-                    })
-                    member.get('staffMember').then((e) => {
-                        if (e != undefined) {
-                            this.get('DS').findRecord('committee', member.committee).then((committee) => {
-                                a = {
-                                    firstName: e.firstName,
-                                    lastName: e.lastName,
-                                    memberID: member.id,
-                                    committeeName: committee.name
-                                }
-                                memberInfo.push(a);
-                                a = null;
-                                this.set('memberships', memberInfo);
-                            });
-                        }
-                    })
-                    member.get('teachingAssistantMember').then((e) => {
-                        if (e != undefined) {
-                            this.get('DS').findRecord('committee', member.committee).then((committee) => {
-                                a = {
-                                    firstName: e.firstName,
-                                    lastName: e.lastName,
-                                    memberID: member.id,
-                                    committeeName: committee.name
-                                }
-                                memberInfo.push(a);
-                                a = null;
-                                this.set('memberships', memberInfo);
-                            });
-                        }
-                    })
+            let members = this.get('DS').peekAll('committee-membership');
+            members.forEach((member) => {
+                member.get('instructorMember').then((e) => {
+                    if (e != undefined && e!= null) {
+                        let committee = this.get('DS').peekRecord('committee', member.committee);
+                            a = {
+                                firstName: e.firstName,
+                                lastName: e.lastName,
+                                memberID: member.id,
+                                committeeName: committee.get('name')
+                            }
+                            memberInfo.push(a);
+                            a = null;
+                            this.set('memberships', memberInfo);
+                    }
+                })
+                member.get('staffMember').then((e) => {
+                    if (e != undefined && e!= null) {
+                        let committee = this.get('DS').peekRecord('committee', member.committee);
+                            a = {
+                                firstName: e.firstName,
+                                lastName: e.lastName,
+                                memberID: member.id,
+                                committeeName: committee.get('name')
+                            }
+                            memberInfo.push(a);
+                            a = null;
+                            this.set('memberships', memberInfo);
+                    }
+                })
+                member.get('teachingAssistantMember').then((e) => {
+                    console.log(member.committee);
+                    console.log(member)
+                    if (e != undefined && e!= null) {
+                        let committee = this.get('DS').peekRecord('committee', member.committee);
+                            a = {
+                                firstName: e.firstName,
+                                lastName: e.lastName,
+                                memberID: member.id,
+                                committeeName: committee.get('name')
+                            }
+                            memberInfo.push(a);
+                            a = null;
+                            this.set('memberships', memberInfo);
+                    }
                 })
             })
 
@@ -218,48 +224,45 @@ export default Component.extend({
             meetingRecord.get('attendees').then((attendeesArray) => {
                 attendeesArray.forEach((attendee) => {
                     attendee.get('instructorMember').then((e) => {
-                        if (e != undefined) {
-                            this.get('DS').findRecord('committee', attendee.committee).then((committee) => {
-                                a = {
-                                    firstName: e.firstName,
-                                    lastName: e.lastName,
-                                    memberID: attendee.id,
-                                    committeeName: committee.name
-                                }
-                                attInfo.push(a);
-                                a = null;
-                                this.set('attendees', attInfo);
-                            });
+                        if (e != undefined  && e!= null) {
+                            let committee = this.get('DS').peekRecord('committee', attendee.committee);
+                            a = {
+                                firstName: e.firstName,
+                                lastName: e.lastName,
+                                memberID: attendee.id,
+                                committeeName: committee.get('name')
+                            }
+                            attInfo.push(a);
+                            a = null;
+                            this.set('attendees', attInfo);
                         }
                     })
                     attendee.get('staffMember').then((e) => {
-                        if (e != undefined) {
-                            this.get('DS').findRecord('committee', attendee.committee).then((committee) => {
+                        if (e != undefined  && e!= null) {
+                            let committee = this.get('DS').peekRecord('committee', attendee.committee);
                                 a = {
                                     firstName: e.firstName,
                                     lastName: e.lastName,
                                     memberID: attendee.id,
-                                    committeeName: committee.name
+                                    committeeName: committee.get('name')
                                 }
                                 attInfo.push(a);
                                 a = null;
                                 this.set('attendees', attInfo);
-                            });
                         }
                     })
                     attendee.get('teachingAssistantMember').then((e) => {
-                        if (e != undefined) {
-                            this.get('DS').findRecord('committee', attendee.committee).then((committee) => {
+                        if (e != undefined  && e!= null) {
+                            let committee = this.get('DS').peekRecord('committee', attendee.committee);
                                 a = {
                                     firstName: e.firstName,
                                     lastName: e.lastName,
                                     memberID: attendee.id,
-                                    committeeName: committee.name
+                                    committeeName: committee.get('name')
                                 }
                                 attInfo.push(a);
                                 a = null;
                                 this.set('attendees', attInfo);
-                            });
                         }
                     })
                 })
