@@ -15,10 +15,14 @@
                         {{#each committeeList as |committee|}}
                         <div class="item">
                             <div class="ui left floated ">{{committee.name}}</div>
+                            {{#if FEAT21_004IsPermitted }}
                             {{#link-to "ceams.committees.detail" committee.id}}
                             <div class="ui right floated blue button">View<i class="right floated eye icon"></i></div>
                             {{/link-to}}
+                            {{/if}}
+                            {{#if FEAT21_003IsPermitted }}
                             {{delete-task-force correctTitle=committee.name delID=committee.id }}
+                            {{/if}}
                         </div>
                         {{/each}}
                     </div>
@@ -26,7 +30,9 @@
             </div>
         </div>
     </div>
+    {{#if FEAT21_001IsPermitted }}
     <div class="row">
         <div class="ui center aligned container">{{new-task-force}}</div>
     </div>
+    {{/if}}
 </div>

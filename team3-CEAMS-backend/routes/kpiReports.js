@@ -69,12 +69,14 @@ function getScore(id, callback) {
 
                             var results = { "_id": UserAccount._id, "rawData": rawData, "userName": UserAccount.userName, "score": score }
 
+                            console.log(results);
                             //return score
                             return callback(results);
                         });
                     })
                 })
             } else if (UserAccount.staff !== null && UserAccount.staff !== undefined) {
+                console.log("Bam");
                 var staffID = UserAccount.staff;
 
                 Staff.Model.findById(staffID, function (err, Staff) {
@@ -108,6 +110,7 @@ function getScore(id, callback) {
                     });
                 })
             } else {
+                console.log("bop");
                 var rawData = { "numLogins": null, "totalActions": null };
                 var results = { "_id": UserAccount._id, "rawData": rawData, "score": null, "error": "UserAccount has no Instructor or Staff ID" };
                 return callback(results);

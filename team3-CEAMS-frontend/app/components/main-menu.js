@@ -15,21 +15,38 @@ export default Component.extend({
     }
   }),
 
-  FEAT21_004IsPermitted: computed(function () {
-    let authentication = this.get('oudaAuth');
+  FEAT22_004IsPermitted: computed(function () { //Manage committees
+    var authentication = this.get('oudaAuth');
     if (authentication.getName === "Root") {
       return true;
     } else {
-      return (authentication.get('userCList').indexOf("FEAT21_004") >= 0);
+      return (authentication.get('userCList').indexOf("FEAT22_004") >= 0);
     }
   }),
 
-  FEAT28_000IsPermitted: computed(function(){ //Admin Portal functionality
+  FEAT21_000IsPermitted: computed(function () { //Manage committees
+    var authentication = this.get('oudaAuth');
+    if (authentication.getName === "Root") {
+      return true;
+    } else {
+      return (authentication.get('userCList').indexOf("FEAT21_000") >= 0);
+    }
+  }),
+
+  FEAT28_000IsPermitted: computed(function () { //Admin Portal functionality
     var authentication = this.get('oudaAuth');
     if (authentication.getName === "Root") {
       return true;
     } else {
       return (authentication.get('userCList').indexOf("FEAT28_000") >= 0);
+    }
+  }),
+  FEAT25_001IsPermitted: computed(function () { //Delete committee
+    var authentication = this.get('oudaAuth');
+    if (authentication.getName === "Root") {
+      return true;
+    } else {
+      return (authentication.get('userCList').indexOf("FEAT25_001") >= 0);
     }
   }),
 
@@ -40,11 +57,11 @@ export default Component.extend({
     $('.admin.dropdown')
       .dropdown({
       })
-    ;
+      ;
 
-    $(document).ready(function() {
+    $(document).ready(function () {
       // hide and open menu on small screen
-      $('.ui.toggle.button').click(function() {
+      $('.ui.toggle.button').click(function () {
         $('.mobile.tablet.only.row .ui.vertical.menu').toggle("250", "linear")
       });
 
@@ -85,7 +102,7 @@ export default Component.extend({
   // }
 
 
-  });
+});
 
 
 
