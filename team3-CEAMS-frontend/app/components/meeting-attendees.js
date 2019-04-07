@@ -11,7 +11,16 @@ export default Component.extend({
         this.set('changes', {});
         this.set('membershipsFilter', '');
         this.set('attendeesFilter', '');
-    },    FEAT22_000IsPermitted: computed(function(){ //Delete course
+    },   
+     FEAT22_000IsPermitted: computed(function(){ //Delete course
+        var authentication = this.get('oudaAuth');
+        if (authentication.getName === "Root") {
+          return true;
+        } else {
+          return (authentication.get('userCList').indexOf("FEAT22_000") >= 0);
+        }
+    }),
+    FEAT21_100IsPermitted: computed(function(){ //Delete course
         var authentication = this.get('oudaAuth');
         if (authentication.getName === "Root") {
           return true;
