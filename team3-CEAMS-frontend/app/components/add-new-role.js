@@ -6,16 +6,21 @@ import $ from 'jquery';
 export default Component.extend({
 
   store: service(),
-  modalName: computed(function () { //Add new role
+uniqueName: null,
+
+
+  modalName: computed(function () {
+    let random = Math.random();
+    this.set('uniqueName', Math.random().toString().split('.')[1] );
+    return 'ui ' + this.get('uniqueName') + ' modal';
+  }),
+
+  FEAT28_009IsPermitted: computed(function(){
     var authentication = this.get('oudaAuth');
     if (authentication.getName === "Root") {
-      return 'newRole';
+      return true;
     } else {
-      if (authentication.get('userCList').indexOf("FEAT28_009") >= 0) {
-        return 'newRole';
-      } else {
-        return 'access-denied';
-      }
+      return (authentication.get('userCList').indexOf("FEAT28_009") >= 0);
     }
   }),
 
@@ -23,7 +28,7 @@ export default Component.extend({
     openModal: function () {
       this.set('name', '');
       let self = this;
-      $('.ui.' + this.get('modalName') + '.modal').modal({
+      $('.ui.' + this.get('uniqueName') + '.modal').modal({
         closable: false,
         useFlex: false,
 

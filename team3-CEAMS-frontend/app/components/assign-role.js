@@ -10,21 +10,13 @@ export default Component.extend({
   selectedRole: null,
   userGivenRoleModel: null,
   userRoles: [],
+  uniqueName: null,
 
   assignRolesModalName: computed(function () {
-    let authentication = this.get('oudaAuth');
-    if (authentication.getName === "Root") {
-      return 'assignrolesmodalname' + this.get('userRecord').id;
-    } else {
-      if (authentication.get('userCList').indexOf("FEAT28_007") >= 0) {
-        return 'assignrolesmodalname' + this.get('userRecord').id;
-      } else {
-        return 'access-denied' + this.get('userRecord').id;
-      }
-    }
-
+    let random = Math.random();
+    this.set('uniqueName', Math.random().toString().split('.')[1] + this.get('userRecord').id);
+    return 'ui ' + this.get('uniqueName') + ' modal';
   }),
-
 
   FEAT28_007IsPermitted: computed(function () {
     var authentication = this.get('oudaAuth');
@@ -60,7 +52,7 @@ export default Component.extend({
 
       });
 
-      $('.ui.' + this.get('assignRolesModalName') + '.modal').modal({
+      $('.ui.' + this.get('uniqueName') + '.modal').modal({
         closable: false,
         transition: 'horizontal flip',
         autofocus: false,

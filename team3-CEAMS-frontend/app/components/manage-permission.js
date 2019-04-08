@@ -7,23 +7,18 @@ export default Component.extend({
   store: service(),
   givenFeatures: [],
   selectedFeatures: [],
+  uniqueName: null,
 
   capabilityModel: computed(function () {
     return this.get('store').peekAll('capability');
   }),
 
   modalName: computed(function () {
-    var authentication = this.get('oudaAuth');
-    if (authentication.getName === "Root") {
-      return 'uniqueName' + (this.get('model').id) + (((this.get('model').name).replace(/\s+/g, '-').toLowerCase()));
-    } else {
-      if (authentication.get('userCList').indexOf("FEAT28_014") >= 0) {
-        return 'uniqueName' + ((this.get('model').name).replace(/\s+/g, '-').toLowerCase()) + this.get('model').id;
-      } else {
-        return 'access-denied' + ((this.get('model').name).replace(/\s+/g, '-').toLowerCase())+ this.get('model').id;
-      }
-    }
-  }),
+      var random = Math.random();
+      this.set('uniqueName', Math.random().toString().split('.')[1] + this.get('model').id);
+      return 'ui ' + this.get('uniqueName') + ' modal';
+   }),
+
 
   FEAT28_014IsPermitted: computed(function () {
     let authentication = this.get('oudaAuth');
@@ -47,7 +42,7 @@ export default Component.extend({
         this.get('selectedFeatures').push(rec.get('feature').get('id'));
       });
 
-      $('.ui.' + this.get('modalName') + '.modal').modal({
+      $('.ui.' + this.get('uniqueName') + '.modal').modal({
         closable: false,
         transition: 'horizontal flip',
         useFlex: false,

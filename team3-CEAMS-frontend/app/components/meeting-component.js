@@ -7,14 +7,14 @@ export default Component.extend({
     didInsertElement() {
         this._super(...arguments);
         $('#example').DataTable();
-    },   
+    },
+    didDestroyElement(){
+      this.set('meetings', this.get('DS').findAll('meeting'));
+      $('#example').DataTable();
+    },
     DS: service('store'),
     didRender(){
-        this.get('DS').findAll('committee');
-        this.get('DS').findAll('committee-membership')
-        this.get('DS').findAll('teaching-assistant')
-        this.get('DS').findAll('instructor')
-        this.get('DS').findAll('staff')
+
     },
   FEAT21_100IsPermitted: computed(function () { //manage meetings
     var authentication = this.get('oudaAuth');
@@ -55,5 +55,22 @@ export default Component.extend({
     } else {
       return (authentication.get('userCList').indexOf("FEAT22_002") >= 0);
     }
-}),
+  }),
+
+  actions: {
+    delete(meeting) {
+      //delete the meeting
+      let meet = this.get('DS').peekRecord('meeting', meeting.id);
+      if(meet){
+        meet.destroyRecord();
+      }
+      // this.get('DS').find('meeting', meeting.id, { preload: preload }).then(function (meeting){
+      //   meeting.deleteRecord();
+      //   meeting.get('isDeleted');
+      //   meeting.save();
+      // });
+    },
+  }
+
+
 });

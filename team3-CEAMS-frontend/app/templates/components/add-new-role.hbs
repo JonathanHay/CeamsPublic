@@ -2,8 +2,8 @@
   Add New Role
 </div>
 
-
-{{#ui-modal name="newRole" class="newRole" }}
+{{#if FEAT28_009IsPermitted }}
+{{#ui-modal name=modalName class=modalName }}
   <div class="header">
     Create New System Role
   </div>
@@ -30,8 +30,9 @@
   </div>
 {{/ui-modal}}
 
+{{else}}
 
-{{#ui-modal name="access-denied" class="access-denied" }}
+{{#ui-modal name=modalName class=modalName }}
   <div class="ui icon header">
     <i class="protect icon"></i>
     Permission Denied
@@ -48,3 +49,4 @@
   </div>
 
 {{/ui-modal}}
+{{/if}}

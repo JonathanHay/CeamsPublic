@@ -7,6 +7,8 @@ export default Component.extend({
   store: service(),
   name: null,
 
+  tagName: '',
+
   actions: {
     logout(){
       this.get('oudaAuth').close(this.get('oudaAuth').getName);

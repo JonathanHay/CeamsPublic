@@ -10,6 +10,7 @@ export default Component.extend({
   title: oneWay('courseData.title'),
   number: oneWay('courseData.number'),
   academicCredit: oneWay('courseData.academicCredit'),
+  uniqueName: null,
 
   FEAT07_002IsPermitted: computed(function(){ //Delete course
     var authentication = this.get('oudaAuth');
@@ -21,7 +22,9 @@ export default Component.extend({
   }),
 
   modalName: computed(function () {
-    return 'editPost' + this.get('ID');
+    let random = Math.random();
+    this.set('uniqueName', Math.random().toString().split('.')[1] + this.get('ID'));
+    return 'ui ' + this.get('uniqueName') + ' modal';
   }),
 
   courseTypes:null,
@@ -35,7 +38,7 @@ export default Component.extend({
     openModal: function () {
       this.set('courseData', this.get('DS').peekRecord('course', this.get('ID')));
 
-      $('.ui.' + this.get('modalName') + '.modal').modal({
+      $('.ui.' + this.get('uniqueName') + '.modal').modal({
         closable: false,
         transition: 'horizontal flip',
         useFlex: false,

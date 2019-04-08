@@ -30,6 +30,7 @@ export default Component.extend({
           authentication.open(this.get('name'), this.get('password')).then(function () {
             self.get('oudaAuth').set('isLoginRequested', false);
             authentication.set('getName', self.get('name'));
+            authentication.set('getPage', 'ceams.about');
             self.get('routing').transitionTo('ceams.about');
           }, function (error) {
             if (error === "accountIsDisabled") {

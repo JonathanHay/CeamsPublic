@@ -6,7 +6,7 @@
       </div>
       <div class="right item">
         <div class="ui massive secondary attached inverted pointing menu">
-          {{#link-to "login"}}<a class=" item">Login</a>{{/link-to}}
+          <a class="item" {{action 'login'}}>Login</a>
         </div>
       </div>
     </div>
@@ -20,11 +20,11 @@
         management, measurement, and visualization of the outcomes-based
         assessment and continuous program improvement for the Canadian Engineering Universities.
       </p>
-      {{#link-to "login"}}
-        <div class="ui massive white button">
+
+        <div class="ui massive white button" {{action 'login'}}>
           Let's Get Started
         </div>
-      {{/link-to}}
+
     </div>
     <div class="ui inverted footer segment">
       CEAMS project developed by <a>SE3350b Class 2019</a>, supervised by

@@ -22,14 +22,14 @@ export default Component.extend({
 
   isUniqueUserName: observer('userName', function () {
     this.set('error', null);
-    var myStore = this.get('store');
-    myStore.queryRecord('userAccount', {filter: {userName: this.get('userName')}}).then((userShadow) => {
-      if (userShadow) {
-        this.set('wrongUserName', true);
-      } else {
-        this.set('wrongUserName', false);
-      }
-    })
+    let myStore = this.get('store');
+    let userShadow = myStore.peekAll('userAccount', {filter: {userName: this.get('userName')}});
+    let obj = userShadow.find(one => one.userName === this.get('userName'));
+    if (obj) {
+      this.set('wrongUserName', true);
+    } else {
+      this.set('wrongUserName', false);
+    }
   }),
 
   instructors: computed(function () {

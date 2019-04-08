@@ -5,6 +5,11 @@ import {computed} from '@ember/object';
 
 export default Route.extend({
     model: function(){
+      this.store.findAll('committee');
+        this.store.findAll('committee-membership')
+        this.store.findAll('teaching-assistant')
+        this.store.findAll('instructor')
+        this.store.findAll('staff')
       return RSVP.hash({
         meetings: this.store.findAll('meeting')
       });

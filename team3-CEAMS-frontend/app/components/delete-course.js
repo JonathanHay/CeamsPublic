@@ -5,9 +5,12 @@ import {computed} from '@ember/object';
 
 export default Component.extend({
   DS: service('store'),
+  uniqueName: null,
 
   modalName: computed(function () {
-    return 'Delete-Course' + this.get('ID');
+    let random = Math.random();
+    this.set('uniqueName', Math.random().toString().split('.')[1] + this.get('ID'));
+    return 'ui ' + this.get('uniqueName') + ' modal';
   }),
 
   FEAT07_003IsPermitted: computed(function(){ //Delete course
@@ -21,7 +24,7 @@ export default Component.extend({
 
   actions: {
     openModal: function () {
-      $('.ui.' + this.get('modalName') + '.modal').modal({
+      $('.ui.' + this.get('uniqueName') + '.modal').modal({
         closable: false,
         useFlex: false,
 

@@ -61,6 +61,7 @@ export default Component.extend({
                 },
 
                 onApprove: () => {
+                    return true;
                 }
             })
                 .modal('show');

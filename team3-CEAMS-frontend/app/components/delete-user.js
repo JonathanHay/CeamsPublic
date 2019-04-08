@@ -7,19 +7,12 @@ export default Component.extend({
   store: service(),
   userRecord: null,
   ID: null,
+  uniqueName:null,
 
   modalName: computed(function () {
-    let authentication = this.get('oudaAuth');
-    if (authentication.getName === "Root") {
-      return 'deleteUser' + this.get('userRecord').id;
-    } else {
-      if (authentication.get('userCList').indexOf("FEAT28_004") >= 0) {
-        return 'deleteUser' + this.get('userRecord').id;
-      } else {
-        return 'access-denied' + this.get('userRecord').id;
-      }
-    }
-
+    let random = Math.random();
+    this.set('uniqueName', Math.random().toString().split('.')[1] + this.get('userRecord').id);
+    return 'ui ' + this.get('uniqueName') + ' modal';
   }),
 
   FEAT28_004IsPermitted: computed(function(){ //Delete user
@@ -34,7 +27,7 @@ export default Component.extend({
   actions: {
     openModal: function () {
       let self = this;
-      $('.ui.' + this.get('modalName') + '.modal').modal({
+      $('.ui.' + this.get('uniqueName') + '.modal').modal({
         closable: false,
         useFlex: false,
 

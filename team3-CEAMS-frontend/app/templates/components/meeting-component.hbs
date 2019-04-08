@@ -17,6 +17,9 @@
                         {{#if FEAT21_100IsPermitted }}
                             <th></th>
                         {{/if}}
+                        {{#if FEAT21_100IsPermitted }}
+                            <th></th>
+                        {{/if}}
                     </tr>
                 </thead>
                 <tbody>
@@ -30,7 +33,13 @@
                         {{#if FEAT21_100IsPermitted }}
                             <td>{{view-meeting ID = meeting.id}}</td>
                         {{/if}}
-
+                        {{#if FEAT21_100IsPermitted }}
+                        <td>
+                            <div class="ui red button" {{action 'delete' meeting}}>
+                                Delete
+                            </div>
+                        </td>
+                        {{/if}}
                     </tr>
                     {{/each}}
                 </tbody>

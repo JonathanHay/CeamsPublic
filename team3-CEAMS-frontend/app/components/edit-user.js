@@ -16,7 +16,7 @@ export default Component.extend({
   error: null,
   wrongUserName: false,
   oldUserName: null,
-
+  uniqueName: null,
 
   errorMessage: computed('error', function () {
     return this.get('error');
@@ -24,30 +24,20 @@ export default Component.extend({
 
   isUniqueUserName: observer('userName', function () {
     this.set('error', null);
-
-    var myStore = this.get('store');
-    myStore.queryRecord('userAccount', {filter: {userName: this.get('userName')}}).then((userShadow) => {
-      if (userShadow) {
+    let myStore = this.get('store');
+    let userShadow = myStore.peekAll('userAccount', {filter: {userName: this.get('userName')}});
+    let obj = userShadow.find(one => one.userName === this.get('userName'));
+      if (obj) {
         this.set('wrongUserName', true);
       } else {
         this.set('wrongUserName', false);
       }
-    })
-
   }),
 
   modalName: computed(function () {
-    var authentication = this.get('oudaAuth');
-    if (authentication.getName === "Root") {
-      return 'editUser' + (this.get('userRecord')).id;
-    } else {
-      if (authentication.get('userCList').indexOf("FEAT28_002") >= 0) {
-        return 'editUser' + (this.get('userRecord')).id;
-      } else {
-        return 'accessdenied' + (this.get('userRecord')).id;
-      }
-    }
-
+    let random = Math.random();
+    this.set('uniqueName', Math.random().toString().split('.')[1] + this.get('userRecord').id);
+    return 'ui ' + this.get('uniqueName') + ' modal';
   }),
 
   FEAT28_002IsPermitted: computed(function () { //Edit User
@@ -89,7 +79,7 @@ export default Component.extend({
       this.set('userName', this.get('userRecord').get('userName'));
       this.set('oldUserName', this.get('userRecord').get('userName'));
       let self = this;
-      $('.ui.' + self.get('modalName') + '.modal').modal({
+      $('.ui.' + self.get('uniqueName') + '.modal').modal({
         closable: false,
         transition: 'horizontal flip',
         useFlex: false,
@@ -112,7 +102,9 @@ export default Component.extend({
               self.get('userRecord').set('passwordReset', true);
             }
             self.get('userRecord').set('userName', self.get('userName'));
-
+            self.get('userRecord').save(()=>{
+              return true;
+            })
           }
         }
       })
@@ -138,4 +130,3 @@ export default Component.extend({
   }
 })
 ;
-

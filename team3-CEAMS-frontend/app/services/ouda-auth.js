@@ -1,6 +1,6 @@
 import Service from '@ember/service';
-import { computed } from '@ember/object';
-import { inject as service } from '@ember/service';
+import {computed} from '@ember/object';
+import {inject as service} from '@ember/service';
 import crypto from 'crypto-browserify';
 
 export default Service.extend({
@@ -10,6 +10,7 @@ export default Service.extend({
   store: service(),
   isLoginRequested: false,
   userCList: null,
+  page: null,
 
   getName: computed(function () {
     let identity = localStorage.getItem('ceams-session-id');
@@ -26,25 +27,39 @@ export default Service.extend({
     localStorage.setItem('ceams-session-id', identity);
   },
 
+  getPage: computed(function () {
+    let URL = localStorage.getItem('ceams-page-id');
+    if (URL) {
+      return this.decrypt(URL);
+    } else {
+      return null;
+    }
+  }),
+
+  setPage(name) {
+    this.set('page', name.toLowerCase());
+    let URL = this.encrypt(this.get('page'));
+    localStorage.setItem('ceams-page-id', URL);
+  },
 
   setPassword(password) {
     this.set('encryptedPassword', this.hash(password));
   },
 
-  hash(text){
+  hash(text) {
     const hash = crypto.createHash('sha256');
     hash.update(text);
     return hash.digest('binary');
   },
 
-  encrypt(plainText){
+  encrypt(plainText) {
     let cipher = crypto.createCipher('aes256', 'SE3350b Winter 2019');
     let crypted = cipher.update(plainText, 'ascii', 'binary');
     crypted += cipher.final('binary');
     return crypted;
   },
 
-  decrypt(cipherText){
+  decrypt(cipherText) {
     let decipher = crypto.createDecipher('aes256', 'SE3350b Winter 2019');
     let dec = decipher.update(cipherText, 'binary', 'ascii');
     dec += decipher.final('ascii');
@@ -52,6 +67,8 @@ export default Service.extend({
   },
 
   open(name, password) {
+    window.localStorage.removeItem('ceams-session-id');
+    window.localStorage.removeItem('ceams-page-id');
     let self = this;
     return new Promise(function (resolve, reject) {
       // send username to the server asking to connect and for a challenge (nonce)
@@ -92,7 +109,7 @@ export default Service.extend({
               });
               // send the third message of the authentication protocol
               clientResponse.save().then(function (message4) {
-                //get the token (message 4 in the protocol)
+                  //get the token (message 4 in the protocol)
                   // and get the capability list or no access flag
                   // set the capability list as a token property in this service and return true
                   // or set the token property null and return false.
@@ -128,8 +145,7 @@ export default Service.extend({
       ;
   },
 
-  fetch()
-  {
+  fetch() {
     // get the current token from backend database
     let self = this;
     return new Promise(function (resolve, reject) {
@@ -166,48 +182,51 @@ export default Service.extend({
               } else {
                 let plainToken = self.decrypt(givenToken.get('token'));
                 self.set('isAuthenticated', true);
+                self.set('isLoginRequested', false);
                 self.set('userCList', plainToken);
                 resolve(plainToken);
               }
             });
           }
         });
-      }
-      else {
-        reject("userNotActive");
+      } else {
+        reject("Public Access");
       }
     });
   },
 
-  close(user)
-  {
+  close(user) {
     let myStore = this.get('store');
-    if (user ==="Root") {
-      myStore.queryRecord('root', {filter: {sessionIsActive: true}}).then( (Logins)=> {
-        Logins.destroyRecord();
-        this.set('getName', null);
-        this.set('userName', null);
-        this.set('isAuthenticated', false);
-        this.set('isLoginRequested', false);
-     });
-    }
-    else {
-      myStore.queryRecord('login', {filter: {userName: user}}).then( (Logins)=> {
-        Logins.destroyRecord();
-
-        window.localStorage.removeItem('ceams-session-id');
-        this.set('getName', null);
-        this.set('userName', null);
-        this.set('encryptedPassword', null);
-        this.set('isAuthenticated', false);
-        this.set('isLoginRequested', false);
+    if (user === "Root") {
+      let currentSession = myStore.peekAll('root');
+      currentSession.forEach((rec) => {
+        rec.destroyRecord();
       });
+      window.localStorage.removeItem('ceams-session-id');
+      window.localStorage.removeItem('ceams-page-id');
+      this.set('getName', null);
+      this.set('userName', null);
+      this.set('isAuthenticated', false);
+      this.set('isLoginRequested', true);
+    } else {
+      let currentSession = myStore.peekAll('login', {filter: {userName: user}});
+      currentSession.forEach((rec) => {
+        rec.destroyRecord();
+      });
+      window.localStorage.removeItem('ceams-session-id');
+      window.localStorage.removeItem('ceams-page-id');
+      this.set('getName', null);
+      this.set('userName', null);
+      this.set('encryptedPassword', null);
+      this.set('isAuthenticated', false);
+      this.set('isLoginRequested', true);
     }
   },
 
-  openRoot(password)
-  {
+  openRoot(password) {
     let self = this;
+    window.localStorage.removeItem('ceams-session-id');
+    window.localStorage.removeItem('ceams-page-id');
     return new Promise(function (resolve, reject) {
       if (password) {
         let myStore = self.get('store');

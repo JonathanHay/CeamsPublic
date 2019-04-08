@@ -3,7 +3,10 @@
   Add Feature
 </div>
 
-{{#ui-modal name="newFeature" class="newFeature" }}
+{{#if FEAT28_010IsPermitted}}
+
+
+{{#ui-modal name=modalName class=modalName }}
   <div class="header">
     Create New System Feature
   </div>
@@ -34,8 +37,9 @@
   </div>
 {{/ui-modal}}
 
+{{else}}
 
-{{#ui-modal name="access-denied" class="access-denied" }}
+{{#ui-modal name=modalName class=modalName }}
   <div class="ui icon header">
     <i class="protect icon"></i>
     Permission Denied
@@ -51,3 +55,5 @@
     </div>
   </div>
 {{/ui-modal}}
+
+{{/if}}

@@ -2,10 +2,7 @@ import Component from '@ember/component';
 import { inject as service } from '@ember/service';
 import { computed } from '@ember/object';
 
-export default Component.extend({
-    didRender() {
-        this._super(...arguments);
-    },       
+export default Component.extend({   
     FEAT21_100IsPermitted: computed(function(){ //Manage meetings
         var authentication = this.get('oudaAuth');
         if (authentication.getName === "Root") {
@@ -47,6 +44,9 @@ export default Component.extend({
       }
   }),
     DS: service('store'),
+    didRender() {
+      this._super(...arguments);
+    },    
     actions: {
         addToTable: function () {
             var meetingID = this.get('DS').peekRecord('meeting', this.get('meetingId'));
