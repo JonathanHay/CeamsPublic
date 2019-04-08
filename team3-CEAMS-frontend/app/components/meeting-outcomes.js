@@ -35,12 +35,12 @@ export default Component.extend({
           return (authentication.get('userCList').indexOf("FEAT22_001") >= 0);
         }
     }),
-    FEAT22_002IsPermitted: computed(function(){ //add decisions
+    FEAT22_004IsPermitted: computed(function(){ //add decisions
       var authentication = this.get('oudaAuth');
       if (authentication.getName === "Root") {
         return true;
       } else {
-        return (authentication.get('userCList').indexOf("FEAT22_002") >= 0);
+        return (authentication.get('userCList').indexOf("FEAT22_004") >= 0);
       }
   }),
     DS: service('store'),

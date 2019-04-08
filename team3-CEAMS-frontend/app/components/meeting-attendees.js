@@ -36,12 +36,12 @@ export default Component.extend({
           return (authentication.get('userCList').indexOf("FEAT22_001") >= 0);
         }
     }),
-    FEAT22_002IsPermitted: computed(function(){ //Delete course
+    FEAT22_004IsPermitted: computed(function(){ //Delete course
         var authentication = this.get('oudaAuth');
         if (authentication.getName === "Root") {
           return true;
         } else {
-          return (authentication.get('userCList').indexOf("FEAT22_002") >= 0);
+          return (authentication.get('userCList').indexOf("FEAT22_004") >= 0);
         }
     }),
     FEAT22_003IsPermitted: computed(function(){ //Delete course
