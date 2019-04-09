@@ -44,9 +44,6 @@ export default Component.extend({
             }
 
             if (sum == 100) {
-                console.log('submit');
-
-                console.log(weights);
 
                 var submission = {
                     formulaType: "Instructor",
@@ -56,10 +53,8 @@ export default Component.extend({
                     instructors: []
                 }
 
-                console.log(submission);
-
                 let newUEM = this.DS.createRecord('user-evaluation-method', submission);
-                newUEM.save().then(() => { alert('we did it') }, () => { alert('we failed') })
+                newUEM.save();
 
                 $('#instructor-factors .error-message').hide();
             } else {
@@ -82,8 +77,6 @@ export default Component.extend({
             }
 
             if (sum == 100) {
-                console.log('submit');
-
                 var submission = {
                     formulaType: "Staff",
                     formulaExpression: JSON.stringify(weights),
@@ -91,11 +84,8 @@ export default Component.extend({
                     staff: [],
                     instructors: []
                 }
-
-                console.log(submission);
-
                 let newUEM = this.DS.createRecord('user-evaluation-method', submission);
-                newUEM.save().then(() => { alert('we did it') }, () => { alert('we failed') })
+                newUEM.save();
 
 
 

@@ -42,7 +42,6 @@ export default Component.extend({
         delCommittee: function () {
             $('#nerr2').removeClass('hidden');
             $('#nerr2').addClass('hidden');
-            console.log("Correct Title: " + this.get('correctTitle'));
             if (this.get('title') != this.get('correctTitle')) {
                 alert("Incorrect Title");
                 $('#nerr2').removeClass('hidden');

@@ -261,7 +261,6 @@ export default Component.extend({
         },
         add: function (user) {
             if (this.get("selectedUsers").isAny('id', user.id)) {
-                console.log("alreadyAdded!");
             } else {
                 this.get("selectedUsers").pushObject(user);
             }

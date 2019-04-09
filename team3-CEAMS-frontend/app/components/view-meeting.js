@@ -139,7 +139,7 @@ export default Component.extend({
         openModal: function () {
             this.set('attendees', []);
             this.set('meetingData', this.get('DS').peekRecord('meeting', this.get('ID')));
-            this.set('location', this.get('mezetingData.location'));
+            this.set('location', this.get('meetingData.location'));
             this.set('description', this.get('meetingData.description'));
             this.set('minutes', this.get('meetingData.minutes'));
             this.set('outcomes', this.get('meetingData.outcomes'));
