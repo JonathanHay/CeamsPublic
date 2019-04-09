@@ -112,10 +112,10 @@ export default Component.extend({
             instructorChart.data.datasets[0].data.pop();
             instructorChart.data.datasets[0].data.pop();
 
-            instructorChart.data.datasets[0].data.push(formula.numLogins * 100);
-            instructorChart.data.datasets[0].data.push(formula.numGraded * 100);
-            instructorChart.data.datasets[0].data.push(formula.numCourses * 100);
-            instructorChart.data.datasets[0].data.push(formula.totalActions * 100);
+            instructorChart.data.datasets[0].data.push(formula.numLogins);
+            instructorChart.data.datasets[0].data.push(formula.numGraded);
+            instructorChart.data.datasets[0].data.push(formula.numCourses);
+            instructorChart.data.datasets[0].data.push(formula.totalActions);
 
             instructorChart.update();
         },
