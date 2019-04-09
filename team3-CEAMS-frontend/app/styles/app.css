@@ -1,3 +1,7 @@
+.spacer {
+  height: 155px;
+}
+
 /*home-page specific style */
 .home.page >
 .ui.inverted.vertical.segment {
