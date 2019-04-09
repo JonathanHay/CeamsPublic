@@ -24,7 +24,6 @@ router.get('/:id', function (req, res) {
 /* POST */
 router.post('/', function (req, res) {
     var meetingOutcome = new MeetingOutcomes.Model(req.body.meetingOutcome);
-    console.log(req.body.meetingOutcome);
     meetingOutcome.save(function (err) {
         if (err) res.status(500).json(err);
         Meetings.Model.findById(req.body.meetingOutcome.meeting, function (err, meeting) {

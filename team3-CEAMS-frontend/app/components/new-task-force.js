@@ -56,7 +56,6 @@ export default Component.extend({
                     level: this.get('level')
                 });
                 newCommittee.save().then(() => {
-                    console.log("Committee Saved");
                     return true;
                 });
                 $('.ui.newModal.modal').modal({
