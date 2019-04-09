@@ -32,7 +32,6 @@ function getScore(id, callback) {
 
             var evaluationMethod;
 
-            console.log(UserAccount.instructor);
             //If they're an instructor it grabs the number of courses they have taught and the evaluation method to use
             if (UserAccount.instructor !== null && UserAccount.instructor !== undefined) {
                 var instructorID = UserAccount.instructor;
@@ -69,14 +68,12 @@ function getScore(id, callback) {
 
                             var results = { "_id": UserAccount._id, "rawData": rawData, "userName": UserAccount.userName, "score": score, "formula": formula }
 
-                            console.log(results);
                             //return score
                             return callback(results);
                         });
                     })
                 })
             } else if (UserAccount.staff !== null && UserAccount.staff !== undefined) {
-                console.log("Bam");
                 var staffID = UserAccount.staff;
 
                 Staff.Model.findById(staffID, function (err, Staff) {
@@ -110,7 +107,6 @@ function getScore(id, callback) {
                     });
                 })
             } else {
-                console.log("bop");
                 var rawData = { "numLogins": null, "totalActions": null };
                 var results = { "_id": UserAccount._id, "rawData": rawData, "score": null, "error": "UserAccount has no Instructor or Staff ID" };
                 return callback(results);
@@ -124,7 +120,6 @@ router.get('/', function (req, res) {
     var results = [];
     var reports;
     UserAccounts.Model.find(function (err, userAccounts) {
-        //console.log("usraccts: " + userAccounts);
         if (err) res.status(500).json(err);
         for (var i = 0; i < userAccounts.length; i++) {
             getScore(userAccounts[i]._id, (result) => {

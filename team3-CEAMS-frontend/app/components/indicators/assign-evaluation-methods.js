@@ -75,21 +75,16 @@ export default Component.extend({
     actions: {
         setInstructor(index) {
             this.set('instructorIndex', index);
-            console.log(index);
             $('#instructor-factors .save-message').hide();
         },
         setInstructorMethod(index) {
             this.set('instructorMethodIndex', index);
-            console.log(index);
         },
         assignInstructorMethod() {
             //get instructor from index
             var chosenInstructor = this.get('instructors')[parseInt(this.get('instructorIndex'))];
-            console.log("chosen instructor: " + chosenInstructor.firstName);
             //get method from index
             var chosenMethod = this.get('instructorMethods')[parseInt(this.get('instructorMethodIndex'))];
-            console.log(this.get('instructorMethods'));
-            console.log("chosen method: " + chosenMethod.id);
 
             //set instructor evaluationMethod to new method
             chosenInstructor.set('evaluationMethod', chosenMethod);
@@ -100,21 +95,16 @@ export default Component.extend({
         },
         setStaff(index) {
             this.set('staffIndex', index);
-            console.log(index);
             $('#staff-factors .save-message').hide();
         },
         setStaffMethod(index) {
             this.set('staffMethodIndex', index);
-            console.log(index);
         },
         assignStaffMethod() {
             //get staff from index
             var chosenStaff = this.get('staff')[parseInt(this.get('staffIndex'))];
-            console.log("chosen staff: " + chosenStaff.firstName);
             //get method from index
             var chosenMethod = this.get('staffMethods')[parseInt(this.get('staffMethodIndex'))];
-            console.log("chosen method: " + chosenMethod.id);
-
             //set staff evaluationMethod to new method
             chosenStaff.set('evaluationMethod', chosenMethod);
 
