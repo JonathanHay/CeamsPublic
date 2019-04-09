@@ -67,7 +67,7 @@ function getScore(id, callback) {
                                 formula.numGraded * numGraded + formula.numCourses * numCourses + formula.totalActions * totalActions;
                             var rawData = { "numLogins": numLogins, "numGraded": numGraded, "numCourses": numCourses, "totalActions": totalActions };
 
-                            var results = { "_id": UserAccount._id, "rawData": rawData, "userName": UserAccount.userName, "score": score }
+                            var results = { "_id": UserAccount._id, "rawData": rawData, "userName": UserAccount.userName, "score": score, "formula": formula }
 
                             console.log(results);
                             //return score
@@ -103,7 +103,7 @@ function getScore(id, callback) {
                         var score = formula.numLogins * numLogins + formula.totalActions * totalActions;
                         var rawData = { "numLogins": numLogins, "totalActions": totalActions };
 
-                        var results = { "_id": UserAccount._id, "rawData": rawData, "userName": UserAccount.userName, "score": score }
+                        var results = { "_id": UserAccount._id, "rawData": rawData, "userName": UserAccount.userName, "score": score, "formula": formula }
 
                         //return score
                         return callback(results);
