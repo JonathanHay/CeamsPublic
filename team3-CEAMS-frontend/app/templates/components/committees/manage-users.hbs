@@ -1,4 +1,9 @@
 <div class="loader-overlay" style="display: none;">
     <img src="https://orig00.deviantart.net/df77/f/2013/094/8/d/loading_logofinal_by_zegerdon-d60eb1v.gif" alt="">
 </div>
+{{#link-to "ceams.committees.detail" committee_id class="item"}}
+<div class="ui button" style="margin-left: 13%">
+    <a>Back</a>
+</div>
+{{/link-to}}
 {{user-manager users=users committee_id=committee_id submit=processChanges submitLabel="Save Changes"}}
