@@ -9,15 +9,7 @@ export default Component.extend({
         this._super(...arguments);
         $('#example').DataTable();
     },
-    didDestroyElement(){
-      this.set('meetings', this.get('DS').findAll('meeting'));
-      $('#example').DataTable();
-    },
     DS: service('store'),
-    didRender(){
-      this.set('meetings', this.get('DS').findAll('meeting'));
-      $('#example').DataTable();
-    },
   FEAT21_100IsPermitted: computed(function () { //manage meetings
     var authentication = this.get('oudaAuth');
     if (authentication.getName === "Root") {
