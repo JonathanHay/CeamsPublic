@@ -6,7 +6,6 @@ export default Route.extend({
     let members = await committee.get('members');
     let membersInfo = [];
 
-    console.time('start');
     for (let i = 0; i < members.length; i++) {
       const m = members.objectAt(i);
       
@@ -25,7 +24,6 @@ export default Route.extend({
         
       }
     }
-    console.timeEnd('start');
 
     return {
       committee,
