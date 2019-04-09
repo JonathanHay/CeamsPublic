@@ -14,10 +14,6 @@ export default Component.extend({
 
     memberships: null,
 
-    didRender(){
-        
-    },
-
     modalName: computed(function () {
         return 'newMeeting' + this.get('ID');
     }),

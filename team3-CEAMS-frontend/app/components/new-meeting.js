@@ -38,6 +38,7 @@ export default Component.extend({
 
             newMeeting.save().then(() => {
                 window.alert('Meeting Created')
+
             }, (err) => {
                 window.alert('Error, please try again')
             });

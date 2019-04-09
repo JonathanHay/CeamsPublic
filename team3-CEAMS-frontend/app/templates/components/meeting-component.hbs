@@ -24,7 +24,7 @@
                 </thead>
                 <tbody>
                     {{#each model.meetings as |meeting|}}
-                    <tr>
+                    <tr id='{{meeting.id}}'>
                         <td>{{meeting.location}}</td>
                         <td>{{meeting.description}}</td>
                         <td>{{meeting.minutes}}</td>

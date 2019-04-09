@@ -1,6 +1,7 @@
 import Component from '@ember/component';
 import {computed} from '@ember/object';
 import { inject as service } from '@ember/service';
+import $ from 'jquery';
 
 
 export default Component.extend({
@@ -14,7 +15,8 @@ export default Component.extend({
     },
     DS: service('store'),
     didRender(){
-
+      this.set('meetings', this.get('DS').findAll('meeting'));
+      $('#example').DataTable();
     },
   FEAT21_100IsPermitted: computed(function () { //manage meetings
     var authentication = this.get('oudaAuth');
@@ -60,15 +62,11 @@ export default Component.extend({
   actions: {
     delete(meeting) {
       //delete the meeting
+      $('#'+meeting.id).remove();
       let meet = this.get('DS').peekRecord('meeting', meeting.id);
       if(meet){
         meet.destroyRecord();
       }
-      // this.get('DS').find('meeting', meeting.id, { preload: preload }).then(function (meeting){
-      //   meeting.deleteRecord();
-      //   meeting.get('isDeleted');
-      //   meeting.save();
-      // });
     },
   }
 
