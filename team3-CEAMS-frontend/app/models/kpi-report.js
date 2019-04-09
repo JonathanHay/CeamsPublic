@@ -5,5 +5,6 @@ export default DS.Model.extend({
     rawData: DS.attr(),
     userName: DS.attr(),
     score: DS.attr(),
-    error: DS.attr()
+    error: DS.attr(),
+    formula: DS.attr()
 });

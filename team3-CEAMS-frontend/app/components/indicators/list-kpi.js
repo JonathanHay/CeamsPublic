@@ -36,7 +36,20 @@ export default Component.extend({
                 let c2 = one.rawData;
                 let c3 = one.score || "0";
                 let c4 = one.id;
-                let row = { c1, c2, c3, c4 };
+                let c5 = one.formula;
+                if (c5.numLogins == undefined) {
+                    c5.numLogins = 0;
+                }
+                if (c5.numGraded == undefined) {
+                    c5.numGraded = 0;
+                }
+                if (c5.numCourses == undefined) {
+                    c5.numCourses = 0;
+                }
+                if (c5.totalActions == undefined) {
+                    c5.totalActions = 0;
+                }
+                let row = { c1, c2, c3, c4, c5 };
                 result.push(row);
             }
         });
@@ -111,11 +124,11 @@ export default Component.extend({
                     var temp = [];
                     if (Object.keys(one.c2).length == 4) {
                         hasInstructors = true;
-                        temp = [one.c1, one.c2.numLogins, one.c2.totalActions, one.c2.numGraded, one.c2.numCourses, one.c3];
+                        temp = [one.c1, one.c2.numLogins + " (" + one.c5.numLogins + "%)", one.c2.totalActions + " (" + one.c5.totalActions + "%)", one.c2.numGraded + " (" + one.c5.numGraded + "%)", one.c2.numCourses + " (" + one.c5.numCourses + "%)", one.c3];
                         pdfDocument.content[2].table.body.push(temp);
                     } else {
                         hasStaff = true;
-                        temp = [one.c1, one.c2.numLogins, one.c2.totalActions, one.c3,];
+                        temp = [one.c1, one.c2.numLogins + " (" + one.c5.numLogins + "%)", one.c2.totalActions + " (" + one.c5.totalActions + "%)", one.c3,];
                         pdfDocument.content[4].table.body.push(temp);
                     }
 
@@ -213,11 +226,11 @@ export default Component.extend({
                     var temp = [];
                     if (Object.keys(one.c2).length == 4) {
                         hasInstructors = true;
-                        temp = [one.c1, one.c2.numLogins, one.c2.totalActions, one.c2.numGraded, one.c2.numCourses, one.c3];
+                        temp = [one.c1, one.c2.numLogins + " (" + one.c5.numLogins + "%)", one.c2.totalActions + " (" + one.c5.totalActions + "%)", one.c2.numGraded + " (" + one.c5.numGraded + "%)", one.c2.numCourses + " (" + one.c5.numCourses + "%)", one.c3];
                         pdfDocument.content[2].table.body.push(temp);
                     } else {
                         hasStaff = true;
-                        temp = [one.c1, one.c2.numLogins, one.c2.totalActions, one.c3,];
+                        temp = [one.c1, one.c2.numLogins + " (" + one.c5.numLogins + "%)", one.c2.totalActions + " (" + one.c5.totalActions + "%)", one.c3,];
                         pdfDocument.content[4].table.body.push(temp);
                     }
 
